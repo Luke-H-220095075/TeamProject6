@@ -1,12 +1,10 @@
 <?php
 class Message {
-    public $user;
     public $messagetext;
     public $subject;
 
-    public function __construct($user, $subject, $messagetext)
+    public function __construct($subject, $messagetext)
     {
-        $this->user = $user;
         $this->messagetext = $messagetext;
         $this->subject = $subject;
     }
@@ -14,7 +12,7 @@ class Message {
         include 'connect.php';
         try{
           $sth=$db->prepare("INSERT INTO Inquiries(Username, InquiryDate, Subject, Message) VALUES (:username, GETDATE(), :subject, :message)");
-          $sth->bindparam(':username', $this->user->username, PDO::PARAM_STR, 64);
+          $sth->bindparam(':username', $_SESSION['username'], PDO::PARAM_STR, 64);
           $sth->bindparam(':subject', $this->subject, PDO::PARAM_STR, 64);
           $sth->bindparam(':message', $this->messagetext, PDO::PARAM_STR, 64);
           $sth->execute();
