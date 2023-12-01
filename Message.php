@@ -2,11 +2,14 @@
 class Message {
     public $messagetext;
     public $subject;
+    public $username;
 
-    public function __construct($subject, $messagetext)
+    public function __construct($subject, $messagetext, $username)
     {
         $this->messagetext = $messagetext;
         $this->subject = $subject;
+        $this->username = $username;
+
     }
     public function sendMessage(){
         include 'connect.php';

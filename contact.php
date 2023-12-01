@@ -7,7 +7,7 @@
       if(!empty(trim($_POST['subject'])))
       {
         include_once("model/Message.php");
-        $message = new Message($_POST['subject'], $_POST['message']);
+        $message = new Message($_POST['subject'], $_POST['message'], null);
         include_once("controller/MessageController.php");
         $controller = new MessageController($message);
         $controller->invoke();  
