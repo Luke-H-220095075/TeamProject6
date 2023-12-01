@@ -8,6 +8,7 @@ class User {
   public $address;
   public $phone;
   public $admin;
+  public $userID;
 
   public function __construct($username, $password, $email, $firstname, $surname, $address, $phone, $admin) {
     $this->username = $username;
@@ -19,6 +20,7 @@ class User {
     $this->surname = $surname;
     $this->address = $address;
     $this->phone = $phone;
+    $this->userID = null;
   }
   public function signIn(){
     try{
@@ -199,11 +201,12 @@ class User {
   public function setSession(){
     session_start();
         $_SESSION["user"] = $this->username;
-        $sth=$db->prepare("SELECT userType FROM users WHERE username = :username");
+        $sth=$db->prepare("SELECT userType, userId FROM users WHERE username = :username");
         $sth->bindparam(':username', $this->username, PDO::PARAM_STR, 10);
         $sth->execute();
         $row=$sth->fetch(PDO::FETCH_ASSOC);
-        $_SESSION["access"] = $row['admin'];
+        $_SESSION["access"] = $row['userType'];
+        $_SESSION["userID"] = $row['userId'];
   }
   public function getDetails(){
     $sth=$db->prepare("SELECT * FROM users WHERE username = :username");

@@ -11,8 +11,8 @@ class Message {
     public function sendMessage(){
         include 'connect.php';
         try{
-          $sth=$db->prepare("INSERT INTO Inquiries(Username, InquiryDate, Subject, Message) VALUES (:username, GETDATE(), :subject, :message)");
-          $sth->bindparam(':username', $_SESSION['username'], PDO::PARAM_STR, 64);
+          $sth=$db->prepare("INSERT INTO inquiries(userID, inquiryDate, subject, message) VALUES (:userid, GETDATE(), :subject, :message)");
+          $sth->bindparam(':userid', $_SESSION['userID'], PDO::PARAM_STR, 64);
           $sth->bindparam(':subject', $this->subject, PDO::PARAM_STR, 64);
           $sth->bindparam(':message', $this->messagetext, PDO::PARAM_STR, 64);
           $sth->execute();
