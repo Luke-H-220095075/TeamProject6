@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,9 +15,29 @@ $password = '';
 
 <h2>Products</h2>
 
-<!-- Add dropdown filters -->
+<label for="sortFilter">Sort by:</label>
+<select id="sortFilter" onchange="filterProducts()" style="cursor: pointer">
+    <?php
+        $sortFilterOptions = [
+            'all' => 'Default',
+            'name-asc' => 'Name (A-Z)',
+            'name-desc' => 'Name (Z-A)',
+            'price-asc' => 'Price (Low to High)',
+            'price-desc' => 'Price (High to Low)'
+            // Add more sorting options as needed
+        ];
+
+        $selectedSortFilter = isset($_GET['sortFilter']) ? $_GET['sortFilter'] : 'all';
+
+        foreach ($sortFilterOptions as $value => $label) {
+            $selected = ($value == $selectedSortFilter) ? 'selected' : '';
+            echo '<option value="' . $value . '" ' . $selected . '>' . $label . '</option>';
+        }
+    ?>
+    </select>
+
 <label for="categoryFilter">Filter by Category:</label>
-<select id="categoryFilter" onchange="filterProducts()">
+<select id="categoryFilter" onchange="filterProducts()" style="cursor: pointer">
     <option value="all">All</option>
     <?php
     $selectedcategoryFilter = isset($_GET['categoryFilter']) ? $_GET['categoryFilter'] : 'all';
@@ -44,7 +64,7 @@ $password = '';
 </select>
 
 <label for="typeFilter">Filter by Type:</label>
-<select id="typeFilter" onchange="filterProducts()">
+<select id="typeFilter" onchange="filterProducts()" style="cursor: pointer">
     <option value="all">All</option>
     <?php
     $selectedtypeFilter = isset($_GET['typeFilter']) ? $_GET['typeFilter'] : 'all';
@@ -70,21 +90,36 @@ $password = '';
     ?>
 </select>
 
-<button onclick="resetFilters()">Reset Filters</button>
+<button onclick="resetFilters()" style="cursor: pointer">Reset Filters</button>
 
 <?php
 try {
     $pdo = new PDO($dsn, $username, $password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    // Initial query to fetch all products
     $query = "SELECT * FROM products";
 
-    // Fetch selected values from dropdowns
+    $sortFilter = isset($_GET['sortFilter']) ? $_GET['sortFilter'] : 'all';
     $typeFilter = isset($_GET['typeFilter']) ? $_GET['typeFilter'] : 'all';
     $categoryFilter = isset($_GET['categoryFilter']) ? $_GET['categoryFilter'] : 'all';
 
-    // Add conditions to the query based on selected filters
+    switch ($sortFilter) {
+        case 'name-asc':
+            $query .= " ORDER BY productName ASC";
+            break;
+        case 'name-desc':
+            $query .= " ORDER BY productName DESC";
+            break;
+        case 'price-asc':
+            $query .= " ORDER BY price ASC";
+            break;
+        case 'price-desc':
+            $query .= " ORDER BY price DESC";
+            break;
+        default:
+            break;
+    }
+
     if ($typeFilter != 'all') {
         $query .= " WHERE productType = :type";
     }
@@ -109,22 +144,20 @@ try {
 
     if ($stmt->rowCount() > 0) {
         echo '<table id="productTable">';
-        $count = 0; // Counter for products in the current row
+        $count = 0;
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            // Start a new row for every two products
             if ($count % 3 == 0) {
                 echo '<tr>';
             }
 
             echo '<td>';
-            echo '<strong>Name:</strong> ' . htmlspecialchars($row['productName']) . '<br>';
-            echo '<strong>Price:</strong> $' . number_format($row['price'], 2) . '<br>';
-            echo '<strong>Image:</strong> <img src="' . htmlspecialchars($row['imageName']) . '" alt="' . htmlspecialchars($row['imageName']) . '" class="product-image">';
-            echo '<br><button onclick="showProductModal(' . $row['productId'] . ')">View Details</button>';
+            echo '<a onclick="showProductModal(' . $row['productId'] . ')"><img src="' . htmlspecialchars($row['imageName']) . '" alt="' . htmlspecialchars($row['imageName']) . '" class="product-image"></a><br>';
+//            echo '<strong>Name:</strong> ' . htmlspecialchars($row['productName']) . '<br>';
+//            echo '<strong>Price:</strong> $' . number_format($row['price'], 2) . '<br>';
+//            echo '<br><button onclick="showProductModal(' . $row['productId'] . ')">View Details</button>';
             echo '</td>';
 
-            // End the row for every two products
             if ($count % 3 == 2 || $count == $stmt->rowCount() - 1) {
                 echo '</tr>';
             }
@@ -145,8 +178,8 @@ $pdo = null;
 
 <div id="productModal" class="modal">
     <div class="modal-content">
-        <span class="close" onclick="closeProductModal()">&times;</span>
         <div id="productDetailsModal"></div>
+        <button id="addToBasketButton" onclick="addToBasket()" style="display: none;">Add to Basket</button>
     </div>
 </div>
 
@@ -155,43 +188,49 @@ $pdo = null;
         var modal = document.getElementById('productModal');
         var productDetailsContainer = document.getElementById('productDetailsModal');
 
-        // Send an AJAX request to retrieve product details
         var xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function () {
-            if (xhr.readyState == 4 && xhr.status == 200) {
-                // Display the product details in the modal
+            if (xhr.readyState === 4 && xhr.status === 200) {
                 productDetailsContainer.innerHTML = xhr.responseText;
                 modal.style.display = 'block';
             }
         };
         xhr.open('GET', 'product_show.php?product_id=' + productId, true);
         xhr.send();
+
+        document.getElementById('addToBasketButton').style.display = 'block';
+        document.getElementById('productModal').style.display = 'block';
     }
 
     function closeProductModal() {
         var modal = document.getElementById('productModal');
         modal.style.display = 'none';
+
+        document.getElementById('addToBasketButton').style.display = 'none';
+        document.getElementById('productModal').style.display = 'none';
     }
 
-    // Close the modal if the user clicks outside of it
     window.onclick = function (event) {
         var modal = document.getElementById('productModal');
-        if (event.target == modal) {
+        if (event.target === modal) {
             modal.style.display = 'none';
         }
     };
 
     function filterProducts() {
+        var sortFilter = document.getElementById("sortFilter").value;
         var typeFilter = document.getElementById("typeFilter").value;
         var categoryFilter = document.getElementById("categoryFilter").value;
 
-        // Redirect to the same page with the selected filters as query parameters
-        window.location.href = 'product_index.php?typeFilter=' + typeFilter + '&categoryFilter=' + categoryFilter;
+        window.location.href = 'product_index.php?typeFilter=' + typeFilter + '&categoryFilter=' + categoryFilter + '&sortFilter=' + sortFilter;
     }
 
     function resetFilters() {
-        // Redirect to the same page without any filters
         window.location.href = 'product_index.php';
+    }
+
+    function addToBasket() {
+        alert('Product added to basket!');
     }
 </script>
 </body>
