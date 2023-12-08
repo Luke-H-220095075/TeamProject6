@@ -5,13 +5,14 @@
     }
     if(isset($_POST["submitted"])) 
     {
+      echo "submitted";
       if(!empty(trim($_POST['username'])))
       {
         if(!empty(trim($_POST['password'])))
         {
-          include_once("model/Project.php");
+          include_once("model/User.php");
                             //($username, $password, $email, $firstname, $surname, $address, $phone, $admin
-        $user = new User($_POST['username'], password_hash($_POST['password']), null, null, null, null, null, null);
+        $user = new User($_POST['username'], $_POST['password'], null, null, null, null, null, null);
         include_once("controller/SignInController.php");
         $controller = new SignInController($user);
         $controller->invoke();
