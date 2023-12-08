@@ -4,9 +4,11 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
-    background-color: #f5d5bb;
 }
 
+.body {
+  background-color: #f5d5bb;
+}
 .img{
     height: 50%;
     display: block;
@@ -17,7 +19,8 @@
 
 /* The sidepanel menu */
 .sidepanel {
-    right: 20;
+  margin-left: 1000px;
+    right: 20px;
     height: 250px; /* Specify a height */
     width: 0; /* 0 width - change this with JavaScript */
     position: fixed; /* Stay in place */
@@ -27,7 +30,7 @@
     background-color: #f5d5bb; /* Black*/
     overflow-x: hidden; /* Disable horizontal scroll */
     padding-top: 60px; /* Place content 60px from the top */
-    transition: 0.5s; /* 0.5 second transition effect to slide in the sidepanel */
+    
   }
   
   /* The sidepanel links */
@@ -61,6 +64,7 @@
     background-color: #111;
     color: white;
     padding: 10px 15px;
+    margin-left: 1150px;
     border: none;
   }
   
@@ -77,6 +81,7 @@
 
 /* Hide the images by default */
 .mySlides {
+  background-color: #f5d5bb;
   display: none;
 }
 
@@ -160,6 +165,7 @@ height: 100%;
 }
 
 .who_are{
+  background-color: #f5d5bb;
 display: grid;
 align-items: center; 
 grid-template-columns: 1fr 1fr;
@@ -168,6 +174,7 @@ text-align: center;
 }
 
 .mission-story{
+  background-color: #f5d5bb;
 display: grid;
 align-items: center; 
 grid-template-columns: 1fr 1fr;
@@ -203,6 +210,7 @@ text-align: center;
 }
 
 .locaction {
+  background-color: #f5d5bb;
   font-size: 30px;
 width: 100%;
 margin: auto;
