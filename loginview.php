@@ -24,11 +24,11 @@
                 </div>
 
                 <div class="input_box">
-                    <input type="text" name="password" required>
+                    <input type="password" name="password" required>
                     <label>Password</label>
                 </div>
-
-                <label class="checkbox"><input type="checkbox"><p>Show Password</p></label>
+                <script src="showPasswordScript.js"></script>
+                <label class="checkbox"><input type="checkbox" name="passcbx" onclick="showPassword()"><p>Show Password</p></label>
 
                 <div class="forgot_password_box">
                     <div class="forgot_password"><a href="#">Forgot Password?</a></div>

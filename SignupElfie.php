@@ -39,16 +39,16 @@
                 </div>
 
                 <div class="input_box">
-                    <input type="text" name="password" required>
+                    <input type="password" name="password" required>
                     <label>Password</label>
                 </div>
 
                 <div class="input_box">
-                    <input type="text" name="password2" required>
+                    <input type="password" name="password2" required>
                     <label>Confrim Password</label>
                 </div>
-
-                <label class="checkbox"><input type="checkbox"><p>Show Password</p></label>
+                <script src="showPasswordScript.js"></script>
+                <label class="checkbox"><input type="checkbox" name="passcbx" onclick="showPassword()"><p>Show Password</p></label>
 
                 <div class="link_box">
                     <div class="link">By creating an account you agree to <a href="#">Terms & Conditions</a></div>
