@@ -1,0 +1,161 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    justify-content: center;
+    background-color: #f5d5bb;
+
+}
+
+
+.menu-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: #333;
+    /* Menu button background color */
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Hide the dropdown by default */
+.dropdown {
+    display: none;
+    position: absolute;
+    background: #333;
+    top: 40px;
+    right: 0;
+    width: 150px;
+    border: none;
+    cursor: pointer;
+}
+
+
+/* Show the dropdown when the menu button is hovered */
+.menu-button:hover .dropdown {
+    display: block;
+    padding: 10px;
+}
+
+.dropdown a {
+    display: block;
+    padding: 10px;
+    color: #fff;
+    text-decoration: none;
+}
+
+#logo {
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+#logo img {
+    width: 100px;
+    height: auto;
+}
+
+.menu-button {
+    cursor: pointer;
+    color: #fff;
+    background-color: #5c2c06;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.footer {
+    background-color: #24262b;
+    padding: 70px 0;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.footer-col {
+    width: 25%;
+    padding: 0 15px;
+}
+
+.footer-col h4{
+    font-size: 18px;
+    color: #fff;
+    text-transform: capitalize;
+    margin-bottom: 30px;
+    font-weight: 500px;
+    position: relative;
+}
+
+.footer-col h5{
+    font-size: 14px;
+    color: beige;
+    text-transform: capitalize;
+    margin-bottom: 15px;
+    font-weight: 200px;
+    position: relative;
+}
+
+.footer-col h4::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    background-color: burlywood;
+    height: 2px;
+    box-sizing: border-box;
+    width: 50px;
+}
+
+.footer-col ul li:not(:last-child){
+margin-bottom: 10px;
+}
+
+.footer-col ul li a{
+    font-size: 16px;
+    text-transform: capitalize;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 300px;
+    color: #bbb;
+    display: block;
+    transition: all 0.3s ease;
+}
+
+.footer-col ul li a:hover{
+    color: #fff;
+    padding-left: 10px;
+}
+
+.footer-col .social-links a {
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    background-color:rgba(39, 31, 4, 0.6);
+    margin: 10px 10px 0;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 50%;
+    color: #fff;
+    transition: all 0.5s ease;
+}
+
+.footer-col .social-links a:hover {
+    color: #24262b;
+    background-color: #fff;
+}
+
+@media(max-width: 767px){
+.footer-col {
+    width: 25%;
+    margin-bottom: 30px;
+}
+}
+
+@media(max-width: 574px){
+    .footer-col {
+        width: 100%;
+    }
+    }

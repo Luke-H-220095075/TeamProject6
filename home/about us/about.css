@@ -1,0 +1,312 @@
+* {
+    box-sizing:border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f5d5bb;
+}
+
+.img{
+    height: 50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+}
+
+/* The sidepanel menu */
+.sidepanel {
+    right: 20;
+    height: 250px; /* Specify a height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0;
+    left: 0;
+    background-color: #f5d5bb; /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidepanel */
+  }
+  
+  /* The sidepanel links */
+  .sidepanel a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  /* When you mouse over the navigation links, change their color */
+  .sidepanel a:hover {
+    color: #f1f1f1;
+  }
+  
+  /* Position and style the close button (top right corner) */
+  .sidepanel .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+  
+  /* Style the button that is used to open the sidepanel */
+  .openbtn {
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #111;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+  }
+  
+  .openbtn:hover {
+    background-color: #444;
+  }
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+.my_img{
+width: 100%;
+height: 100%;
+}
+
+.who_are{
+display: grid;
+align-items: center; 
+grid-template-columns: 1fr 1fr;
+column-gap: 20px;
+text-align: center;
+}
+
+.mission-story{
+display: grid;
+align-items: center; 
+grid-template-columns: 1fr 1fr;
+text-align: center;
+}
+.intro{
+    width: 100%;
+    align-items: center;
+    background-color: #bbb;
+    height: 100px;
+}
+
+.cards{
+display: grid;
+min-height: 40vh;
+background-color: #bbb;
+align-items: center; 
+grid-template-columns: 1fr 1fr 1fr;
+column-gap: 20px;
+text-align: center;
+}
+
+.cards h1 {
+   font-size: 30px;
+}
+
+.values{
+height: 50vh;
+display: grid;
+align-items: center; 
+grid-template-columns: 1fr 1fr;
+text-align: center;
+}
+
+.locaction {
+  font-size: 30px;
+width: 100%;
+margin: auto;
+padding: 80px 0;
+display: grid;
+align-items: center; 
+grid-template-columns: 1fr 1fr;
+text-align: center;
+}
+  
+.locaction iframe {
+width: 100%;
+}
+.footer {
+background-color: #24262b;
+padding: 70px 0;
+}
+  
+.row {
+display: flex;
+flex-wrap: wrap;
+}
+  
+  .footer-col {
+      width: 25%;
+      padding: 0 15px;
+  }
+  
+  .footer-col h4{
+      font-size: 18px;
+      color: #fff;
+      text-transform: capitalize;
+      margin-bottom: 30px;
+      font-weight: 500px;
+      position: relative;
+  }
+  
+  .footer-col h5{
+      font-size: 14px;
+      color: beige;
+      text-transform: capitalize;
+      margin-bottom: 15px;
+      font-weight: 200px;
+      position: relative;
+  }
+  
+  .footer-col h4::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -10px;
+      background-color: burlywood;
+      height: 2px;
+      box-sizing: border-box;
+      width: 50px;
+  }
+  
+  .footer-col ul li:not(:last-child){
+  margin-bottom: 10px;
+  }
+  
+  .footer-col ul li a{
+      font-size: 16px;
+      text-transform: capitalize;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 300px;
+      color: #bbb;
+      display: block;
+      transition: all 0.3s ease;
+  }
+  
+  .footer-col ul li a:hover{
+      color: #fff;
+      padding-left: 10px;
+  }
+  
+  .footer-col .social-links a {
+      display: inline-block;
+      height: 40px;
+      width: 40px;
+      background-color:rgba(39, 31, 4, 0.6);
+      margin: 10px 10px 0;
+      text-align: center;
+      line-height: 40px;
+      border-radius: 50%;
+      color: #fff;
+      transition: all 0.5s ease;
+  }
+  
+  .footer-col .social-links a:hover {
+      color: #24262b;
+      background-color: #fff;
+  }
+  
+  @media(max-width: 767px){
+  .footer-col {
+      width: 25%;
+      margin-bottom: 30px;
+  }
+  }
+  
+  @media(max-width: 574px){
+      .footer-col {
+          width: 100%;
+      }
+      }
