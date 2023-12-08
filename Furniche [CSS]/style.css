@@ -4,7 +4,6 @@ body {
     background: #e8e1db;
     margin: 0px;
     font-family: "SoDo Sans SemiBold", Helvetica Neue, Helvetica, Arial,sans-serif;
-
 }
 
 .name {
@@ -12,31 +11,84 @@ body {
     background-color: #beb1a1;
 }
 
-.header {
-    background: #beb1a1;
+.images {
+    width: 100%;
+    object-fit: cover
 }
+.title{
+   position: absolute;
+   top:15%;
+   left:40%;
+   font-size: 60px;
+
+
+}
+
+/* .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    font-family: "Inknut Antiqua-Regular", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 30px;
+    letter-spacing: 0;
+    line-height: normal;
+    text-align: center;
+} */
 
 .Crate {
     display: flex;
     align-items: center;
     justify-content: center;
     position: absolute;
-    width: 1467px;
+    width: 1600px;
     height: 210px;
     overflow: hidden;
 }
 
-.dropdown {
-    background: #beb1a1;
-    /* box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.71);
-    -webkit-box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.71);
-    -moz-box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.71); */
-    max-width: 1560px;
-    padding: 20px;
-    font-size: 14px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: auto;
+.menu-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: #333;
+    /* Menu button background color */
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
 }
 
+/* Hide the dropdown by default */
+.dropdown  {
+    display: none;
+    position: absolute;
+    background: #333;
+    top: 40px;
+    right: 0;
+    width: 150px;
+    border: none;
+    cursor: pointer;
+}
+
+
+/* Show the dropdown when the menu button is hovered */
+.menu-button:hover .dropdown {
+    display: block;
+    padding: 10px;
+}
+
+.dropdown  {
+    display: block;
+    padding: 10px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.menu-button {
+    cursor: pointer;
+    color: #fff;
+    background-color: #5c2c06;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
