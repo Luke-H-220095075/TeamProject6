@@ -13,13 +13,62 @@ $username = 'root';
 $password = '';
 ?>
 
+<h2>Categories</h2>
+
+<div>
+    <img src="bohemian.jpg" alt="Category 1" onclick="fillCategoryFilter('bohemian')" class="image-filter">
+    <img src="rustic.jpg" alt="Category 2" onclick="fillCategoryFilter('rustic')" class="image-filter">
+    <img src="minimalistic.jpg" alt="Category 3" onclick="fillCategoryFilter('minimal')" class="image-filter">
+    <img src="tropical.jpg" alt="Category 4" onclick="fillCategoryFilter('tropical')" class="image-filter">
+    <img src="modern.jpg" alt="Category 5" onclick="fillCategoryFilter('modern')" class="image-filter">
+</div>
+
+<?php
+try {
+    $pdo = new PDO($dsn, $username, $password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    $stmtCheapest = $pdo->prepare("
+        SELECT productId, productName, price, imageName
+        FROM products
+        ORDER BY price ASC
+        LIMIT 3
+    ");
+    $stmtCheapest->execute();
+
+    $cheapestProducts = $stmtCheapest->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    echo "Error: " . $e->getMessage();
+}
+
+$pdo = null;
+?>
+
+<h2>Current Offers</h2>
+
+<?php
+if (!empty($cheapestProducts)) {
+    echo '<div class="current-offers">';
+    foreach ($cheapestProducts as $offer) {
+        echo '<div class="offer-item">';
+        echo '<a onclick="showProductModal(' . $offer['productId'] . ')"><img src="' . htmlspecialchars($offer['imageName']) . '" alt="' . htmlspecialchars($offer['imageName']) . '"></a><br>';
+        echo '<h3>' . $offer['productName'] . '</h3>';
+        echo '<p>Price: $' . $offer['price'] . '</p>';
+        echo '</div>';
+    }
+    echo '</div>';
+} else {
+    echo '<p>No current offers available.</p>';
+}
+?>
+
 <h2>Products</h2>
 
 <label for="sortFilter">Sort by:</label>
 <select id="sortFilter" onchange="filterProducts()" style="cursor: pointer">
     <?php
         $sortFilterOptions = [
-            'all' => 'Default',
+            'all' => 'Sort by:',
             'name-asc' => 'Name (A-Z)',
             'name-desc' => 'Name (Z-A)',
             'price-asc' => 'Price (Low to High)',
@@ -103,6 +152,15 @@ try {
     $typeFilter = isset($_GET['typeFilter']) ? $_GET['typeFilter'] : 'all';
     $categoryFilter = isset($_GET['categoryFilter']) ? $_GET['categoryFilter'] : 'all';
 
+    if ($typeFilter != 'all') {
+        $query .= " WHERE productType = :type";
+    }
+
+    if ($categoryFilter != 'all') {
+        $query .= ($typeFilter != 'all') ? " AND" : " WHERE";
+        $query .= " productCategory = :category";
+    }
+
     switch ($sortFilter) {
         case 'name-asc':
             $query .= " ORDER BY productName ASC";
@@ -118,15 +176,6 @@ try {
             break;
         default:
             break;
-    }
-
-    if ($typeFilter != 'all') {
-        $query .= " WHERE productType = :type";
-    }
-
-    if ($categoryFilter != 'all') {
-        $query .= ($typeFilter != 'all') ? " AND" : " WHERE";
-        $query .= " productCategory = :category";
     }
 
     // Prepare and execute the final query
@@ -153,9 +202,6 @@ try {
 
             echo '<td>';
             echo '<a onclick="showProductModal(' . $row['productId'] . ')"><img src="' . htmlspecialchars($row['imageName']) . '" alt="' . htmlspecialchars($row['imageName']) . '" class="product-image"></a><br>';
-//            echo '<strong>Name:</strong> ' . htmlspecialchars($row['productName']) . '<br>';
-//            echo '<strong>Price:</strong> $' . number_format($row['price'], 2) . '<br>';
-//            echo '<br><button onclick="showProductModal(' . $row['productId'] . ')">View Details</button>';
             echo '</td>';
 
             if ($count % 3 == 2 || $count == $stmt->rowCount() - 1) {
@@ -176,6 +222,8 @@ try {
 $pdo = null;
 ?>
 
+<a href="basket.php"><button>Open Basket</button></a>
+
 <div id="productModal" class="modal">
     <div class="modal-content">
         <div id="productDetailsModal"></div>
@@ -192,6 +240,7 @@ $pdo = null;
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4 && xhr.status === 200) {
                 productDetailsContainer.innerHTML = xhr.responseText;
+                productDetailsContainer.setAttribute('data-product-id', productId);
                 modal.style.display = 'block';
             }
         };
@@ -225,12 +274,28 @@ $pdo = null;
         window.location.href = 'product_index.php?typeFilter=' + typeFilter + '&categoryFilter=' + categoryFilter + '&sortFilter=' + sortFilter;
     }
 
+    function fillCategoryFilter(category) {
+        document.getElementById('categoryFilter').value = category;
+        filterProducts();
+    }
+
     function resetFilters() {
         window.location.href = 'product_index.php';
     }
 
     function addToBasket() {
-        alert('Product added to basket!');
+        var productId = document.getElementById('productDetailsModal').getAttribute('data-product-id');
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'basket_add.php', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                alert('Product added to basket');
+                closeProductModal();
+            }
+        };
+        xhr.send('product_id=' + productId);
     }
 </script>
 </body>
