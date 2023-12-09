@@ -55,7 +55,7 @@
 
         <div class="relative">
             <img src="https://www.bing.com/images/blob?bcid=qHkj6uJQr2kGcQ" alt="Background" class="h-auto w-full" />
-            <div class="absolute inset-0 flex items-center justify-center">
+            <div class="absolute inset-0 flex items-center justify-center w-full">
                 <div class="bg-[rgb(184,170,157)] p-4">
                     <p class="text-black">Design your home to be a bit more like you</p>
                 </div>
