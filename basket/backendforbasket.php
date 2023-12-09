@@ -7,7 +7,6 @@ include 'connectdb.php';
         while($row = $result->fetch()) {
             $sql = "SELECT * FROM products WHERE $row["basketId"] = $row["productId"]";
             $productresult = $conn->query($sql);
-          echo $row["productName"] . " price: " . $row["Price"] . "</br>";
           echo $row["imageName"] . "</br>";
         }
       } else {
