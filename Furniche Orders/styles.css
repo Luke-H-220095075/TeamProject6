@@ -1,0 +1,235 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0e5d8; 
+  }
+  
+  h2 {
+    color: #8b5f4d; 
+    font-size: 28px; 
+    margin-top: 20px; 
+    text-align: center;
+  }
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .order-container, .review-form-container, .user-reviews-container {
+    background-color: #3e2723; 
+    border: 15px solid #8b5f4d; 
+    margin: 20px auto; 
+    padding: 15px;
+    color: #fff; 
+    display: flex;
+    align-items: center;
+    max-width: 700px; 
+    width: 100%; 
+    position: relative;
+    border-radius: 10px;
+  }
+  
+  .order-image, .review-image {
+  width: 200px; 
+  height: auto;
+  margin-right: 15px;
+  }
+  
+  .order-details, .review-details {
+  flex-grow: 1; 
+  }
+
+  select {
+    padding: 5px;
+    font-size: 14px;
+  }
+  
+  
+  button {
+  background-color: #8b5f4d;
+  color: #fff;
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 100px;
+  width:150px;
+  }
+  
+  input[type='submit'] {
+  background-color: #8b5f4d;
+  color: #fff;
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 100px;
+  width: 150px;
+  }
+
+  .recently-viewed-container {
+    margin-top: 20px;
+  }
+  
+  .product-container {
+    background-color: #3e2723; 
+    border: 1px solid #8b5f4d; 
+    padding: 10px;
+    margin-right: 10px;
+    color: #fff; 
+    max-width: 200px; 
+    text-align: center;
+  }
+  
+  .product-image {
+    width: 100%; 
+    height: auto;
+  }
+
+  
+.pagination {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    }
+    
+    .pagination .button {
+    background-color: #000; 
+    color: #fff; 
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 8px 15px;
+    margin: 0 5px;
+    }
+    
+    .pagination .button.active {
+    background-color: #8b5f4d; 
+    }
+
+    
+.recommendations {
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 100%;
+    margin-top: 20px;
+  }
+  
+  .recommendation-item {
+  text-align: center;
+  margin-bottom: 10px; 
+  max-width: calc(33.33% - 20px); 
+  }
+  
+  
+  .recommendation-item img {
+    width: 100%; 
+    height: auto;
+  }
+  
+  .recommendation-item p {
+    color: #3e2723;
+    margin-top: 5px;
+    border: 1px solid #8b5f4d; 
+    padding: 10px;
+  }
+  
+  .recommendations-title {
+    padding-top: 15px;
+    text-align: center;
+    font-size: 24px;
+    color: #3e2723; 
+    margin-top: 20px;
+  }
+
+  .order-again-button {
+    background-color: #8b5f4d; 
+    color: #fff; 
+    margin-left: 650px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px; 
+    width: 150px;
+  }
+    
+
+  
+.review-form-container {
+    max-width: 600px;
+    margin: 20px auto;
+    background-color: #3e2723;
+    border: 1px solid #8b5f4d;
+    padding: 15px;
+    color: #fff;
+    border-radius: 10px;
+  }
+  
+  .review-form-container h2 {
+  text-align: center;
+  color: #8b5f4d;
+  }
+  
+  .review-form-container form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  }
+  
+  .review-form-container label {
+  margin: 10px 0;
+  font-size: 16px;
+  }
+  
+  .review-form-container select,
+  .review-form-container textarea {
+  width: 100%;
+  padding: 8px;
+  margin: 5px 0;
+  font-size: 16px;
+  border: 1px solid #8b5f4d;
+  border-radius: 5px;
+  box-sizing: border-box;
+  }
+  
+  .review-form-container input[type="submit"] {
+  background-color: #8b5f4d;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+  }
+
+  .user-reviews-container {
+    margin-top: 20px;
+  }
+  
+  .user-review-item {
+    background-color: #3e2723;
+    border: 1px solid #8b5f4d;
+    padding: 15px;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    max-width: 600px;
+  }
+  
+  .user-review-item img {
+    width: 80px;
+    height: auto;
+    margin-right: 15px;
+  }
+  
+  .review-details {
+    flex-grow: 1;
+  }  
