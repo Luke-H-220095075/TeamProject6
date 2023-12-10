@@ -169,7 +169,7 @@ echo "</div>";
  //Create new review form 
 
  echo "<div class='review-form-container'>";
- echo "<h2>Leave a Review</h2>";
+ echo "<h2 style='color: #3e2723;'>Leave Review</h2>";
  echo "<form method='post'>";
  echo "<label for='order_id'>Order ID:</label>";
  echo "<input type='number' name='order_id' id='order_id' required>";
@@ -197,7 +197,7 @@ $reviewStmt = $pdo->prepare($reviewSql);
 $reviewStmt->execute([$userID]);
 
 echo "<div class='user-reviews-container'>";
-echo "<h2 style='color: #958068;'>Your Reviews</h2>";
+echo "<h2 style='color: #3e2723;'>Your Reviews</h2>";
 
 if ($reviewStmt->rowCount() > 0) {
 while ($reviewRow = $reviewStmt->fetch(PDO::FETCH_ASSOC)) {
