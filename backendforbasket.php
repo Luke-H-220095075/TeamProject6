@@ -46,7 +46,6 @@ if (availability($conn, $basket_id)) {
 }
 
 if (isset($_POST['purchase'])) {
-  echo "help";
   if (availability($conn, $basket_id)) {
     $sql = "SELECT countStock, countSold, quantity, basketproducts.productId FROM products join basketproducts ON products.productId = basketproducts.productId  WHERE basketId = $basket_id";
     $result = $conn->query($sql);
