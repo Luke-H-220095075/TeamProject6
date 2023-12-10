@@ -6,7 +6,7 @@ $basket_id = 1;
       $basketcost = 0;
       if($result->rowCount() > 0) {
         while($row = $result->fetch()) {
-            $basketcost = $basketcost + $row["price"];
+            $basketcost = $basketcost + $value * $row["price"];
           }
       echo "£" . $basketcost . " before discount</br>";
       } else {
