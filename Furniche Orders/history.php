@@ -194,3 +194,34 @@ echo "</div>";
 } else {
 echo "<p>No reviews available.</p>";
 }
+
+ //limites the amount of reviews per page similar to previous orders
+ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['review'])) {
+        $orderId = $_POST['order_id'];
+        $rating = $_POST['rating'];
+        $description = $_POST['description'];
+        $insertReviewSql = "INSERT INTO orderreviews (orderId, rating, description) VALUES (?, ?, ?)";
+        $insertReviewStmt = $pdo->prepare($insertReviewSql);
+        $insertReviewStmt->execute([$orderId, $rating, $description]);
+    }
+}
+
+$totalReviewsSql = "SELECT COUNT(r.reviewId) AS totalReviews
+                    FROM orderreviews r
+                    JOIN orders o ON r.orderId = o.orderId
+                    WHERE o.userId = ?";
+$totalReviewsStmt = $pdo->prepare($totalReviewsSql);
+$totalReviewsStmt->execute([$userID]);
+$totalReviews = $totalReviewsStmt->fetchColumn();
+
+$totalReviewsPages = ceil($totalReviews / $ordersPerPage);
+
+
+
+echo "</div>";
+} catch (PDOException $e) {
+echo "Error: " . $e->getMessage();
+} finally {
+$pdo = null;
+}
