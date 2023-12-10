@@ -1,0 +1,17 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0e5d8; 
+  }
+  
+  h2 {
+    color: #8b5f4d; 
+    font-size: 28px; 
+    margin-top: 20px; 
+    text-align: center;
+  }
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
