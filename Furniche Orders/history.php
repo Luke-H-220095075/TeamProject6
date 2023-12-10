@@ -165,3 +165,32 @@ echo "</div>";
  echo "<input type='submit' name='review' value='Submit Review'>";
  echo "</form>";
  echo "</div>";
+
+  // Previous Reviews from user
+  $reviewSql = "SELECT r.orderId, r.reviewDate, r.rating, r.description
+  FROM orderreviews r
+  JOIN orders o ON r.orderId = o.orderId
+  WHERE o.userId = ?
+  ORDER BY r.reviewDate DESC
+  LIMIT $offset, $ordersPerPage";
+
+$reviewStmt = $pdo->prepare($reviewSql);
+$reviewStmt->execute([$userID]);
+
+echo "<div class='user-reviews-container'>";
+echo "<h2>Your Reviews</h2>";
+
+if ($reviewStmt->rowCount() > 0) {
+while ($reviewRow = $reviewStmt->fetch(PDO::FETCH_ASSOC)) {
+echo "<div class='user-review-item'>";
+echo "<div class='review-details'>";
+echo "<p><strong>Order ID:</strong> " . $reviewRow["orderId"] . "</p>";
+echo "<p><strong>Review Date:</strong> " . $reviewRow["reviewDate"] . "</p>";
+echo "<p><strong>Rating:</strong> " . $reviewRow["rating"] . "</p>";
+echo "<p><strong>Description:</strong> " . $reviewRow["description"] . "</p>";
+echo "</div>";
+echo "</div>";
+}
+} else {
+echo "<p>No reviews available.</p>";
+}
