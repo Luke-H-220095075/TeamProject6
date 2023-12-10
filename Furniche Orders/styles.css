@@ -205,4 +205,31 @@ body {
   width: 100%;
   font-size: 18px;
   }
+
+  .user-reviews-container {
+    margin-top: 20px;
+  }
   
+  .user-review-item {
+    background-color: #3e2723;
+    border: 1px solid #8b5f4d;
+    padding: 15px;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    max-width: 600px;
+  }
+  
+  .user-review-item img {
+    width: 80px;
+    height: auto;
+    margin-right: 15px;
+  }
+  
+  .review-details {
+    flex-grow: 1;
+  }  
