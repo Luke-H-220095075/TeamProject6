@@ -6,6 +6,54 @@ body {
     font-family: "SoDo Sans SemiBold", Helvetica Neue, Helvetica, Arial, sans-serif;
 }
 
+.topnav {
+    height: 10vh;
+    width: 100%;
+   background-image: url("/Pictures\ for\ website/wood");
+   background-size: cover;
+   background-position: center;
+  }
+  
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 10%;
+    padding-top: 10px;
+    padding-right: 10%;
+  }
+  
+  .logo {
+    color: #f5d5bb;
+    font-size:28px ;
+  }
+  
+  nav .fa {
+    display: none;
+  }
+  
+  nav ul li {
+    list-style-type: none;
+    display: inline-block;
+   right: -200;
+   padding: 10px 20px;
+  }
+  
+  nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+  
+  }
+  
+  nav ul li a:hover {
+    color: #4f4d62;
+    transition: 0.3s;
+  }
+  
+  ul {
+    list-style: none;
+  }
 
 .name {
     color: #d6d7b4;
@@ -16,7 +64,9 @@ body {
 
 .images {
     width: 100%;
-    object-fit: cover;
+    height: 100px;
+    position: absolute;
+    z-index: -1;
 }
 
 .title {
@@ -29,48 +79,48 @@ body {
 
 .text1 {
     position: absolute;
-    top: 166%;
+    top: 170%;
     left: 17%;
     font-size: 30px;
 }
 
 .text2 {
     position: absolute;
-    top: 175%;
+    top: 178%;
     left: 17%;
     font-size: 30px;
 }
 
 .text3 {
     position: absolute;
-    top: 166%;
+    top: 170%;
     left: 42%;
     font-size: 30px;
 }
 
 .text4 {
     position: absolute;
-    top: 175%;
+    top: 178%;
     left: 42%;
     font-size: 30px;
 }
 
 .text5 {
     position: absolute;
-    top: 166%;
+    top: 170%;
     left: 65%;
     font-size: 28px;
 }
 
 .text6 {
     position: absolute;
-    top: 175%;
+    top: 178%;
     left: 65%;
     font-size: 30px;
 }
 
 
-/* .header {
+.header {
     position: fixed;
     top: 0;
     left: 0;
@@ -81,7 +131,7 @@ body {
     letter-spacing: 0;
     line-height: normal;
     text-align: center;
-} */
+}
 
 .Crate {
     display: flex;
