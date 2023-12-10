@@ -225,3 +225,12 @@ echo "Error: " . $e->getMessage();
 } finally {
 $pdo = null;
 }
+
+?>
+<script>
+    //js needed to order the items from an order again
+    function orderAgain(orderId) {
+        // Redirects users to the order page with the selected order ID
+        window.location.href = 'order_page.php?orderId=' + orderId;
+    }
+</script>
