@@ -39,3 +39,32 @@ body {
   .order-details, .review-details {
   flex-grow: 1; 
   }
+
+  select {
+    padding: 5px;
+    font-size: 14px;
+  }
+  
+  
+  button {
+  background-color: #8b5f4d;
+  color: #fff;
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 100px;
+  width:150px;
+  }
+  
+  input[type='submit'] {
+  background-color: #8b5f4d;
+  color: #fff;
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 100px;
+  width: 150px;
+  }
+  
