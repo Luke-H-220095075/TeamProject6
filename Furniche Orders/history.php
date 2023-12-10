@@ -3,10 +3,29 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Order History</title>
     <link rel="stylesheet" href="styles.css">
-</head> 
+    <title> <title>Order History</title>
 </head>
+<div class="colour">
+  <header>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+      <link rel="stylesheet" href="https://use.typekit.net/maf1fpm.css">
+  </a>
+</div>
+<section>
+  <div class="topnav">
+      <nav>
+          <h1 class="logo">Furniche</h1>
+          <ul>
+              <li><a class="active" href="Main.html">Home</a></li>
+              <li><a href="Projects.html">Login</a></li>
+              <li><a href="contactus.html">Contact Us</a></li>
+              <li><a href="contactus.html">About Us</a></li>
+          </ul>
+  </nav>
+  </div>
+</section>
+</header>
 <body>
 
 <strong><h2>Order History</h2></strong>
@@ -178,7 +197,7 @@ $reviewStmt = $pdo->prepare($reviewSql);
 $reviewStmt->execute([$userID]);
 
 echo "<div class='user-reviews-container'>";
-echo "<h2>Your Reviews</h2>";
+echo "<h2 style='color: #958068;'>Your Reviews</h2>";
 
 if ($reviewStmt->rowCount() > 0) {
 while ($reviewRow = $reviewStmt->fetch(PDO::FETCH_ASSOC)) {
