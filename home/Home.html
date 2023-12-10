@@ -6,21 +6,17 @@
     <link rel="stylesheet" href="Home.css">
 </head>
 <header>
-    <div id="logo">
-        <a href="Home.html">
-            <img src="WhatsApp Image 2023-10-21 at 11.39.43.jpeg" alt="Furniche Logo">
-        </a>
-    </div>
-    <div class="menu-button">
-        Menu
-        <div class="dropdown">
-            <a href="products.html">Products</a>
-            <a href="About Us.html">About Us</a>
-            <a href="login.html">Login</a>
-            <a href="contact.html">Contact Us</a>
-            <a href="signup.html">Sign Up</a>
-        </div>
-    </div>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link rel="stylesheet" href="https://use.typekit.net/maf1fpm.css">
+</a>
+<div id="mySidepanel" class="sidepanel">
+<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+<a href="C:\Users\Osaze\OneDrive\Documents\GitHub\TeamProject6\home\about us\About Us.html">About Us</a>
+<a href="#">Login</a>
+<a href="#">Products</a>
+<a href="#">Contact Us</a>
+</div>
+<button class="openbtn" onclick="openNav()">&#9776;</button>
 </header>
 
 
@@ -71,40 +67,24 @@
         </div>
     </div>    
 <!---Categories-->
-    <div class="Categories">
-        <div class="card">
-            <img src="img_avatar.png" alt="Avatar" style="width:100%">
-            <div class="cat_container">
-              <h4><b>Bohemian</b></h4>
-            </div>
-          </div>
-          <div class="card">
-            <img src="img_avatar.png" alt="Avatar" style="width:100%">
-            <div class="cat_container">
-              <h4><b>Rustic</b></h4>
-            </div>
-          </div>
-          <div class="card">
-            <img src="img_avatar.png" alt="Avatar" style="width:100%">
-            <div class="cat_container">
-              <h4><b>Minialistic</b></h4>
-            </div>
-          </div>
-          <div class="card">
-            <img src="img_avatar.png" alt="Avatar" style="width:100%">
-            <div class="cat_container">
-              <h4><b>Tropical</b></h4>
-            </div>
-          </div>
-          <div class="card">
-            <img src="img_avatar.png" alt="Avatar" style="width:100%">
-            <div class="cat_container">
-              <h4><b>Modern</b></h4>
-            </div>
-          </div>
-    </div>
-
+<div class="pics">
+  <img src="C:\Users\Osaze\OneDrive\Documents\GitHub\TeamProject6\home\Picture1.jpg" alt="My Image" class="my_img">
+  <img src="C:\Users\Osaze\OneDrive\Documents\GitHub\TeamProject6\home\Picture2.jpg" alt="My Image" class="my_img">
+  <img src="C:\Users\Osaze\OneDrive\Documents\GitHub\TeamProject6\home\Picture3.jpg" alt="My Image" class="my_img">
+  <img src="C:\Users\Osaze\OneDrive\Documents\GitHub\TeamProject6\home\Picture4.jpg" alt="My Image" class="my_img">
+  <img src="C:\Users\Osaze\OneDrive\Documents\GitHub\TeamProject6\home\Picture5.jpg" alt="My Image" class="my_img">
+</div>
+  
 <script>
+        /* Set the width of the sidebar to 250px (show it) */
+        function openNav() {
+  document.getElementById("mySidepanel").style.width = "250px";
+}
+
+/* Set the width of the sidebar to 0 (hide it) */
+function closeNav() {
+  document.getElementById("mySidepanel").style.width = "0";
+}
     let slideIndex = 1;
 showSlides(slideIndex);
 
