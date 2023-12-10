@@ -144,4 +144,15 @@ body {
     color: #3e2723; 
     margin-top: 20px;
   }
-  
+
+  .order-again-button {
+    background-color: #8b5f4d; 
+    color: #fff; 
+    margin-left: 650px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px; 
+    width: 150px;
+  }
+    
