@@ -17,8 +17,8 @@ body {
   }
 
   .order-container, .review-form-container, .user-reviews-container {
-    background-color: #958068; 
-    border: 15px solid #89500B; 
+    background-color: #89500B; 
+    border: 15px solid #958068; 
     margin: 20px auto; 
     padding: 15px;
     color: #fff; 
@@ -47,7 +47,7 @@ body {
   
   
   button {
-  background-color:#89500B;
+  background-color:#958068;
   color: #fff;
   padding: 8px;
   border: none;
@@ -58,7 +58,7 @@ body {
   }
   
   input[type='submit'] {
-  background-color: #89500B;
+  background-color: #958068;
   color: #fff;
   padding: 8px;
   border: none;
@@ -73,8 +73,8 @@ body {
   }
   
   .product-container {
-    background-color: #958068; 
-    border: 1px solid #89500B; 
+    background-color: #89500B; 
+    border: 1px solid: #958068; 
     padding: 10px;
     margin-right: 10px;
     color: #fff; 
@@ -105,7 +105,7 @@ body {
     }
     
     .pagination .button.active {
-    background-color: #89500B; 
+    background-color: #958068; 
     }
 
     
@@ -131,9 +131,9 @@ body {
   }
   
   .recommendation-item p {
-    color: #958068;
+    color: #89500B;
     margin-top: 5px;
-    border: 1px solid #89500B; 
+    border: 1px solid #958068; 
     padding: 10px;
   }
   
@@ -146,7 +146,7 @@ body {
   }
 
   .order-again-button {
-    background-color: #89500B; 
+    background-color: #958068; 
     color: #fff; 
     margin-left: 650px;
     border: none;
@@ -161,8 +161,8 @@ body {
 .review-form-container {
     max-width: 600px;
     margin: 20px auto;
-    background-color: #958068;
-    border: 1px solid #89500B;
+    background-color: #89500B;
+    border: 1px solid #958068;
     padding: 15px;
     color: #fff;
     border-radius: 10px;
@@ -170,7 +170,7 @@ body {
   
   .review-form-container h2 {
   text-align: center;
-  color: #89500B;
+  color: #958068;
   }
   
   .review-form-container form {
@@ -190,13 +190,13 @@ body {
   padding: 8px;
   margin: 5px 0;
   font-size: 16px;
-  border: 1px solid #89500B;
+  border: 1px solid: #958068;
   border-radius: 5px;
   box-sizing: border-box;
   }
   
   .review-form-container input[type="submit"] {
-  background-color: #89500B;
+  background-color: #958068;
   color: #fff;
   padding: 10px;
   border: none;
@@ -211,8 +211,8 @@ body {
   }
   
   .user-review-item {
-    background-color: #958068;
-    border: 1px solid #89500B;
+    background-color: #89500B;
+    border: 1px solid #958068;
     padding: 15px;
     margin-top: 10px;
     margin-left: auto;
