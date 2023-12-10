@@ -67,4 +67,23 @@ body {
   margin-left: 100px;
   width: 150px;
   }
+
+  .recently-viewed-container {
+    margin-top: 20px;
+  }
   
+  .product-container {
+    background-color: #3e2723; 
+    border: 1px solid #8b5f4d; 
+    padding: 10px;
+    margin-right: 10px;
+    color: #fff; 
+    max-width: 200px; 
+    text-align: center;
+  }
+  
+  .product-image {
+    width: 100%; 
+    height: auto;
+  }
+    
