@@ -7,13 +7,55 @@
     font-variation-settings: "wght" 400;
 }
 
-.header{
-  background-color: #a78f7c;
+.topnav {
+  height: 10vh;
+  width: 100%;
+ background-image: url("wood.jpg");
+ background-size: cover;
+ background-position: center;
 }
 
-.body {
-  background-color: #f5d5bb;
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 10%;
+  padding-top: 10px;
+  padding-right: 10%;
 }
+
+.logo {
+  color: #f5d5bb;
+  font-size:28px ;
+}
+
+nav .fa {
+  display: none;
+}
+
+nav ul li {
+  list-style-type: none;
+  display: inline-block;
+ right: -200;
+ padding: 10px 20px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+
+}
+
+nav ul li a:hover {
+  color: #4f4d62;
+  transition: 0.3s;
+}
+
+ul {
+  list-style: none;
+}
+
 .img{
     height: 50%;
     display: block;
@@ -21,96 +63,53 @@
     margin-left: 5%;
 }
 
-/* The sidepanel menu */
-.sidepanel {
-  margin-left: 1000px;
-    right: 20px;
-    height: 250px; /* Specify a height */
-    width: 0; /* 0 width - change this with JavaScript */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Stay on top */
-    top: 0;
-    left: 0;
-    background-color: #f5d5bb; /* Black*/
-    overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 60px; /* Place content 60px from the top */
-    
-  }
-  
-  /* The sidepanel links */
-  .sidepanel a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #818181;
-    display: block;
-    transition: 0.3s;
-  }
-  
-  /* When you mouse over the navigation links, change their color */
-  .sidepanel a:hover {
-    color: #f1f1f1;
-  }
-  
-  /* Position and style the close button (top right corner) */
-  .sidepanel .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
-  }
-  
-  /* Style the button that is used to open the sidepanel */
-  .openbtn {
-    font-size: 20px;
-    cursor: pointer;
-    background-color: #111;
-    color: white;
-    padding: 10px 15px;
-    margin-left: 1150px;
-    border: none;
-  }
-  
-  .openbtn:hover {
-    background-color: #444;
-  }
-
-/* Slideshow container */
-.slideshow-container {
-  background-color: #f5d5bb;
-  width: 100%;
-}
-
-/* Hide the images by default */
-.mySlides {
-  display: none;
-}
-
-/* Fading animation */
-.fade {
-  animation-name: fade;
-  animation-duration: 2s;
-}
-
-@keyframes fade {
-  from {opacity: .4}
-  to {opacity: 1}
-}
 
 .my_img{
 width: 100%;
 height: 100%;
 }
 
-.who_are{
+section h2 {
+  font-size: 30px;
+  text-align: center;
+  text-transform: uppercase;
   background-color: #f5d5bb;
-display: grid;
-align-items: center; 
-grid-template-columns: 1fr 1fr;
-column-gap: 20px;
-text-align: center;
+  padding-top: 2%;
 }
+
+section .cards {
+  display: flex;
+  background-color: #f5d5bb;
+}
+
+section .cards .text-card {
+  background: #4f4d62;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  box-sizing: border-box;
+  transition: 0.5s;
+}
+
+section .cards .text-card:hover{
+  box-shadow: 0 0 20px 0px rgba (0,0,0,0.2);
+}
+section .cards .text-card h3 {
+font-size: 30px;
+text-align: center;
+margin-bottom: 10px;
+}
+
+@media (max-width: 900px) {
+  section h1 {
+      font-size: 40px;
+  }
+
+  section .cards {
+      flex-direction: column;
+  }
+}
+
 
 .mission-story{
   background-color: #f5d5bb;
@@ -120,18 +119,28 @@ grid-template-columns: 1fr 1fr;
 text-align: center;
 }
 .intro{
-    width: 100%;
-    align-items: center;
-    background-color: #bbb;
-    padding: 2%;
-    height: 80px;
-    text-align: center;
+  background-color: #4f4d62;
+  color: #f5d5bb;
+  display: grid;
+  align-items: center; 
+  grid-template-columns: 1fr 1fr;
+  text-align: center;
+}
+
+.team{
+  background-color: #f5d5bb;
+  color: #4f4d62;
+  display: grid;
+  align-items: center; 
+  grid-template-columns: 1fr 1fr;
+  text-align: center;
 }
 
 .cards{
 display: grid;
 min-height: 40vh;
-background-color: #bbb;
+background-color: #4f4d62;
+color: #f5d5bb;
 align-items: center; 
 grid-template-columns: 1fr 1fr 1fr;
 column-gap: 20px;
@@ -151,8 +160,8 @@ text-align: center;
 }
 
 .locaction {
-  background-color: #f5d5bb;
-  font-size: 30px;
+  background-color: #4f4d62;
+  font-size: 20px;
 width: 100%;
 margin: auto;
 padding: 80px 0;
