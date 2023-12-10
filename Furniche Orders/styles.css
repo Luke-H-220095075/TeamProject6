@@ -15,3 +15,27 @@ body {
     max-width: 1200px;
     margin: 0 auto;
   }
+
+  .order-container, .review-form-container, .user-reviews-container {
+    background-color: #3e2723; 
+    border: 15px solid #8b5f4d; 
+    margin: 20px auto; 
+    padding: 15px;
+    color: #fff; 
+    display: flex;
+    align-items: center;
+    max-width: 700px; 
+    width: 100%; 
+    position: relative;
+    border-radius: 10px;
+  }
+  
+  .order-image, .review-image {
+  width: 200px; 
+  height: auto;
+  margin-right: 15px;
+  }
+  
+  .order-details, .review-details {
+  flex-grow: 1; 
+  }
