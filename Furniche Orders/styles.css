@@ -86,4 +86,24 @@ body {
     width: 100%; 
     height: auto;
   }
+
+  
+.pagination {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    }
     
+    .pagination .button {
+    background-color: #000; 
+    color: #fff; 
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 8px 15px;
+    margin: 0 5px;
+    }
+    
+    .pagination .button.active {
+    background-color: #8b5f4d; 
+    }
