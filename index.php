@@ -3,10 +3,29 @@
     <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My Tailwind CSS Page</title>
-    <link href="style.css" rel="stylesheet">
+    <!-- <link href="https://cdn.tailwindcss.com" rel="stylesheet"> -->
     </head>
 <body class="bg-gray-100">
+
+
+<script>   
+module.exports = {
+  purge: [],
+  darkMode: false, // or 'media' or 'class'
+  theme: {
+    extend: {},
+  },
+  variants: {
+    extend: {},
+  },
+  plugins: [],
+};
+
+</script>
+
+<style>
+    @tailwind base;
+</style>
 
 <template>
     <div
@@ -47,10 +66,10 @@
         <ul class="flex list-none m-0 p-0">
             <li class="inline-block">
                 <a class="text-black font-bold no-underline hover:text-gray-700 px-4 py-2"
-                   href="Projects.html">Login</a>
+                   href="loginp.html">Login</a>
             </li>
             <li class="inline-block">
-                <a class="text-black font-bold no-underline hover:text-gray-700 px-4 py-2" href="contactus.html">Contact
+                <a class="text-black font-bold no-underline hover:text-gray-700 px-4 py-2" href="Contact.html">Contact
                     Us</a>
             </li>
             <li class="inline-block">
@@ -62,13 +81,13 @@
 </header>
 
         <div class="relative w-full">
-            <img src="https://www.bing.com/images/blob?bcid=qN9eH5NqaGkGPQ" alt=""
+            <img src="https://www.bing.com/images/blob?bcid=qN9eH5NqaGoGhQ" alt=""
          class="h-auto py-4 w-full bg-[rgb(232,225,219)]"/>
             <div class="absolute right-8 top-6 w-36 border-2 border-[rgb(137,80,11)] bg-white p-2">
     <pre>
 
 
-
+Test data
 
     </pre>
             </div>
