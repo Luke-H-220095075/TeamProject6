@@ -3,10 +3,29 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Order History</title>
     <link rel="stylesheet" href="styles.css">
-</head> 
+    <title> <title>Order History</title>
 </head>
+<div class="colour">
+  <header>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+      <link rel="stylesheet" href="https://use.typekit.net/maf1fpm.css">
+  </a>
+</div>
+<section>
+  <div class="topnav">
+      <nav>
+          <h1 class="logo">Furniche</h1>
+          <ul>
+              <li><a class="active" href="Main.html">Home</a></li>
+              <li><a href="Projects.html">Login</a></li>
+              <li><a href="contactus.html">Contact Us</a></li>
+              <li><a href="contactus.html">About Us</a></li>
+          </ul>
+  </nav>
+  </div>
+</section>
+</header>
 <body>
 
 <strong><h2>Order History</h2></strong>
@@ -150,7 +169,7 @@ echo "</div>";
  //Create new review form 
 
  echo "<div class='review-form-container'>";
- echo "<h2>Leave a Review</h2>";
+ echo "<h2 style='color: #3e2723;'>Leave Review</h2>";
  echo "<form method='post'>";
  echo "<label for='order_id'>Order ID:</label>";
  echo "<input type='number' name='order_id' id='order_id' required>";
@@ -178,7 +197,7 @@ $reviewStmt = $pdo->prepare($reviewSql);
 $reviewStmt->execute([$userID]);
 
 echo "<div class='user-reviews-container'>";
-echo "<h2>Your Reviews</h2>";
+echo "<h2 style='color: #3e2723;'>Your Reviews</h2>";
 
 if ($reviewStmt->rowCount() > 0) {
 while ($reviewRow = $reviewStmt->fetch(PDO::FETCH_ASSOC)) {
@@ -234,3 +253,43 @@ $pdo = null;
         window.location.href = 'order_page.php?orderId=' + orderId;
     }
 </script>
+
+<footer class="footer">
+          <div class="container">
+              <div class="row">
+                  <div class="footer-col">
+                      <h4>About Us</h4>
+                     <ul>
+                      <li><a href="#">Our Founder</a> </li>
+                      <li><a href="#">Our Values</a> </li>
+                      <li><a href="#">Our Privacy Policy</a> </li>
+                      <li><a href="#">Our Services</a> </li>
+                  </ul>
+                  </div>
+                  <div class="footer-col">
+                      <h4>Address</h4>
+                      <h5>206 Canada Place, Liverpool Street, E12 1CL</h5>
+                  </div>
+                  <div class="footer-col">
+                      <h4>Contact Us</h4>
+                      <h5>Email us at: comms@furniche.com</h5>
+                      <h5>Call us at: 01563385967</h5>
+                      <ul>
+                          <li><a href="C:\Users\Osaze\OneDrive\Documents\GitHub\TeamProject6\contact.css">Contact Us via our Website</a> </li>
+                      </ul>
+                  </div>
+                  <div class="footer-col">
+                      <h4>Follow us</h4>
+                      <div class="social-links">
+                          <a href="https://en-gb.facebook.com/"><i class="fab fa-facebook - f"></i></a>
+                          <a href="https://twitter.com/?lang=en"><i class="fab fa-twitter"></i></a>
+                          <a href="https://uk.linkedin.com/"><i class="fab fa-linkedin - in"></i></a>
+                          <a href="https://github.com/"><i class="fab fa-github"></i></a>
+                          <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
+                        </div>
+                  </div>
+              </div>
+          </div>
+      </footer>
+      </div>
+      </html>
