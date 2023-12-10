@@ -121,3 +121,27 @@ for ($pageNum = 1; $pageNum <= $totalPages; $pageNum++) {
     echo "<a class='button $activeClass $specialClass' href='?page=$pageNum&sort=$sortOption'>$pageNum</a>";
 }
 echo "</div>";
+
+// Recommendations of products based of previous purchases
+$recommendationSql = "SELECT p.productName, p.imageName
+FROM products p
+JOIN basketproducts b ON p.productId = b.productId
+JOIN orders o ON b.basketId = o.basketId
+WHERE o.userId = ?
+LIMIT 6"; //amount of recommendations
+
+$recommendationStmt = $pdo->prepare($recommendationSql);
+$recommendationStmt->execute([$userID]);
+
+echo "<div class='recommendations-title'>Recommendations</div>";
+
+if ($recommendationStmt->rowCount() > 0) {
+echo "<div class='recommendations'>";
+while ($recommendationRow = $recommendationStmt->fetch(PDO::FETCH_ASSOC)) {
+    echo "<div class='recommendation-item'>";
+    echo "<img src='" . htmlspecialchars($recommendationRow['imageName']) . "' alt='" . htmlspecialchars($recommendationRow['imageName']) . "'>";
+    echo "<p>" . htmlspecialchars($recommendationRow['productName']) . "</p>";
+    echo "</div>";
+}
+echo "</div>";
+}
