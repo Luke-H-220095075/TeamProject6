@@ -76,7 +76,7 @@ try {
     echo "</select>";
     echo "<input type='submit' value='Sort'>";
     echo "</form>";
-    
+
  //Container for the orders and image of order
     if ($stmt->rowCount() > 0) {
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -100,3 +100,15 @@ try {
     } else {
         echo "<p>No results</p>";
     }
+
+    // Determines how many pages are required with the 6 order per page limit
+
+   $totalOrdersSql = "SELECT COUNT(DISTINCT o.orderId) AS totalOrders
+   FROM orders o
+   JOIN basketproducts b ON o.basketId = b.basketId
+   WHERE o.userId = ?";
+   $totalOrdersStmt = $pdo->prepare($totalOrdersSql);
+   $totalOrdersStmt->execute([$userID]);
+   $totalOrders = $totalOrdersStmt->fetchColumn();
+   
+   $totalPages = ceil($totalOrders / $ordersPerPage);
