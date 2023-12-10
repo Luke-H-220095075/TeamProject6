@@ -89,7 +89,11 @@
 
  <div class="Newsletter">
         <img src="nl2.png" alt="My Image" class="my_img">
+            <h1 class="text1">Melissa Ball</h1>
+            <h1 class="text2">How furniche is changing  the furniture space </h1>
         <img src="nl1.png" alt="My Image" class="my_img1">
+            <h1 class="text3">Billy Jean</h1>
+            <h1 class="text4">Things to make your  living  more modern. </h1>
     </div>
 <script>
     let slideIndex = 1;
