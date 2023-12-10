@@ -58,7 +58,7 @@ try {
 
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$userID]);
-    
+
     // code needed for drop down and the submit button
     echo "<form method='get'>";
     echo "<div style='text-align: center;'>";
@@ -76,3 +76,27 @@ try {
     echo "</select>";
     echo "<input type='submit' value='Sort'>";
     echo "</form>";
+    
+ //Container for the orders and image of order
+    if ($stmt->rowCount() > 0) {
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            echo "<div class='order-container'>";
+            echo "<img class='order-image' src='orderimage.jpg' alt='Order Image'>";
+            echo "<div>";
+            echo "<p><strong>Order ID:</strong> " . $row["orderId"] . "</p>";
+            echo "<p><strong>Items Ordered:</strong> " . $row["itemCount"] . "</p>";
+            echo "<p><strong>Date Ordered:</strong> " . $row["dateAdded"] . "</p>";
+            echo "<p><strong>Date Delivered:</strong> " . ($row["deliveryDate"] ? $row["deliveryDate"] : "Not delivered yet") . "</p>";
+            echo "</div>";
+            echo "</div>";
+
+            echo "<div class='order-buttons'>";
+            echo "<button class='order-again-button' onclick='orderAgain(" . $row["orderId"] . ")'>Order Again</button>";
+            echo "<button class='  ' onclick='location.href=\"view_order.php?orderId=" . $row["orderId"] . "\"'>View Details</button>";
+            echo "</div>";
+
+        }
+
+    } else {
+        echo "<p>No results</p>";
+    }
