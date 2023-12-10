@@ -284,18 +284,27 @@ $pdo = null;
 
     function addToBasket() {
         var productId = document.getElementById('productDetailsModal').getAttribute('data-product-id');
+        var isConfirmed = confirm('Add Product to Basket?');
 
-        var xhr = new XMLHttpRequest();
-        xhr.open('POST', 'basket_add.php', true);
-        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                alert('Product added to basket');
-                closeProductModal();
-            }
-        };
-        xhr.send('product_id=' + productId);
+        if (isConfirmed) {
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', 'basket_add.php', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    alert('Product added to basket!');
+                    closeProductModal();
+
+                    var goToBasket = confirm('Proceed to Basket?');
+                    if (goToBasket) {
+                        window.location.href = 'basket.php';
+                    }
+                }
+            };
+            xhr.send('product_id=' + productId);
+        }
     }
+
 </script>
 </body>
 </html>
