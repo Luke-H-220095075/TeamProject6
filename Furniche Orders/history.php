@@ -112,3 +112,12 @@ try {
    $totalOrders = $totalOrdersStmt->fetchColumn();
    
    $totalPages = ceil($totalOrders / $ordersPerPage);
+
+// Creation of pages and page numbers
+echo "<div class='pagination'>";
+for ($pageNum = 1; $pageNum <= $totalPages; $pageNum++) {
+    $activeClass = ($pageNum == $page) ? 'active' : '';
+    $specialClass = ($pageNum <= 2) ? 'special-page' : '';
+    echo "<a class='button $activeClass $specialClass' href='?page=$pageNum&sort=$sortOption'>$pageNum</a>";
+}
+echo "</div>";
