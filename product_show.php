@@ -28,7 +28,7 @@ try {
             echo '<h3>Product Details</h3>';
             echo '<p><strong>Name:</strong> ' . htmlspecialchars($row['productName']) . '</p>';
             echo '<p><strong>Price:</strong> $' . number_format($row['price'], 2) . '</p>';
-            echo '<p><img src="' . htmlspecialchars($row['imageName']) . '" alt="' . htmlspecialchars($row['imageName']) . '"></p>';
+            echo '<p><img src=Pictures for Website/"' . htmlspecialchars($row['imageName']) . '" alt="' . htmlspecialchars($row['imageName']) . '"></p>';
         } else {
             echo '<p>No product found with the given ID</p>';
         }

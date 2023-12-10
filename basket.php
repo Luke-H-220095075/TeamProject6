@@ -36,7 +36,7 @@ try {
         echo '<div class="basket-items">';
         while ($row = $stmtBasket->fetch(PDO::FETCH_ASSOC)) {
             echo '<div class="basket-item" data-productId="' . $row['productId'] . '">';
-            echo '<div class="item-image"><img src="' . $row['imageName'] . '" alt="' . $row['imageName'] . '"></div>';
+            echo '<div class="item-image"><img src=Pictures for Website/"' . $row['imageName'] . '" alt="' . $row['imageName'] . '"></div>';
             echo '<div class="item-details">';
             echo '<p><strong>' . $row['productName'] . '</strong></p>';
             echo '<p>Price: $' . $row['price'] . '</p>';

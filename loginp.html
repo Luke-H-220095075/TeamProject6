@@ -11,7 +11,7 @@
     <div class="container">
 
         <div class="image_box">
-            <img src="loginpic.jpg">
+            <img src="Pictures for Website/loginpic.jpg">
         </div>
 
         <div class="box">

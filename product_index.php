@@ -51,7 +51,7 @@ if (!empty($cheapestProducts)) {
     echo '<div class="current-offers">';
     foreach ($cheapestProducts as $offer) {
         echo '<div class="offer-item">';
-        echo '<a onclick="showProductModal(' . $offer['productId'] . ')"><img src="' . htmlspecialchars($offer['imageName']) . '" alt="' . htmlspecialchars($offer['imageName']) . '"></a><br>';
+        echo '<a onclick="showProductModal(' . $offer['productId'] . ')"><img src=Pictures for Website/"' . htmlspecialchars($offer['imageName']) . '" alt="' . htmlspecialchars($offer['imageName']) . '"></a><br>';
         echo '<h3>' . $offer['productName'] . '</h3>';
         echo '<p>Price: $' . $offer['price'] . '</p>';
         echo '</div>';
@@ -200,7 +200,7 @@ try {
             }
 
             echo '<td>';
-            echo '<a onclick="showProductModal(' . $row['productId'] . ')"><img src="' . htmlspecialchars($row['imageName']) . '" alt="' . htmlspecialchars($row['imageName']) . '" class="product-image"></a><br>';
+            echo '<a onclick="showProductModal(' . $row['productId'] . ')"><img src=Pictures for Website/"' . htmlspecialchars($row['imageName']) . '" alt="' . htmlspecialchars($row['imageName']) . '" class="product-image"></a><br>';
             echo '</td>';
 
             if ($count % 3 == 2 || $count == $stmt->rowCount() - 1) {

@@ -38,31 +38,31 @@
   <!-- Full-width images with number and caption text -->
   <div class="mySlides fade">
     <div class="numbertext">1 / 5</div>
-    <img src="slide1.jpg" style="width:100%">
+    <img src="Pictures for Website/slide1.jpg" style="width:100%">
     <div class="text">Tropical Style Kitchen</div>
   </div>
 
   <div class="mySlides fade">
     <div class="numbertext">2 / 5</div>
-    <img src="slide2.jpg" style="width:100%">
+    <img src="Pictures for Website/slide2.jpg" style="width:100%">
     <div class="text">Minimial Wooden Foyer</div>
   </div>
 
   <div class="mySlides fade">
     <div class="numbertext">3 / 5</div>
-    <img src="slide3.jpg" style="width:100%">
+    <img src="Pictures for Website/slide3.jpg" style="width:100%">
     <div class="text">Rustic Dinning set</div>
   </div>
 
   <div class="mySlides fade">
     <div class="numbertext">4 / 5</div>
-    <img src="slide4.jpg" style="width:100%">
+    <img src="Pictures for Website/slide4.jpg" style="width:100%">
     <div class="text">Bohemian Living room</div>
   </div>
 
   <div class="mySlides fade">
     <div class="numbertext">5 / 5</div>
-    <img src="slide5.jpg" style="width:100%">
+    <img src="Pictures for Website/slide5.jpg" style="width:100%">
     <div class="text">Modern Bathroom</div>
   </div>
 
@@ -96,8 +96,8 @@
 
 
  <div class="Newsletter">
-        <img src="nl2.png" alt="My Image" class="my_img">
-        <img src="nl1.png" alt="My Image" class="my_img1">
+        <img src="Pictures for Website/nl2.png" alt="My Image" class="my_img">
+        <img src="Pictures for Website/nl1.png" alt="My Image" class="my_img1">
     </div>
 <script>
     let slideIndex = 1;
