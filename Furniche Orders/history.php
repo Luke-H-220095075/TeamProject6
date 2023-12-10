@@ -46,3 +46,33 @@ try {
 
     $page = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1;
     $offset = ($page - 1) * $ordersPerPage;
+    
+    //SQL code needed to do the get the product count
+    $sql = "SELECT o.orderId, o.dateAdded, o.deliveryDate, COUNT(b.productId) AS itemCount
+            FROM orders o
+            JOIN basketproducts b ON o.basketId = b.basketId
+            WHERE o.userId = ?
+            GROUP BY o.orderId
+            $sorting
+            LIMIT $offset, $ordersPerPage";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([$userID]);
+    
+    // code needed for drop down and the submit button
+    echo "<form method='get'>";
+    echo "<div style='text-align: center;'>";
+    echo "<label for='sort'>Sort by:</label>";
+    echo "<select name='sort' id='sort'>";
+    $options = [
+        'newest_order' => 'Newest Order',
+        'oldest_order' => 'Oldest Order',
+        'not_delivered' => 'Not Delivered',
+    ];
+    foreach ($options as $key => $label) {
+        $selected = ($key === $sortOption) ? 'selected' : '';
+        echo "<option value='$key' $selected>$label</option>";
+    }
+    echo "</select>";
+    echo "<input type='submit' value='Sort'>";
+    echo "</form>";
