@@ -145,3 +145,23 @@ while ($recommendationRow = $recommendationStmt->fetch(PDO::FETCH_ASSOC)) {
 }
 echo "</div>";
 }
+
+
+ //Create new review form 
+
+ echo "<div class='review-form-container'>";
+ echo "<h2>Leave a Review</h2>";
+ echo "<form method='post'>";
+ echo "<label for='order_id'>Order ID:</label>";
+ echo "<input type='number' name='order_id' id='order_id' required>";
+ echo "<label for='rating'>Rating:</label>";
+ echo "<select name='rating' id='rating' required>";
+ for ($i = 1; $i <= 5; $i++) {
+     echo "<option value='$i'>$i</option>";
+ }
+ echo "</select>";
+ echo "<label for='description'>Review:</label>";
+ echo "<textarea name='description' id='description' rows='3' required></textarea>";
+ echo "<input type='submit' name='review' value='Submit Review'>";
+ echo "</form>";
+ echo "</div>";
