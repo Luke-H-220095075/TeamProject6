@@ -169,9 +169,16 @@ ul {
   }
 
   .my_img{
-    width: 100%;
+    width: 75%;
     height: 100%;
+   margin-left: 15%;
     }
+
+    .my_img1{
+        width: 75%;
+        height: 100%;
+       margin-left: 10%;
+        }
     
 
     .image-filter {

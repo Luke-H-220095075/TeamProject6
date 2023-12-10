@@ -89,7 +89,7 @@
 
  <div class="Newsletter">
         <img src="nl2.png" alt="My Image" class="my_img">
-        <img src="nl1.png" alt="My Image" class="my_img">
+        <img src="nl1.png" alt="My Image" class="my_img1">
     </div>
 <script>
     let slideIndex = 1;
