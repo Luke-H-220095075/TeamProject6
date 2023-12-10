@@ -1,4 +1,6 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+<body>
 <?php
 include 'connectdb.php';
 $basket_id = 1;
@@ -44,8 +46,9 @@ if (availability($conn, $basket_id)) {
 }
 
 if (isset($_POST['purchase'])) {
+  echo "help";
   if (availability($conn, $basket_id)) {
-    $sql = "SELECT countStock, countSold, quantity, productId FROM products join basketproducts ON products.productId = basketproducts.productId  WHERE basketId = $basket_id";
+    $sql = "SELECT countStock, countSold, quantity, basketproducts.productId FROM products join basketproducts ON products.productId = basketproducts.productId  WHERE basketId = $basket_id";
     $result = $conn->query($sql);
     if ($result->rowCount() > 0) {
       while ($row = $result->fetch()) {
@@ -55,9 +58,12 @@ if (isset($_POST['purchase'])) {
     }
   }
 }
-
+$_POST['purchase'] = null;
 ?>
-<form method="post"> 
-        <input type="submit" name="purchase" value="purchase"/>
-</form> 
+
+  <form method="post" action="backendforbasket.php  "> 
+          <button type="submit" class="purchase" onclick="purchase">purchase</button>
+          <input type="hidden" name="purchase" value="TRUE"/>
+
+  </form> 
 </html>
