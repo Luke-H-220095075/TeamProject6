@@ -154,9 +154,11 @@ if (isset($_POST['purchase'])) {
 $_POST['purchase'] = null;
 ?>
 
-        <div class="cbutton" method="post" action="backendforbasket.php">
-            <a href="#" class="order-button" onclick="purchase">Order</a>
-            <input type="hidden" name="purchase" value="TRUE"/>
+        <div class="cbutton">
+            <form method="post" action="checkout4.php  ">
+            <button type="submit" class="purchase" onclick="purchase"><a>purchase</a></button>
+          <input type="hidden" name="purchase" value="TRUE"/>
+            </form> 
         </div>
         </div>
     </div>
