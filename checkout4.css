@@ -1,7 +1,7 @@
 .topnav {
     height: 100%;
     width: 100%;
-   background-image: url("nav\ image.png");
+   background-image: url("wood.png");
    background-size: cover;
    background-position: center;
   }
@@ -47,7 +47,7 @@
     list-style: none;
   }
   body{
-    background-color: #d5d6b3;
+    background-color: #f5d5bb;
    
 
   }
@@ -118,7 +118,7 @@
 
 
   .fill{
-    background-color: #d5d6b3;
+    background-color: #4f4d62;
     width: 1200px;
     height: 2500px;
 
@@ -174,7 +174,7 @@
   .order-button {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #ffcc00; /* Yellow background */
+    background-color: #f5d5bb; /* Yellow background */
     color: #000000; /* Black text */
     text-decoration: none;
     font-size: 16px;
@@ -220,7 +220,7 @@
 }
 
   .footer {
-    background-color:#24262b;
+    background-image: url("wood.png");
     background-size: cover;
     background-position: center;
   padding: 70px 0;
