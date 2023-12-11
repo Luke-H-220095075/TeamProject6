@@ -22,9 +22,9 @@
       <nav>
           <h1 class="logo">Furniche</h1>
           <ul>
-              <li><a href="Projects.html">Login</a></li>
-              <li><a href="contactus.html">Contact Us</a></li>
-              <li><a href="contactus.html">About Us</a></li>
+              <li><a href="loginview.php">Login</a></li>
+              <li><a href="contactus\contactus.html">Contact Us</a></li>
+              <li><a href="About Us.html">About Us</a></li>
           </ul>
   </nav>
   </div>
@@ -137,7 +137,7 @@ function showSlides(n) {
     <div class="container">
         <div class="row">
             <div class="footer-col">
-                <h4>About Us</h4>
+                <h4 href="About Us.html">About Us</h4>
                <ul>
                 <li><a href="#">Our Founder</a> </li>
                 <li><a href="#">Our Values</a> </li>
@@ -154,7 +154,7 @@ function showSlides(n) {
                 <h5>Email us at: comms@furniche.com</h5>
                 <h5>Call us at: 01563385967</h5>
                 <ul>
-                    <li><a href="C:\Users\Osaze\OneDrive\Documents\GitHub\TeamProject6\contact.css">Contact Us via our Website</a> </li>
+                    <li><a href="contactus\contact.html">Contact Us via our Website</a> </li>
                 </ul>
             </div>
             <div class="footer-col">

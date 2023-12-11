@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Form Design</title>
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="css/login.css">
 </head>
 <body>
     
@@ -44,8 +44,8 @@
                 ?>
 
                 <div class="link_box">
-                    <div class="signup_link">Don't have an account? <a href="C:\Users\Osaze\Downloads\Furniche -use\Furniche\Signup.html">Sign Up</a></div>
-                    <div class="contact_link">Need Help? <a href="#">Contact Us</a></div>
+                    <div class="signup_link">Don't have an account? <a href="Signup.html">Sign Up</a></div>
+                    <div class="contact_link">Need Help? <a href="contactus\contact.html">Contact Us</a></div>
                 </div>
 
             </form>
