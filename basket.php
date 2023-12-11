@@ -29,6 +29,8 @@
 
     <body>
 
+    <div class="basketss">
+
         <h2>Your Basket</h2>
 
         <?php
@@ -124,6 +126,7 @@
             echo "available";
         }
         ?>
+        </div>
 
         <script>
             function adjustQuantity(productId, change) {

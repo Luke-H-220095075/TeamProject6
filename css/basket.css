@@ -9,26 +9,6 @@
 .body {
 background-color: #f5d5bb;
 }
-.img{
-  height: 50%;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 40%;
-}
-  
-  .my_img{
-    width: 50%;
-    height: 100%;
-    }
-    
-    .products{
-      background-color: #f5d5bb;
-    display: grid;
-    align-items: center; 
-    grid-template-columns: 1fr 1fr;
-    text-align: center;
-    }
 
     .topnav {
         height: 10vh;
@@ -176,3 +156,9 @@ background-color: #f5d5bb;
             }
             }
     
+            .basketss {
+              background-color: #4f4d62;
+              padding-left: 40%;
+              justify-content: center;
+              width: 100%;
+            }
