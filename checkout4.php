@@ -9,13 +9,14 @@
   <header>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
       <link rel="stylesheet" href="https://use.typekit.net/maf1fpm.css">
-  </a>
+  </header>
 </div>
 <section>
   <div class="topnav">
       <nav>
           <h1 class="logo">Furniche</h1>
           <ul>
+<<<<<<< HEAD
             <li><a class="active" href="index.php">Home</a></li>
             <li><a href="loginview.php">Login</a></li>
             <li><a href="contactus/contact.html">Contact Us</a></li>
@@ -23,6 +24,14 @@
             <li><a href="Furniche Products\products.php">Products</a></li>
         </ul>
   </nav>
+=======
+              <li><a class="active" href="index.php">Home</a></li>
+              <li><a href="products.php">Products</a></li>
+              <li><a href="Projects.html">Login</a></li>
+              <li><a href="contactus.html">Contact Us</a></li>
+              <li><a href="contactus.html">About Us</a></li>
+          </ul>
+>>>>>>> 0ddd7bddfd679848e0fd58719bc51d5c526fdae1
   </nav>
   </div>
 </section>
@@ -156,9 +165,11 @@ if (isset($_POST['purchase'])) {
 $_POST['purchase'] = null;
 ?>
 
-        <div class="cbutton" method="post" action="backendforbasket.php">
-            <a href="#" class="order-button" onclick="purchase">Order</a>
-            <input type="hidden" name="purchase" value="TRUE"/>
+        <div class="cbutton">
+            <form method="post" action="checkout4.php  ">
+            <button type="submit" class="purchase" onclick="purchase"><a>purchase</a></button>
+          <input type="hidden" name="purchase" value="TRUE"/>
+            </form> 
         </div>
         </div>
     </div>

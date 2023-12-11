@@ -13,7 +13,7 @@ background-color: #f5d5bb;
     .topnav {
         height: 10vh;
         width: 100%;
-       background-image: url("/TeamProject6/Pictures for website/wood.jpg");
+       background-image: url("http://localhost/furniche-demo/Pictures%20for%20website/wood.png");
        background-size: cover;
        background-position: center;
       }
@@ -60,7 +60,7 @@ background-color: #f5d5bb;
       }      
 
     .footer {
-        background-image: url("/TeamProject6/Pictures for website/wood.jpg");
+        background-image: url("http://localhost/furniche-demo/Pictures%20for%20website/wood.png");
         background-size: cover;
         background-position: center;
       padding: 70px 0;

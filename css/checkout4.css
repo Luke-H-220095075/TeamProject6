@@ -1,7 +1,7 @@
 .topnav {
     height: 100%;
     width: 100%;
-   background-image: url("/TeamProject6/Pictures for website/wood.jpg");
+   background-image: url("http://localhost/furniche-demo/Pictures%20for%20website/wood.png");
    background-size: cover;
    background-position: center;
   }
@@ -74,9 +74,9 @@
    }
 
    .column6 {
-    width: 40%; /* Adjust the width as needed, leaving some space for margin */
+    width: 40%;
     display: inline-block;
-    margin-right: 5%; /* Optional margin for better spacing */
+    margin-right: 5%;
     box-sizing: border-box;
    }
 
@@ -90,15 +90,15 @@
     font-size: 25px;
     letter-spacing: 0;
     line-height: normal;
-    border-bottom: 2px solid #080707; /* Border color and style */
-    padding-bottom: 20px; /* Optional padding for better spacing */
+    border-bottom: 2px solid #080707;
+    padding-bottom: 20px;
     margin-bottom: 20px;
   }
 
   
 
   .column6 {
-    width: 40%; /* Adjust the width as needed, leaving some space for margin */
+    width: 40%;
     display: inline-block;
     margin-right: 2%; 
     box-sizing: border-box;
@@ -111,7 +111,7 @@
 }
 
 .column6:last-child {
-    margin-right: 0; /* Remove margin for the last column to prevent extra spacing */
+    margin-right: 0;
 }
 
 
@@ -135,8 +135,8 @@
     font-size: 25px;
     letter-spacing: 0;
     line-height: normal;
-    border-bottom: 2px solid #080707; /* Border color and style */
-    padding-bottom: 20px; /* Optional padding for better spacing */
+    border-bottom: 2px solid #080707;
+    padding-bottom: 20px;
     margin-bottom: 20px;
 }
 
@@ -173,12 +173,12 @@
   .order-button {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #f5d5bb; /* Yellow background */
-    color: #000000; /* Black text */
+    background-color: #f5d5bb;
+    color: #000000;
     text-decoration: none;
     font-size: 16px;
     border-radius: 5px;
-    transition: background-color 0.3s ease; /* Smooth transition on hover */
+    transition: background-color 0.3s ease;
 }
 
   
@@ -210,16 +210,16 @@
   .form-label {
     text-align: left;
     display: block;
-    margin-bottom: 5px; /* Optional margin forpx better spacing */
+    margin-bottom: 5px;
 }
 
 .form-control {
-    width: 100%; /* Make the input fill the available width */
+    width: 100%;
     box-sizing: border-box;
 }
 
   .footer {
-    background-image: url("/TeamProject6/Pictures for website/wood.jpg");
+    background-image: url("http://localhost/furniche-demo/Pictures%20for%20website/wood.png");
     background-size: cover;
     background-position: center;
   padding: 70px 0;

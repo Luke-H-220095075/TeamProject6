@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Form Design</title>
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="login.css">
 </head>
 <body>
     
     <div class="container">
 
         <div class="image_box">
-            <img src="Pictures for Website/signuppic.jpg">
+            <img src="signuppic.jpg">
         </div>
 
         <div class="box">
@@ -56,12 +56,12 @@
 
                 <button class="login_button" name="submitted" type="submit">Login</button>
                 <?php
-                include("view/signUp.php");
+                include("signUp.php");
                 ?>
 
                 <div class="link_box">
-                    <div class="signup_link">Have an account? <a href="loginview.php">Login</a></div>
-                    <div class="contact_link">Need Help? <a href="contactus\contact.html">Contact Us</a></div>
+                    <div class="signup_link">Have an account? <a href="C:\Users\Osaze\Downloads\Furniche -use\Furniche\loginp.html">Login</a></div>
+                    <div class="contact_link">Need Help? <a href="#">Contact Us</a></div>
                 </div>
 
             </form>

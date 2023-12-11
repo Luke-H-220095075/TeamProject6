@@ -19,13 +19,15 @@
               <li><a class="active" href="index.php">Home</a></li>
               <li><a href="loginview.php">Login</a></li>
               <li><a href="contactus/contact.html">Contact Us</a></li>
-              <li><a href="About Us.html">About Us</a></li>
+              <li><a href="aboutus.php">About Us</a></li>
               <li><a href="Furniche Products\products.php">Products</a></li>
 
           </ul>
          </nav>
         </div>
     </section>
+</header>
+
 
     <body>
 
@@ -58,7 +60,7 @@
                 echo '<div class="basket-items">';
                 while ($row = $stmtBasket->fetch(PDO::FETCH_ASSOC)) {
                     echo '<div class="basket-item" data-productId="' . $row['productId'] . '">';
-                    echo '<div class="item-image"><img src= "Pictures for Website/' . $row['imageName'] . '" "alt="' . $row['imageName'] . '"></div>';
+                    echo '<div class="item-image"><img src= "Pictures%20for%20website/' . $row['imageName'] . '" " width="250" height="300" alt="' . $row['imageName']  . '"></div>';
                     echo '<div class="item-details">';
                     echo '<p><strong>' . $row['productName'] . '</strong></p>';
                     echo '<p>Price: $' . $row['price'] . '</p>';
@@ -71,22 +73,21 @@
                     echo '</div>';
                 }
                 echo '</div>';
-                echo '<a href="product_index.php"><button>Add More Products?</button></a>';
+                echo '<a href="products.php"><button>Add More Products?</button></a>';
 
             } else {
                 echo "<p>Your basket is empty.</p>";
-                echo '<a href="product_index.php"><button>Add Products?</button></a>';
+                echo '<a href="products.php"><button>Add Products?</button></a>';
 
             }
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
         }
         echo "<br>";
-        $pdo = null;
-        include 'connectdb.php';
+
         $basket_id = 1;
         $sql = "SELECT price, quantity FROM products JOIN basketproducts ON products.productId = basketproducts.productId WHERE basketId = $basket_id";
-        $result = $conn->query($sql);
+        $result = $pdo->query($sql);
         $basketcost = 0;
         if ($result->rowCount() > 0) {
             while ($row = $result->fetch()) {
@@ -101,17 +102,17 @@
 
         $discount_name = "Discount 1"; #$discount_name = $_POST['discount'];
         $sql = "SELECT value FROM discounts WHERE discountTitle = '" . $discount_name . "'";
-        $value = $conn->query($sql);
+        $value = $pdo->query($sql);
         $basketcost = $basketcost * (1 - $value->fetch()["value"] / 100);
         echo "£" . $basketcost . " total</br>";
 
 
         #stock availability check
-        function availability($conn, $basket_id)
+        function availability($pdo, $basket_id)
         {
             $available = true;
             $sql = "SELECT productName, countStock, quantity FROM products join basketproducts ON products.productId = basketproducts.productId  WHERE basketId = $basket_id";
-            $result = $conn->query($sql);
+            $result = $pdo->query($sql);
             if ($result->rowCount() > 0) {
                 while ($row = $result->fetch()) {
                     if ($row["quantity"] > $row["countStock"]) {
@@ -122,7 +123,7 @@
             }
             return $available;
         }
-        if (availability($conn, $basket_id)) {
+        if (availability($pdo, $basket_id)) {
             echo "available";
         }
         ?>

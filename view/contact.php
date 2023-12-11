@@ -1,17 +1,16 @@
 <?php
   include("connect.php");
-  if (isset($_POST ["submitted"])) 
+  if(isset($_POST["submitted"])) 
   {
     if(!empty(trim($_POST['message'])))
     {
       if(!empty(trim($_POST['subject'])))
       {
-        include_once("model/Message.php");
+        require("model/Message.php");
         $message = new Message($_POST['subject'], $_POST['message'], null);
-        include_once("controller/MessageController.php");
-        $controller = new MessageController($message);
+        require("controller/SendMessageController.php");
+        $controller = new SendMessageController($message);
         $controller->invoke();  
-      }
     }
     else{
       echo "Please enter a subject.";
@@ -20,5 +19,6 @@
   else{
     echo "Please enter a message.";
   }
+}
       
   ?>
