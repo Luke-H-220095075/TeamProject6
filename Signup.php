@@ -42,7 +42,7 @@
                     <input type="text" name="password2" required>
                     <label>Confrim Password</label>
                 </div>
-                <script src="showPasswordScript.js"></script>
+
                 <label class="checkbox"><input type="checkbox"><p>Show Password</p></label>
 
                 <div class="link_box">

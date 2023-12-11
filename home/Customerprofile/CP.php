@@ -26,24 +26,40 @@
 </section>
 </header>
 </div>
-<body>
+<body><?php
+require("../../../TeamProject6/model/User.php");?>
     <section>
         <div class="profile">
             <img src="Thomas.jpg" alt="My Image" class="my_img">
             <div class="contact-col">
-                <form action="">
-                    <input type="firstname"name="firstname"placeholder="Firstname" required/>
+                <form method="post">
+                    <?php
+                    $user= new User(null, null, null, null, null, null, null, null);
+                    $user->getDetails();
+                    echo '
+                    <input type="firstname"name="firstname"placeholder="Firstname" value='.$user->firstname.' required/>
                     <br>
-                    <input type="lastname"name="lastname"placeholder="Lastname" required/>
+                    <input type="lastname"name="lastname"placeholder="Lastname" value='.$user->surname.' required/>
                     <br>
-                    <input type="email" placeholder="Enter email address" required/>
+                    <input type="email" name="email" placeholder="Enter email address" value='.$user->email.' required/>
                     <br>
-                    <input type="number" placeholder="Enter your phonenumber" required/>
+                    <input type="number" name="phone" placeholder="Enter your phonenumber" value='.$user->phone.' required/>
+                    <br>
+                    <input type="address" name="address" placeholder="Enter your address" value='.$user->address.' required/>
                     <br>
                     <p>How would you like to be contacted?</p>
                     <label><input type="checkbox"name="cbx"value="email"/>Email</label>
                     <label><input type="checkbox"name="cbx"value="phonenumber"/>Text</label>
-                </form>
+                    <button type="submit" name="submitted" id="submit-btn">Submit</button>
+                </form>';
+                if(isset($_POST["submitted"])) 
+  {
+      $user = new User(null, null, $_POST['email'], $_POST['firstname'], $_POST['surname'], $_POST['address'], $_POST['phone'], null);
+      include_once("controller/UpdateDetailsController.php");
+      $controller = new UpdateDetailsController($user);
+      $controller->invoke();
+      //header('Location: update.php');
+  }?>
             </div>
         </div>
     </section>

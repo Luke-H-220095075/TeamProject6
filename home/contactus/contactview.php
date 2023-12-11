@@ -45,21 +45,25 @@
         </span>
     </div>
   <div class="contact">
-    <form id="contact-form">
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name" required><br><br>
+    <form id="contact-form" method="post">
+      <label for="name">Subject:</label>
+      <input type="text" id="name" name="subject" required><br><br>
   
-      <label for="email">Email:</label>
+      <!-- <label for="email">Email:</label>
       <input type="email" id="email" name="email" required><br><br>
   
       <label for="confirm-email">Confirm Email:</label>
       <input type="email" id="confirm-email" name="confirm-email" required><br><br>
-  
-      <label for="description">Project Description:</label><br>
+   -->
+      <label for="description">Message:</label><br>
       <textarea id="description" name="description" rows="5" cols="50"></textarea><br><br>
   
-      <button type="submit" id="submit-btn">Submit</button>
+      <button type="submit" name="submitted" id="submit-btn">Submit</button>
+      <?php
+    include("../../../TeamProject6/view/contact.php");
+    ?>
     </form>
+    
     <img src="C:\Users\Osaze\OneDrive\Documents\GitHub\TeamProject6\home\contactus\thumbnail.jpeg" alt="My Image" class="my_img">
   </div>
   <section class="location">

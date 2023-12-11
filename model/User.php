@@ -39,10 +39,9 @@ class User {
           {
             $username = $username[0];
           }
-            $_SESSION["user"] = $username;
-            $_SESSION["uid"] = $row['userId'];
+            $this->setSession();
             echo "success";
-            header('Location: home.php');
+            header('Location: home/Customerprofile/CP.php');
           }
           else{
           ?>
@@ -85,16 +84,20 @@ class User {
       <?php
     }           
   }
-  public function changePassword(){
+  public function changeDetails(){
     include 'view/connect.php';
         try{
-          $sth=$db->prepare("UPDATE users SET password = :password WHERE username = :username AND email = :email");
+          $sth=$db->prepare("UPDATE users SET password = :password, email = :email, phoneNumber = :phone, forename = :name, surname = :surname, address = :address WHERE username = :username");
           $sth->bindparam(':username', $this->username, PDO::PARAM_STR, 10);
           $sth->bindparam(':password', $this->password, PDO::PARAM_STR, 64);
           $sth->bindparam(':email', $this->email, PDO::PARAM_STR, 64);
+          $sth->bindparam(':phone', $this->phone, PDO::PARAM_STR, 10);
+          $sth->bindparam(':name', $this->firstname, PDO::PARAM_STR, 10);
+          $sth->bindparam(':surname', $this->surname, PDO::PARAM_STR, 10);
+          $sth->bindparam(':address', $this->address, PDO::PARAM_STR, 10);
           $sth->execute();
           if($sth == true){
-            //password updated
+            //details updated
           }
       }catch(PDOException $ex){
         ?>
@@ -102,91 +105,6 @@ class User {
         <p>Error details: <em> <?= $ex->getMessage() ?></em></p>
         <?php
       } 
-  }
-  public function updateEmail(){
-    include 'view/connect.php';
-    try{
-      $sth=$db->prepare("UPDATE users SET email = :email WHERE username = :username");
-      $sth->bindparam(':username', $this->username, PDO::PARAM_STR, 10);
-      $sth->bindparam(':email', $this->email, PDO::PARAM_STR, 64);
-      $sth->execute();
-      if($sth == true){
-        //email updated
-        }
-      }catch(PDOException $ex){
-      ?>
-      <p>Sorry, a database error occurred.<p>
-      <p>Error details: <em> <?= $ex->getMessage() ?></em></p>
-      <?php
-      }
-  }
-  public function updatePhone(){
-    include 'view/connect.php';
-    try{
-      $sth=$db->prepare("UPDATE users SET phoneNumber = :phone WHERE username = :username");
-      $sth->bindparam(':username', $this->username, PDO::PARAM_STR, 10);
-      $sth->bindparam(':phone', $this->phone, PDO::PARAM_STR, 10);
-      $sth->execute();
-      if($sth == true){
-        //phone updated
-      }
-    }catch(PDOException $ex){
-    ?>
-    <p>Sorry, a database error occurred.<p>
-    <p>Error details: <em> <?= $ex->getMessage() ?></em></p>
-    <?php
-    }
-  }
-  public function updateFirstname(){
-    include 'view/connect.php';
-    try{
-      $sth=$db->prepare("UPDATE users SET forename = :name WHERE username = :username");
-      $sth->bindparam(':username', $this->username, PDO::PARAM_STR, 10);
-      $sth->bindparam(':name', $this->firstname, PDO::PARAM_STR, 10);
-      $sth->execute();
-      if($sth == true){
-        //firstname updated
-      }
-    }catch(PDOException $ex){
-    ?>
-    <p>Sorry, a database error occurred.<p>
-    <p>Error details: <em> <?= $ex->getMessage() ?></em></p>
-    <?php
-    }
-  }
-  public function updateSurname(){
-    include 'view/connect.php';
-    try{
-      $sth=$db->prepare("UPDATE users SET surname = :name WHERE username = :username");
-      $sth->bindparam(':username', $this->username, PDO::PARAM_STR, 10);
-      $sth->bindparam(':name', $this->surname, PDO::PARAM_STR, 10);
-      $sth->execute();
-      if($sth == true){
-        //surname updated
-      }
-    }catch(PDOException $ex){
-    ?>
-    <p>Sorry, a database error occurred.<p>
-    <p>Error details: <em> <?= $ex->getMessage() ?></em></p>
-    <?php
-    }
-  }
-  public function updateAddress(){
-    include 'view/connect.php';
-    try{
-      $sth=$db->prepare("UPDATE users SET address = :address WHERE username = :username");
-      $sth->bindparam(':username', $this->username, PDO::PARAM_STR, 10);
-      $sth->bindparam(':address', $this->address, PDO::PARAM_STR, 10);
-      $sth->execute();
-      if($sth == true){
-        //address updated
-      }
-    }catch(PDOException $ex){
-    ?>
-    <p>Sorry, a database error occurred.<p>
-    <p>Error details: <em> <?= $ex->getMessage() ?></em></p>
-    <?php
-    }
   }
   public function forgottenUsername(){
     include 'view/connect.php';
@@ -215,17 +133,24 @@ class User {
         $_SESSION["userID"] = $row['userId'];
   }
   public function getDetails(){
-    $sth=$db->prepare("SELECT * FROM users WHERE username = :username");
-    $sth->bindparam(':username', $_SESSION["user"], PDO::PARAM_STR, 10);
-    $sth->execute();
-    $row=$sth->fetch(PDO::FETCH_ASSOC);
-    $this->username = $row['username'];
-    $this->firstname = $row['firstname'];
-    $this->surname = $row['surname'];
-    $this->email = $row['email'];
-    $this->address = $row['address'];
-    $this->phone = $row['phone'];
-    $this->admin = $row['admin'];
-  }
+    include '../../view/connect.php';
+    if(!$_SESSION["user"] == null){
+      $sth=$db->prepare("SELECT * FROM users WHERE username = :username");
+      $sth->bindparam(':username', $_SESSION["user"], PDO::PARAM_STR, 10);
+      $sth->execute();
+      $row=$sth->fetch(PDO::FETCH_ASSOC);
+      $this->username = $row['username'];
+      $this->firstname = $row['firstname'];
+      $this->surname = $row['surname'];
+      $this->email = $row['email'];
+      $this->address = $row['address'];
+      $this->phone = $row['phone'];
+      $this->admin = $row['admin'];
+    }
+    else{
+      header('Location: ../../loginview.php');
+    }
+    }
+    
 }
 ?>
