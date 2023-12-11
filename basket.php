@@ -15,7 +15,7 @@ $dsn = "mysql:host=localhost;dbname=furniche";
 $username = "root";
 $password = "";
 
-$user_id = 1;
+$basketId = 1;
 
 $pdo = new PDO($dsn, $username, $password);
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -25,11 +25,10 @@ try {
             SELECT products.productId, products.productName, products.price, products.imageName, basketproducts.quantity
             FROM basketproducts
             JOIN products ON basketproducts.productId = products.productId
-            WHERE basketproducts.basketId = (
-                SELECT basketId FROM baskets WHERE userId = :user_id
-            )
+            WHERE basketproducts.basketId = :user_id
+            
         ");
-    $stmtBasket->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+    $stmtBasket->bindParam(':user_id', $basketId);
     $stmtBasket->execute();
 
     if ($stmtBasket->rowCount() > 0) {
