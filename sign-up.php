@@ -40,7 +40,7 @@
 
                 <div class="input_box">
                     <input type="text" name="password2" required>
-                    <label>Confirm Password</label>
+                    <label>Confrim Password</label>
                 </div>
                 <script src="showPasswordScript.js"></script>
                 <label class="checkbox"><input type="checkbox"><p>Show Password</p></label>

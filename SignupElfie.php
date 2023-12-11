@@ -56,7 +56,7 @@
 
                 <button class="login_button" name="submitted" type="submit">Login</button>
                 <?php
-                include("view/signUp.php");
+                include("signUp.php");
                 ?>
 
                 <div class="link_box">

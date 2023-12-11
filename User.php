@@ -41,7 +41,6 @@ class User {
           }
             $_SESSION["user"] = $username;
             $_SESSION["uid"] = $row['userId'];
-            echo "success";
             header('Location: home.php');
           }
           else{
