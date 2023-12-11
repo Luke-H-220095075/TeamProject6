@@ -166,7 +166,7 @@ if (isset($_POST['purchase'])) {
 $_POST['purchase'] = null;
 ?>
 
-        <div class="cbutton">
+        <div class="cbutton" method="post" action="backendforbasket.php">
             <a href="#" class="order-button" onclick="purchase">Order</a>
             <input type="hidden" name="purchase" value="TRUE"/>
         </div>
