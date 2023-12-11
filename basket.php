@@ -122,7 +122,8 @@
             echo "available";
         }
         ?>
-
+        <br>
+        <a href="checkout4.php">checkout</a>
         <script>
             function adjustQuantity(productId, change) {
                 var xhr = new XMLHttpRequest();
