@@ -11,8 +11,6 @@ body{
     justify-content: center;
 }
 
-$lred:#E57373;
-$red:#F44336;
 
 @mixin transition($in) {
 	transition:$in;
@@ -36,7 +34,7 @@ $red:#F44336;
 	width:500px;
 	border-radius:5px;
 	background-color:transparent;
-	border:3px solid $red;
+	border:3px solid #F44336;
 	height:85px;
 
 	&>ul {
@@ -53,7 +51,7 @@ $red:#F44336;
 	margin:30px auto;
 	width:100px;
 	height:100px;
-	background-color:$red;
+	background-color:#F44336;
 	border:3px solid transparent;
 	border-radius:50%;
 	overflow:hidden;
@@ -91,18 +89,18 @@ $red:#F44336;
 				text-decoration:none;
 				display:inline-block;
 				padding:15px 25px;
-				color:$red;
+				color:#F44336;
 				font-size:20px;
 				@include transition(all 0.3s ease-in-out);
 				border:3px solid transparent;
 				border-radius:5px;
 
 				&:hover {
-					border-color:$red;
+					border-color:#F44336;
 				}
 				
 				&:target {
-					border-bottom-color:$red;
+					border-bottom-color:#F44336;
 				}
 			}
 		}
