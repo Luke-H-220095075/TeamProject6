@@ -13,15 +13,17 @@
     </a>
     <section>
         <div class="topnav">
-            <nav>
+        <nav>
                 <h1 class="logo">Furniche</h1>
-                <ul>
-                    <li><a class="active" href="Main.html">Home</a></li>
-                    <li><a href="loginview.php">Login</a></li>
-                    <li><a href="contactus.html">Contact Us</a></li>
-                    <li><a href="About Us.html">About Us</a></li>
-                </ul>
-            </nav>
+            <ul>
+              <li><a class="active" href="index.php">Home</a></li>
+              <li><a href="loginview.php">Login</a></li>
+              <li><a href="contactus/contact.html">Contact Us</a></li>
+              <li><a href="About Us.html">About Us</a></li>
+              <li><a href="Furniche Products\products.php">Products</a></li>
+
+          </ul>
+         </nav>
         </div>
     </section>
 

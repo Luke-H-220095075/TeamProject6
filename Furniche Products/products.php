@@ -20,10 +20,10 @@
       <nav>
           <h1 class="logo">Furniche</h1>
           <ul>
-              <li><a class="active" href="Main.html">Home</a></li>
-              <li><a href="Projects.html">Login</a></li>
-              <li><a href="contactus.html">Contact Us</a></li>
-              <li><a href="contactus.html">About Us</a></li>
+              <li><a class="active" href="index.php">Home</a></li>
+              <li><a href="loginview.php">Login</a></li>
+              <li><a href="contactus/contact.html">Contact Us</a></li>
+              <li><a href="About Us.html">About Us</a></li>
           </ul>
   </nav>
   </div>

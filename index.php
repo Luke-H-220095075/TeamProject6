@@ -3,7 +3,6 @@
     <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My Tailwind CSS Page</title>
     <link href="css/style.css" rel="stylesheet">
     </head>
 <body class="bg-gray-100">
@@ -22,10 +21,12 @@
       <nav>
           <h1 class="logo">Furniche</h1>
           <ul>
-              <li><a href="loginview.php">Login</a></li>
-              <li><a href="contactus\contactus.html">Contact Us</a></li>
-              <li><a href="About Us.html">About Us</a></li>
-          </ul>
+            <li><a href="loginview.php">Login</a></li>
+            <li><a href="contactus/contact.html">Contact Us</a></li>
+            <li><a href="About Us.html">About Us</a></li>
+            <li><a href="Furniche Products\products.php">Products</a></li>
+        </ul>
+  </nav>
   </nav>
   </div>
 </section>
