@@ -86,11 +86,11 @@
 <div class="categories">
 <h2>Categories</h2>
  <div>
-    <img src="https://liveastonac-my.sharepoint.com/:i:/r/personal/220228709_aston_ac_uk/Documents/Stage%202/CS%20Modules/TeamProject/Team%20Project%206/bohemian.jpg?csf=1&web=1&e=d5c3vI" alt="Category 1" onclick="fillCategoryFilter('bohemian')" class="image-filter">
-    <img src="https://liveastonac-my.sharepoint.com/:i:/r/personal/220228709_aston_ac_uk/Documents/Stage%202/CS%20Modules/TeamProject/Team%20Project%206/rustic.jpg?csf=1&web=1&e=DyqZMM" alt="Category 2" onclick="fillCategoryFilter('rustic')" class="image-filter">
-    <img src="https://liveastonac-my.sharepoint.com/:i:/r/personal/220228709_aston_ac_uk/Documents/Stage%202/CS%20Modules/TeamProject/Team%20Project%206/minimalistic.jpg?csf=1&web=1&e=AZdXKd" alt="Category 3" onclick="fillCategoryFilter('minimal')" class="image-filter">
-    <img src="https://liveastonac-my.sharepoint.com/:i:/r/personal/220228709_aston_ac_uk/Documents/Stage%202/CS%20Modules/TeamProject/Team%20Project%206/tropical.jpg?csf=1&web=1&e=05IEz3" alt="Category 4" onclick="fillCategoryFilter('tropical')" class="image-filter">
-    <img src="https://liveastonac-my.sharepoint.com/:i:/r/personal/220228709_aston_ac_uk/Documents/Stage%202/CS%20Modules/TeamProject/Team%20Project%206/modern.jpg?csf=1&web=1&e=x6Bp7H" alt="Category 5" onclick="fillCategoryFilter('modern')" class="image-filter">
+    <img src="Pictures for Website/Bohemian .jpg" alt="Category 1" onclick="fillCategoryFilter('bohemian')" class="image-filter">
+    <img src="Pictures for Website/Rustic.jpg" alt="Category 2" onclick="fillCategoryFilter('rustic')" class="image-filter">
+    <img src="Pictures for website/Minimalistic.jpg" alt="Category 3" onclick="fillCategoryFilter('minimal')" class="image-filter">
+    <img src="Pictures for website/Tropical.jpg" alt="Category 4" onclick="fillCategoryFilter('tropical')" class="image-filter">
+    <img src="Pictures for website/Modern.jpg" alt="Category 5" onclick="fillCategoryFilter('modern')" class="image-filter">
  </div>
 </div>
 
