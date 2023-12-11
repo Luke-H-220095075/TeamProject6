@@ -10,7 +10,7 @@
 .topnav {
   height: 10vh;
   width: 100%;
- background-image: url("wood.png");
+ background-image: url("/TeamProject6/Pictures for website/wood.jpg");
  background-size: cover;
  background-position: center;
 }
@@ -146,7 +146,7 @@ ul {
 }
 
   .home{
-    background-image: url("home.jpg");
+    background-image: url("/TeamProject6/Pictures for website/Pictures for website/home.jpg");
     color: #f5d5bb;
     height: 50vh;
     width: 100%;
@@ -195,7 +195,7 @@ ul {
 
 
 .footer {
-    background-image: url("wood.png");
+    background-image: url("/TeamProject6/Pictures for websitewood.png");
     background-size: cover;
     background-position: center;
   padding: 70px 0;

@@ -1,7 +1,7 @@
 .topnav {
   height: 10vh;
   width: 100%;
- background-image: url("wood.jpg");
+ background-image: url("/TeamProject6/Pictures for website/wood.jpg");
  background-size: cover;
  background-position: center;
 }
@@ -164,7 +164,6 @@ ul {
   position: relative;
     width: 750px;
     left:210px;
-    bottom: ;
     font-size: 35px;
     font-family: "Inter-ExtraBold", Helvetica;
     
@@ -279,7 +278,7 @@ ul {
 }
 
 .footer {
-  background-image: url("wood.jpg");
+  background-image: url("/TeamProject6/Pictures for website/wood.jpg");
   background-size: cover;
   background-position: center;
 padding: 70px 0;
