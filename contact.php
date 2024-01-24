@@ -21,9 +21,8 @@
                         <li><a href="products.php">Products</a></li>
                         <li><a href="basket.php">Basket</a></li>
                         <li><a href="loginview.php">Login</a></li>
-                        <li><a href="sign-up.php">Sign up</a></li>
+                        <li><a href="SignupElfie.php">Sign up</a></li>
                         <li><a href="history.php">Previous Orders</a></li>
-                        <li><a href="contact.php">Contact Us</a></li>
                         <li><a href="aboutus.php">About Us</a></li>
                     </ul>
                 </nav>
@@ -49,16 +48,10 @@
     </div>
   <div class="contact">
     <form id="contact-form">
-      <label for="name">Name:</label>
+      <label for="name">Subject:</label>
       <input type="text" id="name" name="name" required><br><br>
   
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required><br><br>
-  
-      <label for="confirm-email">Confirm Email:</label>
-      <input type="email" id="confirm-email" name="confirm-email" required><br><br>
-  
-      <label for="description">Project Description:</label><br>
+      <label for="description">Message:</label><br>
       <textarea id="description" name="description" rows="5" cols="50"></textarea><br><br>
   
       <button type="submit" id="submit-btn">Submit</button>

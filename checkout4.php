@@ -16,22 +16,15 @@
       <nav>
           <h1 class="logo">Furniche</h1>
           <ul>
-<<<<<<< HEAD
-            <li><a class="active" href="index.php">Home</a></li>
-            <li><a href="loginview.php">Login</a></li>
-            <li><a href="contactus/contact.html">Contact Us</a></li>
-            <li><a href="About Us.html">About Us</a></li>
-            <li><a href="Furniche Products\products.php">Products</a></li>
-        </ul>
-  </nav>
-=======
               <li><a class="active" href="index.php">Home</a></li>
               <li><a href="products.php">Products</a></li>
-              <li><a href="Projects.html">Login</a></li>
-              <li><a href="contactus.html">Contact Us</a></li>
-              <li><a href="contactus.html">About Us</a></li>
+              <li><a href="basket.php">Basket</a></li>
+              <li><a href="loginview.php">Login</a></li>
+              <li><a href="SignupElfie.php">Sign up</a></li>
+              <li><a href="history.php">Previous Orders</a></li>
+              <li><a href="contact.php">Contact Us</a></li>
+              <li><a href="aboutus.php">About Us</a></li>
           </ul>
->>>>>>> 0ddd7bddfd679848e0fd58719bc51d5c526fdae1
   </nav>
   </div>
 </section>

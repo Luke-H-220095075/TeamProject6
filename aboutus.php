@@ -22,7 +22,6 @@
                 <li><a href="loginview.php">Login</a></li>
                 <li><a href="history.php">Previous Orders</a></li>
                 <li><a href="contact.php">Contact Us</a></li>
-                <li><a href="aboutus.php">About Us</a></li>
             </ul>
         </nav>
     </div>

@@ -10,11 +10,7 @@
 .topnav {
   height: 10vh;
   width: 100%;
-<<<<<<< HEAD
- background-image: url("/TeamProject6/Pictures for website/wood.png");
-=======
  background-image: url("http://localhost/furniche-demo/Pictures%20for%20website/wood.png");
->>>>>>> 0ddd7bddfd679848e0fd58719bc51d5c526fdae1
  background-size: cover;
  background-position: center;
 }
