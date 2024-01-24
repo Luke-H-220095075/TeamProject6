@@ -44,13 +44,8 @@
                 ?>
 
                 <div class="link_box">
-<<<<<<< HEAD
                     <div class="signup_link">Don't have an account? <a href="SignupElfie.php">Sign Up</a></div>
-                    <div class="contact_link">Need Help? <a href="contactus\contact.html">Contact Us</a></div>
-=======
-                    <div class="signup_link">Don't have an account? <a href="sign-up.php">Sign Up</a></div>
                     <div class="contact_link">Need Help? <a href="contact.php">Contact Us</a></div>
->>>>>>> 0ddd7bddfd679848e0fd58719bc51d5c526fdae1
                 </div>
 
             </form>

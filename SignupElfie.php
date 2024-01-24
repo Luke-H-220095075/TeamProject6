@@ -45,7 +45,7 @@
 
                 <div class="input_box">
                     <input type="password" name="password2" required>
-                    <label>Confrim Password</label>
+                    <label>Confirm Password</label>
                 </div>
                 <script src="showPasswordScript.js"></script>
                 <label class="checkbox"><input type="checkbox" name="passcbx" onclick="showPassword()"><p>Show Password</p></label>
