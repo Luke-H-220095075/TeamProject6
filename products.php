@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Furniche</title>
+    <title>Furniche - Products</title>
     <link rel="stylesheet" type="text/css" href="css/product.css">
 </head>
 

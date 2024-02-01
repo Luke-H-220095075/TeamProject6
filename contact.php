@@ -2,7 +2,7 @@
 <html lang="eng">
 
 <head>
-  <title>Contact Us</title>
+  <title>Furniche - Contact Us</title>
   <meta charset="UTF-8">
   <script src="Contact Us.js"></script>
   <link rel="stylesheet" href="css/contact.css">
