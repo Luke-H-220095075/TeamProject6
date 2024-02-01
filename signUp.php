@@ -7,7 +7,7 @@
       {
         if(!empty(trim($_POST['password'])))
         {
-            if($_POST['password'] == $_POST['password2'])
+            if($_POST['password'] === $_POST['password2'])
             {
              include_once("User.php");                                                               //($username, $password, $email, $firstname, $surname, $address, $phone, $admin)
               $user = new User($_POST['username'], password_hash($_POST['password'], PASSWORD_DEFAULT), $_POST['email'], $_POST['firstname'], $_POST['surname'], null, null, 'Customer');
