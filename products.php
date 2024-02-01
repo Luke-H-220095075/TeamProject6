@@ -20,10 +20,14 @@
       <nav>
           <h1 class="logo">Furniche</h1>
           <ul>
-              <li><a class="active" href="index.php">Home</a></li>
+              <li><a href="index.php">Home</a></li>
+              <li><a href="products.php">Products</a></li>
+              <li><a href="basket.php">Basket</a></li>
               <li><a href="loginview.php">Login</a></li>
-              <li><a href="contactus/contact.html">Contact Us</a></li>
-              <li><a href="About Us.html">About Us</a></li>
+              <li><a href="sign-up.php">Sign up</a></li>
+              <li><a href="history.php">Previous Orders</a></li>
+              <li><a href="contact.php">Contact Us</a></li>
+              <li><a href="aboutus.php">About Us</a></li>
           </ul>
   </nav>
   </div>
