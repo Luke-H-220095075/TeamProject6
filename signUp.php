@@ -1,4 +1,4 @@
-<script defer src="signUpScript.js"></script>
+
 <?php
     include("connect.php");
     if (isset($_POST["submitted"])) 
@@ -28,3 +28,4 @@
       }
     }
     ?>
+<script defer src="signUpScript.js"></script>

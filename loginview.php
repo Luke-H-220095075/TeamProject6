@@ -11,7 +11,7 @@
     <div class="container">
 
         <div class="image_box">
-            <img src="Pictures%20for%20website/loginpic.jpg">
+            <img src="Pictures%20for%20website/loginpic.jpg" alt="Log In Image">
         </div>
 
         <div class="box">
@@ -19,16 +19,14 @@
             <form method="post">
 
                 <div class="input_box">
-                    <input type="text" name="username" required>
-                    <label>Username</label>
+                    <label>Username<input type="text" name="username" required></label>
                 </div>
 
                 <div class="input_box">
-                    <input type="password" name="password" required>
-                    <label>Password</label>
+                    <label>Password<input type="password" name="password" required></label>
                 </div>
                 <script src="showPasswordScript.js"></script>
-                <label class="checkbox"><input type="checkbox" name="passcbx" onclick="showPassword()"><p>Show Password</p></label>
+                <label class="checkbox"><input type="checkbox" name="passcbx" onclick="showPassword()">Show Password</label>
 
                 <div class="forgot_password_box">
                     <div class="forgot_password"><a href="#">Forgot Password?</a></div>
@@ -44,7 +42,7 @@
                 ?>
 
                 <div class="link_box">
-                    <div class="signup_link">Don't have an account? <a href="SignupElfie.php">Sign Up</a></div>
+                    <div class="signup_link">Don't have an account? <a href="signUpPage.php">Sign Up</a></div>
                     <div class="contact_link">Need Help? <a href="contact.php">Contact Us</a></div>
                 </div>
 
