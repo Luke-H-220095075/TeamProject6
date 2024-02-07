@@ -1,0 +1,124 @@
+
+/* styles.css */
+body {
+    font-family: sans-serif;
+    background-color: #f1c095db;
+    margin: 0;
+    padding: 20px;
+    color: #312e2e;
+}
+
+
+.checkout-container {
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.contact-shipping, .order-summary {
+    background-color: #f5d5bb;
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact-shipping {
+    width: 60%;
+}
+
+.input-container {
+    display: flex;
+    gap: 10px; 
+    
+}
+
+.order-summary {
+    width: 30%;
+    position: sticky;
+    top: 20px;
+}
+
+.contact-shipping section {
+    margin-bottom: 20px;
+}
+
+.order-summary h2, .contact-shipping h2 {
+    border-bottom: 1px solid #555353;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    
+    
+}
+
+
+input[type="name"] {
+    width: 80%;
+    height: 27px;
+    padding: 10px;
+    margin: 20px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+input[type="text"] {
+    width: 97%;
+    height: 27px;
+    padding: 10px;
+    margin: 20px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+
+select[name="country"]{
+    width: 80%;
+    padding: 10px;
+    margin: 20px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    
+}
+.input-container1{
+    display: flex;
+    gap: 10px;
+}
+
+
+.header-container{
+    text-align: center;
+    height: 85px;
+    width: 100%;
+    font-size: 20px;
+    
+}
+button {
+    width: 47%;   
+    padding: 10px;
+    background-color: #5e2ced;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    margin-top: 25px; 
+    margin-left: 25%;
+    
+    
+}
+
+
+button:hover {
+    background-color: #5025c5;
+}
+
+
+@media (max-width: 768px) {
+    .checkout-container {
+        flex-direction: column;
+    }
+
+    .contact-shipping, .order-summary {
+        width: 100%;
+        max-width: none;
+        margin-bottom: 20px;
+    }
+}
