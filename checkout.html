@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout Page</title>
+    <link rel="stylesheet" href="pr.css">
+</head>
+<body>
+    <section class="header-container">
+    <h1>Checkout</h1>
+    </section>
+    <div class="checkout-container">
+        <div class="contact-shipping">
+            <section class="contact-info">
+                <h2>Your Details</h2>
+                <div class="input-container">
+                    <input type="name" placeholder="First name">
+                    <input type="name" placeholder="Last name">
+                </div>
+                <input type="text" placeholder="Address Line">
+                <div class="input-container">
+                    <input type="name" placeholder="Post Code">
+                    <input type="name" placeholder="City">
+                    <select id="country" name="country">
+                        <option value="uk">United Kingdom</option>
+                        <option value="uk">United States</option>
+                        <option value="uk">France</option>
+                        <option value="uk">Spain</option>
+                        <option value="uk">Ireland</option>
+                        <option value="uk">Russia</option>
+                      </select>
+
+                </div>
+
+                <div class="input-container1">
+                    <input type="name" placeholder="Email address">
+                    <input type="name" id="mobile" name="mobile" placeholder="Your mobile number">
+                </div>
+            </section>
+            <section class="shipping-info">
+                <h2>Shipping information</h2>
+                <div class="input-container">
+                <input type="text" placeholder="First name">
+                <input type="text" placeholder="Last name">
+                </div>
+                <!-- Add more inputs for company, address, city, etc. -->
+            </section>
+            <section class="delivery-method">
+                <h2>Delivery method</h2>
+                <!-- Add radio buttons for delivery options -->
+            </section>
+            <section class="payment-info">
+                <h2>Payment</h2>
+                <!-- Add radio buttons for payment options -->
+                <input type="text" placeholder="Card number">
+                <!-- Add more inputs for payment details -->
+            </section>
+        </div>
+        <div class="order-summary">
+            <h2>Order summary</h2>
+            <!-- Add details for each order item -->
+            <div class="totals">
+                <p>Subtotal</p>
+                <p>Shipping</p>
+                <p>Taxes</p>
+                <p>Total</p>
+            </div>
+            <button type="button">Confirm order</button>
+        </div>
+    </div>
+</body>
+</html>
