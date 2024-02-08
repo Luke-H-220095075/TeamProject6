@@ -38,7 +38,7 @@
         <h2>Your Basket</h2>
 
         <?php
-        error_reporting(0);
+//        error_reporting(0);
 
         $dsn = "mysql:host=localhost;dbname=furniche";
         $username = "root";
@@ -104,10 +104,11 @@
 
 
 
-        $discount_name = "Discount 1"; #$discount_name = $_POST['discount'];
+        $discount_name = "test"; #$discount_name = $_POST['discount'];
         $sql = "SELECT value FROM discounts WHERE discountTitle = '" . $discount_name . "'";
         $value = $pdo->query($sql);
         $basketcost = $basketcost * (1 - $value->fetch()["value"] / 100);
+        $basketcost = number_format($basketcost, 2);
         echo "<p>£" . $basketcost . " total</p>";
 
 
@@ -154,6 +155,9 @@
                     }
                 };
                 xhr.send('product_id=' + productId + '&change=' + change);
+                setTimeout(function () {
+                    window.location.reload();
+                }, 10);
             }
         </script>
 
