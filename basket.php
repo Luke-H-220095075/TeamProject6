@@ -4,7 +4,6 @@
 <head>
     <title>Furniche - Basket</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="globals.css" />
     <link rel="stylesheet" href="css/basket.css" />
 </head>
 <header>
@@ -39,6 +38,8 @@
         <h2>Your Basket</h2>
 
         <?php
+        error_reporting(0);
+
         $dsn = "mysql:host=localhost;dbname=furniche";
         $username = "root";
         $password = "";
@@ -96,7 +97,7 @@
             while ($row = $result->fetch()) {
                 $basketcost = $basketcost + $row["quantity"] * $row["price"];
             }
-            echo "£" . $basketcost . " before discount</br>";
+            echo "<p>£" . $basketcost . " before discount</p>";
         } else {
             echo "0 results";
         }
@@ -107,7 +108,7 @@
         $sql = "SELECT value FROM discounts WHERE discountTitle = '" . $discount_name . "'";
         $value = $pdo->query($sql);
         $basketcost = $basketcost * (1 - $value->fetch()["value"] / 100);
-        echo "£" . $basketcost . " total</br>";
+        echo "<p>£" . $basketcost . " total</p>";
 
 
         #stock availability check
@@ -119,7 +120,7 @@
             if ($result->rowCount() > 0) {
                 while ($row = $result->fetch()) {
                     if ($row["quantity"] > $row["countStock"]) {
-                        echo $row["productName"] . " is unavailable </br>";
+                        echo "<p>" . $row["productName"] . " is unavailable </p>";
                         $available = false;
                     }
                 }
@@ -127,7 +128,7 @@
             return $available;
         }
         if (availability($pdo, $basket_id)) {
-            echo "available";
+            echo "<p>available</p>";
         }
         ?>
         </div>
