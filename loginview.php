@@ -15,15 +15,17 @@
         </div>
 
         <div class="box">
-            <h2>Login</h2>
+            <h2>Log In</h2>
             <form method="post">
 
                 <div class="input_box">
-                    <label>Username<input type="text" name="username" required></label>
+                    <input type="text" id="username" name="username" required>
+                    <label for="username">Username</label>
                 </div>
 
                 <div class="input_box">
-                    <label>Password<input type="password" name="password" required></label>
+                    <input type="password" id="password" name="password" required>
+                    <label for="password">Password</label>
                 </div>
                 <script src="showPasswordScript.js"></script>
                 <label class="checkbox"><input type="checkbox" name="passcbx" onclick="showPassword()">Show Password</label>
@@ -36,7 +38,7 @@
                     <div class="link">By creating an account you agree to <a href="#">Terms & Conditions</a></div>
                 </div>
 
-                <button class="login_button" name="submitted" type="submit">Login</button>
+                <button class="login_button" name="submitted" type="submit">Log In</button>
                 <?php
                 include("signIn.php");
                 ?>

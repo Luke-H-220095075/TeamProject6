@@ -24,7 +24,7 @@
               <li><a href="products.php">Products</a></li>
               <li><a href="basket.php">Basket</a></li>
               <li><a href="loginview.php">Login</a></li>
-              <li><a href="sign-up.php">Sign up</a></li>
+              <li><a href="signUpPage.php">Sign up</a></li>
               <li><a href="history.php">Previous Orders</a></li>
               <li><a href="contact.php">Contact Us</a></li>
               <li><a href="aboutus.php">About Us</a></li>
