@@ -40,15 +40,9 @@
 <strong><h2>Order History</h2></strong>
 
 <?php
-$dsn = "mysql:host=localhost;dbname=furniche";
-$username = "root";
-$password = "";
-
-//Data Base connection 
-
+include 'connect.php';
 try {
-    $pdo = new PDO($dsn, $username, $password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // Test with user 1 change once login page is connected
     $userID = 1;
@@ -84,7 +78,7 @@ try {
             $sorting
             LIMIT $offset, $ordersPerPage";
 
-    $stmt = $pdo->prepare($sql);
+    $stmt = $db->prepare($sql);
     $stmt->execute([$userID]);
 
     // code needed for drop down and the submit button
@@ -135,7 +129,7 @@ try {
    FROM orders o
    JOIN basketproducts b ON o.basketId = b.basketId
    WHERE o.userId = ?";
-   $totalOrdersStmt = $pdo->prepare($totalOrdersSql);
+   $totalOrdersStmt = $db->prepare($totalOrdersSql);
    $totalOrdersStmt->execute([$userID]);
    $totalOrders = $totalOrdersStmt->fetchColumn();
    
@@ -158,7 +152,7 @@ JOIN orders o ON b.basketId = o.basketId
 WHERE o.userId = ?
 LIMIT 6"; //amount of recommendations
 
-$recommendationStmt = $pdo->prepare($recommendationSql);
+$recommendationStmt = $db->prepare($recommendationSql);
 $recommendationStmt->execute([$userID]);
 
 echo "<div class='recommendations-title'>Recommendations</div>";
@@ -202,7 +196,7 @@ echo "</div>";
   ORDER BY r.reviewDate DESC
   LIMIT $offset, $ordersPerPage";
 
-$reviewStmt = $pdo->prepare($reviewSql);
+$reviewStmt = $db->prepare($reviewSql);
 $reviewStmt->execute([$userID]);
 
 echo "<div class='user-reviews-container'>";
@@ -230,7 +224,7 @@ echo "<p>No reviews available.</p>";
         $rating = $_POST['rating'];
         $description = $_POST['description'];
         $insertReviewSql = "INSERT INTO orderreviews (orderId, rating, description) VALUES (?, ?, ?)";
-        $insertReviewStmt = $pdo->prepare($insertReviewSql);
+        $insertReviewStmt = $db->prepare($insertReviewSql);
         $insertReviewStmt->execute([$orderId, $rating, $description]);
     }
 }
@@ -239,7 +233,7 @@ $totalReviewsSql = "SELECT COUNT(r.reviewId) AS totalReviews
                     FROM orderreviews r
                     JOIN orders o ON r.orderId = o.orderId
                     WHERE o.userId = ?";
-$totalReviewsStmt = $pdo->prepare($totalReviewsSql);
+$totalReviewsStmt = $db->prepare($totalReviewsSql);
 $totalReviewsStmt->execute([$userID]);
 $totalReviews = $totalReviewsStmt->fetchColumn();
 
@@ -251,7 +245,7 @@ echo "</div>";
 } catch (PDOException $e) {
 echo "Error: " . $e->getMessage();
 } finally {
-$pdo = null;
+$db = null;
 }
 
 ?>

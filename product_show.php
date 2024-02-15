@@ -8,18 +8,14 @@
 </head>
 <body>
 <?php
-$dsn = "mysql:host=localhost;dbname=furniche";
-$username = "root";
-$password = "";
-
+include 'connect.php';
 try {
-    $pdo = new PDO($dsn, $username, $password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     if (isset($_GET['product_id'])) {
         $productId = $_GET['product_id'];
 
-        $stmt = $pdo->prepare("SELECT * FROM products WHERE productId = ?");
+        $stmt = $db->prepare("SELECT * FROM products WHERE productId = ?");
         $stmt->execute([$productId]);
 
         if ($stmt->rowCount() > 0) {
@@ -39,7 +35,7 @@ try {
     echo "Error: " . $e->getMessage();
 }
 
-$pdo = null;
+$db = null;
 ?>
 </body>
 </html>

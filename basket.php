@@ -44,19 +44,13 @@
         <h2>Your Basket</h2>
 
         <?php
-//        error_reporting(0);
-
-        $dsn = "mysql:host=localhost;dbname=furniche";
-        $username = "root";
-        $password = "";
-
         $basketId = 1;
 
-        $pdo = new PDO($dsn, $username, $password);
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        include 'connect.php';
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         try {
-            $stmtBasket = $pdo->prepare("
+            $stmtBasket = $db->prepare("
             SELECT products.productId, products.productName, products.price, products.imageName, basketproducts.quantity
             FROM basketproducts
             JOIN products ON basketproducts.productId = products.productId
@@ -97,7 +91,7 @@
 
         $basket_id = 1;
         $sql = "SELECT price, quantity FROM products JOIN basketproducts ON products.productId = basketproducts.productId WHERE basketId = $basket_id";
-        $result = $pdo->query($sql);
+        $result = $db->query($sql);
         $basketcost = 0;
         if ($result->rowCount() > 0) {
             while ($row = $result->fetch()) {
@@ -112,18 +106,18 @@
 
         $discount_name = "test"; #$discount_name = $_POST['discount'];
         $sql = "SELECT value FROM discounts WHERE discountTitle = '" . $discount_name . "'";
-        $value = $pdo->query($sql);
+        $value = $db->query($sql);
         $basketcost = $basketcost * (1 - $value->fetch()["value"] / 100);
         $basketcost = number_format($basketcost, 2);
         echo "<p>£" . $basketcost . " total</p>";
 
 
         #stock availability check
-        function availability($pdo, $basket_id)
+        function availability($db, $basket_id)
         {
             $available = true;
             $sql = "SELECT productName, countStock, quantity FROM products join basketproducts ON products.productId = basketproducts.productId  WHERE basketId = $basket_id";
-            $result = $pdo->query($sql);
+            $result = $db->query($sql);
             if ($result->rowCount() > 0) {
                 while ($row = $result->fetch()) {
                     if ($row["quantity"] > $row["countStock"]) {
@@ -134,7 +128,7 @@
             }
             return $available;
         }
-        if (availability($pdo, $basket_id)) {
+        if (availability($db, $basket_id)) {
             echo "<p>available</p>";
         }
         ?>
