@@ -24,6 +24,12 @@
                 <li><a href="history.php">Previous Orders</a></li>
                 <li><a href="contact.php">Contact Us</a></li>
                 <li><a href="aboutus.php">About Us</a></li>
+                <?php
+                session_start();
+                if (isset($_SESSION['user'])) {
+                    echo '<li><a href="#">' . $_SESSION['user'] . '</a>';
+                }
+                ?>
           </ul>
          </nav>
         </div>
@@ -157,7 +163,7 @@
                 xhr.send('product_id=' + productId + '&change=' + change);
                 setTimeout(function () {
                     window.location.reload();
-                }, 10);
+                }, 20);
             }
         </script>
 

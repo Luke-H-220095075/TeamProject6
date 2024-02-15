@@ -1,4 +1,5 @@
 <?php
+session_start();
 class User {
   public $username;
   public $password;
@@ -35,11 +36,11 @@ class User {
       {
         if(password_verify(($this->password), $row['password']))
         {
-          if(is_array($username))
+          if(is_array($this->username))
           {
-            $username = $username[0];
+            $this->username = $this->username[0];
           }
-            $_SESSION["user"] = $username;
+            $_SESSION["user"] = $this->username;
             $_SESSION["uid"] = $row['userId'];
             header('Location: index.php');
           }
