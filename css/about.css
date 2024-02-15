@@ -10,7 +10,7 @@
 .topnav {
   height: 10vh;
   width: 100%;
- background-image: url("http://localhost/furniche-demo/Pictures%20for%20website/wood.png");
+ background-image: url("../Pictures for website/wood.png");
  background-size: cover;
  background-position: center;
 }
@@ -171,7 +171,7 @@ text-align: center;
 width: 100%;
 }
 .footer {
-  background-image: url("http://localhost/furniche-demo/Pictures%20for%20website/wood.png");
+    background-image: url("../Pictures for website/wood.png");
   background-size: cover;
   background-position: center;
 padding: 70px 0;

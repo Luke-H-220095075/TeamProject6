@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+    <title>Furniche - Home</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="css/style.css" rel="stylesheet">
@@ -21,7 +22,7 @@
               <li><a href="products.php">Products</a></li>
               <li><a href="basket.php">Basket</a></li>
               <li><a href="loginview.php">Login</a></li>
-              <li><a href="sign-up.php">Sign up</a></li>
+              <li><a href="signUpPage.php">Sign up</a></li>
               <li><a href="history.php">Previous Orders</a></li>
               <li><a href="contact.php">Contact Us</a></li>
               <li><a href="aboutus.php">About Us</a></li>
@@ -85,11 +86,11 @@
 <div class="categories">
 <h2>Categories</h2>
  <div>
-    <img src="Pictures for website/Bohemian" alt="Category 1" onclick="fillCategoryFilter('bohemian')" class="image-filter">
-    <img src="Pictures for website/Rustic" alt="Category 2" onclick="fillCategoryFilter('rustic')" class="image-filter">
-    <img src="Pictures for website/Minimalistic" alt="Category 3" onclick="fillCategoryFilter('minimal')" class="image-filter">
-    <img src="Pictures for website/Tropical" alt="Category 4" onclick="fillCategoryFilter('tropical')" class="image-filter">
-    <img src="Pictures for website/Modern" alt="Category 5" onclick="fillCategoryFilter('modern')" class="image-filter">
+     <a href="products.php?typeFilter=all&categoryFilter=bohemian&sortFilter=all"><img src="Pictures%20for%20website/Bohemian.jpg" alt="Bohemian" class="image-filter"></a>
+     <a href="products.php?typeFilter=all&categoryFilter=rustic&sortFilter=all"><img src="Pictures%20for%20website/Rustic.jpg" alt="Rustic" class="image-filter"></a>
+     <a href="products.php?typeFilter=all&categoryFilter=minimal&sortFilter=all"><img src="Pictures%20for%20website/Minimalistic.jpg" alt="Minimalistic" class="image-filter"></a>
+     <a href="products.php?typeFilter=all&categoryFilter=tropical&sortFilter=all"><img src="Pictures%20for%20website/Tropical.jpg" alt="Tropical" class="image-filter"></a>
+     <a href="products.php?typeFilter=all&categoryFilter=modern&sortFilter=all"><img src="Pictures%20for%20website/Modern.jpg" alt="Modern" class="image-filter"></a>
  </div>
 </div>
 

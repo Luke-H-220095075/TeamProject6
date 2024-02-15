@@ -2,8 +2,8 @@
 <html>
 
 <head>
+    <title>Furniche - Basket</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="globals.css" />
     <link rel="stylesheet" href="css/basket.css" />
 </head>
 <header>
@@ -16,12 +16,14 @@
         <nav>
                 <h1 class="logo">Furniche</h1>
             <ul>
-              <li><a class="active" href="index.php">Home</a></li>
-              <li><a href="loginview.php">Login</a></li>
-              <li><a href="contactus/contact.html">Contact Us</a></li>
-              <li><a href="aboutus.php">About Us</a></li>
-              <li><a href="Furniche Products\products.php">Products</a></li>
-
+                <li><a href="index.php">Home</a></li>
+                <li><a href="products.php">Products</a></li>
+                <li><a href="basket.php">Basket</a></li>
+                <li><a href="loginview.php">Login</a></li>
+                <li><a href="signUpPage.php">Sign up</a></li>
+                <li><a href="history.php">Previous Orders</a></li>
+                <li><a href="contact.php">Contact Us</a></li>
+                <li><a href="aboutus.php">About Us</a></li>
           </ul>
          </nav>
         </div>
@@ -36,6 +38,8 @@
         <h2>Your Basket</h2>
 
         <?php
+//        error_reporting(0);
+
         $dsn = "mysql:host=localhost;dbname=furniche";
         $username = "root";
         $password = "";
@@ -93,18 +97,19 @@
             while ($row = $result->fetch()) {
                 $basketcost = $basketcost + $row["quantity"] * $row["price"];
             }
-            echo "£" . $basketcost . " before discount</br>";
+            echo "<p>£" . $basketcost . " before discount</p>";
         } else {
             echo "0 results";
         }
 
 
 
-        $discount_name = "Discount 1"; #$discount_name = $_POST['discount'];
+        $discount_name = "test"; #$discount_name = $_POST['discount'];
         $sql = "SELECT value FROM discounts WHERE discountTitle = '" . $discount_name . "'";
         $value = $pdo->query($sql);
         $basketcost = $basketcost * (1 - $value->fetch()["value"] / 100);
-        echo "£" . $basketcost . " total</br>";
+        $basketcost = number_format($basketcost, 2);
+        echo "<p>£" . $basketcost . " total</p>";
 
 
         #stock availability check
@@ -116,7 +121,7 @@
             if ($result->rowCount() > 0) {
                 while ($row = $result->fetch()) {
                     if ($row["quantity"] > $row["countStock"]) {
-                        echo $row["productName"] . " is unavailable </br>";
+                        echo "<p>" . $row["productName"] . " is unavailable </p>";
                         $available = false;
                     }
                 }
@@ -124,7 +129,7 @@
             return $available;
         }
         if (availability($pdo, $basket_id)) {
-            echo "available";
+            echo "<p>available</p>";
         }
         ?>
         </div>
@@ -150,6 +155,9 @@
                     }
                 };
                 xhr.send('product_id=' + productId + '&change=' + change);
+                setTimeout(function () {
+                    window.location.reload();
+                }, 10);
             }
         </script>
 

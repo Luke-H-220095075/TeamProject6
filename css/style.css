@@ -10,11 +10,7 @@
 .topnav {
   height: 10vh;
   width: 100%;
-<<<<<<< HEAD
- background-image: url("/TeamProject6/Pictures for website/wood.png");
-=======
- background-image: url("http://localhost/furniche-demo/Pictures%20for%20website/wood.png");
->>>>>>> 0ddd7bddfd679848e0fd58719bc51d5c526fdae1
+ background-image: url("../Pictures for website/wood.png");
  background-size: cover;
  background-position: center;
 }
@@ -150,7 +146,7 @@ ul {
 }
 
   .home{
-    background-image: url("http://localhost/furniche-demo/Pictures%20for%20website/home.jpg");
+    background-image: url("../Pictures for website/home.jpg");
     color: #f5d5bb;
     height: 50vh;
     width: 100%;
@@ -199,7 +195,7 @@ ul {
 
 
 .footer {
-    background-image: url("http://localhost/furniche-demo/Pictures%20for%20website/wood.png");
+    background-image: url("../Pictures for website/wood.png");
     background-size: cover;
     background-position: center;
   padding: 70px 0;

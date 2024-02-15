@@ -4,7 +4,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/history.css">
-    <title> <title>Order History</title>
+    <title>Furniche - Previous Orders</title>
 </head>
 <div class="colour">
   <header>
@@ -21,6 +21,8 @@
               <li><a href="products.php">Products</a></li>
               <li><a href="basket.php">Basket</a></li>
               <li><a href="loginview.php">Login</a></li>
+              <li><a href="signUpPage.php">Sign up</a></li>
+              <li><a href="history.php">Previous Orders</a></li>
               <li><a href="contact.php">Contact Us</a></li>
               <li><a href="aboutus.php">About Us</a></li>
           </ul>
