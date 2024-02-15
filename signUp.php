@@ -1,4 +1,4 @@
-
+<script defer src="signUpScript.js"></script>
 <?php
     include("connect.php");
     if (isset($_POST["submitted"])) 
@@ -12,7 +12,7 @@
              include_once("User.php");                                                               //($username, $password, $email, $firstname, $surname, $address, $phone, $admin)
               $user = new User($_POST['username'], password_hash($_POST['password'], PASSWORD_DEFAULT), $_POST['email'], $_POST['firstname'], $_POST['surname'], null, null, 'Customer');
         include_once("SignUpController.php");
-        $controller = new SignUpController($user, password_hash($_POST['sanswer']));
+        $controller = new SignUpController($user, password_hash($_POST['sanswer'], PASSWORD_DEFAULT));
         $controller->invoke();
             }
             else{
@@ -28,4 +28,3 @@
       }
     }
     ?>
-<script defer src="signUpScript.js"></script>
