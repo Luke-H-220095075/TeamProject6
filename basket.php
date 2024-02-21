@@ -34,9 +34,12 @@
 
     <body>
 
-    <div class="basketss">
+    <div class="container">
+
+    <div class="basket-header">
 
         <h2>Your Basket</h2>
+</div>
 
         <?php
         $dsn = "mysql:host=localhost;dbname=furniche";
@@ -65,8 +68,8 @@
                     echo '<div class="basket-item" data-productId="' . $row['productId'] . '">';
                     echo '<div class="item-image"><img src= "Pictures%20for%20website/' . $row['imageName'] . '" " width="250" height="300" alt="' . $row['imageName']  . '"></div>';
                     echo '<div class="item-details">';
-                    echo '<p><strong>' . $row['productName'] . '</strong></p>';
-                    echo '<p>Price: $' . $row['price'] . '</p>';
+                    echo '<h4>' . $row['productName'] . '</h4>';
+                    echo '<p> £' . $row['price'] . '</p>';
                     echo '<div class="quantity-controls">';
                     echo '<button onclick="adjustQuantity(' . $row['productId'] . ', -1)">-</button>';
                     echo '<span> </span><span class="quantity">' . $row['quantity'] . '</span><span> </span>';
@@ -131,6 +134,10 @@
         }
         ?>
         </div>
+        <button class="checkout-button">Checkout</button>
+    
+    
+        
 
         <script>
             function adjustQuantity(productId, change) {
