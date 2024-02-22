@@ -1,4 +1,5 @@
 <?php
+session_start();
 class User {
   public $username;
   public $password;
@@ -35,13 +36,13 @@ class User {
       {
         if(password_verify(($this->password), $row['password']))
         {
-          if(is_array($username))
+          if(is_array($this->username))
           {
-            $username = $username[0];
+            $this->username = $this->username[0];
           }
-            $_SESSION["user"] = $username;
+            $_SESSION["user"] = $this->username;
             $_SESSION["uid"] = $row['userId'];
-            header('Location: home.php');
+            header('Location: index.php');
           }
           else{
           ?>
@@ -67,7 +68,7 @@ class User {
   public function signUp(){
     include 'connect.php';
     try{
-      $sth=$db->prepare("INSERT INTO users(username, forename, surname, password, email, userType) VALUES (:username, :firstname, :surname, :password, :email, :admin)");
+      $sth=$db->prepare("INSERT INTO users(username, firstname, surname, password, email, admin) VALUES (:username, :firstname, :surname, :password, :email, :admin)");
       $sth->bindparam(':username', $this->username, PDO::PARAM_STR, 64);
       $sth->bindparam(':password', $this->password, PDO::PARAM_STR, 64);
       $sth->bindparam(':firstname', $this->firstname, PDO::PARAM_STR, 64);
@@ -122,7 +123,7 @@ class User {
   public function updatePhone(){
     include 'connect.php';
     try{
-      $sth=$db->prepare("UPDATE users SET phoneNumber = :phone WHERE username = :username");
+      $sth=$db->prepare("UPDATE users SET phone = :phone WHERE username = :username");
       $sth->bindparam(':username', $this->username, PDO::PARAM_STR, 10);
       $sth->bindparam(':phone', $this->phone, PDO::PARAM_STR, 10);
       $sth->execute();
@@ -139,7 +140,7 @@ class User {
   public function updateFirstname(){
     include 'connect.php';
     try{
-      $sth=$db->prepare("UPDATE users SET forename = :name WHERE username = :username");
+      $sth=$db->prepare("UPDATE users SET firstname = :name WHERE username = :username");
       $sth->bindparam(':username', $this->username, PDO::PARAM_STR, 10);
       $sth->bindparam(':name', $this->firstname, PDO::PARAM_STR, 10);
       $sth->execute();
@@ -206,11 +207,11 @@ class User {
     session_start();
     include 'connect.php';
         $_SESSION["user"] = $this->username;
-        $sth=$db->prepare("SELECT userType, userId FROM users WHERE username = :username");
+        $sth=$db->prepare("SELECT admin, userId FROM users WHERE username = :username");
         $sth->bindparam(':username', $this->username, PDO::PARAM_STR, 10);
         $sth->execute();
         $row=$sth->fetch(PDO::FETCH_ASSOC);
-        $_SESSION["access"] = $row['userType'];
+        $_SESSION["access"] = $row['admin'];
         $_SESSION["userID"] = $row['userId'];
   }
   public function getDetails(){

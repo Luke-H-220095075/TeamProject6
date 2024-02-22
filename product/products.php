@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Furniche</title>
+    <title>Furniche - Products</title>
     <link rel="stylesheet" type="text/css" href="css/product.css">
 </head>
 
@@ -20,10 +20,20 @@
       <nav>
           <h1 class="logo">Furniche</h1>
           <ul>
-              <li><a class="active" href="index.php">Home</a></li>
+              <li><a href="index.php">Home</a></li>
+              <li><a href="products.php">Products</a></li>
+              <li><a href="basket.php">Basket</a></li>
               <li><a href="loginview.php">Login</a></li>
-              <li><a href="contactus/contact.html">Contact Us</a></li>
-              <li><a href="About Us.html">About Us</a></li>
+              <li><a href="signUpPage.php">Sign up</a></li>
+              <li><a href="history.php">Previous Orders</a></li>
+              <li><a href="contact.php">Contact Us</a></li>
+              <li><a href="aboutus.php">About Us</a></li>
+              <?php
+              session_start();
+              if (isset($_SESSION['user'])) {
+                  echo '<li><a href="#">' . $_SESSION['user'] . '</a>';
+              }
+              ?>
           </ul>
   </nav>
   </div>
@@ -45,15 +55,11 @@
         </section>
     </div>
     <?php
-$dsn = "mysql:host=localhost;dbname=furniche";
-$username = "root";
-$password = "";
-
+include 'connect.php';
 try {
-    $pdo = new PDO($dsn, $username, $password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $stmtCheapest = $pdo->prepare("
+    $stmtCheapest = $db->prepare("
         SELECT productId, productName, price, imageName
         FROM products
         ORDER BY price ASC
@@ -66,7 +72,7 @@ try {
     echo "Error: " . $e->getMessage();
 }
 
-$pdo = null;
+$db = null;
 ?>
 
 <h2>Products</h2>
@@ -97,11 +103,11 @@ $pdo = null;
     <?php
     $selectedcategoryFilter = isset($_GET['categoryFilter']) ? $_GET['categoryFilter'] : 'all';
 
+    include 'connect.php';
     try {
-        $pdo = new PDO($dsn, $username, $password);
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $stmt = $pdo->query("SELECT DISTINCT productCategory FROM products");
+        $stmt = $db->query("SELECT DISTINCT productCategory FROM products");
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             $category = htmlspecialchars($row['productCategory']);
@@ -114,7 +120,7 @@ $pdo = null;
         echo "Error: " . $e->getMessage();
     }
 
-    $pdo = null;
+    $db = null;
     ?>
 </select>
 
@@ -125,11 +131,11 @@ $pdo = null;
     <?php
     $selectedtypeFilter = isset($_GET['typeFilter']) ? $_GET['typeFilter'] : 'all';
 
+    include 'connect.php';
     try {
-        $pdo = new PDO($dsn, $username, $password);
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $stmt = $pdo->query("SELECT DISTINCT productType FROM products");
+        $stmt = $db->query("SELECT DISTINCT productType FROM products");
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             $type = htmlspecialchars($row['productType']);
@@ -142,16 +148,16 @@ $pdo = null;
         echo "Error: " . $e->getMessage();
     }
 
-    $pdo = null;
+    $db = null;
     ?>
 </select>
 
 <button onclick="resetFilters()" style="cursor: pointer">Reset Filters</button>
 
 <?php
+include 'connect.php';
 try {
-    $pdo = new PDO($dsn, $username, $password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     $query = "SELECT * FROM products";
 
@@ -186,7 +192,7 @@ try {
     }
 
     // Prepare and execute the final query
-    $stmt = $pdo->prepare($query);
+    $stmt = $db->prepare($query);
 
     if ($typeFilter != 'all') {
         $stmt->bindParam(':type', $typeFilter, PDO::PARAM_STR);
@@ -227,7 +233,7 @@ try {
     echo "Error: " . $e->getMessage();
 }
 
-$pdo = null;
+$db = null;
 
 
 ?>

@@ -2,7 +2,7 @@
 <html lang="eng">
 
 <head>
-  <title>Contact Us</title>
+  <title>Furniche - Contact Us</title>
   <meta charset="UTF-8">
   <script src="Contact Us.js"></script>
   <link rel="stylesheet" href="css/contact.css">
@@ -21,10 +21,16 @@
                         <li><a href="products.php">Products</a></li>
                         <li><a href="basket.php">Basket</a></li>
                         <li><a href="loginview.php">Login</a></li>
-                        <li><a href="sign-up.php">Sign up</a></li>
+                        <li><a href="signUpPage.php">Sign up</a></li>
                         <li><a href="history.php">Previous Orders</a></li>
                         <li><a href="contact.php">Contact Us</a></li>
                         <li><a href="aboutus.php">About Us</a></li>
+                        <?php
+                        session_start();
+                        if (isset($_SESSION['user'])) {
+                            echo '<li><a href="#">' . $_SESSION['user'] . '</a>';
+                        }
+                        ?>
                     </ul>
                 </nav>
             </div>
