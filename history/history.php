@@ -44,7 +44,7 @@ include 'connect.php';
 try {
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    // Test with user 1 change once login page is connected
+    // I tested with user 1, change once login page is connected 
     $userID = 1;
     $ordersPerPage = 6; // limit to six order viewed per page
 

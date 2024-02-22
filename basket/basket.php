@@ -17,8 +17,8 @@
                 <h1 class="logo">Furniche</h1>
             <ul>
                 <li><a href="index.php">Home</a></li>
-                <li><a href="products.php">Products</a></li>
-                <li><a href="basket.php">Basket</a></li>
+                <li><a href="product/products.php">Products</a></li>
+                <li><a href="basket/basket.php">Basket</a></li>
                 <li><a href="loginview.php">Login</a></li>
                 <li><a href="signUpPage.php">Sign up</a></li>
                 <li><a href="history.php">Previous Orders</a></li>
