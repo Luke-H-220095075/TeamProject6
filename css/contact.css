@@ -10,7 +10,7 @@
 .topnav {
   height: 10vh;
   width: 100%;
-    background-image: url("../Pictures for website/wood.png");
+ background-image: url("../Pictures for website/wood.png");
  background-size: cover;
  background-position: center;
 }
@@ -87,7 +87,7 @@ height: 90vh;
 }
 
 .footer {
-    background-image: url("../Pictures for website/wood.png");
+  background-image: url("wood.jpg");
   background-size: cover;
   background-position: center;
     padding: 70px 0;
@@ -183,73 +183,85 @@ margin-bottom: 10px;
     }
     }
 
+    /* Style for the entire form */
 body #contact-form {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    text-align: center;
-    padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  text-align: center;
+  padding: 20px;
 }
 
 h1 {
-    font-size: 32px;
-    font-weight: bold;
-    color: #333;
-    text-align: center;
-    margin: 20px 0;
-    text-transform: uppercase;
+  font-size: 32px;
+  /* Adjust the font size as needed */
+  font-weight: bold;
+  /* Make the text bold if desired */
+  color: #333;
+  /* Set the text color */
+  text-align: center;
+  /* Align the text in the center */
+  margin: 20px 0;
+  /* Add margin to create space around the title */
+  text-transform: uppercase;
+  /* Convert text to uppercase if desired */
 }
 
 .menu-button {
-    cursor: pointer;
-    color: #fff;
-    background-color: #5c2c06;
-    padding: 10px 20px;
-    border-radius: 5px;
+  cursor: pointer;
+  color: #fff;
+  background-color: #5c2c06;
+  padding: 10px 20px;
+  border-radius: 5px;
 }
 
+/* Style for the "Sign Up" heading */
 h1 {
-    color: #333;
-    font-size: 28px;
-    margin: 20px 0;
+  color: #333;
+  font-size: 28px;
+  margin: 20px 0;
 }
 
+/* Style for the form container */
 #contact-form {
-    max-width: 400px;
-    margin: 0 auto;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
+/* Style for form labels */
 label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-    text-align: left;
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  text-align: left;
 }
 
+/* Style for form inputs */
 input[type="text"],
 input[type="email"],
 input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
 }
 
+/* Style for the submit button */
 #submit-btn {
-    background-color: #5c2c06;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
+  background-color: #5c2c06;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
 }
 
 #submit-btn:hover {
-    background-color: #5c5c5c;
+  background-color: #5c5c5c;
 }
