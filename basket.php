@@ -79,7 +79,7 @@
                     echo '</div>';
                 }
                 echo '</div>';
-                echo '<a href="products.php"><button>Add More Products?</button></a>';
+                echo '<div class="back"><a href="products.php">Back</a></div>';
 
             } else {
                 echo "<p>Your basket is empty.</p>";
