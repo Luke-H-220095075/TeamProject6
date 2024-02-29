@@ -17,9 +17,9 @@
           <h1 class="logo">Furniche</h1>
           <ul>
               <li><a class="active" href="Main.html">Home</a></li>
-              <li><a href="loginview.html">Login</a></li>
-              <li><a href="contactus.html">Contact Us</a></li>
-              <li><a href="contactus.html">About Us</a></li>
+              <li><a href="loginview.php">Login</a></li>
+              <li><a href="contactview.php">Contact Us</a></li>
+              <li><a href="aboutus.php">About Us</a></li>
           </ul>
   </nav>
   </div>

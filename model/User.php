@@ -35,13 +35,12 @@ class User {
       {
         if(password_verify(($this->password), $row['password']))
         {
-          echo $_SESSION["user"];
           if(is_array($username))
           {
             $username = $username[0];
           }
             $this->setSession();
-            echo "success";
+            echo $_SESSION["user"];
             header('Location: ../TeamProject6/home/Customerprofile/CP.php');
           }
           else{
@@ -133,6 +132,7 @@ class User {
       $row=$sth->fetch(PDO::FETCH_ASSOC);
       $_SESSION["access"] = $row['userType'];
       $_SESSION["userID"] = $row['userId'];
+      alert($_SESSION["userID"]);
     }
     catch(PDOException $ex){
       ?>
