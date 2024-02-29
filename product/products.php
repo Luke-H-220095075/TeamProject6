@@ -398,7 +398,7 @@ if (!empty($cheapestProducts)) {
                 <h5>Email us at: comms@furniche.com</h5>
                 <h5>Call us at: 01563385967</h5>
                 <ul>
-                    <li><a href="C:\Users\Osaze\OneDrive\Documents\GitHub\TeamProject6\contact.css">Contact Us via our Website</a> </li>
+                    <li><a href="contactview.php">Contact Us via our Website</a> </li>
                 </ul>
             </div>
             <div class="footer-col">
