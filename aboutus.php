@@ -17,13 +17,19 @@
             <h1 class="logo">Furniche</h1>
             <ul>
                 <<li><a href="index.php">Home</a></li>
-                <li><a href="products.php">Products</a></li>
+                <li><a href="product/products.php">Products</a></li>
                 <li><a href="basket.php">Basket</a></li>
                 <li><a href="loginview.php">Login</a></li>
-                <li><a href="sign-up.php">Sign up</a></li>
+                <li><a href="signUpPage.php">Sign up</a></li>
                 <li><a href="history.php">Previous Orders</a></li>
-                <li><a href="contact.php">Contact Us</a></li>
+                <li><a href="contactview.php">Contact Us</a></li>
                 <li><a href="aboutus.php">About Us</a></li>
+                <?php
+                session_start();
+                if (isset($_SESSION['user'])) {
+                    echo '<li><a href="#">' . $_SESSION['user'] . '</a>';
+                }
+                ?>
             </ul>
         </nav>
     </div>
@@ -132,7 +138,7 @@
                 <h5>Email us at: comms@furniche.com</h5>
                 <h5>Call us at: 01563385967</h5>
                 <ul>
-                    <li><a href="contactus/contact.html">Contact Us via our Website</a> </li>
+                    <li><a href="contactview.php">Contact Us via our Website</a> </li>
                 </ul>
             </div>
             <div class="footer-col">

@@ -1,32 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-    <title>Furniche - Home</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="css/style.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
-      <link rel="stylesheet" href="https://use.typekit.net/maf1fpm.css">
     </head>
 
 
-
+<head>
+    <title>About DLegends - Furniture Company</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
   <header>
-    
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+      <link rel="stylesheet" href="https://use.typekit.net/maf1fpm.css">
+
 <section>
   <div class="topnav">
       <nav>
           <h1 class="logo">Furniche</h1>
           <ul>
-              <li><a href="index.php">Home</a></li>
-              <li><a href="products.php">Products</a></li>
-              <li><a href="basket.php">Basket</a></li>
-              <li><a href="loginview.php">Login</a></li>
-              <li><a href="sign-up.php">Sign up</a></li>
-              <li><a href="history.php">Previous Orders</a></li>
-              <li><a href="contact.php">Contact Us</a></li>
-              <li><a href="aboutus.php">About Us</a></li>
-          </ul>
+            <li><a href="loginview.php">Login</a></li>
+            <li><a href="contactview.php">Contact Us</a></li>
+            <li><a href="aboutus.php">About Us</a></li>
+            <li><a href="product\products.php">Products</a></li>
+        </ul>
+  </nav>
   </nav>
   </div>
 </section>
@@ -86,11 +85,11 @@
 <div class="categories">
 <h2>Categories</h2>
  <div>
-     <a href="products.php?typeFilter=all&categoryFilter=bohemian&sortFilter=all"><img src="Pictures%20for%20website/Bohemian.jpg" alt="Bohemian" class="image-filter"></a>
-     <a href="products.php?typeFilter=all&categoryFilter=rustic&sortFilter=all"><img src="Pictures%20for%20website/Rustic.jpg" alt="Rustic" class="image-filter"></a>
-     <a href="products.php?typeFilter=all&categoryFilter=minimal&sortFilter=all"><img src="Pictures%20for%20website/Minimalistic.jpg" alt="Minimalistic" class="image-filter"></a>
-     <a href="products.php?typeFilter=all&categoryFilter=tropical&sortFilter=all"><img src="Pictures%20for%20website/Tropical.jpg" alt="Tropical" class="image-filter"></a>
-     <a href="products.php?typeFilter=all&categoryFilter=modern&sortFilter=all"><img src="Pictures%20for%20website/Modern.jpg" alt="Modern" class="image-filter"></a>
+    <img src="https://liveastonac-my.sharepoint.com/:i:/r/personal/220228709_aston_ac_uk/Documents/Stage%202/CS%20Modules/TeamProject/Team%20Project%206/bohemian.jpg?csf=1&web=1&e=d5c3vI" alt="Category 1" onclick="fillCategoryFilter('bohemian')" class="image-filter">
+    <img src="https://liveastonac-my.sharepoint.com/:i:/r/personal/220228709_aston_ac_uk/Documents/Stage%202/CS%20Modules/TeamProject/Team%20Project%206/rustic.jpg?csf=1&web=1&e=DyqZMM" alt="Category 2" onclick="fillCategoryFilter('rustic')" class="image-filter">
+    <img src="https://liveastonac-my.sharepoint.com/:i:/r/personal/220228709_aston_ac_uk/Documents/Stage%202/CS%20Modules/TeamProject/Team%20Project%206/minimalistic.jpg?csf=1&web=1&e=AZdXKd" alt="Category 3" onclick="fillCategoryFilter('minimal')" class="image-filter">
+    <img src="https://liveastonac-my.sharepoint.com/:i:/r/personal/220228709_aston_ac_uk/Documents/Stage%202/CS%20Modules/TeamProject/Team%20Project%206/tropical.jpg?csf=1&web=1&e=05IEz3" alt="Category 4" onclick="fillCategoryFilter('tropical')" class="image-filter">
+    <img src="https://liveastonac-my.sharepoint.com/:i:/r/personal/220228709_aston_ac_uk/Documents/Stage%202/CS%20Modules/TeamProject/Team%20Project%206/modern.jpg?csf=1&web=1&e=x6Bp7H" alt="Category 5" onclick="fillCategoryFilter('modern')" class="image-filter">
  </div>
 </div>
 
@@ -154,7 +153,7 @@ function showSlides(n) {
                 <h5>Email us at: comms@furniche.com</h5>
                 <h5>Call us at: 01563385967</h5>
                 <ul>
-                    <li><a href="contactus\contact.html">Contact Us via our Website</a> </li>
+                    <li><a href="contactview.php">Contact Us via our Website</a> </li>
                 </ul>
             </div>
             <div class="footer-col">
