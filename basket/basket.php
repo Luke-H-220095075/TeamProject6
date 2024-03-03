@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+<!DOCTYPE html>basket
 <html>
 
 <head>
     <title>Furniche - Basket</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="css/basket.css" />
+    <link rel="stylesheet" href="../css/basket.css" />
 </head>
 <header>
     <link rel="stylesheet" type="text/css"
@@ -16,18 +16,18 @@
         <nav>
                 <h1 class="logo">Furniche</h1>
             <ul>
-                <li><a href="index.php">Home</a></li>
-                <li><a href="product/products.php">Products</a></li>
-                <li><a href="basket/basket.php">Basket</a></li>
-                <li><a href="loginview.php">Login</a></li>
-                <li><a href="signUpPage.php">Sign up</a></li>
-                <li><a href="history.php">Previous Orders</a></li>
-                <li><a href="contact.php">Contact Us</a></li>
-                <li><a href="aboutus.php">About Us</a></li>
+                <li><a href="../index.php">Home</a></li>
+                <li><a href="../product/products.php">Products</a></li>
+                <li><a href="../basket/basket.php">Basket</a></li>
+                <li><a href="../loginview.php">Login</a></li>
+                <li><a href="../signup/signUpPage.php">Sign up</a></li>
+                <li><a href="../history.php">Previous Orders</a></li>
+                <li><a href="../contact.php">Contact Us</a></li>
+                <li><a href="../aboutus.php">About Us</a></li>
                 <?php
                 session_start();
                 if (isset($_SESSION['user'])) {
-                    echo '<li><a href="#">' . $_SESSION['user'] . '</a>';
+                    echo '<li><a href="../#">' . $_SESSION['user'] . '</a>';
                 }
                 ?>
           </ul>
@@ -64,7 +64,7 @@
                 echo '<div class="basket-items">';
                 while ($row = $stmtBasket->fetch(PDO::FETCH_ASSOC)) {
                     echo '<div class="basket-item" data-productId="' . $row['productId'] . '">';
-                    echo '<div class="item-image"><img src= "Pictures%20for%20website/' . $row['imageName'] . '" " width="250" height="300" alt="' . $row['imageName']  . '"></div>';
+                    echo '<div class="item-image"><img src= "../Pictures%20for%20website/' . $row['imageName'] . '" " width="250" height="300" alt="' . $row['imageName']  . '"></img></div>';
                     echo '<div class="item-details">';
                     echo '<p><strong>' . $row['productName'] . '</strong></p>';
                     echo '<p>Price: $' . $row['price'] . '</p>';
@@ -77,11 +77,11 @@
                     echo '</div>';
                 }
                 echo '</div>';
-                echo '<a href="products.php"><button>Add More Products?</button></a>';
+                echo '<a href="../products.php"><button>Add More Products?</button></a>';
 
             } else {
                 echo "<p>Your basket is empty.</p>";
-                echo '<a href="products.php"><button>Add Products?</button></a>';
+                echo '<a href="../products.php"><button>Add Products?</button></a>';
 
             }
         } catch (PDOException $e) {
@@ -158,6 +158,7 @@
                 setTimeout(function () {
                     window.location.reload();
                 }, 20);
+                
             }
         </script>
 
@@ -168,10 +169,10 @@
                 <div class="footer-col">
                     <h4>About Us</h4>
                     <ul>
-                        <li><a href="#">Our Founder</a> </li>
-                        <li><a href="#">Our Values</a> </li>
-                        <li><a href="#">Our Privacy Policy</a> </li>
-                        <li><a href="#">Our Services</a> </li>
+                        <li><a href="../#">Our Founder</a> </li>
+                        <li><a href="../#">Our Values</a> </li>
+                        <li><a href="../#">Our Privacy Policy</a> </li>
+                        <li><a href="../#">Our Services</a> </li>
                     </ul>
                 </div>
                 <div class="footer-col">
@@ -183,7 +184,7 @@
                     <h5>Email us at: comms@furniche.com</h5>
                     <h5>Call us at: 01563385967</h5>
                     <ul>
-                        <li><a href="contact.html">Contact Us via our Website</a> </li>
+                        <li><a href="../contact.html">Contact Us via our Website</a> </li>
                     </ul>
                 </div>
                 <div class="footer-col">
