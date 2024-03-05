@@ -3,7 +3,7 @@
 
 <head>
     <title>Furniche - Products</title>
-    <link rel="stylesheet" type="text/css" href="css/product.css">
+    <link rel="stylesheet" type="text/css" href="../css/product.css">
 </head>
 
 <h2 class="title">Products</h2>  
@@ -22,7 +22,7 @@
           <ul>
               <li><a href="index.php">Home</a></li>
               <li><a href="products.php">Products</a></li>
-              <li><a href="basket.php">Basket</a></li>
+              <li><a href="../basket/basket.php">Basket</a></li>
               <li><a href="loginview.php">Login</a></li>
               <li><a href="signUpPage.php">Sign up</a></li>
               <li><a href="history.php">Previous Orders</a></li>
@@ -45,17 +45,17 @@
         <section id="Design">
 
     <div>
-    <img src="Pictures%20for%20website/Bohemian.jpg" alt="Category 1" onclick="fillCategoryFilter('bohemian')" class="image-filter">
-    <img src="Pictures%20for%20website/Rustic.jpg" alt="Category 2" onclick="fillCategoryFilter('rustic')" class="image-filter">
-    <img src="Pictures%20for%20website/Minimalistic.jpg" alt="Category 3" onclick="fillCategoryFilter('minimal')" class="image-filter">
-    <img src="Pictures%20for%20website/Tropical.jpg" alt="Category 4" onclick="fillCategoryFilter('tropical')" class="image-filter">
-    <img src="Pictures%20for%20website/Modern.jpg" alt="Category 5" onclick="fillCategoryFilter('modern')" class="image-filter">
+    <img src="../Pictures%20for%20website/Bohemian.jpg" alt="Category 1" onclick="fillCategoryFilter('bohemian')" class="image-filter">
+    <img src="../Pictures%20for%20website/Rustic.jpg" alt="Category 2" onclick="fillCategoryFilter('rustic')" class="image-filter">
+    <img src="../Pictures%20for%20website/Minimalistic.jpg" alt="Category 3" onclick="fillCategoryFilter('minimal')" class="image-filter">
+    <img src="../Pictures%20for%20website/Tropical.jpg" alt="Category 4" onclick="fillCategoryFilter('tropical')" class="image-filter">
+    <img src="../Pictures%20for%20website/Modern.jpg" alt="Category 5" onclick="fillCategoryFilter('modern')" class="image-filter">
 </div>
 
         </section>
     </div>
     <?php
-include 'connect.php';
+include '../connect.php';
 try {
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -103,7 +103,7 @@ $db = null;
     <?php
     $selectedcategoryFilter = isset($_GET['categoryFilter']) ? $_GET['categoryFilter'] : 'all';
 
-    include 'connect.php';
+    include '../connect.php';
     try {
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -131,7 +131,7 @@ $db = null;
     <?php
     $selectedtypeFilter = isset($_GET['typeFilter']) ? $_GET['typeFilter'] : 'all';
 
-    include 'connect.php';
+    include '../connect.php';
     try {
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -155,7 +155,7 @@ $db = null;
 <button onclick="resetFilters()" style="cursor: pointer">Reset Filters</button>
 
 <?php
-include 'connect.php';
+include '../connect.php';
 try {
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -214,7 +214,7 @@ try {
             }
 
             echo '<td class="center">';
-            echo '<a onclick="showProductModal(' . $row['productId'] . ')"><img src="Pictures for website/' . htmlspecialchars($row['imageName']) . '" alt="' . htmlspecialchars($row['imageName']) . '" class="product-image"></a><br>';
+            echo '<a onclick="showProductModal(' . $row['productId'] . ')"><img src="../Pictures for website/' . htmlspecialchars($row['imageName']) . '" alt="' . htmlspecialchars($row['imageName']) . '" class="product-image"></a><br>';
             echo '</td>';
 
 
@@ -249,7 +249,7 @@ if (!empty($cheapestProducts)) {
     echo '<div class="current-offers">';
     foreach ($cheapestProducts as $offer) {
         echo '<div class="offer-item">';
-        echo '<a onclick="showProductModal(' . $offer['productId'] . ')"><img src= "Pictures for website/' . htmlspecialchars($offer['imageName']) . '" alt="' . htmlspecialchars($offer['imageName']) . '"></a><br>';
+        echo '<a onclick="showProductModal(' . $offer['productId'] . ')"><img src= "../Pictures for website/' . htmlspecialchars($offer['imageName']) . '" alt="' . htmlspecialchars($offer['imageName']) . '"></a><br>';
         echo '<h3>' . $offer['productName'] . '</h3>';
         echo '<p>Price: $' . $offer['price'] . '</p>';
         echo '</div>';
@@ -266,8 +266,8 @@ if (!empty($cheapestProducts)) {
     <h1 style="padding-inline: 70px 5px;">Desk Inspiration</h1>
     <div class="product">
         <section class="one">
-        <img src="Pictures%20for%20website/Desk Inspiration 1.jpg" alt="Product 1" class="my_img_2">
-        <img src="Pictures%20for%20website/Desk Inspiration 2.jpg" alt="Product 2" class="my_img_2">
+        <img src="../Pictures%20for%20website/Desk Inspiration 1.jpg" alt="Product 1" class="my_img_2">
+        <img src="../Pictures%20for%20website/Desk Inspiration 2.jpg" alt="Product 2" class="my_img_2">
 
     
     </div>
@@ -276,19 +276,19 @@ if (!empty($cheapestProducts)) {
     <h1 style="padding-inline: 70px 5px;">Tips and Ideas for a more sustainable home</h1>
     <div class="product">
         <section class="one">
-            <img src="Pictures%20for%20website/Tips and Ideas 1.jpg" alt="Product 1" class="my_img">
+            <img src="../Pictures%20for%20website/Tips and Ideas 1.jpg" alt="Product 1" class="my_img">
             
 
             
-            <img src="Pictures%20for%20website/Tips and Ideas 2.jpg" alt="Product 2" class="my_img">
+            <img src="../Pictures%20for%20website/Tips and Ideas 2.jpg" alt="Product 2" class="my_img">
             
 
             
-            <img src="Pictures%20for%20website/Tips and Ideas 3.jpg" alt="Product 3" class="my_img">
+            <img src="../Pictures%20for%20website/Tips and Ideas 3.jpg" alt="Product 3" class="my_img">
 
-            <img src="Pictures%20for%20website/Tips and Ideas 4.jpg" alt="Product 3" class="my_img">
+            <img src="../Pictures%20for%20website/Tips and Ideas 4.jpg" alt="Product 3" class="my_img">
        
-            <img src="Pictures%20for%20website/Tips and Ideas 5.jpg" alt="Product 3" class="my_img">
+            <img src="../Pictures%20for%20website/Tips and Ideas 5.jpg" alt="Product 3" class="my_img">
         
     </div>
     </section>

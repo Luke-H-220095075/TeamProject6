@@ -23,7 +23,7 @@
             <li><a href="loginview.php">Login</a></li>
             <li><a href="contactus/contact.html">Contact Us</a></li>
             <li><a href="About Us.html">About Us</a></li>
-            <li><a href="Furniche Products\products.php">Products</a></li>
+            <li><a href="product\products.php">Products</a></li>
         </ul>
   </nav>
   </nav>
