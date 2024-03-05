@@ -14,27 +14,24 @@
   <header>
     
 <section>
-  <div class="topnav">
-      <nav>
-          <h1 class="logo">Furniche</h1>
-          <ul>
-              <li><a href="index.php">Home</a></li>
-              <li><a href="products.php">Products</a></li>
-              <li><a href="basket.php">Basket</a></li>
-              <li><a href="loginview.php">Login</a></li>
-              <li><a href="signUpPage.php">Sign up</a></li>
-              <li><a href="history.php">Previous Orders</a></li>
-              <li><a href="contact.php">Contact Us</a></li>
-              <li><a href="aboutus.php">About Us</a></li>
+    <nav>
+    <div id="navbar">
+        <a href="index.php" id="logo">Furniche</a>
+        <div id="navbar-right">
+            <a href="products.php">Products</a>
+            <a href="contact.php">Contact Us</a>
+            <a href="aboutus.php">About Us</a>
+            <a href="loginview.php">Login</a>
+            <a href="basket.php"><i class="fa-solid fa-basket-shopping"></i></a>
+        </div>
+    </div>
               <?php
                 session_start();
               if (isset($_SESSION['user'])) {
                   echo '<li><a href="#">' . $_SESSION['user'] . '</a>';
               }
               ?>
-          </ul>
   </nav>
-  </div>
 </section>
 </header>
     <body class="bg-gray-100">
@@ -110,6 +107,20 @@
             <h1 class="text4">Things to make your  living  more modern. </h1>
     </div>
 <script>
+
+    // When the user scrolls down 80px from the top of the document, resize the navbar's padding and the logo's font size
+    window.onscroll = function() {scrollFunction()};
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+            document.getElementById("navbar").style.padding = "30px 10px";
+            document.getElementById("logo").style.fontSize = "25px";
+        } else {
+            document.getElementById("navbar").style.padding = "80px 10px";
+            document.getElementById("logo").style.fontSize = "35px";
+        }
+    }
+
     let slideIndex = 1;
 showSlides(slideIndex);
 
