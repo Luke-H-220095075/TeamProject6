@@ -358,7 +358,7 @@ if (!empty($cheapestProducts)) {
 
         if (isConfirmed) {
             var xhr = new XMLHttpRequest();
-            xhr.open('POST', 'basket_add.php', true);
+            xhr.open('POST', '../basket/basket_add.php', true);
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
             xhr.onreadystatechange = function () {
                 if (xhr.readyState === 4 && xhr.status === 200) {
@@ -367,7 +367,7 @@ if (!empty($cheapestProducts)) {
 
                     var goToBasket = confirm('Proceed to Basket?');
                     if (goToBasket) {
-                        window.location.href = 'basket.php';
+                        window.location.href = '../basket/basket.php';
                     }
                 }
             };
