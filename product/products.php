@@ -375,6 +375,11 @@ if (!empty($cheapestProducts)) {
         }
     }
 
+    function showProductDetails(productId) {
+        // Open the product details page in a new window or tab
+        window.open('product_details.php?product_id=' + productId, '_blank');
+    }
+
 </script>
 </body>
 <footer class="footer">

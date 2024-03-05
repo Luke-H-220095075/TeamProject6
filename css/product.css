@@ -391,3 +391,20 @@ th {
     cursor: pointer;
 }
 
+.recommendations {
+    display: flex;
+    width: 100%;
+    flex-wrap: nowrap; /* Ensure items stay in a single line */
+    overflow-x: auto; /* Enable horizontal scrolling if needed */
+    margin: -10px; /* Adjust for spacing */
+}
+
+.recommendation {
+    flex: 0 0 auto; /* Prevent items from growing */
+    margin: 10px; /* Adjust for spacing */
+}
+
+.recommendation img {
+    width: 300px; /* Adjust image size */
+    height: 250px;
+}

@@ -24,7 +24,8 @@ try {
             echo '<h3>Product Details</h3>';
             echo '<p><strong>Name:</strong> ' . htmlspecialchars($row['productName']) . '</p>';
             echo '<p><strong>Price:</strong> £' . number_format($row['price'], 2) . '</p>';
-            echo '<p><img src="../Pictures%20for%20website/' . htmlspecialchars($row['imageName']) . '" alt="' . htmlspecialchars($row['imageName']) . '" class="modal-image"></p>';
+            echo '<p><img src="../Pictures%20for%20website/' . htmlspecialchars($row['imageName']) . '" alt="' . htmlspecialchars($row['imageName']) . '" onclick="showProductDetails(' . $productId . ')" class="modal-image "></p>';
+            echo '<p>Click on image to see more details.</p>';
         } else {
             echo '<p>No product found with the given ID</p>';
         }
@@ -37,5 +38,11 @@ try {
 
 $db = null;
 ?>
+<script>
+    function showProductDetails(productId) {
+        // Open the product details page in a new window or tab
+        window.open('product_details.php?product_id=' + productId, '_blank');
+    }
+</script>
 </body>
 </html>
