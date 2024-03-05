@@ -1,4 +1,5 @@
 <?php
+    session_start();
 class Message {
     public $messagetext;
     public $subject;
@@ -14,11 +15,12 @@ class Message {
     public function sendMessage(){
         include 'connect.php';
         try{
-          $sth=$db->prepare("INSERT INTO inquiries(userID, inquiryDate, subject, message) VALUES (:userid, GETDATE(), :subject, :message)");
+          $sth=$db->prepare("INSERT INTO inquiries(userID, inquiryDate, subject, message) VALUES (:userid, curdate(), :subject, :message)");
           $sth->bindparam(':userid', $_SESSION['userID'], PDO::PARAM_STR, 64);
           $sth->bindparam(':subject', $this->subject, PDO::PARAM_STR, 64);
           $sth->bindparam(':message', $this->messagetext, PDO::PARAM_STR, 64);
           $sth->execute();
+          echo $_SESSION['userID'];
         }catch(PDOException $ex){
           ?>
           <p>Sorry, a database error occurred.<p>

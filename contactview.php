@@ -19,9 +19,9 @@
               <h1 class="logo">Furniche</h1>
               <ul>
                   <li><a class="active" href="Main.html">Home</a></li>
-                  <li><a href="loginp.html">Login</a></li>
-                  <li><a href="contact.html">Contact Us</a></li>
-                  <li><a href="About Us.html">About Us</a></li>
+                  <li><a href="loginview.php">Login</a></li>
+                  <li><a href="contactview.php">Contact Us</a></li>
+                  <li><a href="aboutus.php">About Us</a></li>
               </ul>
       </nav>
       </div>
@@ -48,13 +48,6 @@
     <form id="contact-form" method="post">
       <label for="name">Subject:</label>
       <input type="text" id="name" name="subject" required><br><br>
-  
-      <!-- <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required><br><br>
-  
-      <label for="confirm-email">Confirm Email:</label>
-      <input type="email" id="confirm-email" name="confirm-email" required><br><br>
-      -->
       <label for="description">Message:</label><br>
       <textarea id="description" name="message" rows="5" cols="50"></textarea><br><br>
   
@@ -91,7 +84,7 @@
                 <h5>Email us at: comms@furniche.com</h5>
                 <h5>Call us at: 01563385967</h5>
                 <ul>
-                    <li><a href="C:\Users\Osaze\OneDrive\Documents\GitHub\TeamProject6\contact.css">Contact Us via our Website</a> </li>
+                    <li><a href="contactview.php">Contact Us via our Website</a> </li>
                 </ul>
             </div>
             <div class="footer-col">

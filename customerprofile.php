@@ -17,9 +17,9 @@
           <h1 class="logo">Furniche</h1>
           <ul>
               <li><a class="active" href="Main.html">Home</a></li>
-              <li><a href="loginview.html">Login</a></li>
-              <li><a href="contactus.html">Contact Us</a></li>
-              <li><a href="contactus.html">About Us</a></li>
+              <li><a href="loginview.php">Login</a></li>
+              <li><a href="contactview.php">Contact Us</a></li>
+              <li><a href="aboutus.php">About Us</a></li>
           </ul>
   </nav>
   </div>
@@ -85,7 +85,7 @@ require("../../../TeamProject6/model/User.php");?>
                     <h5>Email us at: comms@furniche.com</h5>
                     <h5>Call us at: 01563385967</h5>
                     <ul>
-                        <li><a href="C:\Users\Osaze\OneDrive\Documents\GitHub\TeamProject6\contact.css">Contact Us via our Website</a> </li>
+                        <li><a href="contactview.php">Contact Us via our Website</a> </li>
                     </ul>
                 </div>
                 <div class="footer-col">
