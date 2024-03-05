@@ -67,7 +67,7 @@
                     echo '<div class="item-image"><img src= "../Pictures%20for%20website/' . $row['imageName'] . '" " width="250" height="300" alt="' . $row['imageName']  . '"></img></div>';
                     echo '<div class="item-details">';
                     echo '<p><strong>' . $row['productName'] . '</strong></p>';
-                    echo '<p>Price: $' . $row['price'] . '</p>';
+                    echo '<p>Price: £' . $row['price'] . '</p>';
                     echo '<div class="quantity-controls">';
                     echo '<button onclick="adjustQuantity(' . $row['productId'] . ', -1)">-</button>';
                     echo '<span> </span><span class="quantity">' . $row['quantity'] . '</span><span> </span>';

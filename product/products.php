@@ -251,7 +251,7 @@ if (!empty($cheapestProducts)) {
         echo '<div class="offer-item">';
         echo '<a onclick="showProductModal(' . $offer['productId'] . ')"><img src= "../Pictures for website/' . htmlspecialchars($offer['imageName']) . '" alt="' . htmlspecialchars($offer['imageName']) . '"></a><br>';
         echo '<h3>' . $offer['productName'] . '</h3>';
-        echo '<p>Price: $' . $offer['price'] . '</p>';
+        echo '<p>Price: £' . $offer['price'] . '</p>';
         echo '</div>';
     }
     echo '</div>';
