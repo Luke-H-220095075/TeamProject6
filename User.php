@@ -67,7 +67,7 @@ class User {
   public function signUp(){
     include 'connect.php';
     try{
-      $sth=$db->prepare("INSERT INTO users(username, firstname, surname, password, email, userType) VALUES (:username, :firstname, :surname, :password, :email, :admin)");
+      $sth=$db->prepare("INSERT INTO users(username, firstname, surname, password, email, admin) VALUES (:username, :firstname, :surname, :password, :email, :admin)");
       $sth->bindparam(':username', $this->username, PDO::PARAM_STR, 64);
       $sth->bindparam(':password', $this->password, PDO::PARAM_STR, 64);
       $sth->bindparam(':firstname', $this->firstname, PDO::PARAM_STR, 64);
@@ -206,11 +206,11 @@ class User {
     session_start();
     include 'connect.php';
         $_SESSION["user"] = $this->username;
-        $sth=$db->prepare("SELECT userType, userId FROM users WHERE username = :username");
+        $sth=$db->prepare("SELECT admin, userId FROM users WHERE username = :username");
         $sth->bindparam(':username', $this->username, PDO::PARAM_STR, 10);
         $sth->execute();
         $row=$sth->fetch(PDO::FETCH_ASSOC);
-        $_SESSION["access"] = $row['userType'];
+        $_SESSION["access"] = $row['admin'];
         $_SESSION["userID"] = $row['userId'];
         echo "session set";
         //alert($_SESSION["userID"]);
