@@ -3,7 +3,7 @@
 
 <head>
     <title>About DLegends - Furniture Company</title>
-    <link rel="stylesheet" href="CP.css">
+    <link rel="stylesheet" href="css/customerprofile.css">
 </head>
 <div class="colour">
   <header>
