@@ -1,0 +1,74 @@
+<!doctype html>
+    <html lang="en">
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Drag and drop furniture into room.</title>
+      <link rel="stylesheet" href="dragAndDrop.css">
+    </head>
+    <body>
+  
+        <h1>Upload an image of your room to see how the furniture would look</h1>
+        <input type="file" id="inpimage">
+        <img src="" id="displayImg">
+        <div id="drag1"> <img id="img1" src="Pictures for website/Blog-Header-Tropical-Rainforest-River.jpg"/></div>
+        <script>
+          
+// Make the DIV element draggable:
+imageDiv = document.getElementById("drag1");
+dragElement(imageDiv);
+
+function dragElement(imageDiv) {
+    var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+      imageDiv.onmousedown = dragMouseDown;
+}
+
+  function dragMouseDown(e) {
+    e = e || window.event;
+    e.preventDefault();
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    document.onmouseup = closeDragElement;
+    document.onmousemove = elementDrag;
+  }
+
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    imageDiv.style.top = (imageDiv.offsetTop - pos2) + "px";
+    imageDiv.style.left = (imageDiv.offsetLeft - pos1) + "px";
+  }
+
+  function closeDragElement() {
+    document.onmouseup = null;
+    document.onmousemove = null;
+  }
+  var inpImg = document.getElementById("inpimage"),
+    displayImg = document.getElementById("displayImg");
+    
+inpImg.addEventListener("change", function() {
+  changeImage(this);
+});
+
+function changeImage(input) {
+  var reader;
+
+  if (input.files && input.files[0]) {
+    reader = new FileReader();
+
+    reader.onload = function(e) {
+      displayImg.setAttribute('src', e.target.result);
+    }
+
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+        </script>
+     
+         
+        </body>
+        </html>
