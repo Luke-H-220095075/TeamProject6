@@ -4,6 +4,7 @@
 <head>
     <title>Furniche - Products</title>
     <link rel="stylesheet" type="text/css" href="../css/product.css">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
 </head>
 
 <h2 class="title">Products</h2>  
@@ -16,27 +17,24 @@
   </a>
 </div>
 <section>
-  <div class="topnav">
-      <nav>
-          <h1 class="logo">Furniche</h1>
-          <ul>
-              <li><a href="index.php">Home</a></li>
-              <li><a href="products.php">Products</a></li>
-              <li><a href="../basket/basket.php">Basket</a></li>
-              <li><a href="loginview.php">Login</a></li>
-              <li><a href="signUpPage.php">Sign up</a></li>
-              <li><a href="history.php">Previous Orders</a></li>
-              <li><a href="contact.php">Contact Us</a></li>
-              <li><a href="aboutus.php">About Us</a></li>
+    <nav>
+    <div id="navbar">
+        <a href="index.php" id="logo">Furniche</a>
+        <div id="navbar-right">
+            <a href="product/products.php">Products</a>
+            <a href="contactview.php">Contact Us</a>
+            <a href="aboutus.php">About Us</a>
+            <a href="loginview.php">Login</a>
+            <a href="basket/basket.php"><i class="fa-solid fa-basket-shopping"></i></a>
+        </div>
+    </div>
               <?php
-              session_start();
+                session_start();
               if (isset($_SESSION['user'])) {
                   echo '<li><a href="#">' . $_SESSION['user'] . '</a>';
               }
               ?>
-          </ul>
   </nav>
-  </div>
 </section>
 </header>
     
@@ -301,6 +299,19 @@ if (!empty($cheapestProducts)) {
 </div>
 
 <script>
+       // When the user scrolls down 80px from the top of the document, resize the navbar's padding and the logo's font size
+       window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+    if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+        document.getElementById("navbar").style.padding = "30px 10px";
+        document.getElementById("logo").style.fontSize = "25px";
+    } else {
+        document.getElementById("navbar").style.padding = "80px 10px";
+        document.getElementById("logo").style.fontSize = "35px";
+    }
+}
+
     function showProductModal(productId) {
         var modal = document.getElementById('productModal');
         var productDetailsContainer = document.getElementById('productDetailsModal');
