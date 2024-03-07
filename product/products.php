@@ -214,7 +214,7 @@ try {
             }
 
             echo '<td class="center">';
-            echo '<a onclick="showProductModal(' . $row['productId'] . ')"><img src="../Pictures for website/' . htmlspecialchars($row['imageName']) . '" alt="' . htmlspecialchars($row['imageName']) . '" class="product-image"></a><br>';
+            echo '<a onclick="showProductModal(' . $row['productId'] . ')"><img src="../Pictures for website/' . htmlspecialchars($row['imageName']) . '" alt="' . htmlspecialchars($row['imageName']) . '" id="prodImage" class="product-image"></a><br>';
             echo '</td>';
 
 
@@ -319,6 +319,17 @@ if (!empty($cheapestProducts)) {
         document.getElementById('addToBasketButton').style.display = 'block';
         document.getElementById('productModal').style.display = 'block';
     }
+    function showInRoom(productId) {
+        window.open('dragAndDrop.php?product_id=' + productId, '_blank');
+        //var productDetailsContainer = document.getElementById('productDetailsModal');
+            // var xhr = new XMLHttpRequest();
+            // xhr.open('POST', '../dragAndDrop.php', true);
+            // xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            // //xhr.onreadystatechange = function () {
+                   
+            //    // }
+            //     xhr.send('image='+img);
+             }
 
     function closeProductModal() {
         var modal = document.getElementById('productModal');
