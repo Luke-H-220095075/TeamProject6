@@ -26,10 +26,39 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Drag and drop furniture into room.</title>
       <link rel="stylesheet" href="dragAndDrop.css">
+      <link rel="stylesheet" type="text/css" href="../css/product.css">
     </head>
     <body>
+    <div class="colour">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+        <link rel="stylesheet" href="https://use.typekit.net/maf1fpm.css">
+        </a>
+    </div>
+    <section>
+        <div class="topnav">
+            <nav>
+                <h1 class="logo">Furniche</h1>
+                <ul>
+                    <li><a href="index.php">Home</a></li>
+                    <li><a href="products.php">Products</a></li>
+                    <li><a href="../basket/basket.php">Basket</a></li>
+                    <li><a href="loginview.php">Login</a></li>
+                    <li><a href="signUpPage.php">Sign up</a></li>
+                    <li><a href="history.php">Previous Orders</a></li>
+                    <li><a href="contact.php">Contact Us</a></li>
+                    <li><a href="aboutus.php">About Us</a></li>
+                    <?php
+                    session_start();
+                    if (isset($_SESSION['user'])) {
+                        echo '<li><a href="#">' . $_SESSION['user'] . '</a>';
+                    }
+                    ?>
+                </ul>
+            </nav>
+        </div>
+    </section>
   
-        <h1>Upload an image of your room to see how the furniture would look</h1>
+        <h2>Upload an image of your room to see how the furniture would look</h2>
         <input type="file" id="inpimage">
         <img src="" id="displayImg">
         <?php
