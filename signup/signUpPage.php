@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Furniche - Sign Up</title>
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="../css/login.css">
 </head>
 <body>
     
@@ -48,7 +48,10 @@
                 </div>
                 <script src="showPasswordScript.js"></script>
                 <label class="checkbox"><input type="checkbox" name="passcbx" onclick="showPassword()">Show Password</label>
-
+                <div>Please enter your mother's maiden name. This is so we can recover your account if you forget your password</div>
+                <div class="input_box">
+                    <input type="password" id="sanswer" name="sanswer" required>
+                    <label for="sanswer">Mother's maiden name</label></div>
                 <div class="link_box">
                     <div class="link">By creating an account you agree to <a href="#">Terms & Conditions</a></div>
                 </div>

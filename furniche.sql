@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 07, 2024 at 01:26 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Generation Time: Mar 07, 2024 at 04:18 PM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -38,7 +38,7 @@ CREATE TABLE `basketproducts` (
 --
 
 INSERT INTO `basketproducts` (`basketId`, `productId`, `quantity`) VALUES
-(1, 4, 1);
+(1, 4, 2);
 
 -- --------------------------------------------------------
 
@@ -78,7 +78,7 @@ CREATE TABLE `discounts` (
 --
 
 INSERT INTO `discounts` (`discountId`, `discountTitle`, `discountDescription`, `value`) VALUES
-(1, 'test', 'test', 15.00);
+(1, 'test', 'test', '15.00');
 
 -- --------------------------------------------------------
 
@@ -167,31 +167,31 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`productId`, `productName`, `price`, `dateAdded`, `countSold`, `countStock`, `productCategory`, `productType`, `imageName`) VALUES
-(1, 'Modern Sofa', 499.99, '2023-12-01 13:25:36', 10, 50, 'modern', 'sofa', 'modern_sofa.jpg'),
-(2, 'Minimal Desk', 199.99, '2023-12-01 13:25:36', 5, 20, 'minimal', 'desk', 'minimal_desk.jpg'),
-(3, 'Rustic Chair', 129.99, '2023-12-01 13:25:36', 8, 30, 'rustic', 'chair', 'rustic_chair.jpg'),
-(4, 'Bohemian Bed', 699.99, '2023-12-01 13:25:36', 12, 40, 'bohemian', 'bed', 'bohemian_bed.jpg'),
-(5, 'Tropical Wardrobe', 299.99, '2023-12-01 13:25:36', 6, 25, 'tropical', 'wardrobe', 'tropical_wardrobe.jpg'),
-(6, 'Modern Chair', 149.99, '2023-12-01 13:25:36', 9, 35, 'modern', 'chair', 'modern_chair.jpg'),
-(7, 'Minimal Bed', 599.99, '2023-12-01 13:25:36', 15, 45, 'minimal', 'bed', 'minimal_bed.jpg'),
-(8, 'Rustic Desk', 179.99, '2023-12-01 13:25:36', 7, 28, 'rustic', 'desk', 'rustic_desk.jpg'),
-(9, 'Bohemian Sofa', 549.99, '2023-12-01 13:25:36', 11, 38, 'bohemian', 'sofa', 'bohemian_sofa.jpg'),
-(10, 'Tropical Chair', 169.99, '2023-12-01 13:25:36', 10, 32, 'tropical', 'chair', 'tropical_chair.jpg'),
-(11, 'Modern Sofa 2', 479.99, '2023-12-01 13:25:36', 8, 45, 'modern', 'sofa', 'modern_sofa_2.jpg'),
-(12, 'Minimal Desk 2', 219.99, '2023-12-01 13:25:36', 6, 18, 'minimal', 'desk', 'minimal_desk_2.jpg'),
-(13, 'Rustic Chair 2', 149.99, '2023-12-01 13:25:36', 7, 32, 'rustic', 'chair', 'rustic_chair_2.jpg'),
-(14, 'Bohemian Bed 2', 679.99, '2023-12-01 13:25:36', 10, 35, 'bohemian', 'bed', 'bohemian_bed_2.jpg'),
-(15, 'Tropical Wardrobe 2', 279.99, '2023-12-01 13:25:36', 5, 28, 'tropical', 'wardrobe', 'tropical_wardrobe_2.jpg'),
-(16, 'Modern Chair 2', 129.99, '2023-12-01 13:25:36', 12, 30, 'modern', 'chair', 'modern_chair_2.jpg'),
-(17, 'Minimal Bed 2', 569.99, '2023-12-01 13:25:36', 14, 40, 'minimal', 'bed', 'minimal_bed_2.jpg'),
-(18, 'Rustic Desk 2', 199.99, '2023-12-01 13:25:36', 10, 26, 'rustic', 'desk', 'rustic_desk_2.jpg'),
-(19, 'Bohemian Sofa 2', 529.99, '2023-12-01 13:25:36', 13, 38, 'bohemian', 'sofa', 'bohemian_sofa_2.jpg'),
-(20, 'Tropical Chair 2', 149.99, '2023-12-01 13:25:36', 11, 30, 'tropical', 'chair', 'tropical_chair_2.jpg'),
-(21, 'Modern Sofa 3', 459.99, '2023-12-01 13:25:36', 9, 42, 'modern', 'sofa', 'modern_sofa_3.jpg'),
-(22, 'Minimal Desk 3', 239.99, '2023-12-01 13:25:36', 8, 22, 'minimal', 'desk', 'minimal_desk_3.jpg'),
-(23, 'Rustic Chair 3', 139.99, '2023-12-01 13:25:36', 11, 28, 'rustic', 'chair', 'rustic_chair_3.jpg'),
-(24, 'Bohemian Bed 3', 649.99, '2023-12-01 13:25:36', 13, 30, 'bohemian', 'bed', 'bohemian_bed_3.jpg'),
-(25, 'Tropical Wardrobe 3', 259.99, '2023-12-01 13:25:36', 9, 25, 'tropical', 'wardrobe', 'tropical_wardrobe_3.jpg');
+(1, 'Modern Sofa', '499.99', '2023-12-01 13:25:36', 10, 50, 'modern', 'sofa', 'modern_sofa.jpg'),
+(2, 'Minimal Desk', '199.99', '2023-12-01 13:25:36', 5, 20, 'minimal', 'desk', 'minimal_desk.jpg'),
+(3, 'Rustic Chair', '129.99', '2023-12-01 13:25:36', 8, 30, 'rustic', 'chair', 'rustic_chair.jpg'),
+(4, 'Bohemian Bed', '699.99', '2023-12-01 13:25:36', 12, 40, 'bohemian', 'bed', 'bohemian_bed.jpg'),
+(5, 'Tropical Wardrobe', '299.99', '2023-12-01 13:25:36', 6, 25, 'tropical', 'wardrobe', 'tropical_wardrobe.jpg'),
+(6, 'Modern Chair', '149.99', '2023-12-01 13:25:36', 9, 35, 'modern', 'chair', 'modern_chair.jpg'),
+(7, 'Minimal Bed', '599.99', '2023-12-01 13:25:36', 15, 45, 'minimal', 'bed', 'minimal_bed.jpg'),
+(8, 'Rustic Desk', '179.99', '2023-12-01 13:25:36', 7, 28, 'rustic', 'desk', 'rustic_desk.jpg'),
+(9, 'Bohemian Sofa', '549.99', '2023-12-01 13:25:36', 11, 38, 'bohemian', 'sofa', 'bohemian_sofa.jpg'),
+(10, 'Tropical Chair', '169.99', '2023-12-01 13:25:36', 10, 32, 'tropical', 'chair', 'tropical_chair.jpg'),
+(11, 'Modern Sofa 2', '479.99', '2023-12-01 13:25:36', 8, 45, 'modern', 'sofa', 'modern_sofa_2.jpg'),
+(12, 'Minimal Desk 2', '219.99', '2023-12-01 13:25:36', 6, 18, 'minimal', 'desk', 'minimal_desk_2.jpg'),
+(13, 'Rustic Chair 2', '149.99', '2023-12-01 13:25:36', 7, 32, 'rustic', 'chair', 'rustic_chair_2.jpg'),
+(14, 'Bohemian Bed 2', '679.99', '2023-12-01 13:25:36', 10, 35, 'bohemian', 'bed', 'bohemian_bed_2.jpg'),
+(15, 'Tropical Wardrobe 2', '279.99', '2023-12-01 13:25:36', 5, 28, 'tropical', 'wardrobe', 'tropical_wardrobe_2.jpg'),
+(16, 'Modern Chair 2', '129.99', '2023-12-01 13:25:36', 12, 30, 'modern', 'chair', 'modern_chair_2.jpg'),
+(17, 'Minimal Bed 2', '569.99', '2023-12-01 13:25:36', 14, 40, 'minimal', 'bed', 'minimal_bed_2.jpg'),
+(18, 'Rustic Desk 2', '199.99', '2023-12-01 13:25:36', 10, 26, 'rustic', 'desk', 'rustic_desk_2.jpg'),
+(19, 'Bohemian Sofa 2', '529.99', '2023-12-01 13:25:36', 13, 38, 'bohemian', 'sofa', 'bohemian_sofa_2.jpg'),
+(20, 'Tropical Chair 2', '149.99', '2023-12-01 13:25:36', 11, 30, 'tropical', 'chair', 'tropical_chair_2.jpg'),
+(21, 'Modern Sofa 3', '459.99', '2023-12-01 13:25:36', 9, 42, 'modern', 'sofa', 'modern_sofa_3.jpg'),
+(22, 'Minimal Desk 3', '239.99', '2023-12-01 13:25:36', 8, 22, 'minimal', 'desk', 'minimal_desk_3.jpg'),
+(23, 'Rustic Chair 3', '139.99', '2023-12-01 13:25:36', 11, 28, 'rustic', 'chair', 'rustic_chair_3.jpg'),
+(24, 'Bohemian Bed 3', '649.99', '2023-12-01 13:25:36', 13, 30, 'bohemian', 'bed', 'bohemian_bed_3.jpg'),
+(25, 'Tropical Wardrobe 3', '259.99', '2023-12-01 13:25:36', 9, 25, 'tropical', 'wardrobe', 'tropical_wardrobe_3.jpg');
 
 -- --------------------------------------------------------
 
@@ -209,15 +209,16 @@ CREATE TABLE `users` (
   `username` varchar(50) NOT NULL,
   `phone` varchar(255) DEFAULT NULL,
   `password` varchar(255) NOT NULL,
-  `dateCreated` timestamp NOT NULL DEFAULT current_timestamp()
+  `dateCreated` timestamp NOT NULL DEFAULT current_timestamp(),
+  `secretAnswer` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`userId`, `admin`, `firstname`, `surname`, `address`, `email`, `username`, `phone`, `password`, `dateCreated`) VALUES
-(1, 'customer', 'admin', 'admin', NULL, 'admin@admin.com', 'admin', NULL, '$2y$10$LmAbf3RNHJyUisHl7RH.rOB5dhWG136IRNw5lfcBArzIn9jRpWoEK', '2024-02-07 11:51:07');
+INSERT INTO `users` (`userId`, `admin`, `firstname`, `surname`, `address`, `email`, `username`, `phone`, `password`, `dateCreated`, `secretAnswer`) VALUES
+(1, 'customer', 'admin', 'admin', NULL, 'admin@admin.com', 'admin', NULL, '$2y$10$LmAbf3RNHJyUisHl7RH.rOB5dhWG136IRNw5lfcBArzIn9jRpWoEK', '2024-02-07 11:51:07', '');
 
 --
 -- Indexes for dumped tables
