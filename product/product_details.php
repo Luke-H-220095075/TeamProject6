@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
+
 <header>
 
     <div class="colour">
@@ -27,67 +28,75 @@
             <a href="basket.php"><i class="fa-solid fa-basket-shopping"></i></a>
         </div>
     </div>
+
+
               <?php
                 session_start();
               if (isset($_SESSION['user'])) {
                   echo '<li><a href="#">' . $_SESSION['user'] . '</a>';
               }
               ?>
-  </nav>
+  </nav> 
 </section>
-</header>
+          
+
+            
 </header>
 <div class="product-details">
-    <?php
-    if (isset($_GET['product_id'])) {
-        $product_id = $_GET['product_id'];
+<?php
+if (isset($_GET['product_id'])) {
+    $product_id = $_GET['product_id'];
 
-        include '../connect.php';
+    include '../connect.php';
 
-        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        // Calling the product details from the database
+    try {
+        $stmt = $db->prepare("SELECT * FROM products WHERE productId = :product_id");
+        $stmt->bindParam(':product_id', $product_id, PDO::PARAM_INT);
+        $stmt->execute();
 
-        try {
-            $stmt = $db->prepare("SELECT * FROM products WHERE productId = :product_id");
-            $stmt->bindParam(':product_id', $product_id, PDO::PARAM_INT);
-            $stmt->execute();
-
-            if ($stmt->rowCount() > 0) {
-                $row = $stmt->fetch(PDO::FETCH_ASSOC);
-                echo '<div class="image">';
-                echo '<p><img src="../Pictures%20for%20website/' . htmlspecialchars($row['imageName']) . '" alt="' . htmlspecialchars($row['imageName']) . '"></p>';
-                echo'</div>';
-                echo '<div class="info">'; 
-                echo '<h2>' . $row['productName'] . '</h2>';
-                echo '<p><strong>Price:</strong> $' . $row['price'] . '</p>';
-                echo '<p><strong>Category:</strong> ' . $row['productCategory'] . '</p>';
-                echo '<p><strong>Type:</strong> ' . $row['productType'] . '</p>';
-                echo '<p><strong>Release Date/Time:</strong> ' . $row['dateAdded'] . '</p>';
-                echo '<p><strong>Amount in Stock:</strong> ' . $row['countStock'] . '</p>';
-                echo '<p><strong>Amount Sold:</strong> ' . $row['countSold'] . '</p>';
+        if ($stmt->rowCount() > 0) {
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            echo '<div class="card">';
+            echo '<div id="image-details">';
+            echo '<p><img src="../Pictures%20for%20website/' . htmlspecialchars($row['imageName']) . '" alt="' . htmlspecialchars($row['imageName']) . '"></p>';
+            echo '</div>';
+            echo '<div class="info">';
+            echo '<h2>' . $row['productName'] . '</h2>';
+            echo '<p><strong>Price:</strong> $' . $row['price'] . '</p>';
+            echo '<p><strong>Category:</strong> ' . $row['productCategory'] . '</p>';
+            echo '<p><strong>Type:</strong> ' . $row['productType'] . '</p>';
+            echo '<p><strong>Release Date/Time:</strong> ' . $row['dateAdded'] . '</p>';
+            echo '<p><strong>Amount in Stock:</strong> ' . $row['countStock'] . '</p>';
+            echo '<p><strong>Amount Sold:</strong> ' . $row['countSold'] . '</p>';
+            echo '</div>';
+            echo '<h3>Recommendations</h3>';
+            $stmtRecommendations = $db->prepare("SELECT * FROM products WHERE productId != :product_id ORDER BY RAND() LIMIT 4");
+            $stmtRecommendations->bindParam(':product_id', $product_id, PDO::PARAM_INT);
+            $stmtRecommendations->execute();
+            echo '<div class="recommendations">';
+            while ($recommendation = $stmtRecommendations->fetch(PDO::FETCH_ASSOC)) {
+                echo '<div class="recommendation-card">';
+                echo '<p><img src="../Pictures%20for%20website/' . htmlspecialchars($recommendation['imageName']) . '" alt="' . htmlspecialchars($row['imageName']) . '"></p>';
+                echo '<h4>' . $recommendation['productName'] . '</h4>';
+                echo '<p><strong>Price:</strong> $' . $recommendation['price'] . '</p>';
                 echo '</div>';
-                echo '<h3>Recommendations</h3>';
-                $stmtRecommendations = $db->prepare("SELECT * FROM products WHERE productId != :product_id ORDER BY RAND() LIMIT 4");
-                $stmtRecommendations->bindParam(':product_id', $product_id, PDO::PARAM_INT);
-                $stmtRecommendations->execute();
-                echo '<div class="recommendations">';
-                while ($recommendation = $stmtRecommendations->fetch(PDO::FETCH_ASSOC)) {
-                    echo '<div class="recommendation">';
-                    echo '<p><img src="../Pictures%20for%20website/' . htmlspecialchars($recommendation['imageName']) . '" alt="' . htmlspecialchars($row['imageName']) . '"></p>';
-                    echo '</div>';
-                }
-                echo '</div>';
-            } else {
-                echo "<p>Product not found.</p>";
             }
-        } catch (PDOException $e) {
-            echo "Error: " . $e->getMessage();
+            echo '</div>';
+            echo '</div>';
+        } else {
+            echo "<p>Product not found.</p>";
         }
-
-        $pdo = null;
-    } else {
-        echo "<p>No product ID provided.</p>";
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
     }
-    ?>
+
+    $pdo = null;
+} else {
+    echo "<p>No product ID provided.</p>";
+}
+?>
 </div>
 <script>
 // When the user scrolls down 80px from the top of the document, resize the navbar's padding and the logo's font size

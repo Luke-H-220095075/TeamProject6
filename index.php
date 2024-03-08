@@ -12,7 +12,7 @@
 
 
   <header>
-    
+    <!--
 <section>
     <nav>
     <div id="navbar">
@@ -32,7 +32,7 @@
               }
               ?>
   </nav>
-</section>
+</section> -->
 </header>
     <body class="bg-gray-100">
 <!-- Slideshow container -->
