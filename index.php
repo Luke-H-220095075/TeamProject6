@@ -12,7 +12,7 @@
 
 
   <header>
-    <!--
+
 <section>
     <nav>
     <div id="navbar">
@@ -32,7 +32,7 @@
               }
               ?>
   </nav>
-</section> -->
+</section>
 </header>
     <body class="bg-gray-100">
 <!-- Slideshow container -->
@@ -116,7 +116,7 @@
             document.getElementById("navbar").style.padding = "30px 10px";
             document.getElementById("logo").style.fontSize = "25px";
         } else {
-            document.getElementById("navbar").style.padding = "80px 10px";
+            document.getElementById("navbar").style.padding = "50px 10px";
             document.getElementById("logo").style.fontSize = "35px";
         }
     }
