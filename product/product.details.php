@@ -1,18 +1,21 @@
 
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-    <title>Furniche - Home</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="css/style.css" rel="stylesheet">
+<html>
+
+<head>
+    <title>Furniche - Products</title>
     <link rel="stylesheet" type="text/css" href="../css/product.css">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+</head>
+ 
+<body>
+    <header>
+
+<div class="colour">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
       <link rel="stylesheet" href="https://use.typekit.net/maf1fpm.css">
-    </head>
-
-
-
+  </a>
+</div>
 <section>
     <nav>
     <div id="navbar">
@@ -32,16 +35,17 @@
               }
               ?>
   </nav>
-</section> 
+</section>
+</header>
 <body>
-
+<br>
 <main class="container">
  
   <!-- Left Column / Headphones Image -->
   <div class="left-column">
-    <img data-image="black" src="images/black.png" alt="">
-    <img data-image="blue" src="images/blue.png" alt="">
-    <img data-image="red" class="active" src="images/red.png" alt="">
+    <img data-image="black" src="../Pictures for website/Bohemian.jpg" alt="">
+    <img data-image="blue" src="../Pictures for website/Bohemian.jpg" alt="">
+    <img data-image="red" class="active" src="../Pictures for website/Bohemian.jpg" alt="">
   </div>
  
  
@@ -50,7 +54,7 @@
  
     <!-- Product Description -->
     <div class="product-description">
-      <span>Headphones</span>
+      <span>Product</span>
       <h1>Beats EP</h1>
       <p>The preferred choice of a vast range of acclaimed DJs. Punchy, bass-focused sound and high isolation. Sturdy headband and on-ear cushions suitable for live performance</p>
     </div>
@@ -79,11 +83,11 @@
  
       </div>
  
-      <!-- Cable Configuration -->
-      <div class="cable-config">
+      <!-- Style Configuration -->
+      <div class="style-config">
         <span>Cable configuration</span>
  
-        <div class="cable-choose">
+        <div class="stye-choice">
           <button>Straight</button>
           <button>Coiled</button>
           <button>Long-coiled</button>
@@ -95,7 +99,7 @@
  
     <!-- Product Pricing -->
     <div class="product-price">
-      <span>148$</span>
+      <span>£300</span>
       <a href="#" class="cart-btn">Add to cart</a>
     </div>
   </div>

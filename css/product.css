@@ -1,51 +1,4 @@
-.topnav {
-    height: 10vh;
-    width: 100%;
-   background-image: url("../Pictures for website/wood.png");
-   background-size: cover;
-   background-position: center;
-  }
-  
-  nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-left: 10%;
-    padding-right: 10%;
-  }
-  
-  .logo {
-    color: #f5d5bb;
-    font-size:28px ;
-  }
-  
-  nav .fa {
-    display: none;
-  }
-  
-  nav ul li {
-    list-style-type: none;
-    display: inline-block;
-   right: -200;
-   padding: 10px 20px;
-  }
-  
-  nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-  
-  }
-  
-  nav ul li a:hover {
-    color: #4f4d62;
-    transition: 0.3s;
-  }
-  
-  ul {
-    list-style: none;
-  }
-  
+
   body {
     width: 100%;
     height: 100vh;
@@ -190,108 +143,6 @@ max-width:50px;
 max-height: 25px;
 }
 
-.image {
-    align-items: center;
-    max-width:50px;
-    max-height: 25px;
-    }
-.footer {
-    background-image: url("../Pictures for website/wood.png");
-    background-size: cover;
-    background-position: center;
-  padding: 70px 0;
-  opacity: 85%;
-  }
-    
-  .row {
-  display: flex;
-  flex-wrap: wrap;
-  }
-    
-    .footer-col {
-        width: 25%;
-        padding: 0 15px;
-    }
-    
-    .footer-col h4{
-        font-size: 18px;
-        color: #fff;
-        text-transform: capitalize;
-        margin-bottom: 30px;
-        font-weight: 500px;
-        position: relative;
-    }
-    
-    .footer-col h5{
-        font-size: 14px;
-        color: beige;
-        text-transform: capitalize;
-        margin-bottom: 15px;
-        font-weight: 200px;
-        position: relative;
-    }
-    
-    .footer-col h4::before {
-        content: '';
-        position: absolute;
-        left: 0;
-        bottom: -10px;
-        background-color: burlywood;
-        height: 2px;
-        box-sizing: border-box;
-        width: 50px;
-    }
-    
-    .footer-col ul li:not(:last-child){
-    margin-bottom: 10px;
-    }
-    
-    .footer-col ul li a{
-        font-size: 16px;
-        text-transform: capitalize;
-        color: #fff;
-        text-decoration: none;
-        font-weight: 300px;
-        color: #bbb;
-        display: block;
-        transition: all 0.3s ease;
-    }
-    
-    .footer-col ul li a:hover{
-        color: #fff;
-        padding-left: 10px;
-    }
-    
-    .footer-col .social-links a {
-        display: inline-block;
-        height: 40px;
-        width: 40px;
-        background-color:rgba(39, 31, 4, 0.6);
-        margin: 10px 10px 0;
-        text-align: center;
-        line-height: 40px;
-        border-radius: 50%;
-        color: #fff;
-        transition: all 0.5s ease;
-    }
-    
-    .footer-col .social-links a:hover {
-        color: #24262b;
-        background-color: #fff;
-    }
-    
-    @media(max-width: 767px){
-    .footer-col {
-        width: 25%;
-        margin-bottom: 30px;
-    }
-    }
-    
-    @media(max-width: 574px){
-        .footer-col {
-            width: 100%;
-        }
-        }
 h2 {
     color: #333;
 }
@@ -420,10 +271,6 @@ th {
     height: 250px;
 }
 
-body {
-    font-family: Arial, sans-serif;
-}
-
 /*.card {
     display: inline-block;
     width: 100%;
@@ -475,6 +322,7 @@ body {
     top: 0;
     opacity: 0;
     transition: all 0.3s ease;
+    height: 600px;
   }
    
   .left-column img.active {
@@ -542,16 +390,16 @@ body {
   }
    
   .color-choose input[type="radio"]:checked + label span {
-    background-image: url(Pictures for website/Bohemian.jpg);
+    background-image: url("../Pictures for website/Bohemian.jpg");
     background-repeat: no-repeat;
     background-position: center;
   }
   /* Cable Configuration */
-.cable-choose {
+.style-choice {
     margin-bottom: 20px;
   }
    
-  .cable-choose button {
+  .style-choice button {
     border: 2px solid #E1E8EE;
     border-radius: 6px;
     padding: 13px 20px;
@@ -562,19 +410,19 @@ body {
     transition: all .5s;
   }
    
-  .cable-choose button:hover,
-  .cable-choose button:active,
-  .cable-choose button:focus {
+  .style-choice button:hover,
+  .style-choice button:active,
+  .style-choice button:focus {
     border: 2px solid #86939E;
     outline: none;
   }
    
-  .cable-config {
+  .style-config {
     border-bottom: 1px solid #E1E8EE;
     margin-bottom: 20px;
   }
    
-  .cable-config a {
+  .style-config a {
     color: #358ED7;
     text-decoration: none;
     font-size: 12px;
@@ -583,7 +431,7 @@ body {
     display: inline-block;
   }
    
-  .cable-config a:before {
+  .style-config a:before {
     content: "?";
     height: 15px;
     width: 15px;
