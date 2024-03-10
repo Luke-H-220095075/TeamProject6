@@ -6,7 +6,7 @@
   <meta charset="UTF-8">
   <script src="Contact Us.js"></script>
   <link rel="stylesheet" href="css/contact.css">
-  <link rel="stylesheet" href="Authentication.css">
+  <!-- <link rel="stylesheet" href="css/Authentication.css"> -->
 </head>
   <header>
     <header>
@@ -30,8 +30,8 @@
 <body>
   <div class="content">
     <div class="who_are">
-        <img src="Pictures for website\Forest_Trail_Landscape_Wallpaper.jpg" alt="My Image" class="my_img">
-        <span>
+        <img src="Pictures for website\Contact Us Help.png" alt="My Image" class="my_img">
+        <!-- <span>
             <p>
               Thank you for your interest in Furniche. Please fill out the form below to ask a 
              question or report a technical problem. Please note: while we appreciate your 
@@ -42,10 +42,11 @@
               Visit our media center to find contact details for our media relations team in your region.
             </p>
 
-        </span>
+        </span> -->
     </div>
   <div class="contact">
-    <form id="contact-form" method="post">
+  <!-- <img src="Pictures for website\Contact Us Form Background.png" alt="My Image" class="my_img"> -->
+    <form class="contact-form" method="post">
       <label for="name">Subject:</label>
       <input type="text" id="name" name="subject" required><br><br>
       <label for="description">Message:</label><br>
@@ -57,7 +58,7 @@
       ?>
     </form>
     
-    <img src="Pictures for website\thumbnail.jpeg" alt="My Image" class="my_img">
+    <!-- <img src="Pictures for website\thumbnail.jpeg" alt="My Image" class="my_img"> -->
   </div>
   <section class="location">
     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2482.6980768196954!2d-0.08362608488829902!3d51.51875491769485!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4876034c44354bb1%3A0xc57f7d6c0b61ff5f!2sLiverpool%20Street!5e0!3m2!1sen!2suk!4v1677666062080!5m2!1sen!2suk" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
