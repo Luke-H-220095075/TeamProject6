@@ -1,3 +1,56 @@
+<?php
+include 'connect.php';
+#subtotal
+$basket_id = 1;
+$sql = "SELECT price, quantity FROM products JOIN basketproducts ON products.productId = basketproducts.productId WHERE basketId = $basket_id";
+$result = $db->query($sql);
+$subtotal = 0;
+if ($result->rowCount() > 0) {
+  while ($row = $result->fetch()) {
+    $subtotal = $subtotal + $row["quantity"] * $row["price"];
+  }
+}
+
+
+# discounts
+$discount_name = "Discount 1"; #$discount_name = $_POST['discount'];
+$sql = "SELECT value FROM discounts WHERE discountTitle = '" . $discount_name . "'";
+$value = $db->query($sql);
+$basketcost = $subtotal * (1 - $value->fetch()["value"] / 100);
+
+
+#stock availability check
+function availability($db, $basket_id)
+{
+  $available = true;
+  $sql = "SELECT productName, countStock, quantity FROM products join basketproducts ON products.productId = basketproducts.productId  WHERE basketId = $basket_id";
+  $result = $db->query($sql);
+  if ($result->rowCount() > 0) {
+    while ($row = $result->fetch()) {
+      if ($row["quantity"] > $row["countStock"]) {
+        echo $row["productName"] . " is unavailable </br>";
+        $available = false;
+      }
+    }
+  }
+  return $available;
+}
+
+if (isset($_POST['purchase'])) {
+  if (availability($db, $basket_id)) {
+    $sql = "SELECT countStock, countSold, quantity, basketproducts.productId FROM products join basketproducts ON products.productId = basketproducts.productId  WHERE basketId = $basket_id";
+    $result = $db->query($sql);
+    if ($result->rowCount() > 0) {
+      while ($row = $result->fetch()) {
+        $sql = "UPDATE products SET countStock = " . $row["countStock"] - $row["quantity"] . ", countSold = " . $row["countSold"] + $row["quantity"] . " WHERE productId = " . $row["productId"];
+        $db->query($sql);
+      }
+    }
+  }
+}
+$_POST['purchase'] = null;
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -57,9 +110,19 @@
             <h2>Order summary</h2>
         
             <div class="totals">
-                <p>Subtotal:</p>
-                <p>Delivery:</p>
-                <p>Total To Pay:</p>
+                <?php
+                if (availability($db, $basket_id)) {
+                 echo "<p>currently available</p>";
+                } else{
+                    echo "<p>currently unavailable available</p>";
+                }
+                echo "<p>Subtotal: " .$subtotal."</p>";
+                echo "<p>Delivery:</p>";
+                echo "<p>Total To Pay: ".$basketcost."</p>";
+                ?>
+                
+                
+                
             </div>
         
         </div>
