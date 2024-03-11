@@ -27,10 +27,11 @@
 </header>
 </div>
 <body><?php
-require("../../../TeamProject6/model/User.php");?>
+session_start();
+require("../TeamProject6/model/User.php");?>
     <section>
         <div class="profile">
-            <img src="Thomas.jpg" alt="My Image" class="my_img">
+            <img src="Pictures for website/Thomas.jpg" alt="My Image" class="my_img">
             <div class="contact-col">
                 <form method="post">
                     <?php
