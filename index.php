@@ -83,10 +83,7 @@
   <span class="dot" onclick="currentSlide(4)"></span>
   <span class="dot" onclick="currentSlide(5)"></span>
  </div>
- <div class="home">
- <p>Design your home to be a bit more like you.</p>
- </div>
-<div class="categories">
+ <div class="categories">
 <h2>Categories</h2>
  <div>
      <a href="products.php?typeFilter=all&categoryFilter=bohemian&sortFilter=all"><img src="Pictures%20for%20website/Bohemian.jpg" alt="Bohemian" class="image-filter"></a>
@@ -96,7 +93,9 @@
      <a href="products.php?typeFilter=all&categoryFilter=modern&sortFilter=all"><img src="Pictures%20for%20website/Modern.jpg" alt="Modern" class="image-filter"></a>
  </div>
 </div>
-
+ <div class="home">
+ <p>Design your home to be a bit more like you.</p>
+ </div>
 
  <div class="Newsletter">
         <img src="Pictures%20for%20website/nl2.png" alt="My Image" class="my_img">

@@ -5,6 +5,8 @@
     <title>Furniche - Products</title>
     <link rel="stylesheet" type="text/css" href="../css/product.css">
     <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link rel="stylesheet" href="../css/product.css?v=<?php echo time(); ?>">
+
 </head>
 
 <h2 class="title">Products</h2>  
@@ -27,7 +29,6 @@
             <a href="loginview.php">Login</a>
             <a href="basket/basket.php"><i class="fa-solid fa-basket-shopping"></i></a>
         </div>
-    </div>
     </div>
               <?php
                 session_start();
@@ -53,6 +54,7 @@
 
         </section>
     </div>
+
     <?php
 include '../connect.php';
 try {
@@ -73,7 +75,6 @@ try {
 
 $db = null;
 ?>
-
 <h2>Products</h2>
 
 <label for="sortFilter">Sort by:</label>

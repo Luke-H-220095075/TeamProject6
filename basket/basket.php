@@ -82,6 +82,7 @@
             } else {
                 echo "<p>Your basket is empty.</p>";
                 echo '<a href="../products.php"><button>Add Products?</button></a>';
+                echo '<a href="checkout.php"><button>Checkout now</button></a>';
 
             }
         } catch (PDOException $e) {
