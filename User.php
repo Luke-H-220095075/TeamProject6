@@ -42,7 +42,7 @@ class User {
           }
             $this->setSession();
             echo "success";
-            header('Location: ../TeamProject6/home/Customerprofile/CP.php');
+            header('Location: ../TeamProject6/Customerprofile.php');
           }
           else{
           ?>
