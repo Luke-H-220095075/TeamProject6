@@ -13,11 +13,14 @@ if ($result->rowCount() > 0) {
 
 
 # discounts
-$discount_name = "Discount 1"; #$discount_name = $_POST['discount'];
+$discount_name = "test"; #$discount_name = $_POST['discount'];
 $sql = "SELECT value FROM discounts WHERE discountTitle = '" . $discount_name . "'";
-$value = $db->query($sql);
-$basketcost = $subtotal * (1 - $value->fetch()["value"] / 100);
-
+$value = $db->query($sql) ?? '1';
+if ($value->rowCount() > 0) {
+    $basketcost = $subtotal * (1 - $value->fetch()["value"] / 100);
+} else {
+    $basketcost = $subtotal;
+}
 
 #stock availability check
 function availability($db, $basket_id)
