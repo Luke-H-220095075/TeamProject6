@@ -1,6 +1,17 @@
-<!DOCTYPE html>basket
+<!DOCTYPE html>
 <html>
+<?php
+include '../connect.php';
+session_start();
+$basketId = 0;
+if (isset($_SESSION['user'])) {
 
+    $sql = "SELECT basketId FROM baskets WHERE userId = ". $_SESSION['userId'];
+    $result = $db->query($sql);
+    $basketId = $result;
+}
+
+?>
 <head>
     <title>Furniche - Basket</title>
     <meta charset="utf-8" />
@@ -25,7 +36,6 @@
                 <li><a href="../contact.php">Contact Us</a></li>
                 <li><a href="../aboutus.php">About Us</a></li>
                 <?php
-                session_start();
                 if (isset($_SESSION['user'])) {
                     echo '<li><a href="../#">' . $_SESSION['user'] . '</a>';
                 }
@@ -44,9 +54,7 @@
         <h2>Your Basket</h2>
 
         <?php
-        $basketId = 1;
-
-        include '../connect.php';
+        
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         try {
@@ -89,8 +97,7 @@
         }
         echo "<br>";
 
-        $basket_id = 1;
-        $sql = "SELECT price, quantity FROM products JOIN basketproducts ON products.productId = basketproducts.productId WHERE basketId = $basket_id";
+        $sql = "SELECT price, quantity FROM products JOIN basketproducts ON products.productId = basketproducts.productId WHERE basketId = $basketId";
         $result = $db->query($sql);
         $basketcost = 0;
         if ($result->rowCount() > 0) {
@@ -113,10 +120,10 @@
 
 
         #stock availability check
-        function availability($db, $basket_id)
+        function availability($db, $basketId)
         {
             $available = true;
-            $sql = "SELECT productName, countStock, quantity FROM products join basketproducts ON products.productId = basketproducts.productId  WHERE basketId = $basket_id";
+            $sql = "SELECT productName, countStock, quantity FROM products join basketproducts ON products.productId = basketproducts.productId  WHERE basketId = $basketId";
             $result = $db->query($sql);
             if ($result->rowCount() > 0) {
                 while ($row = $result->fetch()) {
@@ -128,7 +135,7 @@
             }
             return $available;
         }
-        if (availability($db, $basket_id)) {
+        if (availability($db, $basketId)) {
             echo "<p>available</p>";
         }
         ?>
