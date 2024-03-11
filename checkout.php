@@ -1,7 +1,10 @@
 <?php
 include 'connect.php';
+session_start();
+//$_SESSION["basket_id"] = "1"; 
+//$_SESSION["discount_name"] = "1"; 
 #subtotal
-$basket_id = 1;
+$basket_id = $_SESSION["basket_id"];
 $sql = "SELECT price, quantity FROM products JOIN basketproducts ON products.productId = basketproducts.productId WHERE basketId = $basket_id";
 $result = $db->query($sql);
 $subtotal = 0;
@@ -13,9 +16,9 @@ if ($result->rowCount() > 0) {
 
 
 # discounts
-$discount_name = "test"; #$discount_name = $_POST['discount'];
+$discount_name = $_SESSION["discount_name"]; #$discount_name = $_POST['discount'];
 $sql = "SELECT value FROM discounts WHERE discountTitle = '" . $discount_name . "'";
-$value = $db->query($sql) ?? '1';
+$value = $db->query($sql);
 if ($value->rowCount() > 0) {
     $basketcost = $subtotal * (1 - $value->fetch()["value"] / 100);
 } else {
