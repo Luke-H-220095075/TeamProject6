@@ -80,14 +80,8 @@
                 echo '</div>';
                 echo '<a href="../product/products.php"><button>Add More Products?</button></a>';
 
-            } else {
-                echo "<p>Your basket is empty.</p>";
-                echo '<a href="../product/products.php"><button>Add Products?</button></a>';
-
-            }
-        } catch (PDOException $e) {
-            echo "Error: " . $e->getMessage();
-        }
+            
+        
         echo "<br>";
 
         $basket_id = 1;
@@ -131,6 +125,15 @@
         }
         if (availability($db, $basket_id)) {
             echo "<p>available</p>";
+        }
+
+        echo '<a href="../checkout.php"><button>checkout?</button></a>';
+        } else {
+            echo "<p>Your basket is empty.</p>";
+            echo '<a href="../product/products.php"><button>Add Products?</button></a>';
+
+        }} catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
         }
         ?>
         </div>

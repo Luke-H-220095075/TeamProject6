@@ -29,7 +29,7 @@
                 }else {
                     echo '<li><a href="basket/basket.php">Basket</a></li>';
                     echo '<li><a href="signup/signUpPage.php">Sign up</a></li>';
-                    echo '<li><a href=".loginview.php">Login</a></li>';
+                    echo '<li><a href="loginview.php">Login</a></li>';
                 }
                 ?>
           </ul>
