@@ -29,15 +29,16 @@ if (isset($_SESSION['user'])) {
             <ul>
                 <li><a href="../index.php">Home</a></li>
                 <li><a href="../product/products.php">Products</a></li>
-                <li><a href="../basket/basket.php">Basket</a></li>
-                <li><a href="../loginview.php">Login</a></li>
-                <li><a href="../signup/signUpPage.php">Sign up</a></li>
                 <li><a href="../history.php">Previous Orders</a></li>
-                <li><a href="../contact.php">Contact Us</a></li>
+                <li><a href="../contactview.php">Contact Us</a></li>
                 <li><a href="../aboutus.php">About Us</a></li>
                 <?php
                 if (isset($_SESSION['user'])) {
-                    echo '<li><a href="../#">' . $_SESSION['user'] . '</a>';
+                    echo '<li><a href="../customerprofile.php">' . $_SESSION['user'] . '</a>';
+                }else {
+                    echo '<li><a href="../basket/basket.php">Basket</a></li>';
+                    echo '<li><a href="../signup/signUpPage.php">Sign up</a></li>';
+                    echo '<li><a href="../loginview.php">Login</a></li>';
                 }
                 ?>
           </ul>
@@ -85,16 +86,10 @@ if (isset($_SESSION['user'])) {
                     echo '</div>';
                 }
                 echo '</div>';
-                echo '<a href="../products.php"><button>Add More Products?</button></a>';
+                echo '<a href="../product/products.php"><button>Add More Products?</button></a>';
 
-            } else {
-                echo "<p>Your basket is empty.</p>";
-                echo '<a href="../products.php"><button>Add Products?</button></a>';
-
-            }
-        } catch (PDOException $e) {
-            echo "Error: " . $e->getMessage();
-        }
+            
+        
         echo "<br>";
 
         $sql = "SELECT price, quantity FROM products JOIN basketproducts ON products.productId = basketproducts.productId WHERE basketId = $basketId";
@@ -137,6 +132,15 @@ if (isset($_SESSION['user'])) {
         }
         if (availability($db, $basketId)) {
             echo "<p>available</p>";
+        }
+
+        echo '<a href="../checkout.php"><button>checkout?</button></a>';
+        } else {
+            echo "<p>Your basket is empty.</p>";
+            echo '<a href="../product/products.php"><button>Add Products?</button></a>';
+
+        }} catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
         }
         ?>
         </div>
