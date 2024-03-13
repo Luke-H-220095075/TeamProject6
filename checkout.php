@@ -4,7 +4,7 @@ session_start();
 //$_SESSION["basket_id"] = "1"; 
 //$_SESSION["discount_name"] = "1"; 
 #subtotal
-$basket_id = $_SESSION["basket_id"];
+$basket_id = 1;
 $sql = "SELECT price, quantity FROM products JOIN basketproducts ON products.productId = basketproducts.productId WHERE basketId = $basket_id";
 $result = $db->query($sql);
 $subtotal = 0;
