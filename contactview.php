@@ -39,6 +39,7 @@
     </section>
   </header>
 <body>
+  <br>
   <div class="content">
     <div class="who_are">
         <img src="Pictures for website\Contact Us Help.png" alt="My Image" class="my_img">
@@ -55,6 +56,7 @@
 
         </span> -->
     </div>
+    <br>
   <div class="contact">
   <!-- <img src="Pictures for website\Contact Us Form Background.png" alt="My Image" class="my_img"> -->
     <form class="contact-form" method="post">
@@ -68,9 +70,59 @@
       require("view/contact.php");
       ?>
     </form>
-    
     <!-- <img src="Pictures for website\thumbnail.jpeg" alt="My Image" class="my_img"> -->
   </div>
+  <script>
+        var i;
+        for (i = 0; i < 5; i++) { 
+            document.write("<br>");
+        }
+    </script>
+    <img src="Pictures for website\Brown Lorry.png">
+    <br>
+    <img src="Pictures for website\Brown Text Bar.png">
+    <h2>Track your package</h2>
+    <p>We know you can’t wait for your new furniture. Track it’s progress as we build it for you.</p>
+    <script>
+        var i;
+        for (i = 0; i < 10; i++) { 
+            document.write("<br>");
+        }
+    </script>
+    <img src="Pictures for website\Brown Information.png">
+    <br>
+    <img src="Pictures for website\Brown Text Bar.png">
+    <h2>FAQs</h2>
+    <p>Over 90% of our customers find their questions answered in our FAQ’s.</p>
+    <script>
+        var i;
+        for (i = 0; i < 10; i++) { 
+            document.write("<br>");
+        }
+    </script>
+    <img src="Pictures for website\Brown Text.png">
+    <br>
+    <img src="Pictures for website\Brown Text Bar.png">
+    <h2>Live chat</h2>
+    <p>The quickest way to speak to us is via our live chat option.</p>
+    <script>
+        var i;
+        for (i = 0; i < 10; i++) { 
+            document.write("<br>");
+        }
+    </script>
+    <img src="Pictures for website\Brown Phone.png">
+    <br>
+    <img src="Pictures for website\Brown Text Bar.png">
+    <h2>Call us</h2>
+    <p>If we have not been able to answer your question through track your order or our FAQ’s, call us.</p>
+    <script>
+        var i;
+        for (i = 0; i < 10; i++) { 
+            document.write("<br>");
+        }
+        </script>
+        <h1>If you have any query please contact us using on the options below.  We’d love to hear from you.</h1>
   <section class="location">
     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2482.6980768196954!2d-0.08362608488829902!3d51.51875491769485!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4876034c44354bb1%3A0xc57f7d6c0b61ff5f!2sLiverpool%20Street!5e0!3m2!1sen!2suk!4v1677666062080!5m2!1sen!2suk" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
   </section>
