@@ -82,7 +82,7 @@
     <img src="Pictures for website\Brown Lorry.png">
     <br>
     <img src="Pictures for website\Brown Text Bar.png">
-    <h2>Track your package</h2>
+    <h2 class="yourmum">Track your package</h2>
     <p>We know you can’t wait for your new furniture. Track it’s progress as we build it for you.</p>
     <script>
         var i;
@@ -93,7 +93,7 @@
     <img src="Pictures for website\Brown Information.png">
     <br>
     <img src="Pictures for website\Brown Text Bar.png">
-    <h2>FAQs</h2>
+    <h2 class="yourmum">FAQs</h2>
     <p>Over 90% of our customers find their questions answered in our FAQ’s.</p>
     <script>
         var i;
@@ -104,7 +104,7 @@
     <img src="Pictures for website\Brown Text.png">
     <br>
     <img src="Pictures for website\Brown Text Bar.png">
-    <h2>Live chat</h2>
+    <h2 class="yourmum">Live chat</h2>
     <p>The quickest way to speak to us is via our live chat option.</p>
     <script>
         var i;
@@ -115,7 +115,7 @@
     <img src="Pictures for website\Brown Phone.png">
     <br>
     <img src="Pictures for website\Brown Text Bar.png">
-    <h2>Call us</h2>
+    <h2 class="yourmum">Call us</h2>
     <p>If we have not been able to answer your question through track your order or our FAQ’s, call us.</p>
     <script>
         var i;

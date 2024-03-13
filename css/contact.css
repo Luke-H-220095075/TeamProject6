@@ -23,6 +23,15 @@ width: 200%;
 
 .information{
 align-items: center;
+text-align: center;
+position: relative;
+bottom: 40px;
+
+}
+
+.yourmum {
+  position: relative;
+  bottom: 40px;
 }
 
 
