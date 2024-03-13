@@ -50,31 +50,37 @@
     <img src="../Pictures%20for%20website/Minimalistic.jpg" alt="Category 3" onclick="fillCategoryFilter('minimal')" class="image-filter">
     <img src="../Pictures%20for%20website/Tropical.jpg" alt="Category 4" onclick="fillCategoryFilter('tropical')" class="image-filter">
     <img src="../Pictures%20for%20website/Modern.jpg" alt="Category 5" onclick="fillCategoryFilter('modern')" class="image-filter">
-</div>
+    </div>
 
         </section>
     </div>
 
-    <?php
-include '../connect.php';
-try {
-    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    
+ <div class="pd-display">
+     <?php
+        include '../connect.php';
+        try {
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $stmtCheapest = $db->prepare("
+        $stmtCheapest = $db->prepare("
         SELECT productId, productName, price, imageName
         FROM products
         ORDER BY price ASC
         LIMIT 3
-    ");
-    $stmtCheapest->execute();
+     ");
+        $stmtCheapest->execute();
 
-    $cheapestProducts = $stmtCheapest->fetchAll(PDO::FETCH_ASSOC);
-} catch (PDOException $e) {
-    echo "Error: " . $e->getMessage();
-}
+        $cheapestProducts = $stmtCheapest->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+     echo "Error: " . $e->getMessage();
+        }
 
-$db = null;
-?>
+        $db = null;
+    ?>
+</div>
+
+
+ <div class="pd-back">
 <h2>Products</h2>
 
 <label for="sortFilter">Sort by:</label>
@@ -237,7 +243,7 @@ $db = null;
 
 
 ?>
-
+ </div>
 
     </div>
     <h1 style="padding-inline: 70px 5px;">Current Offers</h1>
@@ -309,7 +315,7 @@ function scrollFunction() {
         document.getElementById("navbar").style.padding = "30px 10px";
         document.getElementById("logo").style.fontSize = "25px";
     } else {
-        document.getElementById("navbar").style.padding = "50px 10px";
+        document.getElementById("navbar").style.padding = "30px 10px";
         document.getElementById("logo").style.fontSize = "35px";
     }
 }
