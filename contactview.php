@@ -78,6 +78,7 @@
             document.write("<br>");
         }
     </script>
+    <div class="information">
     <img src="Pictures for website\Brown Lorry.png">
     <br>
     <img src="Pictures for website\Brown Text Bar.png">
@@ -123,6 +124,7 @@
         }
         </script>
         <h1>If you have any query please contact us using on the options below.  We’d love to hear from you.</h1>
+      </div>
   <section class="location">
     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2482.6980768196954!2d-0.08362608488829902!3d51.51875491769485!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4876034c44354bb1%3A0xc57f7d6c0b61ff5f!2sLiverpool%20Street!5e0!3m2!1sen!2suk!4v1677666062080!5m2!1sen!2suk" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
   </section>

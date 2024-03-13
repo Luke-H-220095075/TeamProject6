@@ -21,6 +21,11 @@ width: 200%;
 
 }
 
+.information{
+align-items: center;
+}
+
+
 nav {
   display: flex;
   align-items: center;
