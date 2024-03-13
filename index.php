@@ -29,8 +29,8 @@
                 session_start();
                 if (isset($_SESSION['user'])) {
                     echo '<li><a href="customerprofile.php">' . $_SESSION['user'] . '</a>';
-                }else {
                     echo '<li><a href="basket/basket.php">Basket</a></li>';
+                }else {
                     echo '<li><a href="signup/signUpPage.php">Sign up</a></li>';
                     echo '<li><a href="loginview.php">Login</a></li>';
                 }
@@ -96,11 +96,11 @@
 <div class="categories">
 <h2>Categories</h2>
  <div>
-    <img src="Pictures for Website/bohemian2.jpg" alt="Category 1" onclick="fillCategoryFilter('bohemian')" class="image-filter">
-    <img src="Pictures for Website/rustictheme.jpg" alt="Category 2" onclick="fillCategoryFilter('rustic')" class="image-filter">
-    <img src="Pictures for Website/minimalistictheme.jpg" alt="Category 3" onclick="fillCategoryFilter('minimal')" class="image-filter">
-    <img src="Pictures for Website/tropicaltheme.jpg" alt="Category 4" onclick="fillCategoryFilter('tropical')" class="image-filter">
-    <img src="Pictures for Website/modern2.jpg" alt="Category 5" onclick="fillCategoryFilter('modern')" class="image-filter">
+     <a href="product/products.php?typeFilter=all&categoryFilter=bohemian&sortFilter=all"><img src="Pictures%20for%20website/Bohemian.jpg" alt="Bohemian" class="image-filter"></a>
+     <a href="product/products.php?typeFilter=all&categoryFilter=rustic&sortFilter=all"><img src="Pictures%20for%20website/Rustic.jpg" alt="Rustic" class="image-filter"></a>
+     <a href="product/products.php?typeFilter=all&categoryFilter=minimal&sortFilter=all"><img src="Pictures%20for%20website/Minimalistic.jpg" alt="Minimalistic" class="image-filter"></a>
+     <a href="product/products.php?typeFilter=all&categoryFilter=tropical&sortFilter=all"><img src="Pictures%20for%20website/Tropical.jpg" alt="Tropical" class="image-filter"></a>
+     <a href="product/products.php?typeFilter=all&categoryFilter=modern&sortFilter=all"><img src="Pictures%20for%20website/Modern.jpg" alt="Modern" class="image-filter"></a>
  </div>
 </div>
 
