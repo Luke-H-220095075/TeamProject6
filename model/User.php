@@ -1,4 +1,5 @@
 <?php
+session_start();
 class User {
   public $username;
   public $password;
@@ -41,7 +42,7 @@ class User {
           }
             $this->setSession();
             echo $_SESSION["user"];
-            header('Location: ../TeamProject6/home/Customerprofile/CP.php');
+            header('Location: ../TeamProject6/Customerprofilephp');
           }
           else{
           ?>
@@ -130,8 +131,9 @@ class User {
       $sth->bindparam(':username', $this->username, PDO::PARAM_STR, 10);
       $sth->execute();
       $row=$sth->fetch(PDO::FETCH_ASSOC);
-      $_SESSION["access"] = $row['userType'];
       $_SESSION["userID"] = $row['userId'];
+      $_SESSION["access"] = $row['userType'];
+      
       alert($_SESSION["userID"]);
     }
     catch(PDOException $ex){
