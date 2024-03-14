@@ -1,11 +1,4 @@
 
-  body {
-    width: 100%;
-    height: 100vh;
-    background: #e8e1db;
-    margin: 0px;
-    font-family: "SoDo Sans SemiBold", Helvetica Neue, Helvetica, Arial, sans-serif;
-}
 
 .center {
     text-align: center;
@@ -72,16 +65,16 @@
 
 
 .custom-select {
-    width: 200px; /* Adjust the width as needed */
-    padding: 8px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
-    color: #333;
-    cursor: pointer;
-    background-color: #f8f8f8; 
+  width: 200px; /* Adjust the width as needed */
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  color: #333;
+  cursor: pointer;
+  background-color: #f8f8f8; 
 }
 
 .custom-select:hover,
@@ -123,13 +116,19 @@
 }
 
 .product {
-    background-color: #4f4d62;
-    display: grid;
-    width: flex;
-    align-items: center;
-    grid-template-columns: 1fr;
-    text-align: center;
+  display: grid;
+  min-height: 40vh;
+  background-color: #4f4d62;
+  color: #f5d5bb;
+  align-items: center; 
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  column-gap: 20px;
+  text-align: center;
     
+}
+
+.one {
+  border-radius: 25%;
 }
 
 .my_img_2 {
@@ -272,6 +271,7 @@ th {
     height: 125px;
     object-fit: fill;
     cursor: pointer;
+    border-radius: 25%;
 }
 
 .recommendations {

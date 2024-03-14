@@ -177,11 +177,11 @@ font-weight: 600;
   text-align: center;
   height: 80vh;
   width: 100%;
-  background-color: #4f4d62;
+  background-image: url("../Pictures for website/categories.png");
 }
 
 .Newsletter{
-    background-image: url("../Pictures for website/header-new-2 (1).png");
+background-image: url("../Pictures for website/header-new-2 (1).png");
 display: grid;
 align-items: center; 
 grid-template-columns: 1fr 1fr;
@@ -206,6 +206,7 @@ text-align: center;
       height: 300px;
       object-fit: fill;
       cursor: pointer;
+      border-radius: 25%;
   }
 
 
