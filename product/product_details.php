@@ -43,6 +43,7 @@
             
 </header>
 <div class="product-details">
+<body>
 <?php
 if (isset($_GET['product_id'])) {
     $product_id = $_GET['product_id'];
@@ -58,9 +59,10 @@ if (isset($_GET['product_id'])) {
 
         if ($stmt->rowCount() > 0) {
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
             echo '<div class="card">';
-            echo '<div id="image-details">';
-            echo '<p><img src="../Pictures%20for%20website/' . htmlspecialchars($row['imageName']) . '" alt="' . htmlspecialchars($row['imageName']) . '"></p>';
+            echo '<div class="image-details">';
+            echo '<p><img src="../Pictures%20for%20website/' . htmlspecialchars($row['imageName']) . ' alt="' . htmlspecialchars($row['imageName']) . '"></p>';
             echo '</div>';
             echo '<div class="info">';
             echo '<h2>' . $row['productName'] . '</h2>';
@@ -78,7 +80,9 @@ if (isset($_GET['product_id'])) {
             echo '<div class="recommendations">';
             while ($recommendation = $stmtRecommendations->fetch(PDO::FETCH_ASSOC)) {
                 echo '<div class="recommendation-card">';
-                echo '<p><img src="../Pictures%20for%20website/' . htmlspecialchars($recommendation['imageName']) . '" alt="' . htmlspecialchars($row['imageName']) . '"></p>';
+                echo '<div class="card">';
+                echo '<p><img src="../Pictures%20for%20website/' . htmlspecialchars($recommendation['imageName']) . '" alt="' . htmlspecialchars($row['imageName']) . '" style="width:500px;height:600px;></p>';
+                echo '</div>';
                 echo '<h4>' . $recommendation['productName'] . '</h4>';
                 echo '<p><strong>Price:</strong> $' . $recommendation['price'] . '</p>';
                 echo '</div>';

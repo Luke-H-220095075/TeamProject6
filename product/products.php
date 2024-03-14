@@ -216,7 +216,7 @@
             $count = 0;
 
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                if ($count % 3 == 0) {
+                if ($count % 1 == 0) {
                     echo '<tr>';
                 }
 
@@ -225,7 +225,7 @@
                 echo '</td>';
 
 
-                if ($count % 3 == 2 || $count == $stmt->rowCount() - 1) {
+                if ($count % 1 == 2 || $count == $stmt->rowCount() - 1) {
                     echo '</tr>';
                 }
 
@@ -245,121 +245,6 @@
 
     ?>
 </select>
-
-<label for="typeFilter">Filter by Type:</label>
-<select id="typeFilter" onchange="filterProducts()" class="custom-select">
-
-    <option value="all">All</option>
-    <?php
-    $selectedtypeFilter = isset($_GET['typeFilter']) ? $_GET['typeFilter'] : 'all';
-
-    include '../connect.php';
-    try {
-        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-        $stmt = $db->query("SELECT DISTINCT productType FROM products");
-
-        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $type = htmlspecialchars($row['productType']);
-            $selected = ($type == $selectedtypeFilter) ? 'selected' : '';
-            if ($type != null) {
-                echo '<option value="' . $type . '" ' . $selected . '>' . $type . '</option>';
-            }
-        }
-    } catch (PDOException $e) {
-        echo "Error: " . $e->getMessage();
-    }
-
-    $db = null;
-    ?>
-</select>
-
-<button onclick="resetFilters()" style="cursor: pointer">Reset Filters</button>
-
-<?php
-include '../connect.php';
-try {
-    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-    $query = "SELECT * FROM products";
-
-    $sortFilter = isset($_GET['sortFilter']) ? $_GET['sortFilter'] : 'all';
-    $typeFilter = isset($_GET['typeFilter']) ? $_GET['typeFilter'] : 'all';
-    $categoryFilter = isset($_GET['categoryFilter']) ? $_GET['categoryFilter'] : 'all';
-
-    if ($typeFilter != 'all') {
-        $query .= " WHERE productType = :type";
-    }
-
-    if ($categoryFilter != 'all') {
-        $query .= ($typeFilter != 'all') ? " AND" : " WHERE";
-        $query .= " productCategory = :category";
-    }
-
-    switch ($sortFilter) {
-        case 'name-asc':
-            $query .= " ORDER BY productName ASC";
-            break;
-        case 'name-desc':
-            $query .= " ORDER BY productName DESC";
-            break;
-        case 'price-asc':
-            $query .= " ORDER BY price ASC";
-            break;
-        case 'price-desc':
-            $query .= " ORDER BY price DESC";
-            break;
-        default:
-            break;
-    }
-
-    // Prepare and execute the final query
-    $stmt = $db->prepare($query);
-
-    if ($typeFilter != 'all') {
-        $stmt->bindParam(':type', $typeFilter, PDO::PARAM_STR);
-    }
-
-    if ($categoryFilter != 'all') {
-        $stmt->bindParam(':category', $categoryFilter, PDO::PARAM_STR);
-    }
-
-    $stmt->execute();
-
-    if ($stmt->rowCount() > 0) {
-        echo '<table id="productTable">';
-        $count = 0;
-
-        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            if ($count % 3 == 0) {
-                echo '<tr>';
-            }
-
-            echo '<td class="center">';
-            echo '<a onclick="showProductModal(' . $row['productId'] . ')"><img src="../Pictures for website/' . htmlspecialchars($row['imageName']) . '" alt="' . htmlspecialchars($row['imageName']) . '" id="prodImage" class="product-image"></a><br>';
-            echo '</td>';
-
-
-            if ($count % 3 == 2 || $count == $stmt->rowCount() - 1) {
-                echo '</tr>';
-            }
-
-            $count++;
-        }
-
-        echo '</table>';
-    } else {
-        echo "<p>No products available, add some to the database</p>";
-    }
-} catch (PDOException $e) {
-    echo "Error: " . $e->getMessage();
-}
-
-$db = null;
-
-
-?>
- </div>
 
     </div>
     <h1 style="padding-inline: 70px 5px;">Current Offers</h1>
