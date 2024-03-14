@@ -35,8 +35,8 @@ if (isset($_SESSION['user'])) {
                 <?php
                 if (isset($_SESSION['user'])) {
                     echo '<li><a href="../customerprofile.php">' . $_SESSION['user'] . '</a>';
+                    echo '<li><a href="basket.php">Basket</a></li>';
                 }else {
-                    echo '<li><a href="../basket/basket.php">Basket</a></li>';
                     echo '<li><a href="../signup/signUpPage.php">Sign up</a></li>';
                     echo '<li><a href="../loginview.php">Login</a></li>';
                 }
@@ -88,8 +88,15 @@ if (isset($_SESSION['user'])) {
                 echo '</div>';
                 echo '<a href="../product/products.php"><button>Add More Products?</button></a>';
 
-            
-        
+            } else {
+                echo "<p>Your basket is empty.</p>";
+                echo '<a href="../products.php"><button>Add Products?</button></a>';
+                echo '<a href="checkout.php"><button>Checkout now</button></a>';
+
+            }
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
         echo "<br>";
 
         $sql = "SELECT price, quantity FROM products JOIN basketproducts ON products.productId = basketproducts.productId WHERE basketId = $basketId";

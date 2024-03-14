@@ -9,7 +9,7 @@
   <header>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
       <link rel="stylesheet" href="https://use.typekit.net/maf1fpm.css">
-  </a>
+  </header>
 </div>
 <section>
   <div class="topnav">
@@ -25,8 +25,8 @@
                 session_start();
                 if (isset($_SESSION['user'])) {
                     echo '<li><a href="customerprofile.php">' . $_SESSION['user'] . '</a>';
-                }else {
                     echo '<li><a href="basket/basket.php">Basket</a></li>';
+                }else {
                     echo '<li><a href="signup/signUpPage.php">Sign up</a></li>';
                     echo '<li><a href="loginview.php">Login</a></li>';
                 }
