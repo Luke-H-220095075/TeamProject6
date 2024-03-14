@@ -12,8 +12,6 @@
 
 
   <header>
-
-<section>
     <nav>
     <div id="navbar">
         <a href="index.php" id="logo">Furniche</a>
@@ -32,8 +30,8 @@
               }
               ?>
   </nav>
-</section>
 </header>
+<section>
     <body class="bg-gray-100">
 <!-- Slideshow container -->
 <div class="slideshow-container">
@@ -41,14 +39,14 @@
   <!-- Full-width images with number and caption text -->
   <div class="mySlides fade">
     <div class="numbertext">1 / 5</div>
-    <img src="Pictures%20for%20website/slide1.jpg" style="width:100%">
-    <div class="text">Tropical Style Kitchen</div>
+    <img src="Pictures%20for%20website/slide2.jpg" style="width:100%">
+    <div class="text">Minimial Wooden Foyer</div>
   </div>
 
   <div class="mySlides fade">
     <div class="numbertext">2 / 5</div>
-    <img src="Pictures%20for%20website/slide2.jpg" style="width:100%">
-    <div class="text">Minimial Wooden Foyer</div>
+    <img src="Pictures%20for%20website/slide1.jpg" style="width:100%">
+    <div class="text">Tropical Style Kitchen</div>
   </div>
 
   <div class="mySlides fade">
@@ -83,16 +81,19 @@
   <span class="dot" onclick="currentSlide(4)"></span>
   <span class="dot" onclick="currentSlide(5)"></span>
  </div>
- <div class="categories">
-<h2>Categories</h2>
- <div>
-     <a href="products.php?typeFilter=all&categoryFilter=bohemian&sortFilter=all"><img src="Pictures%20for%20website/Bohemian.jpg" alt="Bohemian" class="image-filter"></a>
-     <a href="products.php?typeFilter=all&categoryFilter=rustic&sortFilter=all"><img src="Pictures%20for%20website/Rustic.jpg" alt="Rustic" class="image-filter"></a>
-     <a href="products.php?typeFilter=all&categoryFilter=minimal&sortFilter=all"><img src="Pictures%20for%20website/Minimalistic.jpg" alt="Minimalistic" class="image-filter"></a>
-     <a href="products.php?typeFilter=all&categoryFilter=tropical&sortFilter=all"><img src="Pictures%20for%20website/Tropical.jpg" alt="Tropical" class="image-filter"></a>
-     <a href="products.php?typeFilter=all&categoryFilter=modern&sortFilter=all"><img src="Pictures%20for%20website/Modern.jpg" alt="Modern" class="image-filter"></a>
- </div>
-</div>
+ </section>
+ <section>
+   <div class="categories">
+   <h2>Categories</h2>
+   <div>
+      <a href="product/products.php?typeFilter=all&categoryFilter=bohemian&sortFilter=all"><img src="Pictures%20for%20website/Bohemian.jpg" alt="Bohemian" class="image-filter"></a>
+      <a href="product/products.php?typeFilter=all&categoryFilter=rustic&sortFilter=all"><img src="Pictures%20for%20website/Rustic.jpg" alt="Rustic" class="image-filter"></a>
+      <a href="product/products.php?typeFilter=all&categoryFilter=minimal&sortFilter=all"><img src="Pictures%20for%20website/Minimalistic.jpg" alt="Minimalistic" class="image-filter"></a>
+      <a href="product/products.php?typeFilter=all&categoryFilter=tropical&sortFilter=all"><img src="Pictures%20for%20website/Tropical.jpg" alt="Tropical" class="image-filter"></a>
+      <a href="product/products.php?typeFilter=all&categoryFilter=modern&sortFilter=all"><img src="Pictures%20for%20website/Modern.jpg" alt="Modern" class="image-filter"></a>
+   </div>
+   </div>
+</section>
  <div class="home">
  <p>Design your home to be a bit more like you.</p>
  </div>
