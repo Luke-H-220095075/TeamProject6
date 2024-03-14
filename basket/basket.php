@@ -6,9 +6,10 @@ session_start();
 $basketId = 0;
 if (isset($_SESSION['user'])) {
 
-    $sql = "SELECT basketId FROM baskets WHERE userId = ". $_SESSION['userId'];
+    $sql = "SELECT basketId FROM baskets WHERE userId = ". $_SESSION['userID'];
     $result = $db->query($sql);
-    $basketId = $result;
+    $row = $result->fetch(PDO::FETCH_ASSOC);
+    $basketId = $row['basketId'];
 }
 
 ?>
@@ -63,10 +64,10 @@ if (isset($_SESSION['user'])) {
             SELECT products.productId, products.productName, products.price, products.imageName, basketproducts.quantity
             FROM basketproducts
             JOIN products ON basketproducts.productId = products.productId
-            WHERE basketproducts.basketId = :user_id
+            WHERE basketproducts.basketId = :basket_Id
             
         ");
-            $stmtBasket->bindParam(':user_id', $basketId);
+            $stmtBasket->bindParam(':basket_Id', $basketId);
             $stmtBasket->execute();
 
             if ($stmtBasket->rowCount() > 0) {
