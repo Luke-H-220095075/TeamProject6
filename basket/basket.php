@@ -140,10 +140,8 @@ if (isset($_SESSION['user'])) {
         if (availability($db, $basketId)) {
             echo "<p>available</p>";
             echo '<a href="../checkout.php"><button>checkout?</button></a>';
-        }
-
-        
-         else {
+        } 
+        else {
             echo "<p>Your basket is empty.</p>";
             echo '<a href="../product/products.php"><button>Add Products?</button></a>';
 
