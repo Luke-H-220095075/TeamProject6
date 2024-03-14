@@ -10,7 +10,7 @@
       {
         if(!empty(trim($_POST['password'])))
         {
-          include_once("model/User.php");
+          include_once("../User.php");
                             //($username, $password, $email, $firstname, $surname, $address, $phone, $admin
         $user = new User($_POST['username'], $_POST['password'], null, null, null, null, null, null);
         include_once("controller/SignInController.php");

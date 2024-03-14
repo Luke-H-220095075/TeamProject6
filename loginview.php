@@ -40,6 +40,7 @@
 
                 <button class="login_button" name="submitted" type="submit">Log In</button>
                 <?php
+                session_start();
                 include("signIn.php");
                 ?>
 
