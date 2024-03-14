@@ -1,5 +1,4 @@
 <?php
-session_start();
 class User {
   public $username;
   public $password;
@@ -42,7 +41,7 @@ class User {
           }
             $this->setSession();
             echo $_SESSION["user"];
-            header('Location: ../TeamProject6/Customerprofilephp');
+            header('Location: ../customerprofilephp');
           }
           else{
           ?>

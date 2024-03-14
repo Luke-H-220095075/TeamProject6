@@ -1,5 +1,4 @@
 <?php
-    session_start();
 class Message {
     public $messagetext;
     public $subject;

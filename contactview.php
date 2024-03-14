@@ -6,7 +6,7 @@
   <meta charset="UTF-8">
   <script src="Contact Us.js"></script>
   <link rel="stylesheet" href="css/contact.css">
-  <link rel="stylesheet" type="text/css" href="../css/style.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
   <!-- <link rel="stylesheet" href="css/Authentication.css"> -->
 </head>
 <header>
