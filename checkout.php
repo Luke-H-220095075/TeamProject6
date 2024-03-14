@@ -1,10 +1,19 @@
 <?php
 include 'connect.php';
 session_start();
-//$_SESSION["basket_id"] = "1"; 
+//$_SESSION["basketID"] = "1"; 
 //$_SESSION["discount_name"] = "1"; 
 #subtotal
-$basket_id = 1;
+
+
+if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 1800)) {
+  // last request was more than 30 minutes ago
+  session_unset();     // unset $_SESSION variable for the run-time 
+  session_destroy();   // destroy session data in storage
+}
+$_SESSION['LAST_ACTIVITY'] = time(); // update last activity time stamp
+
+$basket_id = $_SESSION["basketID"];
 $sql = "SELECT price, quantity FROM products JOIN basketproducts ON products.productId = basketproducts.productId WHERE basketId = $basket_id";
 $result = $db->query($sql);
 $subtotal = 0;
