@@ -18,12 +18,12 @@
     </div>
     <section>
     <nav>
-    <div id="navbar">
-        <a href="index.php" id="logo">Furniche</a>
-        <div id="navbar-right">
-            <a href="products.php">Products</a>
-            <a href="contact.php">Contact Us</a>
-            <a href="aboutus.php">About Us</a>
+        <div id="navbar">
+            <a href="index.php" id="logo">Furniche</a>
+            <div id="navbar-right">
+                <a href="products.php">Products</a>
+                <a href="../contactview.php">Contact Us</a>
+                <a href="aboutus.php">About Us</a>
             <a href="loginview.php">Login</a>
             <a href="basket.php"><i class="fa-solid fa-basket-shopping"></i></a>
         </div>
