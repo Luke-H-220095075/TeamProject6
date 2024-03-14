@@ -80,8 +80,15 @@
                 echo '</div>';
                 echo '<a href="../product/products.php"><button>Add More Products?</button></a>';
 
-            
-        
+            } else {
+                echo "<p>Your basket is empty.</p>";
+                echo '<a href="../products.php"><button>Add Products?</button></a>';
+                echo '<a href="checkout.php"><button>Checkout now</button></a>';
+
+            }
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
         echo "<br>";
 
         $basket_id = 1;

@@ -4,6 +4,9 @@
 <head>
     <title>Furniche - Products</title>
     <link rel="stylesheet" type="text/css" href="../css/product.css">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link rel="stylesheet" href="../css/product.css?v=<?php echo time(); ?>">
+
 </head>
 
 <h2 class="title">Products</h2>
@@ -11,60 +14,53 @@
 <body>
     <header>
 
-        <div class="colour">
-            <link rel="stylesheet" type="text/css"
-                href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
-            <link rel="stylesheet" href="https://use.typekit.net/maf1fpm.css">
-            </a>
+<div class="colour">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+      <link rel="stylesheet" href="https://use.typekit.net/maf1fpm.css">
+  </a>
+</div>
+<section>
+    <nav>
+    <div id="navbar">
+        <a href="index.php" id="logo">Furniche</a>
+        <div id="navbar-right">
+            <a href="product/products.php">Products</a>
+            <a href="contactview.php">Contact Us</a>
+            <a href="aboutus.php">About Us</a>
+            <a href="loginview.php">Login</a>
+            <a href="basket/basket.php"><i class="fa-solid fa-basket-shopping"></i></a>
         </div>
-        <section>
-            <div class="topnav">
-                <nav>
-                    <h1 class="logo">Furniche</h1>
-                    <ul>
-                        <li><a href="../index.php">Home</a></li>
-                        <li><a href="../product/products.php">Products</a></li>
-                        <li><a href="../history.php">Previous Orders</a></li>
-                        <li><a href="../contactview.php">Contact Us</a></li>
-                        <li><a href="../aboutus.php">About Us</a></li>
-                        <?php
-                        session_start();
-                        if (isset($_SESSION['user'])) {
-                            echo '<li><a href="../customerprofile.php">' . $_SESSION['user'] . '</a>';
-                            echo '<li><a href="../basket/basket.php">Basket</a></li>';
-                        } else {
-                            echo '<li><a href="../signup/signUpPage.php">Sign up</a></li>';
-                            echo '<li><a href="../loginview.php">Login</a></li>';
-                        }
-                        ?>
-                    </ul>
-                </nav>
-            </div>
-        </section>
-    </header>
-
+    </div>
+              <?php
+                session_start();
+              if (isset($_SESSION['user'])) {
+                  echo '<li><a href="#">' . $_SESSION['user'] . '</a>';
+              }
+              ?>
+  </nav>
+</section>
+</header>
+    
     <h1 style="margin-top: 100px;,padding-inline: 100px 5px;">Categories / Types</h1>
     <div class="design">
         <section id="Design">
 
-            <div>
-                <img src="../Pictures%20for%20website/Bohemian.jpg" alt="Category 1"
-                    onclick="fillCategoryFilter('bohemian')" class="image-filter">
-                <img src="../Pictures%20for%20website/Rustic.jpg" alt="Category 2"
-                    onclick="fillCategoryFilter('rustic')" class="image-filter">
-                <img src="../Pictures%20for%20website/Minimalistic.jpg" alt="Category 3"
-                    onclick="fillCategoryFilter('minimal')" class="image-filter">
-                <img src="../Pictures%20for%20website/Tropical.jpg" alt="Category 4"
-                    onclick="fillCategoryFilter('tropical')" class="image-filter">
-                <img src="../Pictures%20for%20website/Modern.jpg" alt="Category 5"
-                    onclick="fillCategoryFilter('modern')" class="image-filter">
-            </div>
+    <div>
+    <img src="../Pictures%20for%20website/Bohemian.jpg" alt="Category 1" onclick="fillCategoryFilter('bohemian')" class="image-filter">
+    <img src="../Pictures%20for%20website/Rustic.jpg" alt="Category 2" onclick="fillCategoryFilter('rustic')" class="image-filter">
+    <img src="../Pictures%20for%20website/Minimalistic.jpg" alt="Category 3" onclick="fillCategoryFilter('minimal')" class="image-filter">
+    <img src="../Pictures%20for%20website/Tropical.jpg" alt="Category 4" onclick="fillCategoryFilter('tropical')" class="image-filter">
+    <img src="../Pictures%20for%20website/Modern.jpg" alt="Category 5" onclick="fillCategoryFilter('modern')" class="image-filter">
+    </div>
 
         </section>
     </div>
-    <?php
-    include '../connect.php';
-    try {
+
+    
+ <div class="pd-display">
+     <?php
+        include '../connect.php';
+        try {
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         $stmtCheapest = $db->prepare("
@@ -72,18 +68,21 @@
         FROM products
         ORDER BY price ASC
         LIMIT 3
-    ");
+     ");
         $stmtCheapest->execute();
 
         $cheapestProducts = $stmtCheapest->fetchAll(PDO::FETCH_ASSOC);
-    } catch (PDOException $e) {
-        echo "Error: " . $e->getMessage();
-    }
+        } catch (PDOException $e) {
+     echo "Error: " . $e->getMessage();
+        }
 
-    $db = null;
+        $db = null;
     ?>
+</div>
 
-    <h2>Products</h2>
+
+ <div class="pd-back">
+<h2>Products</h2>
 
     <label for="sortFilter">Sort by:</label>
     <select id="sortFilter" onchange="filterProducts()" class="custom-select">
@@ -217,7 +216,7 @@
             $count = 0;
 
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                if ($count % 3 == 0) {
+                if ($count % 1 == 0) {
                     echo '<tr>';
                 }
 
@@ -226,7 +225,7 @@
                 echo '</td>';
 
 
-                if ($count % 3 == 2 || $count == $stmt->rowCount() - 1) {
+                if ($count % 1 == 2 || $count == $stmt->rowCount() - 1) {
                     echo '</tr>';
                 }
 
@@ -245,7 +244,7 @@
 
 
     ?>
-
+</select>
 
     </div>
     <h1 style="padding-inline: 70px 5px;">Current Offers</h1>
@@ -308,10 +307,23 @@
         </div>
     </div>
 
-    <script>
-        function showProductModal(productId) {
-            var modal = document.getElementById('productModal');
-            var productDetailsContainer = document.getElementById('productDetailsModal');
+<script>
+       // When the user scrolls down 80px from the top of the document, resize the navbar's padding and the logo's font size
+       window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+    if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+        document.getElementById("navbar").style.padding = "30px 10px";
+        document.getElementById("logo").style.fontSize = "25px";
+    } else {
+        document.getElementById("navbar").style.padding = "30px 10px";
+        document.getElementById("logo").style.fontSize = "35px";
+    }
+}
+
+    function showProductModal(productId) {
+        var modal = document.getElementById('productModal');
+        var productDetailsContainer = document.getElementById('productDetailsModal');
 
             var xhr = new XMLHttpRequest();
             xhr.onreadystatechange = function () {

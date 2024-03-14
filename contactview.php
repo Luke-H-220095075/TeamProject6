@@ -6,6 +6,7 @@
   <meta charset="UTF-8">
   <script src="Contact Us.js"></script>
   <link rel="stylesheet" href="css/contact.css">
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
   <!-- <link rel="stylesheet" href="css/Authentication.css"> -->
 </head>
 <header>
@@ -15,29 +16,25 @@
     <link rel="stylesheet" href="https://use.typekit.net/maf1fpm.css">
     </a>
     <section>
-      <div class="topnav">
-        <nav>
-          <h1 class="logo">Furniche</h1>
-          <ul>
-            <li><a href="index.php">Home</a></li>
-            <li><a href="product/products.php">Products</a></li>
-            <li><a href="history.php">Previous Orders</a></li>
-            <li><a href="contactview.php">Contact Us</a></li>
-            <li><a href="aboutus.php">About Us</a></li>
-            <?php
-            session_start();
-            if (isset($_SESSION['user'])) {
-              echo '<li><a href="customerprofile.php">' . $_SESSION['user'] . '</a>';
-              echo '<li><a href="basket/basket.php">Basket</a></li>';
-            } else {
-              echo '<li><a href="signup/signUpPage.php">Sign up</a></li>';
-              echo '<li><a href="loginview.php">Login</a></li>';
-            }
-            ?>
-          </ul>
-        </nav>
-      </div>
-    </section>
+    <nav>
+    <div id="navbar">
+        <a href="index.php" id="logo">Furniche</a>
+        <div id="navbar-right">
+            <a href="product/products.php">Products</a>
+            <a href="contactview.php">Contact Us</a>
+            <a href="aboutus.php">About Us</a>
+            <a href="loginview.php">Login</a>
+            <a href="basket/basket.php"><i class="fa-solid fa-basket-shopping"></i></a>
+        </div>
+    </div>
+              <?php
+                session_start();
+              if (isset($_SESSION['user'])) {
+                  echo '<li><a href="#">' . $_SESSION['user'] . '</a>';
+              }
+              ?>
+  </nav>
+</section>
   </header>
 
   <body>

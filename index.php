@@ -1,44 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+    <title>Furniche - Home</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+      <link rel="stylesheet" href="https://use.typekit.net/maf1fpm.css">
     </head>
 
 
-<head>
-    <title>About DLegends - Furniture Company</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
+
   <header>
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
-      <link rel="stylesheet" href="https://use.typekit.net/maf1fpm.css">
 
 <section>
-  <div class="topnav">
-      <nav>
-          <h1 class="logo">Furniche</h1>
-          <ul>
-                <li><a href="index.php">Home</a></li>
-                <li><a href="product/products.php">Products</a></li>
-                <li><a href="history.php">Previous Orders</a></li>
-                <li><a href="contactview.php">Contact Us</a></li>
-                <li><a href="aboutus.php">About Us</a></li>
-                <?php
+    <nav>
+    <div id="navbar">
+        <a href="index.php" id="logo">Furniche</a>
+        <div id="navbar-right">
+            <a href="product/products.php">Products</a>
+            <a href="contactview.php">Contact Us</a>
+            <a href="aboutus.php">About Us</a>
+            <a href="loginview.php">Login</a>
+            <a href="basket/basket.php"><i class="fa-solid fa-basket-shopping"></i></a>
+        </div>
+    </div>
+              <?php
                 session_start();
-                if (isset($_SESSION['user'])) {
-                    echo '<li><a href="customerprofile.php">' . $_SESSION['user'] . '</a>';
-                    echo '<li><a href="basket/basket.php">Basket</a></li>';
-                }else {
-                    echo '<li><a href="signup/signUpPage.php">Sign up</a></li>';
-                    echo '<li><a href="loginview.php">Login</a></li>';
-                }
-                ?>
-        </ul>
+              if (isset($_SESSION['user'])) {
+                  echo '<li><a href="#">' . $_SESSION['user'] . '</a>';
+              }
+              ?>
   </nav>
-  </nav>
-  </div>
 </section>
 </header>
     <body class="bg-gray-100">
@@ -48,31 +41,31 @@
   <!-- Full-width images with number and caption text -->
   <div class="mySlides fade">
     <div class="numbertext">1 / 5</div>
-    <img src="Pictures for Website/slide1.jpg" style="width:100%">
+    <img src="Pictures%20for%20website/slide1.jpg" style="width:100%">
     <div class="text">Tropical Style Kitchen</div>
   </div>
 
   <div class="mySlides fade">
     <div class="numbertext">2 / 5</div>
-    <img src="Pictures for Website/slide2.jpg" style="width:100%">
+    <img src="Pictures%20for%20website/slide2.jpg" style="width:100%">
     <div class="text">Minimial Wooden Foyer</div>
   </div>
 
   <div class="mySlides fade">
     <div class="numbertext">3 / 5</div>
-    <img src="Pictures for Website/slide3.jpg" style="width:100%">
+    <img src="Pictures%20for%20website/slide3.jpg" style="width:100%">
     <div class="text">Rustic Dinning set</div>
   </div>
 
   <div class="mySlides fade">
     <div class="numbertext">4 / 5</div>
-    <img src="Pictures for Website/slide4.jpg" style="width:100%">
+    <img src="Pictures%20for%20website/slide4.jpg" style="width:100%">
     <div class="text">Bohemian Living room</div>
   </div>
 
   <div class="mySlides fade">
     <div class="numbertext">5 / 5</div>
-    <img src="Pictures for Website/slide5.jpg" style="width:100%">
+    <img src="Pictures%20for%20website/slide5.jpg" style="width:100%">
     <div class="text">Modern Bathroom</div>
   </div>
 
@@ -90,30 +83,43 @@
   <span class="dot" onclick="currentSlide(4)"></span>
   <span class="dot" onclick="currentSlide(5)"></span>
  </div>
+ <div class="categories">
+<h2>Categories</h2>
+ <div>
+     <a href="products.php?typeFilter=all&categoryFilter=bohemian&sortFilter=all"><img src="Pictures%20for%20website/Bohemian.jpg" alt="Bohemian" class="image-filter"></a>
+     <a href="products.php?typeFilter=all&categoryFilter=rustic&sortFilter=all"><img src="Pictures%20for%20website/Rustic.jpg" alt="Rustic" class="image-filter"></a>
+     <a href="products.php?typeFilter=all&categoryFilter=minimal&sortFilter=all"><img src="Pictures%20for%20website/Minimalistic.jpg" alt="Minimalistic" class="image-filter"></a>
+     <a href="products.php?typeFilter=all&categoryFilter=tropical&sortFilter=all"><img src="Pictures%20for%20website/Tropical.jpg" alt="Tropical" class="image-filter"></a>
+     <a href="products.php?typeFilter=all&categoryFilter=modern&sortFilter=all"><img src="Pictures%20for%20website/Modern.jpg" alt="Modern" class="image-filter"></a>
+ </div>
+</div>
  <div class="home">
  <p>Design your home to be a bit more like you.</p>
  </div>
-<div class="categories">
-<h2>Categories</h2>
- <div>
-     <a href="product/products.php?typeFilter=all&categoryFilter=bohemian&sortFilter=all"><img src="Pictures%20for%20website/Bohemian.jpg" alt="Bohemian" class="image-filter"></a>
-     <a href="product/products.php?typeFilter=all&categoryFilter=rustic&sortFilter=all"><img src="Pictures%20for%20website/Rustic.jpg" alt="Rustic" class="image-filter"></a>
-     <a href="product/products.php?typeFilter=all&categoryFilter=minimal&sortFilter=all"><img src="Pictures%20for%20website/Minimalistic.jpg" alt="Minimalistic" class="image-filter"></a>
-     <a href="product/products.php?typeFilter=all&categoryFilter=tropical&sortFilter=all"><img src="Pictures%20for%20website/Tropical.jpg" alt="Tropical" class="image-filter"></a>
-     <a href="product/products.php?typeFilter=all&categoryFilter=modern&sortFilter=all"><img src="Pictures%20for%20website/Modern.jpg" alt="Modern" class="image-filter"></a>
- </div>
-</div>
-
 
  <div class="Newsletter">
-        <img src="Pictures for Website/nl2.png" alt="My Image" class="my_img">
+        <img src="Pictures%20for%20website/nl2.png" alt="My Image" class="my_img">
             <h1 class="text1">Melissa Ball</h1>
             <h1 class="text2">How furniche is changing  the furniture space </h1>
-        <img src="Pictures for Website/nl1.png" alt="My Image" class="my_img1">
+        <img src="Pictures%20for%20website/nl1.png" alt="My Image" class="my_img1">
             <h1 class="text3">Billy Jean</h1>
             <h1 class="text4">Things to make your  living  more modern. </h1>
     </div>
 <script>
+
+    // When the user scrolls down 80px from the top of the document, resize the navbar's padding and the logo's font size
+    window.onscroll = function() {scrollFunction()};
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+            document.getElementById("navbar").style.padding = "30px 10px";
+            document.getElementById("logo").style.fontSize = "25px";
+        } else {
+            document.getElementById("navbar").style.padding = "50px 10px";
+            document.getElementById("logo").style.fontSize = "35px";
+        }
+    }
+
     let slideIndex = 1;
 showSlides(slideIndex);
 
@@ -164,7 +170,7 @@ function showSlides(n) {
                 <h5>Email us at: comms@furniche.com</h5>
                 <h5>Call us at: 01563385967</h5>
                 <ul>
-                    <li><a href="contactview.php">Contact Us via our Website</a> </li>
+                    <li><a href="contactus\contact.html">Contact Us via our Website</a> </li>
                 </ul>
             </div>
             <div class="footer-col">
