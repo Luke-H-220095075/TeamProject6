@@ -1,6 +1,6 @@
 <script defer src="signUpScript.js"></script>
 <?php
-    include("connect.php");
+    include("../connect.php");
     if (isset($_POST["submitted"])) 
     {
       if(!empty(trim($_POST['username'])))

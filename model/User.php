@@ -142,7 +142,7 @@ class User {
     }    
   }
   public function getDetails(){
-    include '../../view/connect.php';
+    include 'view/connect.php';
     if(isset($_SESSION)){
       $sth=$db->prepare("SELECT * FROM users WHERE username = :username");
       $sth->bindparam(':username', $_SESSION["user"], PDO::PARAM_STR, 10);

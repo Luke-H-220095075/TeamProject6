@@ -9,17 +9,28 @@
   <header>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
       <link rel="stylesheet" href="https://use.typekit.net/maf1fpm.css">
-  </a>
+  </header>
 </div>
 <section>
   <div class="topnav">
       <nav>
           <h1 class="logo">Furniche</h1>
           <ul>
-              <li><a class="active" href="Main.html">Home</a></li>
-              <li><a href="loginview.php">Login</a></li>
-              <li><a href="contactview.php">Contact Us</a></li>
-              <li><a href="aboutus.php">About Us</a></li>
+                <li><a href="index.php">Home</a></li>
+                <li><a href="product/products.php">Products</a></li>
+                <li><a href="history.php">Previous Orders</a></li>
+                <li><a href="contactview.php">Contact Us</a></li>
+                <li><a href="aboutus.php">About Us</a></li>
+                <?php
+                session_start();
+                if (isset($_SESSION['user'])) {
+                    echo '<li><a href="customerprofile.php">' . $_SESSION['user'] . '</a>';
+                    echo '<li><a href="basket/basket.php">Basket</a></li>';
+                }else {
+                    echo '<li><a href="signup/signUpPage.php">Sign up</a></li>';
+                    echo '<li><a href="loginview.php">Login</a></li>';
+                }
+                ?>
           </ul>
   </nav>
   </div>
@@ -27,10 +38,10 @@
 </header>
 </div>
 <body><?php
-require("../../../TeamProject6/model/User.php");?>
+require("../TeamProject6/model/User.php");?>
     <section>
         <div class="profile">
-            <img src="Thomas.jpg" alt="My Image" class="my_img">
+            <img src="Pictures for website/Thomas.jpg" alt="My Image" class="my_img">
             <div class="contact-col">
                 <form method="post">
                     <?php
