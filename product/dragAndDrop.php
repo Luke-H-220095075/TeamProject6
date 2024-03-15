@@ -5,7 +5,7 @@
     $sth=$db->prepare("SELECT imageName FROM products WHERE productId = :id");
     $sth->bindparam(':id', $_GET['product_id'], PDO::PARAM_STR, 10);
     $sth->execute();
-    $img=$sth->fetch(PDO::FETCH_ASSOC);
+    $img=str_replace("jpg", "png",$sth->fetch(PDO::FETCH_ASSOC));
     if(is_array($img))
           {
             $img = implode($img);
@@ -57,13 +57,16 @@
             </nav>
         </div>
     </section>
-  
+  <div class="heading">
         <h2>Upload an image of your room to see how the furniture would look</h2>
+                  </div>
+                  <div class="image">
         <input type="file" id="inpimage">
         <img src="" id="displayImg">
         <?php
-        echo '<div id="drag1"> <img id="img1" src="../Pictures%20for%20website/'.$img.'"></div>'; ?>
+        echo '<div id="drag1"> <img id="img1" src="../PicturesForDragAndDrop/'.$img.'"></div>'; ?> </div>
         <script>
+        
           
 // Make the DIV element draggable:
 imageDiv = document.getElementById("drag1");
