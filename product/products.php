@@ -57,9 +57,15 @@
               <?php
                 session_start();
               if (isset($_SESSION['user'])) {
-                  echo '<li><a href="#">' . $_SESSION['user'] . '</a>';
+                    echo '<a href="../customerprofile.php">' . $_SESSION['user'] . '</a>';
+                  echo '<a href="../basket/basket.php"><i class="fa-solid fa-basket-shopping"></i></a>';
+                  
+              } else {
+                echo '<a href="../loginview.php">Login</a>';
               }
               ?>
+              </div>
+    </div>
   </nav>
 </section>
 </header>

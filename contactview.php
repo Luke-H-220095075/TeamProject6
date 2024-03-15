@@ -6,7 +6,7 @@
   <meta charset="UTF-8">
   <script src="Contact Us.js"></script>
   <link rel="stylesheet" href="css/contact.css">
-  <link rel="stylesheet" type="text/css" href="../css/style.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
   <!-- <link rel="stylesheet" href="css/Authentication.css"> -->
 </head>
 <header>
@@ -23,16 +23,19 @@
             <a href="product/products.php">Products</a>
             <a href="contactview.php">Contact Us</a>
             <a href="aboutus.php">About Us</a>
-            <a href="loginview.php">Login</a>
-            <a href="basket/basket.php"><i class="fa-solid fa-basket-shopping"></i></a>
-        </div>
-    </div>
+        
               <?php
                 session_start();
               if (isset($_SESSION['user'])) {
-                  echo '<li><a href="#">' . $_SESSION['user'] . '</a>';
+                    echo '<a href="customerprofile.php">' . $_SESSION['user'] . '</a>';
+                  echo '<a href="basket/basket.php"><i class="fa-solid fa-basket-shopping"></i></a>';
+                  
+              } else {
+                echo '<a href="loginview.php">Login</a>';
               }
               ?>
+              </div>
+    </div>
   </nav>
 </section>
   </header>
@@ -78,11 +81,12 @@
         }
       </script>
       <div class="information">
-          <img src="Pictures for website\Brown Lorry.png">
+        <div class = "grid1">
+          <img src="Pictures for website\Brown Lorry.png" class = "lorry">
           <br>
           <img src="Pictures for website\Brown Text Bar.png">
+          <h2>We know you can’t wait for your new furniture. Track it’s progress as we build it for you.</h2>
           <h2 class="yourmum">Track your package</h2>
-          <p>We know you can’t wait for your new furniture. Track it’s progress as we build it for you.</p>
           <script>
             var i;
             for (i = 0; i < 10; i++) {
@@ -100,6 +104,8 @@
             document.write("<br>");
           }
         </script>
+        </div>
+        <div class = "grid2">
         <img src="Pictures for website\Brown Text.png">
         <br>
         <img src="Pictures for website\Brown Text Bar.png">
@@ -122,6 +128,7 @@
             document.write("<br>");
           }
         </script>
+        </div>
         <h1>If you have any query please contact us using on the options below. We’d love to hear from you.</h1>
       </div>
       <section class="location">

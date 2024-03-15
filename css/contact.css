@@ -19,19 +19,39 @@ align-items: center;
 text-align: center;
 position: relative;
 bottom: 40px;
-
 }
 
 .yourmum {
   position: relative;
-  bottom: 40px;
+  bottom: 100px;
 }
 
+.lorry {
+  position: relative;
+  left: 30px;
+}
+
+.grid1 {
+  margin: 20px auto;
+  width:800px;
+  height:800px;
+  display:grid;
+  grid-template-columns: 300px 300px;
+  grid-row: auto auto;
+  grid-column-gap: 100px;
+  grid-row-gap: 10px;
+}
+
+
+.grid2 {
+
+  }
 
 .my_img{
     width: 100%;
     height: 100%;
     }
+
 .who_are{
 background-color: #f5d5bb;
 display: grid;
