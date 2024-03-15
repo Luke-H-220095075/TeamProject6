@@ -1,66 +1,21 @@
-
+body {
+  background-color: #f5d5bb;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
 
 .center {
     text-align: center;
 }
 .name {
     color: #d6d7b4;
-    background-color: #f5d5bb;
+    
 }
 
 .images {
     width: 100%;
     object-fit: cover
-}
-
-.title {
-    position: absolute;
-    top: 15%;
-    left: 40%;
-    font-size: 60px;
-
-}
-
-.text1 {
-    position: absolute;
-    top: 166%;
-    left: 17%;
-    font-size: 30px;
-}
-
-.text2 {
-    position: absolute;
-    top: 175%;
-    left: 17%;
-    font-size: 30px;
-}
-
-.text3 {
-    position: absolute;
-    top: 166%;
-    left: 42%;
-    font-size: 30px;
-}
-
-.text4 {
-    position: absolute;
-    top: 175%;
-    left: 42%;
-    font-size: 30px;
-}
-
-.text5 {
-    position: absolute;
-    top: 166%;
-    left: 65%;
-    font-size: 28px;
-}
-
-.text6 {
-    position: absolute;
-    top: 175%;
-    left: 65%;
-    font-size: 30px;
 }
 
 
@@ -99,14 +54,13 @@
 }
 
 .design {
-    background-color: #f5d5bb;
-    display: grid;
-    width: flex;
-    align-items: center;
-    grid-template-columns: 1fr;
-    text-align: center;
-    height: 50vh;
+  background-image: url("../Pictures for website/cate-products.png");
+  padding: 5%;
+  text-align: center;
+  height: 60vh;
+  width: 100%;
 }
+
 
 .my_img {
     padding: 20px;
@@ -116,19 +70,36 @@
 }
 
 .product {
-  display: grid;
   min-height: 40vh;
+  background-color: #4f4d62;
+  width: 100%;
+  color: #f5d5bb;
+  align-items: center; 
+  text-align: center;
+  position: relative;
+}
+
+
+.offerscode {
+  min-height: 40vh;
+  width: 100%;
   background-color: #4f4d62;
   color: #f5d5bb;
   align-items: center; 
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  column-gap: 20px;
   text-align: center;
-    
 }
 
-.one {
+.itemscode {
+  display: grid;
   border-radius: 25%;
+}
+
+
+.one {
+  display: grid;
+  border-radius: 25%;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  column-gap: 10px;
 }
 
 .my_img_2 {
@@ -520,23 +491,10 @@ th {
   }
 
 
-  body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-}
-
 header {
     background-color: #f5f5dc;
     padding: 20px;
     text-align: center;
-}
-
-.products {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    grid-gap: 20px;
-    padding: 20px;
 }
 
 .product-card {

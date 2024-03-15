@@ -7,6 +7,15 @@
   font-variation-settings: "wght" 400;
 }
 
+.navbar{
+  background-image: url("../Pictures for website/nav-3 (1).png");
+  color: #fff;
+}
+
+.navbar-brand{
+  color: #7f683a;
+}
+
 /* Create a sticky/fixed navbar */
 #navbar {
   overflow: hidden;
@@ -189,9 +198,9 @@ text-align: center;
 }
 
 .my_img{
-  width: 75%;
+  width: 50%;
   height: 100%;
- margin-left: 15%;
+  border-radius: 25%;
   }
 
   .my_img1{
