@@ -24,19 +24,22 @@
     <div id="navbar">
         <a href="index.php" id="logo">Furniche</a>
         <div id="navbar-right">
-            <a href="product/products.php">Products</a>
-            <a href="contactview.php">Contact Us</a>
-            <a href="aboutus.php">About Us</a>
-            <a href="loginview.php">Login</a>
-            <a href="basket.php"><i class="fa-solid fa-basket-shopping"></i></a>
-        </div>
-    </div>
+            <a href="products.php">Products</a>
+            <a href="../contactview.php">Contact Us</a>
+            <a href="../aboutus.php">About Us</a>
+        
               <?php
                 session_start();
               if (isset($_SESSION['user'])) {
-                  echo '<li><a href="#">' . $_SESSION['user'] . '</a>';
+                    echo '<a href="../customerprofile.php">' . $_SESSION['user'] . '</a>';
+                  echo '<a href="../basket/basket.php"><i class="fa-solid fa-basket-shopping"></i></a>';
+                  
+              } else {
+                echo '<a href="../loginview.php">Login</a>';
               }
               ?>
+              </div>
+    </div>
   </nav>
 </section>
 </header>
