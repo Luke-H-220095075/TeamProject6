@@ -6,7 +6,7 @@ session_start();
 $basketId = 0;
 if (isset($_SESSION['user'])) {
 
-    $sql = "SELECT basketId FROM baskets WHERE userId = ". $_SESSION['userID'];
+    $sql = "SELECT basketId FROM baskets WHERE userId = ". $_SESSION['userID'] ." AND currentUserBasket = 1" ;
     $result = $db->query($sql);
     $row = $result->fetch(PDO::FETCH_ASSOC);
     $basketId = $row['basketId'];
