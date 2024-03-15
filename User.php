@@ -23,7 +23,6 @@ class User {
     $this->userID = null;
   }
   public function signIn(){
-
     include 'view/connect.php';
     try{
       $sth=$db->prepare("SELECT userId, password FROM users WHERE username = :username");
@@ -35,21 +34,20 @@ class User {
       {
         if(password_verify(($this->password), $row['password']))
         {
-          echo $_SESSION["user"];
-          if(is_array($username))
+          if(is_array($this->username))
           {
             $username = $username[0];
           }
+          
             $this->setSession();
             echo "success";
-            header('Location: ../TeamProject6/Customerprofile.php');
+            header('Location: Customerprofile.php');
           }
-          else{
-          ?>
-          <p>Incorrect password</p>
-          <?php
+          else
+          {
+            echo "<p>Incorrect password</p>";
+          }
         }
-      }
       else
       {
         ?>
@@ -125,7 +123,6 @@ class User {
     }
   }
   public function setSession(){
-    session_start();
     require 'view/connect.php';
     try{
       $_SESSION["user"] = $this->username;
@@ -135,6 +132,7 @@ class User {
       $row=$sth->fetch(PDO::FETCH_ASSOC);
       $_SESSION["access"] = $row['userType'];
       $_SESSION["userID"] = $row['userId'];
+      
     }
     catch(PDOException $ex){
       ?>
@@ -144,7 +142,7 @@ class User {
     }    
   }
   public function getDetails(){
-    include '../../view/connect.php';
+    include 'view/connect.php';
     if(isset($_SESSION)){
       $sth=$db->prepare("SELECT * FROM users WHERE username = :username");
       $sth->bindparam(':username', $_SESSION["user"], PDO::PARAM_STR, 10);

@@ -24,19 +24,22 @@
     <div id="navbar">
         <a href="index.php" id="logo">Furniche</a>
         <div id="navbar-right">
-            <a href="product/products.php">Products</a>
-            <a href="contactview.php">Contact Us</a>
-            <a href="aboutus.php">About Us</a>
-            <a href="loginview.php">Login</a>
-            <a href="basket/basket.php"><i class="fa-solid fa-basket-shopping"></i></a>
-        </div>
-    </div>
+            <a href="products.php">Products</a>
+            <a href="../contactview.php">Contact Us</a>
+            <a href="../aboutus.php">About Us</a>
+        
               <?php
                 session_start();
               if (isset($_SESSION['user'])) {
-                  echo '<li><a href="#">' . $_SESSION['user'] . '</a>';
+                    echo '<a href="../customerprofile.php">' . $_SESSION['user'] . '</a>';
+                  echo '<a href="../basket/basket.php"><i class="fa-solid fa-basket-shopping"></i></a>';
+                  
+              } else {
+                echo '<a href="../loginview.php">Login</a>';
               }
               ?>
+              </div>
+    </div>
   </nav>
 </section>
 </header>
@@ -283,19 +286,19 @@
     <h1 style="padding-inline: 70px 5px;">Tips and Ideas for a more sustainable home</h1>
     <div class="product">
         <section class="one">
-            <img src="../Pictures%20for%20website/Tips and Ideas 1.jpg" alt="Product 1" class="my_img">
+        <a href="https://medium.com/@beancarmens/wooden-boxes-and-their-storage-benefits-7e94e1665200"><img src="../Pictures%20for%20website/Tips and Ideas 1.jpg" alt="Product 1" class="my_img"></a>
 
 
 
-            <img src="../Pictures%20for%20website/Tips and Ideas 2.jpg" alt="Product 2" class="my_img">
+        <a href="https://www.ofwat.gov.uk/households/conservingwater/watersavingtips/"><img src="../Pictures%20for%20website/Tips and Ideas 2.jpg" alt="Product 2" class="my_img"></a>
 
 
 
-            <img src="../Pictures%20for%20website/Tips and Ideas 3.jpg" alt="Product 3" class="my_img">
+        <a href="https://tuckerjoinery.co.uk/blog/how-sustainable-wood-is-shaping-the-furniture-sector/"><img src="../Pictures%20for%20website/Tips and Ideas 3.jpg" alt="Product 3" class="my_img"></a>
 
-            <img src="../Pictures%20for%20website/Tips and Ideas 4.jpg" alt="Product 3" class="my_img">
+        <a href="https://www.fruitnet.com/eurofruit/new-study-endorses-wood-as-the-most-sustainable-packaging-for-fandv/256847.article#:~:text=Wooden%20packaging%20was%20the%20best,with%20the%20lowest%20environmental%20impact."><img src="../Pictures%20for%20website/Tips and Ideas 4.jpg" alt="Product 3" class="my_img"></a>
 
-            <img src="../Pictures%20for%20website/Tips and Ideas 5.jpg" alt="Product 3" class="my_img">
+        <a href="https://www.routledge.com/blog/article/what-is-sustainable-energy-and-why-do-we-need-it"><img src="../Pictures%20for%20website/Tips and Ideas 5.jpg" alt="Product 3" class="my_img"></a>
 
     </div>
     </section>
@@ -308,18 +311,20 @@
     </div>
 
 <script>
-       // When the user scrolls down 80px from the top of the document, resize the navbar's padding and the logo's font size
-       window.onscroll = function() {scrollFunction()};
 
-function scrollFunction() {
-    if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
-        document.getElementById("navbar").style.padding = "30px 10px";
-        document.getElementById("logo").style.fontSize = "25px";
-    } else {
-        document.getElementById("navbar").style.padding = "30px 10px";
-        document.getElementById("logo").style.fontSize = "35px";
+    // When the user scrolls down 80px from the top of the document, resize the navbar's padding and the logo's font size
+    window.onscroll = function() {scrollFunction()};
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+            document.getElementById("navbar").style.padding = "30px 10px";
+            document.getElementById("logo").style.fontSize = "25px";
+        } else {
+            document.getElementById("navbar").style.padding = "50px 10px";
+            document.getElementById("logo").style.fontSize = "35px";
+        }
     }
-}
+
 
     function showProductModal(productId) {
         var modal = document.getElementById('productModal');

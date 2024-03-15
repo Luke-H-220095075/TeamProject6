@@ -6,7 +6,7 @@
   <meta charset="UTF-8">
   <script src="Contact Us.js"></script>
   <link rel="stylesheet" href="css/contact.css">
-  <link rel="stylesheet" type="text/css" href="../css/style.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
   <!-- <link rel="stylesheet" href="css/Authentication.css"> -->
 </head>
 <header>
@@ -23,16 +23,19 @@
             <a href="product/products.php">Products</a>
             <a href="contactview.php">Contact Us</a>
             <a href="aboutus.php">About Us</a>
-            <a href="loginview.php">Login</a>
-            <a href="basket/basket.php"><i class="fa-solid fa-basket-shopping"></i></a>
-        </div>
-    </div>
+        
               <?php
                 session_start();
               if (isset($_SESSION['user'])) {
-                  echo '<li><a href="#">' . $_SESSION['user'] . '</a>';
+                    echo '<a href="customerprofile.php">' . $_SESSION['user'] . '</a>';
+                  echo '<a href="basket/basket.php"><i class="fa-solid fa-basket-shopping"></i></a>';
+                  
+              } else {
+                echo '<a href="loginview.php">Login</a>';
               }
               ?>
+              </div>
+    </div>
   </nav>
 </section>
   </header>
