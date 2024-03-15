@@ -42,8 +42,8 @@ function availability($db, $basket_id)
   }
   return $available;
 }
-
-if (isset($_POST['purchase'])) {
+function purchase($db, $basket_id){
+  if (isset($_POST['purchase'])) {
   if (availability($db, $basket_id)) {
     $sql = "SELECT countStock, countSold, quantity, basketproducts.productId FROM products join basketproducts ON products.productId = basketproducts.productId  WHERE basketId = $basket_id";
     $result = $db->query($sql);
@@ -52,10 +52,17 @@ if (isset($_POST['purchase'])) {
         $sql = "UPDATE products SET countStock = " . $row["countStock"] - $row["quantity"] . ", countSold = " . $row["countSold"] + $row["quantity"] . " WHERE productId = " . $row["productId"];
         $db->query($sql);
       }
+      }
+      $sql = "INSERT INTO orders (basketId, userId, deliveryOption) VALUES (".$basket_id.", ".$_SESSION['userID'].", 'standard')";
+      $db->query($sql);
+      $sql = "UPDATE baskets SET currentUserBasket = 0 WHERE basketId = $basket_id";
+      $db->query($sql);
+      $sql = "INSERT INTO baskets (userId, currentUserBasket) VALUES (".$_SESSION['userID'].", 1)";
+      $db->query($sql);
     }
   }
+  $_POST['purchase'] = null;
 }
-$_POST['purchase'] = null;
 ?>
 
 <!DOCTYPE html>
@@ -137,6 +144,7 @@ $_POST['purchase'] = null;
           <?php
           if (availability($db, $basket_id)) {
             echo "<button  method='post' name='purchase' type='submit'>Confirm order</button>";
+            purchase($db, $basket_id);
           } else {
             echo "<button type='button'>unavailable</button>";
           }
