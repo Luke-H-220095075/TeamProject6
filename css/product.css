@@ -71,7 +71,7 @@ body {
 
 .product {
   min-height: 40vh;
-  background-color: #4f4d62;
+  background-image: url("../Pictures for website/product-page.png");
   width: 100%;
   color: #f5d5bb;
   align-items: center; 
@@ -81,9 +81,9 @@ body {
 
 
 .offerscode {
-  min-height: 40vh;
+  min-height: 60vh;
   width: 100%;
-  background-color: #4f4d62;
+  background-image: url("../Pictures for website/product-page.png");
   color: #f5d5bb;
   align-items: center; 
   text-align: center;
@@ -224,13 +224,20 @@ th {
 }
 
 .offer-item {
-    border: 15px solid #4f4d62;
-    margin-left: 150px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  padding: 2px 16px;
+  transition: 0.3s;
+    margin-left: 120px;
     width: auto;
     padding: 10px;
     border: 1px solid #4f4d62;
     text-align: center;
     margin-right: 10px; /* Add margin between items */
+}
+
+/* On mouse-over, add a deeper shadow */
+.offer-item:hover {
+  box-shadow: 0 16px 32px 0 rgba(0,0,0,0.2);
 }
 
 .offer-item:last-child {
@@ -263,16 +270,15 @@ th {
     height: 250px;
 }
 
-/*.card {
-    display: inline-block;
-    width: 100%;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-}*/
+.desk {
+  background-image: url("../Pictures for website/cate-products.png");
+  min-height: 60vh;
+  width: 100%;
+  color: #323232;
+  align-items: center; 
+  text-align: center;
 
+}
 .product-details .card #image-details {
     display: inline-block;
     max-width: 300px;

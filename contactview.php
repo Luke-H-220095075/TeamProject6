@@ -7,6 +7,7 @@
   <script src="Contact Us.js"></script>
   <link rel="stylesheet" href="css/contact.css">
   <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <!-- <link rel="stylesheet" href="css/Authentication.css"> -->
 </head>
 <header>
@@ -15,28 +16,42 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <link rel="stylesheet" href="https://use.typekit.net/maf1fpm.css">
     </a>
-    <section>
-    <nav>
-    <div id="navbar">
-        <a href="index.php" id="logo">Furniche</a>
-        <div id="navbar-right">
-            <a href="product/products.php">Products</a>
-            <a href="contactview.php">Contact Us</a>
-            <a href="aboutus.php">About Us</a>
-        
-              <?php
-                session_start();
-              if (isset($_SESSION['user'])) {
-                    echo '<a href="customerprofile.php">' . $_SESSION['user'] . '</a>';
-                  echo '<a href="basket/basket.php"><i class="fa-solid fa-basket-shopping"></i></a>';
-                  
-              } else {
-                echo '<a href="loginview.php">Login</a>';
-              }
-              ?>
+      <section>
+          <nav class="navbar">
+              <div class="container-fluid">
+                  <a class="navbar-brand" href="index.php">Furniche</a>
+
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                          <li class="nav-item">
+                              <a class="nav-link" href="product/products.php">Products</a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" href="loginview.php">Login</a>
+                          </li>
+                          <li class="nav-item dropdown">
+                              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                  The team
+                              </a>
+                              <ul class="dropdown-menu">
+                                  <li><a class="dropdown-item" href="#">About Us</a></li>
+                                  <li><a class="dropdown-item" href="#">Contact us</a></li>
+                              </ul>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" href="basket/basket.php"><i class="fa-solid fa-basket-shopping"></i></a>
+                          </li>
+                      </ul>
+                      <form class="d-flex" role="search">
+                          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                          <button class="btn btn-outline-success" type="submit">Search</button>
+                      </form>
+                  </div>
               </div>
-    </div>
-  </nav>
+          </nav>
 </section>
   </header>
 
@@ -98,7 +113,8 @@
         <img src="Pictures for website\Brown Text Bar.png">
         <h2 class="yourmum">FAQs</h2>
         <p>Over 90% of our customers find their questions answered in our FAQ’s.</p>
-        <script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+            <script>
           var i;
           for (i = 0; i < 10; i++) {
             document.write("<br>");

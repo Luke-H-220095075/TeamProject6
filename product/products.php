@@ -19,6 +19,7 @@
   </a>
 </div>
 <section>
+<div class="fixed-top">
 <nav class="navbar">
   <div class="container-fluid">
     <a class="navbar-brand" href="index.php">Furniche</a>
@@ -53,6 +54,7 @@
       </form>
     </div>
   </div>
+</div>
 </nav>
               <?php
                 session_start();
@@ -61,7 +63,7 @@
                   echo '<a href="../basket/basket.php"><i class="fa-solid fa-basket-shopping"></i></a>';
                   
               } else {
-                echo '<a href="../loginview.php">Login</a>';
+                //echo '<a href="../loginview.php">Login</a>';//
               }
               ?>
               </div>
