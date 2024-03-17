@@ -42,17 +42,6 @@ body {
     color: #333;
 }
 
-/*what does crate mean?*/
-.Crate {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    width: 2000px;
-    height: 210px;
-    overflow: hidden;
-}
-
 .design {
   background-image: url("../Pictures for website/cate-products.png");
   padding: 5%;
@@ -107,13 +96,7 @@ body {
     width: 300px;
     height: 400px;
 }
-/*
-.image {
-align-items: center;
-max-width:100px;
-max-height: 25px;
-}
-*/
+
 h2 {
     color: #333;
 }

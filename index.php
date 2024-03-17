@@ -35,8 +35,8 @@
             The team
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">About Us</a></li>
-            <li><a class="dropdown-item" href="#">Contact us</a></li>
+            <li><a class="dropdown-item" href="aboutus.php">About Us</a></li>
+            <li><a class="dropdown-item" href="contactview.php">Contact us</a></li>
           </ul>
         </li>
         <li class="nav-item">

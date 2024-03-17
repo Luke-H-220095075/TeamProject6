@@ -4,24 +4,57 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/history.css">
+    <link rel="stylesheet" href="css/style.css">
     <title>Furniche - Previous Orders</title>
 </head>
 <div class="colour">
   <header>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
       <link rel="stylesheet" href="https://use.typekit.net/maf1fpm.css">
-  </header>
-</div>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    </head>
+
+
+
+  <header>
 <section>
-  <div class="topnav">
-      <nav>
-          <h1 class="logo">Furniche</h1>
-          <ul>
-          <li><a href="index.php">Home</a></li>
-                <li><a href="product/products.php">Products</a></li>
-                <li><a href="history.php">Previous Orders</a></li>
-                <li><a href="contactview.php">Contact Us</a></li>
-                <li><a href="aboutus.php">About Us</a></li>
+  <div class="fixed-top">
+<nav class="navbar">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="index.php">Furniche</a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="product/products.php">Products</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="loginview.php">Login</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            The team
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="aboutus.php">About Us</a></li>
+            <li><a class="dropdown-item" href="contactview.php">Contact us</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="basket/basket.php"><i class="fa-solid fa-basket-shopping"></i></a>
+        </li>
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</div>
+</nav>
                 <?php
                 session_start();
                 if (isset($_SESSION['user'])) {
