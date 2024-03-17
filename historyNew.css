@@ -103,6 +103,6 @@ body {
 }
 
 .review-form textarea::placeholder {
-    font-family: Arial; /* Example of a different font */
+    font-family: Arial; 
   }
   
