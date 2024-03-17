@@ -169,7 +169,7 @@ th {
 }
 
 .modal-image {
-    width: 500px;
+    width: 70%;
     height: 350px;
     object-fit: fill;
     cursor: pointer;
@@ -195,7 +195,7 @@ th {
     background-color: rgba(0,0,0,0.4);
 }
 
-.modal-content {
+.modal-contant {
     background-color: #fefefe;
     position: absolute;
     left: 50%;
@@ -207,6 +207,7 @@ th {
     height: auto;
     text-align: center;
     border-radius: 25px;
+
 }
 
 #addToBasketButton {
@@ -227,6 +228,7 @@ th {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
   padding: 2px 16px;
   transition: 0.3s;
+  border-radius: 25px;
     margin-left: 120px;
     width: auto;
     padding: 10px;
@@ -278,6 +280,10 @@ th {
   align-items: center; 
   text-align: center;
 
+}
+
+.inspo{
+  border-radius: 25px;
 }
 .product-details .card #image-details {
     display: inline-block;

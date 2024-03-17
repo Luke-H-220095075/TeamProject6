@@ -64,19 +64,19 @@
 <div id="carouselExampleRide" class="carousel slide" data-bs-ride="true">
   <div class="carousel-inner">
   <div class="carousel-item active">
-      <img src="Pictures%20for%20website/slide2.jpg" class="d-block w-100" alt="...">
+      <img src="Pictures%20for%20website/slide2.jpg" class="d-block w-100" alt="..." data-bs-interval="0.5s">
     </div>
     <div class="carousel-item">
-      <img src="Pictures%20for%20website/slide1.jpg" class="d-block w-100" alt="...">
+      <img src="Pictures%20for%20website/slide1.jpg" class="d-block w-100" alt="..." data-bs-interval="0.5s">
     </div>
     <div class="carousel-item">
-      <img src="Pictures%20for%20website/slide3.jpg" class="d-block w-100" alt="...">
+      <img src="Pictures%20for%20website/slide3.jpg" class="d-block w-100" alt="..." data-bs-interval="0.5s">
     </div>
     <div class="carousel-item">
-      <img src="Pictures%20for%20website/slide4.jpg" class="d-block w-100" alt="...">
+      <img src="Pictures%20for%20website/slide4.jpg" class="d-block w-100" alt="..." data-bs-interval="0.5s">
     </div>
     <div class="carousel-item">
-      <img src="Pictures%20for%20website/slide5.jpg" class="d-block w-100" alt="...">
+      <img src="Pictures%20for%20website/slide5.jpg" class="d-block w-100" alt="..." data-bs-interval="0.5s">
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="prev">

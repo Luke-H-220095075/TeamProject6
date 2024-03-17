@@ -328,7 +328,7 @@
     </section>
 
     <div id="productModal" class="modal">
-        <div class="modal-content">
+        <div class="modal-contant">
             <div id="productDetailsModal"></div>
             <button id="addToBasketButton" onclick="addToBasket()" style="display: none;">Add to Basket</button>
         </div>
