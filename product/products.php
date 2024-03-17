@@ -73,7 +73,7 @@
 </header>
 
     <div class="design">
-        <h1>Categories<h1>
+        <h1>Categories</h1>
 
     <div>
     <img src="../Pictures%20for%20website/Bohemian.jpg" alt="Category 1" onclick="fillCategoryFilter('bohemian')" class="image-filter">
@@ -110,7 +110,7 @@
 
 
  <div class="pd-back">
-<h2>Products</h2>
+<h2 id="productTop">Products</h2>
 
     <label for="sortFilter">Sort by:</label>
     <select id="sortFilter" onchange="filterProducts()" class="custom-select">
@@ -191,6 +191,9 @@
 
     <?php
     include '../connect.php';
+    $productsPerPage = 10;
+    $page = isset($_GET['page']) ? $_GET['page'] : 1;
+
     try {
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -226,8 +229,10 @@
                 break;
         }
 
-        // Prepare and execute the final query
-        $stmt = $db->prepare($query);
+        $limit = $productsPerPage;
+        $start = ($page - 1) * $limit;
+
+        $stmt = $db->prepare($query . " LIMIT :start, :limit");
 
         if ($typeFilter != 'all') {
             $stmt->bindParam(':type', $typeFilter, PDO::PARAM_STR);
@@ -236,6 +241,9 @@
         if ($categoryFilter != 'all') {
             $stmt->bindParam(':category', $categoryFilter, PDO::PARAM_STR);
         }
+
+        $stmt->bindParam(':start', $start, PDO::PARAM_INT);
+        $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
 
         $stmt->execute();
 
@@ -259,8 +267,31 @@
 
                 $count++;
             }
-
             echo '</table>';
+
+            $stmtTotal = $db->prepare($query);
+            if ($typeFilter != 'all') {
+                $stmtTotal->bindParam(':type', $typeFilter, PDO::PARAM_STR);
+            }
+
+            if ($categoryFilter != 'all') {
+                $stmtTotal->bindParam(':category', $categoryFilter, PDO::PARAM_STR);
+            }
+
+            $stmtTotal->execute();
+            $total_results = $stmtTotal->rowCount();
+            $total_pages = ceil($total_results / $productsPerPage);
+
+            echo '<div class="pagination">';
+            echo '<ul class="pagination justify-content-center">';
+
+            for ($i = 1; $i <= $total_pages; $i++) {
+                $active = ($page == $i) ? 'active' : '';
+                echo '<li class="page-item ' . $active . '"><a class="page-link" href="?page=' . $i . '&typeFilter=' . $typeFilter . '&categoryFilter=' . $categoryFilter . '&sortFilter=' . $sortFilter . '#productTop">' . $i . '</a></li>';
+            }
+
+            echo '</ul>';
+            echo '</div>';
         } else {
             echo "<p>No products available, add some to the database</p>";
         }
@@ -276,7 +307,7 @@
 
     </div>
     <div class="offerscode">
-        <h1> Current offers</h>
+        <h1> Current offers</h1>
         <section class="itemscode">
             <?php
             if (!empty($cheapestProducts)) {
@@ -298,7 +329,7 @@
     </section>
 
     <div class="desk">
-        <h1> Desk inspiration</h>
+        <h1> Desk inspiration</h1>
         <section class="inspo">
             <img src="../Pictures%20for%20website/Desk Inspiration 1.jpg" alt="Product 1" class="my_img_2">
             <img src="../Pictures%20for%20website/Desk Inspiration 2.jpg" alt="Product 2" class="my_img_2">
@@ -439,7 +470,6 @@
             // Open the product details page in a new window or tab
             window.open('product_details.php?product_id=' + productId, '_blank');
         }
-
     </script>
 </body>
 <footer class="footer">
