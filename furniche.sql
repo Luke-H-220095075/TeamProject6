@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 18, 2024 at 03:15 PM
+-- Generation Time: Mar 18, 2024 at 11:08 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -52,15 +52,16 @@ CREATE TABLE `baskets` (
   `basketId` int(11) NOT NULL,
   `userId` int(11) NOT NULL,
   `dateAdded` timestamp NOT NULL DEFAULT current_timestamp(),
-  `discountId` int(11) DEFAULT NULL
+  `discountId` int(11) DEFAULT NULL,
+  `currentUserBasket` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `baskets`
 --
 
-INSERT INTO `baskets` (`basketId`, `userId`, `dateAdded`, `discountId`) VALUES
-(1, 1, '2024-02-07 12:22:40', 1);
+INSERT INTO `baskets` (`basketId`, `userId`, `dateAdded`, `discountId`, `currentUserBasket`) VALUES
+(1, 1, '2024-02-07 12:22:40', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -213,15 +214,16 @@ CREATE TABLE `users` (
   `phone` varchar(255) DEFAULT NULL,
   `password` varchar(255) NOT NULL,
   `dateCreated` timestamp NOT NULL DEFAULT current_timestamp(),
-  `secretAnswer` varchar(255) NOT NULL
+  `secretAnswer` varchar(255) NOT NULL,
+  `userType` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`userId`, `admin`, `firstname`, `surname`, `address`, `email`, `username`, `phone`, `password`, `dateCreated`, `secretAnswer`) VALUES
-(1, 'customer', 'admin', 'admin', NULL, 'admin@admin.com', 'admin', NULL, '$2y$10$LmAbf3RNHJyUisHl7RH.rOB5dhWG136IRNw5lfcBArzIn9jRpWoEK', '2024-02-07 11:51:07', 'admin');
+INSERT INTO `users` (`userId`, `admin`, `firstname`, `surname`, `address`, `email`, `username`, `phone`, `password`, `dateCreated`, `secretAnswer`, `userType`) VALUES
+(1, 'customer', 'admin', 'admin', NULL, 'admin@admin.com', 'admin', NULL, '$2y$10$LmAbf3RNHJyUisHl7RH.rOB5dhWG136IRNw5lfcBArzIn9jRpWoEK', '2024-02-07 11:51:07', 'admin', '');
 
 --
 -- Indexes for dumped tables
