@@ -62,7 +62,7 @@ if (isset($_GET['product_id'])) {
 
             echo '<div class="card">';
             echo '<div class="image-details">';
-            echo '<p><img src="../Pictures%20for%20website/' . htmlspecialchars($row['imageName']) . ' alt="' . htmlspecialchars($row['imageName']) . '"></p>';
+            echo '<p><img src="../Pictures%20for%20website/' . htmlspecialchars($row['imageName']) . '" alt="' . htmlspecialchars($row['imageName']) . '"></p>';
             echo '</div>';
             echo '<div class="info">';
             echo '<h2>' . $row['productName'] . '</h2>';
