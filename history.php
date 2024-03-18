@@ -43,7 +43,7 @@
 <?php
 include 'connect.php';
 try {
-    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    //$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // I tested with user 1, change once login page is connected 
     $userID = 1;
