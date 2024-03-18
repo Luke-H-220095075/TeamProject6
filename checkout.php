@@ -17,6 +17,7 @@ if ($result->rowCount() > 0) {
 
 
 # discounts
+if (isset($_POST['discount_name'])) {
 $discount_name = $_SESSION["discount_name"]; #$discount_name = $_POST['discount'];
 $sql = "SELECT value FROM discounts WHERE discountTitle = '" . $discount_name . "'";
 $value = $db->query($sql);
@@ -24,7 +25,7 @@ if ($value->rowCount() > 0) {
   $basketcost = $subtotal * (1 - $value->fetch()["value"] / 100);
 } else {
   $basketcost = $subtotal;
-}
+}}
 
 #stock availability check
 function availability($db, $basket_id)
@@ -91,7 +92,6 @@ function purchase($db, $basket_id){
         </div>
       </div>
       <?php
-      session_start();
       if (isset($_SESSION['user'])) {
         echo '<li><a href="#">' . $_SESSION['user'] . '</a>';
       }
