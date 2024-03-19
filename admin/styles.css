@@ -297,3 +297,104 @@ button:hover {
     background-color: #ffff;
     color: #622;
 }
+
+
+/*Page specific code starts here */
+
+/* Admin Dashboard*/
+.kpi-section {
+    margin-left: 300px;
+    margin-top: 20px;
+    max-width: 1200px;
+    transition: margin-left 0.3s ease-in-out;
+}
+
+.kpi-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-gap: 24px;
+    margin-top: 36px;
+  
+}
+
+.kpi-box {
+    padding: 24px;
+    background: #f3f4f6;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    grid-gap: 24px;
+    box-shadow: 0 6px 7px -4px rgba(0, 0, 0, 0.2);
+}
+.kpi-box:hover {
+    box-shadow: 0 6px 7px -4px rgba(0, 0, 0, 0.5);
+    background-color: #c4956b;
+    background: #fee3cf;
+
+}
+
+.kpi-box i {
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+    font-size: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.kpi-box:nth-child(1) i {
+    background: #d2e3fc;
+    color: #1e6ef9;
+}
+
+.kpi-box:nth-child(2) i {
+    background: #fff7d6;
+    color: #f8b700;
+}
+
+.kpi-box:nth-child(3) i {
+    background: #fcd9c4;
+    color: #ff6347;
+}
+
+.kpi-box .text h3 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #374151;
+}
+
+.kpi-box .text p {
+    font-size: 20px;
+    font-weight: 600;
+    color: #374151;
+}
+.charts-section {
+    margin-left: 300px;
+    margin-top: 50px;
+    margin-right: 10px;
+}
+
+.charts {
+    display: flex;
+    justify-content: space-between;
+    width: 800px;
+    }
+
+.charts-box {
+margin-left: 300px;
+    width: 1200px; 
+    max-height: 3750px;
+    background-color:white;
+    margin-bottom: 20px;
+    padding: 25px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    box-shadow: 0 6px 7px -4px rgba(0, 0, 0, 0.2);
+}
+
+.chart-title {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+}
