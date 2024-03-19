@@ -157,3 +157,71 @@ foreach ($orders as $order) {
 } else {
 echo "<tr><td colspan='8'>No orders found.</td></tr>";
 }
+
+
+// Search functionality
+if (isset($_GET['search']) && !empty($_GET['search'])) {
+    $searchTerm = $_GET['search'];
+    $sql = "SELECT * FROM orders WHERE orderId LIKE :searchTerm
+           OR basketId LIKE :searchTerm 
+           OR userId LIKE :searchTerm 
+           OR `deliveryStatus` LIKE :searchTerm 
+           OR deliveryOption LIKE :searchTerm 
+           OR deliveryDate LIKE :searchTerm 
+           OR notes LIKE :searchTerm";
+
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(':searchTerm', "%$searchTerm%", PDO::PARAM_STR);
+    $stmt->execute();
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    if ($result) {
+        foreach ($result as $row) {
+        }
+    } else {
+        echo "";
+    }
+}
+
+?>
+
+
+
+
+
+<!-- Order View Table -->
+
+<!--Header of Table, BOOTSTRAP WAS USED -->
+<div class="info-table">
+<div class="table-header" style="background-color: #e2b489; padding-top: 10px;">
+    <div class="container custom-background">
+    <br><br> <strong><h3>Orders</h3></strong> </strong> &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp;
+        
+        <div class="row justify-content-end align-items-right">
+            <div class="col-md-6">
+                <form method="GET" action="">
+                    <div class="input-group mb-3 custom-search-bar">
+                        <input type="text" class="form-control" placeholder="Search..." aria-label="Search..." aria-describedby="search-button" name="search">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="submit" id="search-button"><i class="fa-solid fa-magnifying-glass"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-3">
+            <div class="input-group mb-3 custom-dropdown-toggle">
+            <div class="input-group-prepend">
+             <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="deliveryDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Delivery Status</button>
+             <div class="dropdown-menu">
+            <a class="dropdown-item" href="orderadmin.php?deliveryStatus=Delivered">Delivered</a>
+            <a class="dropdown-item" href="orderadmin.php?deliveryStatus=Currently%20Delivering">Currently Delivering</a>
+            <a class="dropdown-item" href="orderadmin.php?deliveryStatus=Dispatching">Dispatching</a>
+            <a class="dropdown-item" href="orderadmin.php?deliveryStatus=Pending%20Approval">Pending Approval</a>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+    </div>
+</div>
