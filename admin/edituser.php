@@ -129,6 +129,31 @@ if (isset($_GET['userId'])) {  $userId = $_GET['userId'];
                     <i class='fa-solid fa-trash'></i> Delete User
                 </button>
                 </a>
-
                
             </div>
+
+            
+            <div class="user-kpis">
+                <div class="kpi-box">
+                    <i class='fa-solid fa-shopping-cart'></i>
+                    <div class="text">
+                        <h3>Total Orders</h3>
+                        <p><?php echo $totalOrders; ?></p>
+                    </div>
+                </div>
+                <div class="kpi-box">
+                    <i class='fa-solid fa-star'></i>
+                    <div class="text">
+                        <h3>Total Reviews</h3>
+                        <p><?php echo  $totalInquires ; ?></p>
+                    </div>
+                </div>
+                <div class="kpi-box">
+                    <i class='fa-solid fa-clock'></i>
+                    <div class="text">
+                        <h3>Pending Orders</h3>
+                        <p><?php echo $totalPendingOrders; ?></p>
+                    </div>
+                </div>
+            </div>
+        </div>
