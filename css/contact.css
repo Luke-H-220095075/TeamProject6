@@ -10,8 +10,20 @@
 
 .who_are {
 width: 200%;
+background-color: #f5d5bb;
+
 /* align-items: center; */
 
+}
+
+.my_img{
+position: relative;
+left: 400px;
+width: 200px;
+}
+
+.woodbg {
+  background-image: url('../Pictures for website/Contact Us Form Background.png')
 }
 
 .information{
@@ -22,6 +34,7 @@ bottom: 40px;
 }
 
 .header_one {
+background-image: url('../Pictures for website/Light wood background.jpg');
 position: relative;
 bottom: 198px;
 right: 15px;

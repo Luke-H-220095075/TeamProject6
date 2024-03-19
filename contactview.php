@@ -57,6 +57,7 @@
 
   <body>
     <br>
+    <br>
     <div class="content">
       <div class="who_are">
         <img src="Pictures for website\Contact Us Help.png" alt="My Image" class="my_img">
@@ -91,11 +92,12 @@
       </div>
       <script>
         var i;
-        for (i = 0; i < 5; i++) {
+        for (i = 0; i < 2; i++) {
           document.write("<br>");
         }
       </script>
       <div class="information">
+      <!-- <img src ="Pictures for website\Light wood background.jpg" class = "woodbg"> -->
         <div class = "grid1">
           <img src="Pictures for website\Brown Lorry.png" class = "lorry">
           <br>
