@@ -35,3 +35,121 @@ h1{
 #content.left-collapsed {
     margin-left: 70px;
 }
+
+
+/*Sidebar*/
+#sidebar {
+    height: 100vh;
+    width: 250px;
+    background-image: url("../Pictures for website/nav-side.png");
+    position: fixed;
+    left: 0;
+    transition: left 0.3s ease-in-out;
+}
+
+.side-menu {
+    list-style: none;
+    padding: 0;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    color: black;
+    cursor: pointer;
+}
+
+.logo span {
+    font-weight: bold;
+}
+
+#sidebar.left-collapsed {
+    width: 70px;
+}
+
+#sidebar.left-collapsed .nav-item {
+    display: none;
+}
+
+.hide-text span {
+    display: none;
+}
+
+#sidebar ul li a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+    border-radius: 0.8rem;
+    border: 1px solid #ddd;
+    padding: 10px;
+    transition: background-color 0.3s ease;
+}
+
+#sidebar ul li a:hover {
+    background-color: #ffff;
+    color: #D4AC87;
+}
+
+#sidebar ul li a i {
+    min-width: 50px;
+    text-align: center;
+    height: 50px;
+    border-radius: 12px;
+    line-height: 50px;
+}
+
+#sidebar ul li .tooltip {
+    position: absolute;
+    left: 250px;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0.5rem 0.8rem rgba(0, 0, 0, 0.5);
+    border-radius: .6rem;
+    padding: .4rem 1.2rem;
+    line-height: 1.8rem;
+    z-index: 20;
+    display: none;
+}
+
+#sidebar ul li:hover .tooltip {
+    display: block;
+}
+
+
+.user-info {
+    margin-left: 30px;
+    margin-top: 15px;
+    list-style-type: none; 
+    display: flex;
+    align-items: center;
+}
+
+#user-icon {
+    margin-right: 10px; 
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+#user-info:hover + .dropdown-content,
+.dropdown-content:hover {
+    display: block;
+}
+
+.dropdown-content a {
+    display: none;
+}
+
+#user-info:hover + .dropdown-content a,
+.dropdown-content:hover a {
+    display: block;
+}
