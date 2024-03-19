@@ -111,6 +111,16 @@ require("User.php");?>
       $controller->invoke(isset($_POST['cbEmail']), isset($_POST['cbText']));
       //header('Location: update.php');
   }?>
+  <?php 
+  echo '<button onclick="'.requestAdmin().'" style="cursor: pointer">Reset Filters</button>';
+ 
+  function requestAdmin(){
+    $user = new User($_SESSION["user"], null, null, null, null, null, null, null);
+    if($user->requestAdmin()){
+        echo 'success';
+    }
+  }
+  ?>
             </div>
         </div>
     </section>
