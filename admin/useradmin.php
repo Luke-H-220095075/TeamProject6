@@ -317,3 +317,79 @@ if (isset($_GET['search']) && !empty($_GET['search'])) {
 </div>
 </div>
 </div>
+
+
+
+
+<table>
+<thead>
+<tr>
+   <th>ID</th>
+   <th>User Type</th>
+   <th>Name</th>
+   <th>Account Age</th>
+   <th>Actions</th>
+</tr>
+</thead>
+<tbody>
+
+
+        <?php foreach ($result as $row) { ?>
+            <tr>
+                <td><?php echo $row['userId']; ?></td>
+                <td><?php echo $row['admin']; ?></td>
+                <td><?php echo $row['firstname'] . ' ' . $row['surname']; ?></td>
+                <td><?php 
+
+                    // Calculate account age
+                    $dateCreated = new DateTime($row['dateCreated']);
+                    $now = new DateTime();
+                    $interval = $now->diff($dateCreated);
+                    echo $interval->y . ' years, ' . $interval->m . ' months'; 
+                ?></td>
+                <td>
+                    <a href='useradmin.php?delete=<?php echo $row['userId']; ?>' class='delete-icon' title='Delete'>
+                        <i class='fa-solid fa-trash'></i>
+                    </a>
+                    
+                    <span style='margin-right: 5px;'></span>
+                    <a href="edituser.php?userId=<?php echo $row['userId']; ?>">
+                       <i class="fa-solid fa-eye"></i>
+                    </a>
+
+                    <span style='margin-right: 5px;'></span>
+                    <a href="edituser.php?userId=<?php echo $row['userId']; ?>">
+                             <i class="fa-solid fa-pencil"></i>
+                            </a>
+                    </a>
+
+               </td>
+            </tr>
+        <?php } ?>
+    </tbody>
+</table>
+            <?php
+            $sql = "SELECT COUNT(*) AS total FROM users";
+            $stmt = $db->query($sql);
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            $totalPages = ceil($row['total'] / $limit);
+            ?>
+            <div class="pagination">
+                <?php
+                for ($i = 1; $i <= $totalPages; $i++) {
+                    echo "<a href='useradmin.php?page=$i'>$i</a> ";
+                }
+                ?>
+            </div>
+        <?php
+        } else {
+            echo "No users found.";
+        }
+        ?>
+    <script src="script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
