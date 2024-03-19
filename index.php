@@ -50,7 +50,6 @@
     </div>
   </div>
 </div>
-</nav>
               <?php
                 session_start();
               if (isset($_SESSION['user'])) {
