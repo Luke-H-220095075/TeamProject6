@@ -84,6 +84,7 @@ if (isset($_SESSION['user'])) {
                 </a>
                <!-- <span class="tooltip">Users</span>-->
             </li>
+            
             <li>
                 <a href="productadmin.php">
                     <i class="fa-solid fa-couch"></i>
@@ -97,6 +98,13 @@ if (isset($_SESSION['user'])) {
                     <span class="nav-item">Orders</span>
                 </a>
                <!-- <span class="tooltip">Orders</span> -->
+            </li>
+            <li>
+                <a href="pendingrequests.php">
+                    <i class="fa-solid fa-user"></i>
+                    <span class="nav-item">Approve pending admin requests</span>
+                </a>
+               <!-- <span class="tooltip">Users</span>-->
             </li>
             <li>
                 <a href="#">
