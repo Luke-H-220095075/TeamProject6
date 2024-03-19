@@ -4,8 +4,8 @@ class UpdateDetailsController {
     public function __construct($user){
         $this->user = $user;
     }
-    public function invoke(){ 
-            $this->user->updateDetails();
+    public function invoke($cbe, $cbt){ 
+            $this->user->updateDetails($cbe, $cbt);
     }
 }
 ?>

@@ -9,6 +9,8 @@ class User {
   public $phone;
   public $admin;
   public $userID;
+  public $cbEmail;
+  public $cbText;
 
   public function __construct($username, $password, $email, $firstname, $surname, $address, $phone, $admin) {
     $this->username = $username;
@@ -21,6 +23,8 @@ class User {
     $this->address = $address;
     $this->phone = $phone;
     $this->userID = null;
+    $this->cbEmail = null;
+    $this->cbText = null;
   }
   public function signIn(){
     include 'view/connect.php';
@@ -40,7 +44,6 @@ class User {
           }
           
             $this->setSession();
-            echo "success";
             header('Location: Customerprofile.php');
           }
           else
@@ -66,7 +69,7 @@ class User {
   public function signUp($token){
     include 'view/connect.php';
     try{
-      $sth=$db->prepare("INSERT INTO users(username, forename, surname, password, email, userType, secretAnswer) VALUES (:username, :firstname, :surname, :password, :email, :admin, :token)");
+      $sth=$db->prepare("INSERT INTO users(username, forename, surname, password, email, admin, secretAnswer) VALUES (:username, :firstname, :surname, :password, :email, :admin, :token)");
       $sth->bindparam(':username', $this->username, PDO::PARAM_STR, 64);
       $sth->bindparam(':password', $this->password, PDO::PARAM_STR, 64);
       $sth->bindparam(':firstname', $this->firstname, PDO::PARAM_STR, 64);
@@ -85,20 +88,23 @@ class User {
       <?php
     }           
   }
-  public function changeDetails(){
+  public function updateDetails($cbe, $cbt){
     include 'view/connect.php';
+    $this->cbEmail = $cbe;
+    $this->cbText = $cbt;
         try{
-          $sth=$db->prepare("UPDATE users SET password = :password, email = :email, phoneNumber = :phone, forename = :name, surname = :surname, address = :address WHERE username = :username");
+          $sth=$db->prepare("UPDATE users SET email = :email, phone = :phone, firstname = :name, surname = :surname, address = :address, contactByEmail = :cbe, contactByText = :cbt WHERE username = :username");
           $sth->bindparam(':username', $this->username, PDO::PARAM_STR, 10);
-          $sth->bindparam(':password', $this->password, PDO::PARAM_STR, 64);
           $sth->bindparam(':email', $this->email, PDO::PARAM_STR, 64);
           $sth->bindparam(':phone', $this->phone, PDO::PARAM_STR, 10);
           $sth->bindparam(':name', $this->firstname, PDO::PARAM_STR, 10);
           $sth->bindparam(':surname', $this->surname, PDO::PARAM_STR, 10);
           $sth->bindparam(':address', $this->address, PDO::PARAM_STR, 10);
+          $sth->bindparam(':cbe', $this->cbEmail, PDO::PARAM_STR, 10);
+          $sth->bindparam(':cbt', $this->cbText, PDO::PARAM_STR, 10);
           $sth->execute();
           if($sth == true){
-            //details updated
+            header('Location: Customerprofile.php');
           }
       }catch(PDOException $ex){
         ?>
@@ -126,11 +132,11 @@ class User {
     require 'view/connect.php';
     try{
       $_SESSION["user"] = $this->username;
-      $sth=$db->prepare("SELECT userType, userId FROM users WHERE username = :username");
+      $sth=$db->prepare("SELECT admin, userId FROM users WHERE username = :username");
       $sth->bindparam(':username', $this->username, PDO::PARAM_STR, 10);
       $sth->execute();
       $row=$sth->fetch(PDO::FETCH_ASSOC);
-      $_SESSION["access"] = $row['userType'];
+      $_SESSION["access"] = $row['admin'];
       $_SESSION["userID"] = $row['userId'];
       
     }
@@ -155,6 +161,8 @@ class User {
       $this->address = $row['address'];
       $this->phone = $row['phone'];
       $this->admin = $row['admin'];
+      $this->cbEmail = $row['contactByEmail'];
+      $this->cbText = $row['contactByText'];
     }
     else{
       echo "you need to log in first";
@@ -208,5 +216,40 @@ class User {
         } 
         return false;
     }
-}
+    public function updateAdmin(){
+      include 'view/connect.php';
+          try{
+            $sth=$db->prepare("UPDATE users SET admin = :admin WHERE username = :username");
+            $sth->bindparam(':username', $this->username, PDO::PARAM_STR, 10);
+            $sth->bindparam(':password', $this->admin, PDO::PARAM_STR, 64);
+            $sth->execute();
+            if($sth == true){
+              return true;
+            }
+        }catch(PDOException $ex){
+          ?>
+          <p>Sorry, a database error occurred.<p>
+          <p>Error details: <em> <?= $ex->getMessage() ?></em></p>
+          <?php
+        } 
+        return false;
+      }
+      public function requestAdmin(){
+        include 'view/connect.php';
+          try{
+            $sth=$db->prepare("UPDATE users SET pendingApproval = 1 WHERE username = :username");
+            $sth->bindparam(':username', $this->username, PDO::PARAM_STR, 10);
+            $sth->execute();
+            if($sth == true){
+              return true;
+            }
+        }catch(PDOException $ex){
+          ?>
+          <p>Sorry, a database error occurred.<p>
+          <p>Error details: <em> <?= $ex->getMessage() ?></em></p>
+          <?php
+        } 
+        return false;
+      }
+      }
 ?>

@@ -15,13 +15,11 @@ class Message {
     public function sendMessage(){
         include 'connect.php';
         try{
-          echo $_SESSION['userID']." e h ";
           $sth=$db->prepare("INSERT INTO inquiries(userId, inquiryDate, subject, message) VALUES (:userid, curdate(), :subject, :message)");
           $sth->bindparam(':userid', $_SESSION['userID'], PDO::PARAM_STR, 64);
           $sth->bindparam(':subject', $this->subject, PDO::PARAM_STR, 64);
           $sth->bindparam(':message', $this->messagetext, PDO::PARAM_STR, 64);
           $sth->execute();
-          echo $_SESSION['userID'];
         }catch(PDOException $ex){
           ?>
           <p>Sorry, a database error occurred.<p>

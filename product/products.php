@@ -18,7 +18,7 @@
   <header>
 <section>
   <div class="fixed-top">
-<nav class="navbar">
+ <nav class="navbar">
   <div class="container-fluid">
     <a class="navbar-brand" href="../index.php">Furniche</a>
 
@@ -30,9 +30,17 @@
         <li class="nav-item">
           <a class="nav-link" href="products.php">Products</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../loginview.php">Login</a>
-        </li>
+        <?php
+                session_start();
+              if (isset($_SESSION['user'])) {
+                    echo '<li class="nav-item"><a class="nav-link" href="../customerprofile.php">' . $_SESSION['user'] . '</a></li>';
+                  
+              } else {
+                echo '<li class="nav-item">
+                <a class="nav-link" href="../loginview.php">Login</a>
+              </li>';//
+              }
+              ?>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             The team
@@ -41,10 +49,12 @@
             <li><a class="dropdown-item" href="../aboutus.php">About Us</a></li>
             <li><a class="dropdown-item" href="../contactview.php">Contact us</a></li>
           </ul>
-        </li>
-        <li class="nav-item">
+        </li><?php
+              if (isset($_SESSION['user'])) {
+        echo '<li class="nav-item">
           <a class="nav-link" href="../basket/basket.php"><i class="fa-solid fa-basket-shopping"></i></a>
-        </li>
+        </li>';              }
+        ?>
       </ul>
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -53,18 +63,9 @@
     </div>
   </div>
     </div>
+    
     </nav>
-              <?php
-                session_start();
-              if (isset($_SESSION['user'])) {
-                    echo '<a href="../customerprofile.php">' . $_SESSION['user'] . '</a>';
-                  echo '<a href="../basket/basket.php"><i class="fa-solid fa-basket-shopping"></i></a>';
-                  
-              } else {
-                //echo '<a href="../loginview.php">Login</a>';//
-              }
-              ?>
-              </div>
+    </div>
     </div>
   </nav>
 </section>
