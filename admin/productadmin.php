@@ -181,3 +181,51 @@ if (isset($_GET['delete']) && is_numeric($_GET['delete'])) {
         echo '<div class="error-message">Error deleting product.</div>';
     }
 }
+
+ //Pagenation
+ $limit = 8; 
+ $page = isset($_GET['page']) ? $_GET['page'] : 1; 
+ $offset = ($page - 1) * $limit; 
+
+ $sql = "SELECT * FROM products LIMIT :limit OFFSET :offset";
+ $stmt = $db->prepare($sql);
+ $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+ $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
+ $stmt->execute();
+ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+ if ($result && $stmt->rowCount() > 0) {
+
+     //Image Upload
+     if ($_SERVER["REQUEST_METHOD"] == "POST") {
+         if (isset($_FILES["imageUpload"]) && $_FILES["imageUpload"]["error"] == UPLOAD_ERR_OK) {
+             $fileName = basename($_FILES["imageUpload"]["name"]);
+             $fileTmpName = $_FILES["imageUpload"]["tmp_name"];
+     
+             $uploadDirectory = "../Pictures for website/";
+     
+             if (move_uploaded_file($fileTmpName, $uploadDirectory . $fileName)) {
+                 try {
+                     $stmt = $db->prepare("INSERT INTO products (productName, price, productCategory, productType, imageName) VALUES (?, ?, ?, ?, ?)");
+                     $stmt->bindParam(1, $_POST['productName']);
+                     $stmt->bindParam(2, $_POST['price']);
+                     $stmt->bindParam(3, $_POST['productCategory']);
+                     $stmt->bindParam(4, $_POST['productType']);
+                     $stmt->bindParam(5, $fileName);
+     
+                     if ($stmt->execute()) {
+                         echo "Product created successfully.";
+                     } else {
+                         echo "Error creating product.";
+                     }
+                 } catch (PDOException $ex) {
+                     echo "Database error: " . $ex->getMessage();
+                 }
+             } else {
+                 echo "Error uploading file.";
+             }
+         } else {
+             echo "Error: No file uploaded.";
+         }
+     }
+     
