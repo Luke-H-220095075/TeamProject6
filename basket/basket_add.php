@@ -1,22 +1,21 @@
-
 <?php
-echo '<script>alert("Welcome to Geeks for Geeks")</script>'; 
+include '../connect.php';
+session_start();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $productId = isset($_POST['product_id']) ? intval($_POST['product_id']) : 0;
-    include '../connect.php';
     $userId = $_SESSION['userID'];
-    $sql = "SELECT basketId FROM baskets WHERE userId = ". $userId ." AND currentUserBasket = 1" ;
-    $result = $db->query($sql);
-    $row = $result->fetch(PDO::FETCH_ASSOC);
-    $basketId = $row['basketId'];
-    
+//    $sql = "SELECT basketId FROM baskets WHERE userId = ". $userId ." AND currentUserBasket = 1" ;
+//    $result = $db->query($sql);
+//    $row = $result->fetch(PDO::FETCH_ASSOC);
+//    $basketId = $row['basketId'];
+
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     try {
         $stmtCheck = $db->prepare("
             SELECT COUNT(*) AS count
             FROM basketproducts
-            WHERE basketId = $basketId
+            WHERE basketId = (SELECT basketId FROM baskets WHERE userId = :user_id)
             AND productId = :product_id
         ");
         $stmtCheck->bindParam(':user_id', $userId, PDO::PARAM_INT);
@@ -29,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmtUpdate = $db->prepare("
                 UPDATE basketproducts
                 SET quantity = quantity + 1
-                WHERE basketId = $basketId
+                WHERE basketId = (SELECT basketId FROM baskets WHERE userId = :user_id)
                 AND productId = :product_id
             ");
             $stmtUpdate->bindParam(':user_id', $userId, PDO::PARAM_INT);
@@ -38,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             $stmtInsert = $db->prepare("
                 INSERT INTO basketproducts (basketId, productId, quantity)
-                VALUES ($basketId, :product_id, 1)
+                VALUES ((SELECT basketId FROM baskets WHERE userId = :user_id), :product_id, 1)
             ");
             $stmtInsert->bindParam(':user_id', $userId, PDO::PARAM_INT);
             $stmtInsert->bindParam(':product_id', $productId, PDO::PARAM_INT);
@@ -50,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "Error: " . $e->getMessage();
     }
 
-    $db = null;
+    $pdo = null;
 }
 
 ?>
