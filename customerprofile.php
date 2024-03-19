@@ -113,7 +113,7 @@ require("User.php");?>
       //header('Location: update.php');
   }?>
   <?php 
-  echo '<button onclick="'.requestAdmin().'" style="cursor: pointer">Reset Filters</button>';
+  echo '<button onclick="'.requestAdmin().'" style="cursor: pointer">Request to be an admin</button>';
  
   function requestAdmin(){
     $user = new User($_SESSION["user"], null, null, null, null, null, null, null);
