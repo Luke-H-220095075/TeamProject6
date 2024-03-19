@@ -7,13 +7,12 @@
   <script src="Contact Us.js"></script>
   <link rel="stylesheet" href="css/contact.css">
   <link rel="stylesheet" type="text/css" href="css/style.css">
+
   <link href="css/style.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
       <link rel="stylesheet" href="https://use.typekit.net/maf1fpm.css">
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     </head>
-
-
 
   <header>
 <section>
@@ -100,7 +99,7 @@
         <div class = "grid1">
           <img src="Pictures for website\Brown Lorry.png" class = "lorry">
           <br>
-          <img src="Pictures for website\Brown Text Bar.png">
+          <img src="Pictures for website\Brown Text Bar.png" class = "lorrytext">
           <h2 class="description_one">We know you can’t wait for your new furniture. Track it’s progress as we build it for you.</h2>
           <h4 class="header_one">Track your package</h4>
           <script>
@@ -112,8 +111,8 @@
         </div>
         <img src="Pictures for website\Brown Information.png" class = "FAQs">
         <br>
-        <img src="Pictures for website\Brown Text Bar.png" class = "FAQs">
-        <h2 class="description_two">Over 90% of our customers find their questions answered in our FAQ’s.</h2>
+        <img src="Pictures for website\Brown Text Bar.png" class = "FAQstext">
+        <h2 class="description_two">Over 90% of our customers find <br> their questions answered in our FAQ’s.</h2>
         <h2 class="header_two">FAQs</h2>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
             <script>
@@ -123,11 +122,11 @@
           }
         </script>
         </div>
-        <img src="Pictures for website\Brown Text.png">
+        <img src="Pictures for website\Brown Text.png" class = "chat">
         <br>
-        <img src="Pictures for website\Brown Text Bar.png">
-        <h2 class="yourmum">Live chat</h2>
-        <p>The quickest way to speak to us is via our live chat option.</p>
+        <img src="Pictures for website\Brown Text Bar.png" class = "chattext">
+        <h2 class = "description_three">The quickest way to speak to us is via our live chat option.</h2>
+        <h2 class = "header_three">Live chat</h2>
         <script>
           var i;
           for (i = 0; i < 10; i++) {
@@ -137,8 +136,8 @@
         <img src="Pictures for website\Brown Phone.png">
         <br>
         <img src="Pictures for website\Brown Text Bar.png">
-        <h2 class="yourmum">Call us</h2>
-        <p>If we have not been able to answer your question through track your order or our FAQ’s, call us.</p>
+        <h2 class = "description_four">If we have not been able to answer your question through track your order or our FAQ’s, call us.</h2>
+        <h2 class = "header_four">Call us</h2>
         <script>
           var i;
           for (i = 0; i < 10; i++) {

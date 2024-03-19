@@ -44,7 +44,6 @@ class User {
           }
           
             $this->setSession();
-            echo "success";
             header('Location: Customerprofile.php');
           }
           else
@@ -70,7 +69,7 @@ class User {
   public function signUp($token){
     include 'view/connect.php';
     try{
-      $sth=$db->prepare("INSERT INTO users(username, forename, surname, password, email, userType, secretAnswer) VALUES (:username, :firstname, :surname, :password, :email, :admin, :token)");
+      $sth=$db->prepare("INSERT INTO users(username, forename, surname, password, email, admin, secretAnswer) VALUES (:username, :firstname, :surname, :password, :email, :admin, :token)");
       $sth->bindparam(':username', $this->username, PDO::PARAM_STR, 64);
       $sth->bindparam(':password', $this->password, PDO::PARAM_STR, 64);
       $sth->bindparam(':firstname', $this->firstname, PDO::PARAM_STR, 64);
@@ -133,11 +132,11 @@ class User {
     require 'view/connect.php';
     try{
       $_SESSION["user"] = $this->username;
-      $sth=$db->prepare("SELECT userType, userId FROM users WHERE username = :username");
+      $sth=$db->prepare("SELECT admin, userId FROM users WHERE username = :username");
       $sth->bindparam(':username', $this->username, PDO::PARAM_STR, 10);
       $sth->execute();
       $row=$sth->fetch(PDO::FETCH_ASSOC);
-      $_SESSION["access"] = $row['userType'];
+      $_SESSION["access"] = $row['admin'];
       $_SESSION["userID"] = $row['userId'];
       
     }
@@ -217,5 +216,40 @@ class User {
         } 
         return false;
     }
-}
+    public function updateAdmin(){
+      include 'view/connect.php';
+          try{
+            $sth=$db->prepare("UPDATE users SET admin = :admin WHERE username = :username");
+            $sth->bindparam(':username', $this->username, PDO::PARAM_STR, 10);
+            $sth->bindparam(':password', $this->admin, PDO::PARAM_STR, 64);
+            $sth->execute();
+            if($sth == true){
+              return true;
+            }
+        }catch(PDOException $ex){
+          ?>
+          <p>Sorry, a database error occurred.<p>
+          <p>Error details: <em> <?= $ex->getMessage() ?></em></p>
+          <?php
+        } 
+        return false;
+      }
+      public function requestAdmin(){
+        include 'view/connect.php';
+          try{
+            $sth=$db->prepare("UPDATE users SET pendingApproval = 1 WHERE username = :username");
+            $sth->bindparam(':username', $this->username, PDO::PARAM_STR, 10);
+            $sth->execute();
+            if($sth == true){
+              return true;
+            }
+        }catch(PDOException $ex){
+          ?>
+          <p>Sorry, a database error occurred.<p>
+          <p>Error details: <em> <?= $ex->getMessage() ?></em></p>
+          <?php
+        } 
+        return false;
+      }
+      }
 ?>
