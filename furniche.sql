@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 19, 2024 at 01:53 PM
+-- Generation Time: Mar 19, 2024 at 04:22 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -137,15 +137,19 @@ CREATE TABLE `orders` (
   `userId` int(11) NOT NULL,
   `dateAdded` timestamp NOT NULL DEFAULT current_timestamp(),
   `deliveryOption` enum('standard','premium') DEFAULT NULL,
-  `deliveryDate` date DEFAULT NULL
+  `deliveryDate` date DEFAULT NULL,
+  `deliveryStatus` enum('Delivered','Currently Delivering','Dispatching','Pending Approval') DEFAULT NULL,
+  `notes` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`orderId`, `basketId`, `userId`, `dateAdded`, `deliveryOption`, `deliveryDate`) VALUES
-(111, 1, 1, '2024-02-07 12:24:42', 'standard', '2024-02-07');
+INSERT INTO `orders` (`orderId`, `basketId`, `userId`, `dateAdded`, `deliveryOption`, `deliveryDate`, `deliveryStatus`, `notes`) VALUES
+(55, 1, 2, '2024-03-19 13:32:32', 'premium', '2023-12-28', 'Delivered', 'Delivered Successfully!!!'),
+(66, 1, 2, '2024-03-19 13:31:52', 'standard', '2024-06-02', 'Dispatching', 'Still Waiting on new Stock, will update soon!'),
+(111, 1, 1, '2024-02-07 12:24:42', 'standard', '2024-02-07', NULL, '');
 
 -- --------------------------------------------------------
 
@@ -224,7 +228,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`userId`, `admin`, `firstname`, `surname`, `address`, `email`, `username`, `phone`, `password`, `dateCreated`, `secretAnswer`, `contactByEmail`, `contactByText`) VALUES
-(1, 'customer', 'admin', 'admin', 'address', 'admin@admin.com', 'admin', '1234567', '$2y$10$LmAbf3RNHJyUisHl7RH.rOB5dhWG136IRNw5lfcBArzIn9jRpWoEK', '2024-02-07 11:51:07', 'admin', 0, 1);
+(1, 'admin', 'admin', 'admin', 'address', 'admin@admin.com', 'admin', '1234567', 'admin', '2024-02-07 11:51:07', 'admin', 0, 1),
+(2, 'customer', 'lucy', 'lucy', '33 lucy lane', 'luc@luc.ac.uk', 'lucy', '1010101', '$2y$10$Nyu9gtGpqtGuGm5ba5Us1ehd3E0cLbp5gISxBYmCPip9Z6Rh2VULe', '2024-03-19 13:13:47', '', 0, 0),
+(3, 'admin', 'test', 'test', '22 Jump Street', 'email@email.com', 'test', '1212112', '$2y$10$u12r0JbNCCJVI5duBVY/.edBMmvUXQh6Xg3ICc6XTGrpVCp3AuGLO', '2024-03-19 13:14:12', '', 0, 0),
+(4, 'customer', 'test', 'test', '22 Jump Street', 'email@email.com', 'test', '1212112', '$2y$10$ckMq8OPirQBTIGstfkY6geyXICfrYnk7cONtjmQ6tjcTLdBDT49kO', '2024-03-19 13:54:34', '', 0, 0);
 
 --
 -- Indexes for dumped tables
@@ -329,7 +336,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `userId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `userId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
