@@ -123,3 +123,46 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "Error creating user: " . $insertStatement->errorInfo()[2];
     }
 }
+
+
+
+//Delete a User
+if (isset($_GET['delete']) && is_numeric($_GET['delete'])) {
+    $userIdToDelete = $_GET['delete'];
+
+    try {
+        $db->beginTransaction();
+
+        // Delete from orders table 
+        $deleteOrdersSql = "DELETE FROM orders WHERE userId = :userId";
+        $deleteOrdersStatement = $db->prepare($deleteOrdersSql);
+        $deleteOrdersStatement->bindParam(':userId', $userIdToDelete, PDO::PARAM_INT);
+        $deleteOrdersStatement->execute();
+
+        // Delete from basketproduct table
+        $deleteBasketProductSql = "DELETE FROM basketproducts WHERE basketId IN (SELECT basketId FROM baskets WHERE userId = :userId)";
+        $deleteBasketProductStatement = $db->prepare($deleteBasketProductSql);
+        $deleteBasketProductStatement->bindParam(':userId', $userIdToDelete, PDO::PARAM_INT);
+        $deleteBasketProductStatement->execute();
+
+        // Delete from baskets table
+        $deleteBasketsSql = "DELETE FROM baskets WHERE userId = :userId";
+        $deleteBasketsStatement = $db->prepare($deleteBasketsSql);
+        $deleteBasketsStatement->bindParam(':userId', $userIdToDelete, PDO::PARAM_INT);
+        $deleteBasketsStatement->execute();
+
+        // Delete from users table
+        $deleteUserSql = "DELETE FROM users WHERE userId = :userId";
+        $deleteUserStatement = $db->prepare($deleteUserSql);
+        $deleteUserStatement->bindParam(':userId', $userIdToDelete, PDO::PARAM_INT);
+        $deleteUserStatement->execute();
+
+    
+        $db->commit();
+        echo '<div class="success-message">User deleted successfully.</div>';
+    } catch (PDOException $e) {
+       
+        $db->rollBack();
+        echo '<div class="error-message">Error deleting user: ' . $e->getMessage() . '</div>';
+    }
+}
