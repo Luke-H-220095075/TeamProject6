@@ -171,3 +171,77 @@ if (isset($_GET['orderId']) && is_numeric($_GET['orderId'])) {
             </div>
         </div>
 </div>
+
+
+<div class="editproduct-container">
+<div class="create-container">
+            <div class="create-form">
+        <form action="" method="post">
+            <div class="input-container">
+                <input type="hidden" name="updateOrder" value="true">
+                <input type="hidden" name="orderId" value="<?php echo $orderId; ?>"> <!-- Hidden input to store Order ID -->
+                <label for="basketId">Basket ID:</label>
+                <input type="text" id="basketId" name="basketId" value="<?php echo $order['basketId']; ?>" required>
+    
+                <label for="userId">User ID:</label>
+                <input type="text" id="userId" name="userId" value="<?php echo $order['userId']; ?>" required>
+           
+                <label for="dateAdded">Date Added:</label>
+                <input type="text" id="dateAdded" name="dateAdded" value="<?php echo $order['dateAdded']; ?>" required>
+                </div>
+            <div class="input-container">
+                <label for="deliveryOption">Delivery Option:</label>
+                <input type="text" id="deliveryOption" name="deliveryOption" value="<?php echo $order['deliveryOption']; ?>" required>
+          
+                <label for="deliveryStatus">Delivery Status:</label>
+                <input type="text" id="deliveryStatus" name="deliveryStatus" value="<?php echo $order['deliveryStatus']; ?>" required>
+            
+                <label for="deliveryDate">Delivery Date:</label>
+                <input type="text" id="deliveryDate" name="deliveryDate" value="<?php echo $order['deliveryDate']; ?>" required>
+            </div>
+            <div class="input-container">
+            <label for="deliveryDate">Delivery Notes:</label>
+                <input type="text" id="notes" name="notes" value="<?php echo $order['notes']; ?>" >
+                </div>
+            <button type="submit">Update Order</button>
+        </form>
+    </div>
+</div>
+        
+</div>
+
+<?php
+        } else {
+            echo '<div class="error-message">Order not found.</div>';
+        }
+    } catch (PDOException $ex) {
+        echo '<div class="error-message">Database error: ' . $ex->getMessage() . '</div>';
+    }
+} else {
+    echo '<div class="error-message">OrderId is missing in the URL.</div>';
+}
+
+
+
+// Update order details
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['updateOrder'])) {
+    if (isset($_POST['orderId']) && is_numeric($_POST['orderId'])) {
+        $orderId = $_POST['orderId'];
+        $deliveryOption = $_POST['deliveryOption'];
+        $deliveryStatus = $_POST['deliveryStatus'];
+        $deliveryDate = $_POST['deliveryDate'];
+        $notes = $_POST['notes']; // New column for notes
+
+        try {
+            $stmt = $db->prepare("UPDATE orders SET `deliveryOption` = ?, `deliveryStatus` = ?, `deliveryDate` = ?, `notes` = ? WHERE `orderId` = ?");
+            $stmt->execute([$deliveryOption, $deliveryStatus, $deliveryDate, $notes, $orderId]);
+            echo "Order updated successfully.";
+        } catch (PDOException $ex) {
+            echo "Database error: " . $ex->getMessage();
+        }
+    } else {
+        echo "Error: Order ID is missing or invalid.";
+    }
+}
+
+
