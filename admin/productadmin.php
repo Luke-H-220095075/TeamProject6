@@ -88,3 +88,46 @@ if (isset($_SESSION['user'])) {
 
    
     </section>
+
+    
+    <br><br><h1> Products Admin Dashboard</h1> 
+    <div class="create-container">
+            <div class="create-form">
+                <form action="" method="post" enctype="multipart/form-data">
+                    <h2>Create Product</h2>
+                    <div class="input-container">
+                        <input type="text" name="productName" placeholder="Product Name" required>
+                        <input type="number" name="price" placeholder="Price" step="0.01" required>
+                        <input type="number" name="countStock" placeholder="Stock Count" required>  </div>
+
+                
+                  
+                    <div class="input-container">
+                    <input type="text" name="imageName" placeholder="Image Name" required>
+                      <label for="imageUpload">Upload Image:</label>
+                     <input type="file" id="imageUpload" name="imageUpload" accept="image/*" required>
+                </div>
+
+                <div class="input-container">
+                    <label for="productCategory">Category:</label> 
+                    <select id="productCategory" name="productCategory" class="small-dropdown" required>
+                            <option value="modern">Modern</option>
+                            <option value="minimal">Minimal</option>
+                            <option value="rustic">Rustic</option>
+                            <option value="bohemian">Bohemian</option>
+                            <option value="tropical">Tropical</option>
+
+                        </select> <label for="productType">Type:</label> 
+                        <select id="productType" name="productType" class="small-dropdown" required>
+                            <option value="sofa">Sofa</option>
+                            <option value="bed">Bed</option>
+                            <option value="desk">Desk</option>
+                            <option value="chair">Chair</option>
+                            <option value="wardrobe">Wardrobe</option>
+                        </select>
+                    </div>
+                    <button type="submit">Create Product</button>
+                </form>
+            </div>
+   
+    
