@@ -131,3 +131,38 @@ if (isset($_SESSION['user'])) {
             </div>
    
     
+            <?php
+include '../connect.php';
+
+//Create new product
+if (!$db) {
+    die("Connection failed: " . $db->getMessage());
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $productName = $_POST['productName'];
+    $price = $_POST['price'];
+    $countStock = $_POST['countStock'];
+    $productCategory = $_POST['productCategory'];
+    $productType = $_POST['productType'];
+    $imageName = $_POST['imageName'];
+
+    $insertSql = "INSERT INTO products (productName, price, countStock, productCategory, productType, imageName)
+                  VALUES (:productName, :price, :countStock, :productCategory, :productType, :imageName)";
+
+    $insertStatement = $db->prepare($insertSql);
+    $insertStatement->bindParam(':productName', $productName, PDO::PARAM_STR);
+    $insertStatement->bindParam(':price', $price, PDO::PARAM_STR);
+    $insertStatement->bindParam(':countStock', $countStock, PDO::PARAM_INT);
+     $insertStatement->bindParam(':imageName', $imageName, PDO::PARAM_STR);
+     $insertStatement->bindParam(':productCategory', $productCategory, PDO::PARAM_STR);
+     $insertStatement->bindParam(':productType', $productType, PDO::PARAM_STR);
+   
+
+    if ($insertStatement->execute()) {
+        echo "Product created successfully!";
+    } else {
+        echo "Error creating product: " . $insertStatement->errorInfo()[2];
+    }
+}
+
