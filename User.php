@@ -9,6 +9,8 @@ class User {
   public $phone;
   public $admin;
   public $userID;
+  public $cbEmail;
+  public $cbText;
 
   public function __construct($username, $password, $email, $firstname, $surname, $address, $phone, $admin) {
     $this->username = $username;
@@ -21,6 +23,8 @@ class User {
     $this->address = $address;
     $this->phone = $phone;
     $this->userID = null;
+    $this->cbEmail = null;
+    $this->cbText = null;
   }
   public function signIn(){
     include 'view/connect.php';
@@ -85,20 +89,23 @@ class User {
       <?php
     }           
   }
-  public function changeDetails(){
+  public function updateDetails($cbe, $cbt){
     include 'view/connect.php';
+    $this->cbEmail = $cbe;
+    $this->cbText = $cbt;
         try{
-          $sth=$db->prepare("UPDATE users SET password = :password, email = :email, phoneNumber = :phone, forename = :name, surname = :surname, address = :address WHERE username = :username");
+          $sth=$db->prepare("UPDATE users SET email = :email, phone = :phone, firstname = :name, surname = :surname, address = :address, contactByEmail = :cbe, contactByText = :cbt WHERE username = :username");
           $sth->bindparam(':username', $this->username, PDO::PARAM_STR, 10);
-          $sth->bindparam(':password', $this->password, PDO::PARAM_STR, 64);
           $sth->bindparam(':email', $this->email, PDO::PARAM_STR, 64);
           $sth->bindparam(':phone', $this->phone, PDO::PARAM_STR, 10);
           $sth->bindparam(':name', $this->firstname, PDO::PARAM_STR, 10);
           $sth->bindparam(':surname', $this->surname, PDO::PARAM_STR, 10);
           $sth->bindparam(':address', $this->address, PDO::PARAM_STR, 10);
+          $sth->bindparam(':cbe', $this->cbEmail, PDO::PARAM_STR, 10);
+          $sth->bindparam(':cbt', $this->cbText, PDO::PARAM_STR, 10);
           $sth->execute();
           if($sth == true){
-            //details updated
+            header('Location: Customerprofile.php');
           }
       }catch(PDOException $ex){
         ?>
@@ -155,6 +162,8 @@ class User {
       $this->address = $row['address'];
       $this->phone = $row['phone'];
       $this->admin = $row['admin'];
+      $this->cbEmail = $row['contactByEmail'];
+      $this->cbText = $row['contactByText'];
     }
     else{
       echo "you need to log in first";

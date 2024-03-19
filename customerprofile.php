@@ -1,42 +1,76 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <title>About DLegends - Furniture Company</title>
-    <link rel="stylesheet" href="css/customerprofile.css">
-</head>
-<div class="colour">
-  <header>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/customerprofile.css">
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/customerprofile.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
       <link rel="stylesheet" href="https://use.typekit.net/maf1fpm.css">
-  </header>
-</div>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+
+
+
+
+<header>
 <section>
-  <div class="topnav">
-      <nav>
-          <h1 class="logo">Furniche</h1>
-          <ul>
-                <li><a href="index.php">Home</a></li>
-                <li><a href="product/products.php">Products</a></li>
-                <li><a href="history.php">Previous Orders</a></li>
-                <li><a href="contactview.php">Contact Us</a></li>
-                <li><a href="aboutus.php">About Us</a></li>
-                <?php
+  <div class="fixed-top">
+ <nav class="navbar">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="index.php">Furniche</a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="products.php">Products</a>
+        </li>
+        <?php
                 session_start();
-                if (isset($_SESSION['user'])) {
-                    echo '<li><a href="customerprofile.php">' . $_SESSION['user'] . '</a>';
-                    echo '<li><a href="basket/basket.php">Basket</a></li>';
-                }else {
-                    echo '<li><a href="signup/signUpPage.php">Sign up</a></li>';
-                    echo '<li><a href="loginview.php">Login</a></li>';
-                }
-                ?>
+              if (isset($_SESSION['user'])) {
+                    echo '<li class="nav-item"><a class="nav-link" href="../customerprofile.php">' . $_SESSION['user'] . '</a></li>';
+                  
+              } else {
+                echo '<li class="nav-item">
+                <a class="nav-link" href="../loginview.php">Login</a>
+              </li>';//
+              }
+              ?>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            The team
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="../aboutus.php">About Us</a></li>
+            <li><a class="dropdown-item" href="../contactview.php">Contact us</a></li>
           </ul>
-  </nav>
+        </li><?php
+              if (isset($_SESSION['user'])) {
+        echo '<li class="nav-item">
+          <a class="nav-link" href="../basket/basket.php"><i class="fa-solid fa-basket-shopping"></i></a>
+        </li>';              }
+        ?>
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
   </div>
+    </div>
+    
+    </nav>
+    </div>
+    </div>
+  </nav>
 </section>
 </header>
-</div>
 <body><?php
 require("User.php");?>
 
@@ -49,27 +83,32 @@ require("User.php");?>
                     $user= new User(null, null, null, null, null, null, null, null);
                     $user->getDetails();
                     echo '
-                    <input type="firstname"name="firstname"placeholder="Firstname" value='.$user->firstname.' required/>
+                    <form method="post">
+                    <input type="firstname"name="firstname"placeholder="Firstname" value="'.$user->firstname.'" required/>
                     <br>
-                    <input type="lastname"name="lastname"placeholder="Lastname" value='.$user->surname.' required/>
+                    <input type="lastname"name="lastname"placeholder="Lastname" value="'.$user->surname.'" required/>
                     <br>
-                    <input type="email" name="email" placeholder="Enter email address" value='.$user->email.' required/>
+                    <input type="email" name="email" placeholder="Enter email address" value="'.$user->email.'" required/>
                     <br>
-                    <input type="number" name="phone" placeholder="Enter your phonenumber" value='.$user->phone.' required/>
+                    <input type="number" name="phone" placeholder="Enter your phonenumber" value="'.$user->phone.'" required/>
                     <br>
-                    <input type="address" name="address" placeholder="Enter your address" value='.$user->address.' required/>
+                    <input type="address" name="address" placeholder="Enter your address" value="'.$user->address.'" required/>
                     <br>
                     <p>How would you like to be contacted?</p>
-                    <label><input type="checkbox"name="cbx"value="email"/>Email</label>
-                    <label><input type="checkbox"name="cbx"value="phonenumber"/>Text</label>
+                    <label><input type="checkbox" name="cbEmail"'; 
+                    if($user->cbEmail == true){ echo 'checked';}
+                    echo '/>Email</label>
+                    <label><input type="checkbox" name="cbText"'; 
+                    if($user->cbText == true){ echo 'checked';}
+                    echo '/>Text</label>
                     <button type="submit" name="submitted" id="submit-btn">Submit</button>
                 </form>';
                 if(isset($_POST["submitted"])) 
   {
-      $user = new User(null, null, $_POST['email'], $_POST['firstname'], $_POST['surname'], $_POST['address'], $_POST['phone'], null);
+      $user = new User($_SESSION["user"], null, $_POST['email'], $_POST['firstname'], $_POST['lastname'], $_POST['address'], $_POST['phone'], null);
       include_once("controller/UpdateDetailsController.php");
       $controller = new UpdateDetailsController($user);
-      $controller->invoke();
+      $controller->invoke(isset($_POST['cbEmail']), isset($_POST['cbText']));
       //header('Location: update.php');
   }?>
             </div>

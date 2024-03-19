@@ -1,10 +1,10 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "enra-semi-variable", sans-serif;
-    font-variation-settings: "wght" 400;    
-    justify-content: center;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "enra-semi-variable", sans-serif;
+  font-variation-settings: "wght" 400;    
+  justify-content: center;
 }
 
 
@@ -21,36 +21,66 @@ position: relative;
 bottom: 40px;
 }
 
-.yourmum {
-  position: relative;
-  bottom: 100px;
+.header_one {
+position: relative;
+bottom: 198px;
+right: 15px;
 }
 
-.lorry {
+.description_one {
+position: relative;
+bottom: 160px;
+right: 15px;
+}
+
+.header_two {
   position: relative;
-  left: 30px;
+  bottom: 198px;
+  right: 15px;
+  }
+  
+  .description_two {
+  position: relative;
+  bottom: 160px;
+  right: 15px;
+  }
+
+.lorry {
+position: relative;
+left: 30px;
+}
+
+.FAQs{
+position: relative;
+left: 90px;
 }
 
 .grid1 {
-  margin: 20px auto;
-  width:800px;
-  height:800px;
-  display:grid;
-  grid-template-columns: 300px 300px;
-  grid-row: auto auto;
-  grid-column-gap: 100px;
-  grid-row-gap: 10px;
+margin: 20px auto;
+width:800px;
+height:800px;
+display:grid;
+grid-template-columns: 300px 300px;
+grid-row: auto auto;
+grid-column-gap: 100px;
+grid-row-gap: 10px;
 }
 
-
 .grid2 {
-
-  }
+margin: 20px auto;
+width:800px;
+height:800px;
+display:grid;
+grid-template-columns: 300px 300px;
+grid-row: auto auto;
+grid-column-gap: 100px;
+grid-row-gap: 100px;
+}
 
 .my_img{
-    width: 100%;
-    height: 100%;
-    }
+  width: 100%;
+  height: 100%;
+  }
 
 .who_are{
 background-color: #f5d5bb;
@@ -76,95 +106,95 @@ height: 90vh;
 }
 
 .location {
-    width: 100%;
-    background-color: #f5d5bb;
+  width: 100%;
+  background-color: #f5d5bb;
 }
 
 .locaction iframe {
-    width: 100%;
+  width: 100%;
 }
 
-    /* Style for the entire form */
+  /* Style for the entire form */
 body .contact-form {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  text-align: center;
-  padding: 20px;
+font-family: Arial, sans-serif;
+background-color: #f4f4f4;
+text-align: center;
+padding: 20px;
 }
 
 h1 {
-  font-size: 32px;
-  /* Adjust the font size as needed */
-  font-weight: bold;
-  /* Make the text bold if desired */
-  color: #333;
-  /* Set the text color */
-  text-align: center;
-  /* Align the text in the center */
-  margin: 20px 0;
-  /* Add margin to create space around the title */
-  text-transform: uppercase;
-  /* Convert text to uppercase if desired */
+font-size: 32px;
+/* Adjust the font size as needed */
+font-weight: bold;
+/* Make the text bold if desired */
+color: #333;
+/* Set the text color */
+text-align: center;
+/* Align the text in the center */
+margin: 20px 0;
+/* Add margin to create space around the title */
+text-transform: uppercase;
+/* Convert text to uppercase if desired */
 }
 
 .menu-button {
-  cursor: pointer;
-  color: #fff;
-  background-color: #5c2c06;
-  padding: 10px 20px;
-  border-radius: 5px;
+cursor: pointer;
+color: #fff;
+background-color: #5c2c06;
+padding: 10px 20px;
+border-radius: 5px;
 }
 
 /* Style for the "Sign Up" heading */
 h1 {
-  color: #333;
-  font-size: 28px;
-  margin: 20px 0;
+color: #333;
+font-size: 28px;
+margin: 20px 0;
 }
 
 /* Style for the form container */
 .contact-form {
-  max-width: 400px;
-  margin: 200px;
-  background-color: #fff;
-  padding: 20px;
-  /* justify-self: right; */
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  left: 100%;
+max-width: 400px;
+margin: 200px;
+background-color: #fff;
+padding: 20px;
+/* justify-self: right; */
+border-radius: 5px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+left: 100%;
 }
 
 /* Style for form labels */
 label {
-  display: block;
-  font-weight: bold;
-  margin-bottom: 5px;
-  text-align: left;
+display: block;
+font-weight: bold;
+margin-bottom: 5px;
+text-align: left;
 }
 
 /* Style for form inputs */
 input[type="text"],
 input[type="email"],
 input[type="password"] {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
+width: 100%;
+padding: 10px;
+margin-bottom: 10px;
+border: 1px solid #ccc;
+border-radius: 5px;
+font-size: 16px;
 }
 
 /* Style for the submit button */
 #submit-btn {
-  background-color: #5c2c06;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
+background-color: #5c2c06;
+color: #fff;
+border: none;
+padding: 10px 20px;
+border-radius: 5px;
+cursor: pointer;
+font-size: 16px;
 }
 
 #submit-btn:hover {
-  background-color: #5c5c5c;
+background-color: #5c5c5c;
 }
