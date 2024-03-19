@@ -9,7 +9,7 @@
 </head>
 
 <header>
-<span>Furniche <i class="fa-solid fa-bars" id="togglebtn"></i></span>
+<span>Furniche <i class="fa-solid fa-bars" id="togglebtn" style="padding-bottom: 4px;"></i></span>
 
 <?php
 include '../connect.php';

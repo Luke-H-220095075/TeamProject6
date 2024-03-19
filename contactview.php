@@ -57,6 +57,7 @@
 
   <body>
     <br>
+    <br>
     <div class="content">
       <div class="who_are">
         <img src="Pictures for website\Contact Us Help.png" alt="My Image" class="my_img">
@@ -91,11 +92,12 @@
       </div>
       <script>
         var i;
-        for (i = 0; i < 5; i++) {
+        for (i = 0; i < 2; i++) {
           document.write("<br>");
         }
       </script>
       <div class="information">
+      <!-- <img src ="Pictures for website\Light wood background.jpg" class = "woodbg"> -->
         <div class = "grid1">
           <img src="Pictures for website\Brown Lorry.png" class = "lorry">
           <br>
@@ -125,7 +127,7 @@
         <img src="Pictures for website\Brown Text.png" class = "chat">
         <br>
         <img src="Pictures for website\Brown Text Bar.png" class = "chattext">
-        <h2 class = "description_three">The quickest way to speak to us is via our live chat option.</h2>
+        <h2 class = "description_three">The quickest way to speak to us <br> is via our live chat option.</h2>
         <h2 class = "header_three">Live chat</h2>
         <script>
           var i;
@@ -133,18 +135,12 @@
             document.write("<br>");
           }
         </script>
-        <img src="Pictures for website\Brown Phone.png">
+        <img src="Pictures for website\Brown Phone.png" class = "phone">
         <br>
-        <img src="Pictures for website\Brown Text Bar.png">
-        <h2 class = "description_four">If we have not been able to answer your question through track your order or our FAQ’s, call us.</h2>
+        <img src="Pictures for website\Brown Text Bar.png" class = "phonetext">
+        <h2 class = "description_four">If we have not been able to answer your question <br> through track your order or our FAQ’s, call us.</h2>
         <h2 class = "header_four">Call us</h2>
-        <script>
-          var i;
-          for (i = 0; i < 10; i++) {
-            document.write("<br>");
-          }
-        </script>
-        <h1>If you have any query please contact us using on the options below. We’d love to hear from you.</h1>
+        <h1 class = "endtext">If you have any query please contact us using on the options below. We’d love to hear from you.</h1>
       </div>
       <section class="location">
         <iframe

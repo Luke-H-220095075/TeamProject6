@@ -44,7 +44,11 @@ class User {
           }
           
             $this->setSession();
+            if ($_SESSION["access"] == "admin"){
+              header('Location: admin/dashboard.php');
+          } else{
             header('Location: Customerprofile.php');
+          }
           }
           else
           {

@@ -8,7 +8,9 @@
     <script src="https://kit.fontawesome.com/d4aa4c134e.js" crossorigin="anonymous"></script>
 
         <title>FurnicheDashboard</title>
-</head>
+</head>   
+
+
 
 <header>
 <span>Furniche <i class="fa-solid fa-bars" id="togglebtn"></i></span>
@@ -110,6 +112,14 @@ if (isset($_SESSION['user'])) {
                 <a href="#">
                     <i class="fa-solid fa-message"></i>
                     <span class="nav-item">Messages</span>
+                </a>
+                               <!-- <span class="tooltip">Messages</span> -->
+
+            </li>
+            <li>
+                <a href="../index.php">
+                    <i class="fa-solid fa-star"></i>
+                    <span class="nav-item">view as user</span>
                 </a>
                                <!-- <span class="tooltip">Messages</span> -->
 
