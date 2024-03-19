@@ -8,7 +8,9 @@
     <script src="https://kit.fontawesome.com/d4aa4c134e.js" crossorigin="anonymous"></script>
 
         <title>FurnicheDashboard</title>
-</head>
+</head>   
+
+
 
 <header>
 <span>Furniche <i class="fa-solid fa-bars" id="togglebtn"></i></span>

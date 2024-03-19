@@ -398,3 +398,217 @@ margin-left: 300px;
     font-weight: bold;
     text-align: center;
 }
+
+
+/*CSS to Change colour of delivery Status*/
+
+.status-delivered {
+    color: green;
+    text-shadow: black;
+}
+.status-delivering {
+    color: lightgreen;
+    text-shadow: black;
+}
+
+
+.status-dispatching {
+    color: orange;
+    text-shadow: black;
+    
+}
+.status-pending {
+    color: red;
+    text-shadow: black;
+
+}
+
+/*CSS for individual order page (editorder.php)*/
+.display-details .order-details {
+    
+    font-size: 17.5px;
+    padding-left: 150px;
+    width: 430px;
+    background: #f3f4f6;
+   
+}
+
+.order-details p:hover {
+    background-color: rgba(247, 247, 247, 0.806);
+    padding: 5px;
+    border-radius: 1px;
+}
+
+
+/* Individual Edit Pages (order, user and product)*/
+.back-button {
+    background-color: brown;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    margin-left: 700px;
+    text-align: center;
+    padding: 8px;
+}
+
+.back-button:hover {
+    background-color: #FF8C79; 
+}
+
+
+.display-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 20px;
+    margin-left: 320px;
+    background-color: white;
+    max-width: 1100px;
+    border-radius: 30px;
+    overflow: hidden;
+    max-height: 475px;
+}
+
+.header-details{
+    margin-left: 320px;
+    display: flex inline;
+    align-items: center;    
+    }
+    
+.display-details .header-details {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid black;
+    padding-bottom: 10px;
+}
+
+.display-details .header-details h2 {
+    margin-top: 0;
+}
+
+.display-details .delete-button {
+    color: white;
+    text-decoration: none;
+    display: block;
+    background-color: darkred; 
+}
+
+
+.delete-button {
+    background-color: darkred; 
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: left;
+    text-decoration: none;
+    max-width: 200px;
+}
+
+.delete-button:hover {
+    background-color: #FF8C79; 
+}
+
+.delete-button i {
+    margin-right: 5px;
+}
+
+
+.display-details .kpi-box {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right:20px;
+    margin-left: 50px;
+    padding: 24px;
+    background: #f3f4f6;
+    border-radius: 20px;
+    max-width: 500px;
+    max-height: 70px;
+    align-items: center;
+    justify-content: center;
+}
+
+.display-details .kpi-box i {
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.display-details .kpi-box .text {
+    margin-left: 10px;
+}
+
+.display-details .kpi-box .text h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #374151;
+}
+
+.display-details .kpi-box .text p {
+    color: #374151;
+}
+
+
+/*User Edit Page Specific CSS*/
+.display-details .user-details {
+    padding-top: 15px;
+    font-size: 17.5px;
+    padding-left: 150px;
+    width: 400px;
+    background: #f3f4f6;
+   
+}
+.user-details p:hover {
+    background-color: lightbrown;
+    padding: 2px;
+    border-radius: 5px;
+}
+
+
+.display-details .user-kpis {
+    display: flex;
+    flex-direction: column;
+}
+
+.edituser-container {
+    width: 100%;
+    margin-left: 45px;
+    }
+
+    
+/*Product Edit Page Specific CSS*/
+.display-details .product-details {
+    padding-top: 15px;
+    font-size: 17.5px;
+    padding-left: 150px;
+    width: 550px;
+    background: #f3f4f6;
+   
+}
+
+.product-details p:hover {
+    background-color: rgba(255, 255, 255, 0.893);
+    padding: 1px;
+    border-radius: 5px;
+}
+
+
+.display-details .product-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.display-details .product-image img {
+    margin-left: 0;
+    width: 100%;
+    height: auto;
+    max-height: 100%;
+}
+
