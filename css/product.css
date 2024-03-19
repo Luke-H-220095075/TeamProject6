@@ -578,10 +578,10 @@ header {
 }
 
 .product-button {
+  padding-left: 50%;
   display: inline-block;
-  background-color: #007bff;
+  background-color: #f5d5bb;
   color: #fff;
-  padding: 10px 20px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -589,12 +589,12 @@ header {
 }
 
 .product-button:hover {
-  background-color: #0062cc;
+  background-color: #f5d5bb;
 }
 .pd-back {
   background-image: url("../Pictures for website/products.png");
   width: 100%;
- padding-left: 100px;
+  text-align: center;
 }
 
 .pd-display{
