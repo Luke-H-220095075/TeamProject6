@@ -100,19 +100,20 @@
           <img src="Pictures for website\Brown Lorry.png" class = "lorry">
           <br>
           <img src="Pictures for website\Brown Text Bar.png">
-          <h2>We know you can’t wait for your new furniture. Track it’s progress as we build it for you.</h2>
-          <h2 class="yourmum">Track your package</h2>
+          <h2 class="description_one">We know you can’t wait for your new furniture. Track it’s progress as we build it for you.</h2>
+          <h4 class="header_one">Track your package</h4>
           <script>
             var i;
             for (i = 0; i < 10; i++) {
               document.write("<br>");
             }
           </script>
-        <img src="Pictures for website\Brown Information.png">
+        </div>
+        <img src="Pictures for website\Brown Information.png" class = "FAQs">
         <br>
-        <img src="Pictures for website\Brown Text Bar.png">
-        <h2 class="yourmum">FAQs</h2>
-        <p>Over 90% of our customers find their questions answered in our FAQ’s.</p>
+        <img src="Pictures for website\Brown Text Bar.png" class = "FAQs">
+        <h2 class="description_two">Over 90% of our customers find their questions answered in our FAQ’s.</h2>
+        <h2 class="header_two">FAQs</h2>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
             <script>
           var i;
@@ -121,7 +122,6 @@
           }
         </script>
         </div>
-        <div class = "grid2">
         <img src="Pictures for website\Brown Text.png">
         <br>
         <img src="Pictures for website\Brown Text Bar.png">
@@ -144,7 +144,6 @@
             document.write("<br>");
           }
         </script>
-        </div>
         <h1>If you have any query please contact us using on the options below. We’d love to hear from you.</h1>
       </div>
       <section class="location">
