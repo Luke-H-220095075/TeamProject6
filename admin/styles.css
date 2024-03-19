@@ -398,3 +398,28 @@ margin-left: 300px;
     font-weight: bold;
     text-align: center;
 }
+
+
+/*CSS to Change colour of delivery Status*/
+
+.status-delivered {
+    color: green;
+    text-shadow: black;
+}
+.status-delivering {
+    color: lightgreen;
+    text-shadow: black;
+}
+
+
+.status-dispatching {
+    color: orange;
+    text-shadow: black;
+    
+}
+.status-pending {
+    color: red;
+    text-shadow: black;
+
+}
+
