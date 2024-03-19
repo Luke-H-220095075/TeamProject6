@@ -225,3 +225,55 @@ if (isset($_GET['search']) && !empty($_GET['search'])) {
         </div>
     </div>
 </div>
+
+
+<table>
+    <thead>
+        <tr>
+            <th>Order ID</th>
+            <th>Basket ID</th>
+            <th>User ID</th>
+            <th>Date Added</th>
+            <th>Delivery Option</th>
+            <th>Delivery Status</th>
+            <th>Delivery Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+
+    <!--PHP TO DISPLAY DATA FROM DATABASE-->
+        <?php foreach ($orders as $order) { ?>
+            <tr>
+                <td><?php echo $order['orderId']; ?></td>
+                <td><?php echo $order['basketId']; ?></td>
+                <td><?php echo $order['userId']; ?></td>
+                <td><?php echo $order['dateAdded']; ?></td>
+                <td><?php echo $order['deliveryOption']; ?></td>
+                <td class="<?php echo getStatusClass($order['deliveryStatus']); ?>"><?php echo $order['deliveryStatus']; ?></td>
+                  <td><?php echo $order['deliveryDate']; ?></td>
+                <td>
+                <span style='margin-right: 5px;'></span>
+                <a href="editorder.php?orderId=<?php echo $order['orderId']; ?>">
+                        <i class="fa-solid fa-eye"></i>
+                    </a>
+                    <span style='margin-right: 5px;'></span>
+                    <a href="editorder.php?orderId=<?php echo $order['orderId']; ?>">
+                        <i class="fa-solid fa-pencil"></i>
+                    </a>
+                </td>
+            </tr>
+        <?php } ?>
+    </tbody>
+</table>
+</div>
+
+
+
+
+    <script src="script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+ </body>
+</html>
