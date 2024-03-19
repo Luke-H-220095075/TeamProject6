@@ -456,3 +456,64 @@ margin-left: 300px;
 .back-button:hover {
     background-color: #FF8C79; 
 }
+
+
+.display-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 20px;
+    margin-left: 320px;
+    background-color: white;
+    max-width: 1100px;
+    border-radius: 30px;
+    overflow: hidden;
+    max-height: 475px;
+}
+
+.header-details{
+    margin-left: 320px;
+    display: flex inline;
+    align-items: center;    
+    }
+    
+.display-details .header-details {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid black;
+    padding-bottom: 10px;
+}
+
+.display-details .header-details h2 {
+    margin-top: 0;
+}
+
+.display-details .delete-button {
+    color: white;
+    text-decoration: none;
+    display: block;
+    background-color: darkred; 
+}
+
+
+.delete-button {
+    background-color: darkred; 
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: left;
+    text-decoration: none;
+    max-width: 200px;
+}
+
+.delete-button:hover {
+    background-color: #FF8C79; 
+}
+
+.delete-button i {
+    margin-right: 5px;
+}
+
+
+
