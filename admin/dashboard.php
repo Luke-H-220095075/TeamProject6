@@ -156,3 +156,18 @@ if (isset($_SESSION['user'])) {
   </div>
 </div>
 </div>
+
+
+      
+
+
+</main>
+
+</div>
+
+<!-- ApexCharts and our own Javascript file -->
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.46.0/apexcharts.min.js" integrity="sha512-S0o4cCUyDGDTT7LdYR0skjjZ47xBay7KYorwWlevl+/7mADWHZhklWMLvoJprbKALVNpwFacL7VZAgjI3Ga2Rg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+ <script src="script.js"></script>
+</body>
+</html>
