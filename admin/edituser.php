@@ -157,3 +157,43 @@ if (isset($_GET['userId'])) {  $userId = $_GET['userId'];
                 </div>
             </div>
         </div>
+
+        
+        <div class="header-details">
+        &nbsp;&nbsp;   <h2>Edit User Details</h2>
+               
+            </div>
+            <div class="edituser-container">
+        <div class="create-container">
+            <div class="create-form">
+<form action="" method="post">
+    <div class="input-container">
+        <input type="hidden" name="userId" value="<?php echo $userId; ?>"> <!-- Hidden input to store UserID -->
+        <select id="admin" name="admin" class="small-dropdown" required>
+            <option value="customer" <?php echo ($userDetails['admin'] == 'customer') ? 'selected' : ''; ?>>Customer</option>
+            <option value="admin" <?php echo ($userDetails['admin'] == 'admin') ? 'selected' : ''; ?>>Admin</option>
+        </select>
+        <input type="text" name="firstname" placeholder="First Name" value="<?php echo $userDetails['firstname']; ?>" required>
+        <input type="text" name="surname" placeholder="Surname" value="<?php echo $userDetails['surname']; ?>" required>
+    </div>
+    <div class="input-container">
+        <input type="text" name="address" placeholder="Address" value="<?php echo $userDetails['address']; ?>" required>
+        <input type="email" name="email" placeholder="Email" value="<?php echo $userDetails['email']; ?>" required>
+        <input type="text" name="username" placeholder="Username" value="<?php echo $userDetails['username']; ?>" required>
+    </div>
+    <div class="input-container">
+        <input type="tel" name="phone" placeholder="Phone" value="<?php echo $userDetails['phone']; ?>">
+        <input type="password" name="password" placeholder="Password" required>
+    </div>
+    <button type="submit">Update User</button>
+</form>
+    </div>
+    </div>
+    </div>
+<?php
+    } else {
+        echo "User not found";
+    }
+} else {
+    echo "User ID not provided";
+}
