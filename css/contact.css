@@ -103,25 +103,44 @@ bottom: 210px;
 
 .header_three{
 position: relative;
-bottom: 775px;
+bottom: 815px;
 left: 510px;
 }
     
 .description_three{
 position: relative;
 bottom: 850px;
+left: 800px;
  }
 
+.phone {
+  position: relative;
+  left: 470px;
+  bottom: 900px;
+}
+
+.phonetext{
+  position: relative;
+  left: 445px;
+  bottom: 890px;
+}
+
 .header_four{
-position: relative;
-bottom: 305px;
+  position: relative;
+  left: 525px;
+  bottom: 1015px;
 }
       
 .description_four{
-position: relative;
-bottom: 210px;
+  position: relative;
+  left: 800px;
+  bottom: 1055px;
 }
 
+.endtext{
+  position: relative;
+  bottom: 800px;
+}
 
 .grid1 {
 margin: 20px auto;
