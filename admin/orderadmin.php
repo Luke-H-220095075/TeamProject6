@@ -87,3 +87,73 @@ if (isset($_SESSION['user'])) {
    
     </section>
     <br><br><h1> Orders Admin Dashboard</h1> 
+
+    
+
+    <?php
+include '../connect.php';
+
+function fetchRecentOrders($db) {
+    try {
+        $sql = "SELECT * FROM orders ORDER BY dateAdded DESC LIMIT 10";
+        $stmt = $db->query($sql);
+        
+        if ($stmt) {
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } else {
+            return false;
+        }
+    } catch (PDOException $ex) {
+        echo "Error fetching recent orders: " . $ex->getMessage();
+        return false;
+    }
+}
+
+
+//Change colour of Delivery Status
+
+function getStatusClass($deliveryStatus) {
+    switch ($deliveryStatus) {
+        case 'Delivered':
+            return 'status-delivered';
+        case 'Currently Delivering':
+            return 'status-delivering';
+        case 'Dispatching':
+            return 'status-dispatching';
+        case 'Pending Approval':
+            return 'status-pending';
+        default:
+            return '';
+    }
+}
+
+
+$statusFilter = isset($_GET['deliveryStatus']) ? $_GET['deliveryStatus'] : null;
+
+$sql = "SELECT * FROM orders";
+
+if ($statusFilter !== null) {
+$sql .= " WHERE deliveryStatus = :deliveryStatus";
+}
+
+$limit = 8;
+$page = isset($_GET['page']) ? $_GET['page'] : 1;
+$offset = ($page - 1) * $limit;
+$sql .= " LIMIT :limit OFFSET :offset";
+
+$stmt = $db->prepare($sql);
+$stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+$stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
+if ($statusFilter !== null) {
+$stmt->bindParam(':deliveryStatus', $statusFilter, PDO::PARAM_STR);
+}
+$stmt->execute();
+$orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+if ($orders && $stmt->rowCount() > 0) {
+foreach ($orders as $order) {
+}
+
+} else {
+echo "<tr><td colspan='8'>No orders found.</td></tr>";
+}
