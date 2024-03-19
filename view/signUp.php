@@ -9,7 +9,7 @@
         {
             if($_POST['password'] === $_POST['password2'])
             {
-             include_once("model/User.php");                                                               //($username, $password, $email, $firstname, $surname, $address, $phone, $admin)
+             include_once("../User.php");                                                               //($username, $password, $email, $firstname, $surname, $address, $phone, $admin)
               $user = new User($_POST['username'], password_hash($_POST['password'], PASSWORD_DEFAULT), $_POST['email'], $_POST['firstname'], $_POST['surname'], null, null, 'Customer');
         include_once("controller/SignUpController.php");
         $controller = new SignUpController($user);

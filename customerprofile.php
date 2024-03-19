@@ -38,7 +38,8 @@
 </header>
 </div>
 <body><?php
-require("../TeamProject6/model/User.php");?>
+require("User.php");?>
+
     <section>
         <div class="profile">
             <img src="Pictures for website/Thomas.jpg" alt="My Image" class="my_img">

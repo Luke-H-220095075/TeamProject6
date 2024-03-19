@@ -1,49 +1,77 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
     <title>Furniche - Products</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../css/product.css">
-    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link href="../css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/product.css?v=<?php echo time(); ?>">
-
-</head>
-
-<h2 class="title">Products</h2>
-
-<body>
-    <header>
-
-<div class="colour">
+    <link href="css/style.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
       <link rel="stylesheet" href="https://use.typekit.net/maf1fpm.css">
-  </a>
-</div>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    </head>
+
+
+
+  <header>
 <section>
-    <nav>
-    <div id="navbar">
-        <a href="index.php" id="logo">Furniche</a>
-        <div id="navbar-right">
-            <a href="product/products.php">Products</a>
-            <a href="contactview.php">Contact Us</a>
-            <a href="aboutus.php">About Us</a>
-            <a href="loginview.php">Login</a>
-            <a href="basket.php"><i class="fa-solid fa-basket-shopping"></i></a>
-        </div>
+  <div class="fixed-top">
+<nav class="navbar">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="../index.php">Furniche</a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="products.php">Products</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../loginview.php">Login</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            The team
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="../aboutus.php">About Us</a></li>
+            <li><a class="dropdown-item" href="../contactview.php">Contact us</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../basket/basket.php"><i class="fa-solid fa-basket-shopping"></i></a>
+        </li>
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
     </div>
+  </div>
+    </div>
+    </nav>
               <?php
                 session_start();
               if (isset($_SESSION['user'])) {
-                  echo '<li><a href="#">' . $_SESSION['user'] . '</a>';
+                    echo '<a href="../customerprofile.php">' . $_SESSION['user'] . '</a>';
+                  echo '<a href="../basket/basket.php"><i class="fa-solid fa-basket-shopping"></i></a>';
+                  
+              } else {
+                //echo '<a href="../loginview.php">Login</a>';//
               }
               ?>
+              </div>
+    </div>
   </nav>
 </section>
 </header>
-    
-    <h1 style="margin-top: 100px;,padding-inline: 100px 5px;">Categories / Types</h1>
+
     <div class="design">
-        <section id="Design">
+        <h1>Categories</h1>
 
     <div>
     <img src="../Pictures%20for%20website/Bohemian.jpg" alt="Category 1" onclick="fillCategoryFilter('bohemian')" class="image-filter">
@@ -52,8 +80,6 @@
     <img src="../Pictures%20for%20website/Tropical.jpg" alt="Category 4" onclick="fillCategoryFilter('tropical')" class="image-filter">
     <img src="../Pictures%20for%20website/Modern.jpg" alt="Category 5" onclick="fillCategoryFilter('modern')" class="image-filter">
     </div>
-
-        </section>
     </div>
 
     
@@ -82,7 +108,7 @@
 
 
  <div class="pd-back">
-<h2>Products</h2>
+<h2 id="productTop">Products</h2>
 
     <label for="sortFilter">Sort by:</label>
     <select id="sortFilter" onchange="filterProducts()" class="custom-select">
@@ -163,6 +189,9 @@
 
     <?php
     include '../connect.php';
+    $productsPerPage = 10;
+    $page = isset($_GET['page']) ? $_GET['page'] : 1;
+
     try {
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -198,8 +227,10 @@
                 break;
         }
 
-        // Prepare and execute the final query
-        $stmt = $db->prepare($query);
+        $limit = $productsPerPage;
+        $start = ($page - 1) * $limit;
+
+        $stmt = $db->prepare($query . " LIMIT :start, :limit");
 
         if ($typeFilter != 'all') {
             $stmt->bindParam(':type', $typeFilter, PDO::PARAM_STR);
@@ -208,6 +239,9 @@
         if ($categoryFilter != 'all') {
             $stmt->bindParam(':category', $categoryFilter, PDO::PARAM_STR);
         }
+
+        $stmt->bindParam(':start', $start, PDO::PARAM_INT);
+        $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
 
         $stmt->execute();
 
@@ -231,8 +265,31 @@
 
                 $count++;
             }
-
             echo '</table>';
+
+            $stmtTotal = $db->prepare($query);
+            if ($typeFilter != 'all') {
+                $stmtTotal->bindParam(':type', $typeFilter, PDO::PARAM_STR);
+            }
+
+            if ($categoryFilter != 'all') {
+                $stmtTotal->bindParam(':category', $categoryFilter, PDO::PARAM_STR);
+            }
+
+            $stmtTotal->execute();
+            $total_results = $stmtTotal->rowCount();
+            $total_pages = ceil($total_results / $productsPerPage);
+
+            echo '<div class="pagination">';
+            echo '<ul class="pagination justify-content-center">';
+
+            for ($i = 1; $i <= $total_pages; $i++) {
+                $active = ($page == $i) ? 'active' : '';
+                echo '<li class="page-item ' . $active . '"><a class="page-link" href="?page=' . $i . '&typeFilter=' . $typeFilter . '&categoryFilter=' . $categoryFilter . '&sortFilter=' . $sortFilter . '#productTop">' . $i . '</a></li>';
+            }
+
+            echo '</ul>';
+            echo '</div>';
         } else {
             echo "<p>No products available, add some to the database</p>";
         }
@@ -247,10 +304,9 @@
 </select>
 
     </div>
-    <h1 style="padding-inline: 70px 5px;">Current Offers</h1>
-    <div class="product">
-        <section class="one">
-
+    <div class="offerscode">
+        <h1> Current offers</h1>
+        <section class="itemscode">
             <?php
             if (!empty($cheapestProducts)) {
                 echo '<div class="current-offers">';
@@ -270,9 +326,9 @@
     </div>
     </section>
 
-    <h1 style="padding-inline: 70px 5px;">Desk Inspiration</h1>
-    <div class="product">
-        <section class="one">
+    <div class="desk">
+        <h1> Desk inspiration</h1>
+        <section class="inspo">
             <img src="../Pictures%20for%20website/Desk Inspiration 1.jpg" alt="Product 1" class="my_img_2">
             <img src="../Pictures%20for%20website/Desk Inspiration 2.jpg" alt="Product 2" class="my_img_2">
 
@@ -280,8 +336,8 @@
     </div>
     </section>
 
-    <h1 style="padding-inline: 70px 5px;">Tips and Ideas for a more sustainable home</h1>
     <div class="product">
+        <h1> Tips and ideas for a more sustainable home</h1>
         <section class="one">
         <a href="https://medium.com/@beancarmens/wooden-boxes-and-their-storage-benefits-7e94e1665200"><img src="../Pictures%20for%20website/Tips and Ideas 1.jpg" alt="Product 1" class="my_img"></a>
 
@@ -301,27 +357,13 @@
     </section>
 
     <div id="productModal" class="modal">
-        <div class="modal-content">
+        <div class="modal-contant">
             <div id="productDetailsModal"></div>
             <button id="addToBasketButton" onclick="addToBasket()" style="display: none;">Add to Basket</button>
         </div>
     </div>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <script>
-
-    // When the user scrolls down 80px from the top of the document, resize the navbar's padding and the logo's font size
-    window.onscroll = function() {scrollFunction()};
-
-    function scrollFunction() {
-        if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
-            document.getElementById("navbar").style.padding = "30px 10px";
-            document.getElementById("logo").style.fontSize = "25px";
-        } else {
-            document.getElementById("navbar").style.padding = "50px 10px";
-            document.getElementById("logo").style.fontSize = "35px";
-        }
-    }
-
 
     function showProductModal(productId) {
         var modal = document.getElementById('productModal');
@@ -412,7 +454,6 @@
             // Open the product details page in a new window or tab
             window.open('product_details.php?product_id=' + productId, '_blank');
         }
-
     </script>
 </body>
 <footer class="footer">

@@ -7,22 +7,50 @@
     <link href="css/style.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
       <link rel="stylesheet" href="https://use.typekit.net/maf1fpm.css">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     </head>
 
 
 
   <header>
-    <nav>
-    <div id="navbar">
-        <a href="index.php" id="logo">Furniche</a>
-        <div id="navbar-right">
-            <a href="product/products.php">Products</a>
-            <a href="contactview.php">Contact Us</a>
-            <a href="aboutus.php">About Us</a>
-            <a href="loginview.php">Login</a>
-            <a href="basket/basket.php"><i class="fa-solid fa-basket-shopping"></i></a>
-        </div>
+<section>
+  <div class="fixed-top">
+<nav class="navbar">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="index.php">Furniche</a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="product/products.php">Products</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="loginview.php">Login</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            The team
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="aboutus.php">About Us</a></li>
+            <li><a class="dropdown-item" href="contactview.php">Contact us</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="basket/basket.php"><i class="fa-solid fa-basket-shopping"></i></a>
+        </li>
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
     </div>
+  </div>
+</div>
+</nav>
               <?php
                 session_start();
               if (isset($_SESSION['user'])) {
@@ -31,57 +59,36 @@
               ?>
   </nav>
 </header>
+</section>
 <section>
-    <body class="bg-gray-100">
-<!-- Slideshow container -->
-<div class="slideshow-container">
-
-  <!-- Full-width images with number and caption text -->
-  <div class="mySlides fade">
-    <div class="numbertext">1 / 5</div>
-    <img src="Pictures%20for%20website/slide2.jpg" style="width:100%">
-    <div class="text">Minimial Wooden Foyer</div>
+<div id="carouselExampleRide" class="carousel slide" data-bs-ride="true">
+  <div class="carousel-inner">
+  <div class="carousel-item active">
+      <img src="Pictures%20for%20website/slide2.jpg" class="d-block w-100" alt="..." data-bs-interval="0.5s">
+    </div>
+    <div class="carousel-item">
+      <img src="Pictures%20for%20website/slide1.jpg" class="d-block w-100" alt="..." data-bs-interval="0.5s">
+    </div>
+    <div class="carousel-item">
+      <img src="Pictures%20for%20website/slide3.jpg" class="d-block w-100" alt="..." data-bs-interval="0.5s">
+    </div>
+    <div class="carousel-item">
+      <img src="Pictures%20for%20website/slide4.jpg" class="d-block w-100" alt="..." data-bs-interval="0.5s">
+    </div>
+    <div class="carousel-item">
+      <img src="Pictures%20for%20website/slide5.jpg" class="d-block w-100" alt="..." data-bs-interval="0.5s">
+    </div>
   </div>
-
-  <div class="mySlides fade">
-    <div class="numbertext">2 / 5</div>
-    <img src="Pictures%20for%20website/slide1.jpg" style="width:100%">
-    <div class="text">Tropical Style Kitchen</div>
-  </div>
-
-  <div class="mySlides fade">
-    <div class="numbertext">3 / 5</div>
-    <img src="Pictures%20for%20website/slide3.jpg" style="width:100%">
-    <div class="text">Rustic Dinning set</div>
-  </div>
-
-  <div class="mySlides fade">
-    <div class="numbertext">4 / 5</div>
-    <img src="Pictures%20for%20website/slide4.jpg" style="width:100%">
-    <div class="text">Bohemian Living room</div>
-  </div>
-
-  <div class="mySlides fade">
-    <div class="numbertext">5 / 5</div>
-    <img src="Pictures%20for%20website/slide5.jpg" style="width:100%">
-    <div class="text">Modern Bathroom</div>
-  </div>
-
-  <!-- Next and previous buttons -->
-  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-  <a class="next" onclick="plusSlides(1)">&#10095;</a>
- </div>
- <br>
-
- <!-- The dots/circles --> 
- <div style="text-align:center">
-  <span class="dot" onclick="currentSlide(1)"></span>
-  <span class="dot" onclick="currentSlide(2)"></span>
-  <span class="dot" onclick="currentSlide(3)"></span>
-  <span class="dot" onclick="currentSlide(4)"></span>
-  <span class="dot" onclick="currentSlide(5)"></span>
- </div>
- </section>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+</section>
  <section>
    <div class="categories">
    <h2>Categories</h2>
@@ -106,21 +113,8 @@
             <h1 class="text3">Billy Jean</h1>
             <h1 class="text4">Things to make your  living  more modern. </h1>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <script>
-
-    // When the user scrolls down 80px from the top of the document, resize the navbar's padding and the logo's font size
-    window.onscroll = function() {scrollFunction()};
-
-    function scrollFunction() {
-        if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
-            document.getElementById("navbar").style.padding = "30px 10px";
-            document.getElementById("logo").style.fontSize = "25px";
-        } else {
-            document.getElementById("navbar").style.padding = "50px 10px";
-            document.getElementById("logo").style.fontSize = "35px";
-        }
-    }
-
     let slideIndex = 1;
 showSlides(slideIndex);
 
