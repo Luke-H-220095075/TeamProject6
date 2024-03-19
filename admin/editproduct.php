@@ -183,3 +183,55 @@ if (isset($_GET['productId']) && is_numeric($_GET['productId'])) {
         </div>
     </div>
 </div>
+
+
+
+<?php
+        } else {
+            echo '<div class="error-message">Product not found.</div>';
+        }
+    } catch (PDOException $ex) {
+        echo '<div class="error-message">Database error: ' . $ex->getMessage() . '</div>';
+    }
+} else {
+    echo '<div class="error-message">Product ID is missing in the URL.</div>';
+}
+
+//Update Product details
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['updateProduct'])) {
+    if (isset($_POST['productId']) && is_numeric($_POST['productId'])) {
+        $productId = $_POST['productId'];
+        $productName = $_POST['productName'];
+        $productDescription = $_POST['productDescription'];
+        $price = $_POST['price'];
+        $countStock = $_POST['countStock'];
+
+        if (isset($_FILES["imageUpload"]) && $_FILES["imageUpload"]["error"] == UPLOAD_ERR_OK) {
+            $fileName = basename($_FILES["imageUpload"]["name"]);
+            $fileTmpName = $_FILES["imageUpload"]["tmp_name"];
+            $uploadDirectory = "../Pictures for website/";
+
+            if (move_uploaded_file($fileTmpName, $uploadDirectory . $fileName)) {
+                try {
+                    $stmt = $db->prepare("UPDATE products SET productName = ?, price = ?, countStock = ?, imageName = ? WHERE productId = ?");
+                    $stmt->execute([$productName, $productDescription, $price, $countStock, $fileName, $productId]);
+                    echo "Product updated successfully.";
+                } catch (PDOException $ex) {
+                    echo "Database error: " . $ex->getMessage();
+                }
+            } else {
+                echo "";
+            }
+        } else {
+            try {
+                $stmt = $db->prepare("UPDATE products SET productName = ?, productDescription = ?, price = ?, countStock = ? WHERE productId = ?");
+                $stmt->execute([$productName, $productDescription, $price, $countStock, $productId]);
+                echo "Product updated successfully.";
+            } catch (PDOException $ex) {
+                echo "Database error: " . $ex->getMessage();
+            }
+        }
+    } else {
+        echo "Error: Product ID is missing or invalid.";
+    }
+}
