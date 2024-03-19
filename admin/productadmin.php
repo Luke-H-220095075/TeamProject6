@@ -229,3 +229,51 @@ if (isset($_GET['delete']) && is_numeric($_GET['delete'])) {
          }
      }
      
+
+     
+//Product filters 
+$categoryFilter = isset($_GET['category']) ? $_GET['category'] : null;
+$typeFilter = isset($_GET['type']) ? $_GET['type'] : null;
+
+$sql = "SELECT * FROM products";
+
+$whereClause = "";
+$params = array();
+
+if ($categoryFilter !== null) {
+    $whereClause .= " WHERE productCategory = :category";
+    $params[':category'] = $categoryFilter;
+}
+
+if ($typeFilter !== null) {
+    if ($whereClause === "") {
+        $whereClause .= " WHERE";
+    } else {
+        $whereClause .= " AND";
+    }
+    $whereClause .= " productType = :type";
+    $params[':type'] = $typeFilter;
+}
+
+$sql .= $whereClause;
+
+$limit = 8;
+$page = isset($_GET['page']) ? $_GET['page'] : 1;
+$offset = ($page - 1) * $limit;
+$sql .= " LIMIT :limit OFFSET :offset";
+
+$stmt = $db->prepare($sql);
+$stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+$stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
+foreach ($params as $param => $value) {
+    $stmt->bindParam($param, $value);
+}
+$stmt->execute();
+$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+if ($result && $stmt->rowCount() > 0) {
+    foreach ($result as $row) {
+    }
+} else {
+    echo "<tr><td colspan='9'>No products found.</td></tr>";
+}
