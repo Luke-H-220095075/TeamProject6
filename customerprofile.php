@@ -72,6 +72,7 @@
 </section>
 </header>
 <body><?php
+
 require("User.php");?>
 
     <section>

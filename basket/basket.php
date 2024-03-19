@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html>
+<?php
+include '../connect.php';
+session_start();
+$basketId = 0;
+if (isset($_SESSION['user'])) {
 
+    $sql = "SELECT basketId FROM baskets WHERE userId = ". $_SESSION['userID'] ." AND currentUserBasket = 1" ;
+    $result = $db->query($sql);
+    $row = $result->fetch(PDO::FETCH_ASSOC);
+    $basketId = $row['basketId'];
+}
+
+?>
 <head>
     <title>Furniche - Basket</title>
     <meta charset="utf-8" />
@@ -51,7 +63,6 @@
     </div>
     </nav>
                 <?php
-                session_start();
                 if (isset($_SESSION['user'])) {
                     echo '<li><a href="../customerprofile.php">' . $_SESSION['user'] . '</a>';
                     echo '<li><a href="basket.php">Basket</a></li>';
@@ -74,9 +85,7 @@
         <h2>Your Basket</h2>
 
         <?php
-        $basketId = 1;
-
-        include '../connect.php';
+        
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         try {
@@ -84,10 +93,10 @@
             SELECT products.productId, products.productName, products.price, products.imageName, basketproducts.quantity
             FROM basketproducts
             JOIN products ON basketproducts.productId = products.productId
-            WHERE basketproducts.basketId = :user_id
+            WHERE basketproducts.basketId = :basket_Id
             
         ");
-            $stmtBasket->bindParam(':user_id', $basketId);
+            $stmtBasket->bindParam(':basket_Id', $basketId);
             $stmtBasket->execute();
 
             if ($stmtBasket->rowCount() > 0) {
@@ -120,8 +129,7 @@
         }
         echo "<br>";
 
-        $basket_id = 1;
-        $sql = "SELECT price, quantity FROM products JOIN basketproducts ON products.productId = basketproducts.productId WHERE basketId = $basket_id";
+        $sql = "SELECT price, quantity FROM products JOIN basketproducts ON products.productId = basketproducts.productId WHERE basketId = $basketId";
         $result = $db->query($sql);
         $basketcost = 0;
         if ($result->rowCount() > 0) {
@@ -144,10 +152,10 @@
 
 
         #stock availability check
-        function availability($db, $basket_id)
+        function availability($db, $basketId)
         {
             $available = true;
-            $sql = "SELECT productName, countStock, quantity FROM products join basketproducts ON products.productId = basketproducts.productId  WHERE basketId = $basket_id";
+            $sql = "SELECT productName, countStock, quantity FROM products join basketproducts ON products.productId = basketproducts.productId  WHERE basketId = $basketId";
             $result = $db->query($sql);
             if ($result->rowCount() > 0) {
                 while ($row = $result->fetch()) {
@@ -159,10 +167,11 @@
             }
             return $available;
         }
-        if (availability($db, $basket_id)) {
+        if (availability($db, $basketId)) {
             echo "<p>available</p>";
             echo '<a href="../checkout.php"><button>checkout?</button></a>';
-        } else {
+        } 
+        else {
             echo "<p>Your basket is empty.</p>";
             echo '<a href="../product/products.php"><button>Add Products?</button></a>';
 
