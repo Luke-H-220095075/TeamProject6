@@ -438,3 +438,21 @@ margin-left: 300px;
     padding: 5px;
     border-radius: 1px;
 }
+
+
+/* Individual Edit Pages (order, user and product)*/
+.back-button {
+    background-color: brown;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    margin-left: 700px;
+    text-align: center;
+    padding: 8px;
+}
+
+.back-button:hover {
+    background-color: #FF8C79; 
+}
