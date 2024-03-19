@@ -423,3 +423,18 @@ margin-left: 300px;
 
 }
 
+/*CSS for individual order page (editorder.php)*/
+.display-details .order-details {
+    
+    font-size: 17.5px;
+    padding-left: 150px;
+    width: 430px;
+    background: #f3f4f6;
+   
+}
+
+.order-details p:hover {
+    background-color: rgba(247, 247, 247, 0.806);
+    padding: 5px;
+    border-radius: 1px;
+}
