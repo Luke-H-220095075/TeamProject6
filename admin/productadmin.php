@@ -304,3 +304,61 @@ if (isset($_GET['search']) && !empty($_GET['search'])) {
     }
 } else {
 }
+
+
+?>
+       </div>
+  
+  <div class="info-table">
+<!--Products Table-->
+
+<!--Header with search and dropdown. BOOTSTRAP WAS USED HERE-->
+<div class="table-header"style="background-color: #e2b489; padding-top: 10px;">
+<div class="container custom-background">
+<strong><h3>Products</h3></strong> &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp;
+
+    <div class="row justify-content-end align-items-right">
+   
+    <div class="col-md-6">
+    <form method="GET" action="">
+        <div class="input-group mb-3 custom-search-bar">
+            <input type="text" class="form-control" placeholder="Search..." aria-label="Search..." aria-describedby="search-button" name="search">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="submit" id="search-button"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+        </div>
+    </form>
+</div>
+        <div class="col-md-3">
+    <div class="input-group mb-3 custom-dropdown-toggle">
+        <div class="input-group-prepend">
+            <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="categoryDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >Category</button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="productadmin.php?category=modern">Modern</a>
+                <a class="dropdown-item" href="productadmin.php?category=minimal">Minimalistic</a>
+                <a class="dropdown-item" href="productadmin.php?category=rustic">Rustic</a>
+                <a class="dropdown-item" href="productadmin.php?category=bohemian">Bohemian</a>
+                <a class="dropdown-item" href="productadmin.php?category=tropical">Tropical</a>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-3">
+    <div class="input-group mb-3 custom-dropdown-toggle">
+        <div class="input-group-prepend">
+            <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="typeDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >Type</button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="productadmin.php?type=sofa">Sofa</a>
+                <a class="dropdown-item" href="productadmin.php?type=bed">Bed</a>
+                <a class="dropdown-item" href="productadmin.php?type=desk">Desk</a>
+                <a class="dropdown-item" href="productadmin.php?type=chair">Chair</a>
+                <a class="dropdown-item" href="productadmin.php?type=wardrobe">Wardrobe</a>
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
