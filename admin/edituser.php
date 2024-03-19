@@ -74,3 +74,35 @@ if (isset($_SESSION['user'])) {
             </li>
         </ul>
     </section>
+
+    <h1>User Admin Dashboard</h1>
+
+<?php
+include "../connect.php";
+
+    //User KPIs
+if (isset($_GET['userId'])) {  $userId = $_GET['userId'];
+
+    $sql = "SELECT * FROM users WHERE userId = ?";
+    $stmt = $db->prepare($sql);
+    $stmt->execute([$userId]);
+    $userDetails = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($userDetails) {
+        function getTotalCount($db, $table, $condition = "") {
+            $sql = "SELECT COUNT(*) as count FROM $table $condition";
+            $stmt = $db->query($sql);
+            
+            if ($stmt) {
+                $row = $stmt->fetch(PDO::FETCH_ASSOC);
+                return $row['count'];
+            } else {
+                return 0;
+            }
+        }
+
+            $totalOrders = getTotalCount($db, "orders", "WHERE userId = $userId");
+            $totalInquires = getTotalCount($db, "inquiries", "WHERE userId = $userId");
+            $totalPendingOrders = getTotalCount($db, "orders", "WHERE userId = $userId AND `deliveryStatus` = 'Pending Approval'");
+    
+?>
