@@ -191,3 +191,40 @@ h1{
     color: green;
     font-weight: bold;
 }
+
+
+/*Pagination Buttons*/
+.pagination {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+    margin-left: 400px;
+}
+
+.pagination a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #fff;
+    background-color: #D4AC87;
+    border: 1px solid #D4AC87;
+    border-radius: 5px;
+    margin-right: 5px;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.pagination a:hover {
+    background-color: #c4956b;
+}
+
+.pagination a.active {
+    background-color: #c4956b;
+}
+
+.button-spacing {
+    margin-right: 30px; 
+}
