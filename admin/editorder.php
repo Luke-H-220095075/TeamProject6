@@ -118,3 +118,56 @@ if (isset($_GET['orderId']) && is_numeric($_GET['orderId'])) {
             $totalPendingOrders = getTotalCount($db, "orders", "WHERE userId =  $order[userId] AND `deliveryStatus` = 'Pending Approval'");
     
 ?>
+
+
+<div class="header-details">
+                <h2>Order Details</h2>
+                <a href="orderadmin.php" class="back-button">Back to Product Admin</a>
+               
+            </div>
+
+<div class="display-details">
+<div class="order-details">
+    <p><strong>Order ID:</strong> <?= $order['orderId']; ?></p>
+    <p><strong>Basket ID:</strong> <?= $order['basketId']; ?></p>
+    <p><strong>User ID:</strong> <?= $order['userId']; ?></p>
+    <p><strong>Date Added:</strong> <?= $order['dateAdded']; ?></p>
+    <p><strong>Delivery Option:</strong> <?= $order['deliveryOption']; ?></p>
+    <p><strong>Delivery Status:</strong> <?= $order['deliveryStatus']; ?></p>
+    <p><strong>Delivery Date:</strong> <?= $order['deliveryDate']; ?></p>
+    <p><strong>Delivery Notes:</strong> <?= $order['notes']; ?></p>
+
+    <a href='productadmin.php?delete=<?php echo $row['productId']; ?>' class='delete-icon' title='Delete'>
+    <button class="delete-button">
+    
+                    <i class='fa-solid fa-trash'></i> Delete Product
+                </button>
+        </a>
+   </div>
+
+   
+   <div class="user-kpis">
+                <div class="kpi-box">
+                    <i class='fa-solid fa-shopping-cart'></i>
+                    <div class="text">
+                        <h3>Total Orders</h3>
+                        <p><?php echo $totalOrders;  ?></p>
+                    </div>
+                </div>
+                <div class="kpi-box">
+                    <i class='fa-solid fa-star'></i>
+                    <div class="text">
+                        <h3>Total Reviews</h3>
+                        <p><?php echo  $totalInquires ; ?></p>
+                    </div>
+                </div>
+                <div class="kpi-box">
+                    <i class='fa-solid fa-clock'></i>
+                    <div class="text">
+                        <h3>Pending Orders</h3>
+                        <p><?php echo $totalPendingOrders; ?></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
