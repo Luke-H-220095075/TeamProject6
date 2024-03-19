@@ -362,3 +362,52 @@ if (isset($_GET['search']) && !empty($_GET['search'])) {
 </div>
 </div>
 </div>
+
+
+<!-- Produccts Table-->
+<table id="product-table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Units Sold</th>
+            <th>Stock</th>
+            <th>Stock Status</th> 
+            <th>Category</th>
+            <th>Type</th>
+            <th>Action</th> 
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($result as $row) {
+            $stockStatus = ($row['countStock'] < 20) ? 'LOW' : 'Available';
+        ?>
+            <tr>
+                <td><?php echo $row['productId']; ?></td>
+                <td><?php echo $row['productName']; ?></td>
+                <td><?php echo $row['price']; ?></td>
+                <td><?php echo $row['countSold']; ?></td>
+                <td><?php echo $row['countStock']; ?></td>
+                <td class="<?php echo ($row['countStock'] < 10) ? 'low-stock' : 'available-stock'; ?>">
+                    <?php echo $stockStatus; ?>
+                </td>
+                <td><?php echo $row['productCategory']; ?></td>
+                <td><?php echo $row['productType']; ?></td>
+                <td>
+                    <a href='productadmin.php?delete=<?php echo $row['productId']; ?>' class='delete-icon' title='Delete'>
+                        <i class='fa-solid fa-trash'></i>
+                    </a>
+                    <span style='margin-right: 5px;'></span>
+                    <a href="editproduct.php?productId=<?php echo $row['productId']; ?>">
+                        <i class="fa-solid fa-eye"></i>
+                    </a>
+                    <span style='margin-right: 5px;'></span>
+                    <a href="editproduct.php?productId=<?php echo $row['productId']; ?>">    
+                        <i class="fa-solid fa-pencil"></i>
+                    </a>
+                </td>
+            </tr>
+        <?php } ?>
+    </tbody>
+</table>
