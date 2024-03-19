@@ -166,3 +166,20 @@ if (isset($_GET['delete']) && is_numeric($_GET['delete'])) {
         echo '<div class="error-message">Error deleting user: ' . $e->getMessage() . '</div>';
     }
 }
+
+
+//Pagenation with a limit of 8 rows per page
+$limit = 8; 
+$page = isset($_GET['page']) ? $_GET['page'] : 1; 
+$offset = ($page - 1) * $limit; 
+
+$sql = "SELECT * FROM users LIMIT :limit OFFSET :offset";
+$stmt = $db->prepare($sql);
+$stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+$stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
+$stmt->execute();
+$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+if ($result && $stmt->rowCount() > 0) {
+
+
