@@ -21,3 +21,17 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('content').classList.toggle('left-collapsed');
     });
 });
+
+//Javascript for the user toggle menu
+
+document.getElementById("user-icon").addEventListener("mouseover", function() {
+    var dropdown = document.getElementById("user-dropdown");
+    dropdown.classList.add("show");
+  });
+  
+  document.getElementById("user-icon").addEventListener("mouseout", function() {
+    var dropdown = document.getElementById("user-dropdown");
+    dropdown.classList.remove("show");
+  });
+  
+  
