@@ -166,3 +166,91 @@ if (isset($_GET['delete']) && is_numeric($_GET['delete'])) {
         echo '<div class="error-message">Error deleting user: ' . $e->getMessage() . '</div>';
     }
 }
+
+
+//Pagenation with a limit of 8 rows per page
+$limit = 8; 
+$page = isset($_GET['page']) ? $_GET['page'] : 1; 
+$offset = ($page - 1) * $limit; 
+
+$sql = "SELECT * FROM users LIMIT :limit OFFSET :offset";
+$stmt = $db->prepare($sql);
+$stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+$stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
+$stmt->execute();
+$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+if ($result && $stmt->rowCount() > 0) {
+
+
+//User Filter Dropdown
+$adminFilter = isset($_GET['admin']) ? $_GET['admin'] : null;
+$sql = "SELECT * FROM users";
+
+$whereClause = "";
+$params = array();
+
+if ($adminFilter !== null) {
+    if ($whereClause === "") {
+        $whereClause .= " WHERE";
+    } else {
+        $whereClause .= " AND";
+    }
+    $whereClause .= " admin = :admin";
+    $params[':admin'] = $adminFilter; 
+}
+
+$sql .= $whereClause;
+
+$limit = 8;
+$page = isset($_GET['page']) ? $_GET['page'] : 1;
+$offset = ($page - 1) * $limit;
+$sql .= " LIMIT :limit OFFSET :offset";
+
+$stmt = $db->prepare($sql);
+$stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+$stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
+foreach ($params as $param => $value) {
+    $stmt->bindParam($param, $value);
+}
+$stmt->execute();
+$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+if ($result && $stmt->rowCount() > 0) {
+    foreach ($result as $row) {
+    }
+} else {
+    echo "<tr><td colspan='9'>No users found.</td></tr>";
+}
+
+
+//Search for Users Table
+
+
+if (isset($_GET['search']) && !empty($_GET['search'])) {
+    $searchTerm = $_GET['search'];
+    $sql = "SELECT * FROM users WHERE firstname LIKE :searchTerm
+           OR surname LIKE :searchTerm
+           OR address LIKE :searchTerm
+           OR email LIKE :searchTerm
+           OR username LIKE :searchTerm
+           OR phone LIKE :searchTerm";
+            
+
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(':searchTerm', "%$searchTerm%", PDO::PARAM_STR);
+    $stmt->execute();
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    if ($result) {
+        foreach ($result as $row) {
+        }
+    } else {
+        echo "No users found.";
+    }
+}
+
+        
+
+        ?>
+
