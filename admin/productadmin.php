@@ -411,3 +411,25 @@ if (isset($_GET['search']) && !empty($_GET['search'])) {
         <?php } ?>
     </tbody>
 </table>
+
+<?php
+
+// Pagination of products table
+$sql = "SELECT COUNT(*) AS total FROM products";
+$stmt = $db->query($sql);
+$row = $stmt->fetch(PDO::FETCH_ASSOC);
+$totalPages = ceil($row['total'] / $limit);
+?>
+<div class="pagination">
+    <?php
+    for ($i = 1; $i <= $totalPages; $i++) {
+        echo "<a href='productadmin.php?page=$i'>$i</a> ";
+    }
+    ?>
+</div>
+<?php
+} else {
+echo "No products found.";
+}
+?>
+</div>
