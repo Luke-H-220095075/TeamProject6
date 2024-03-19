@@ -197,3 +197,75 @@ if (isset($_GET['userId'])) {  $userId = $_GET['userId'];
 } else {
     echo "User ID not provided";
 }
+
+
+//Delete user button
+if (isset($_GET['delete']) && is_numeric($_GET['delete'])) {
+    $userIdToDelete = $_GET['delete'];
+
+    try {
+        $db->beginTransaction();
+
+        // Delete from orders table 
+        $deleteOrdersSql = "DELETE FROM orders WHERE userId = :userId";
+        $deleteOrdersStatement = $db->prepare($deleteOrdersSql);
+        $deleteOrdersStatement->bindParam(':userId', $userIdToDelete, PDO::PARAM_INT);
+        $deleteOrdersStatement->execute();
+
+        // Delete from basketproduct table
+        $deleteBasketProductSql = "DELETE FROM basketproducts WHERE basketId IN (SELECT basketId FROM baskets WHERE userId = :userId)";
+        $deleteBasketProductStatement = $db->prepare($deleteBasketProductSql);
+        $deleteBasketProductStatement->bindParam(':userId', $userIdToDelete, PDO::PARAM_INT);
+        $deleteBasketProductStatement->execute();
+
+        // Delete from baskets table
+        $deleteBasketsSql = "DELETE FROM baskets WHERE userId = :userId";
+        $deleteBasketsStatement = $db->prepare($deleteBasketsSql);
+        $deleteBasketsStatement->bindParam(':userId', $userIdToDelete, PDO::PARAM_INT);
+        $deleteBasketsStatement->execute();
+
+        // Delete from users table
+        $deleteUserSql = "DELETE FROM users WHERE userId = :userId";
+        $deleteUserStatement = $db->prepare($deleteUserSql);
+        $deleteUserStatement->bindParam(':userId', $userIdToDelete, PDO::PARAM_INT);
+        $deleteUserStatement->execute();
+
+    
+        $db->commit();
+        echo '<div class="success-message">User deleted successfully.</div>';
+    } catch (PDOException $e) {
+       
+        $db->rollBack();
+        echo '<div class="error-message">Error deleting user: ' . $e->getMessage() . '</div>';
+    }
+}
+//Update User Details
+  
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $userId = $_POST['userId'];
+        $admin = $_POST['admin'];
+        $firstname = $_POST['firstname'];
+        $surname = $_POST['surname'];
+        $address = $_POST['address'];
+        $email = $_POST['email'];
+        $username = $_POST['username'];
+        $phone = $_POST['phone'];
+        $password = $_POST['password'];
+    
+        $stmt = $db->prepare("UPDATE users SET admin=?, firstname=?, surname=?, address=?, email=?, username=?, phone=?, password=? WHERE userId=?");
+        $stmt->execute([$admin, $firstname, $surname, $address, $email, $username, $phone, $password, $userId]);
+    }
+    
+    $userId = $_GET['userId'];
+    $stmt = $db->prepare("SELECT * FROM users WHERE userId = ?");
+    $stmt->execute([$userId]);
+    $userDetails = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+    
+
+
+?>
+
+    <script src="script.js"></script>
+</body>
+</html>
