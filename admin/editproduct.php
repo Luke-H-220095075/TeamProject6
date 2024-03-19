@@ -286,8 +286,6 @@ if (isset($_GET['delete']) && is_numeric($_GET['delete'])) {
     }
     
 
-
-
 ?>
     <script src="script.js"></script>
 </body>
