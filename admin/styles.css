@@ -554,3 +554,29 @@ margin-left: 300px;
     color: #374151;
 }
 
+
+/*User Edit Page Specific CSS*/
+.display-details .user-details {
+    padding-top: 15px;
+    font-size: 17.5px;
+    padding-left: 150px;
+    width: 400px;
+    background: #f3f4f6;
+   
+}
+.user-details p:hover {
+    background-color: lightbrown;
+    padding: 2px;
+    border-radius: 5px;
+}
+
+
+.display-details .user-kpis {
+    display: flex;
+    flex-direction: column;
+}
+
+.edituser-container {
+    width: 100%;
+    margin-left: 45px;
+    }
