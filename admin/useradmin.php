@@ -84,6 +84,42 @@ if (isset($_SESSION['user'])) {
 
             </li>
         </ul>
-
-   
     </section>
+
+    <?php
+include '../connect.php';
+
+  //Insert User
+if (!$db) {
+    die("Connection failed: " . $db->getMessage());
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $admin = $_POST['admin'];
+    $firstname = $_POST['firstname'];
+    $surname = $_POST['surname'];
+    $address = $_POST['address'];
+    $email = $_POST['email'];
+    $username = $_POST['username'];
+    $phone = $_POST['phone'];
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+
+    $insertSql = "INSERT INTO users (admin, firstname, surname, address, email, username, phone, password)
+                  VALUES (:admin, :firstname, :surname, :address, :email, :username, :phone, :password)";
+
+    $insertStatement = $db->prepare($insertSql);
+    $insertStatement->bindParam(':admin', $admin, PDO::PARAM_STR); 
+    $insertStatement->bindParam(':firstname', $firstname, PDO::PARAM_STR);
+    $insertStatement->bindParam(':surname', $surname, PDO::PARAM_STR);
+    $insertStatement->bindParam(':address', $address, PDO::PARAM_STR);
+    $insertStatement->bindParam(':email', $email, PDO::PARAM_STR);
+    $insertStatement->bindParam(':username', $username, PDO::PARAM_STR);
+    $insertStatement->bindParam(':phone', $phone, PDO::PARAM_STR);
+    $insertStatement->bindParam(':password', $password, PDO::PARAM_STR);
+
+    if ($insertStatement->execute()) {
+        echo "User created successfully!";
+    } else {
+        echo "Error creating user: " . $insertStatement->errorInfo()[2];
+    }
+}
