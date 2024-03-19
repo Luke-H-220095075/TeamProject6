@@ -277,3 +277,30 @@ if ($result && $stmt->rowCount() > 0) {
 } else {
     echo "<tr><td colspan='9'>No products found.</td></tr>";
 }
+
+
+//Search Bar functionality
+if (isset($_GET['search']) && !empty($_GET['search'])) {
+    $searchTerm = $_GET['search'];
+    $sql = "SELECT * FROM products WHERE productName LIKE :searchTerm
+           OR price LIKE :searchTerm 
+            OR countSold LIKE :searchTerm 
+            OR countStock LIKE :searchTerm 
+            OR productCategory LIKE :searchTerm 
+            OR productType LIKE :searchTerm 
+            OR imageName LIKE :searchTerm";
+
+
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(':searchTerm', "%$searchTerm%", PDO::PARAM_STR);
+    $stmt->execute();
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    if ($result) {
+        foreach ($result as $row) {
+        }
+    } else {
+        echo "";
+    }
+} else {
+}
