@@ -39,7 +39,7 @@ right: 15px;
   right: 15px;
   }
   
-  .description_two {
+.description_two {
   position: relative;
   bottom: 160px;
   right: 15px;
@@ -50,10 +50,78 @@ position: relative;
 left: 30px;
 }
 
-.FAQs{
-position: relative;
-left: 90px;
+.lorrytext {
+  position: relative; 
+  bottom:50px;
 }
+
+.header_one{
+position: relative;
+bottom: 305px;
+}
+
+.description_one{
+position: relative;
+bottom: 210px;
+}
+
+.FAQs{
+  position: relative;
+  right: 225px;
+  bottom: 450px;
+}
+
+.FAQstext{
+  position: relative; 
+  bottom: 440px;
+  right: 220px;
+}
+
+.header_two{
+  position: relative;
+  bottom: 565px;
+  right: 220px;
+  }
+  
+.description_two{
+  position: relative;
+  bottom: 600px;
+  left: 260px;
+  }
+
+.chat{
+  position: relative;
+  left: 470px;
+  bottom: 700px;
+}
+
+.chattext{
+  position: relative;
+  left: 445px;
+  bottom: 690px;
+}
+
+.header_three{
+position: relative;
+bottom: 775px;
+left: 510px;
+}
+    
+.description_three{
+position: relative;
+bottom: 850px;
+ }
+
+.header_four{
+position: relative;
+bottom: 305px;
+}
+      
+.description_four{
+position: relative;
+bottom: 210px;
+}
+
 
 .grid1 {
 margin: 20px auto;
@@ -197,4 +265,4 @@ font-size: 16px;
 
 #submit-btn:hover {
 background-color: #5c5c5c;
-}
+} 
