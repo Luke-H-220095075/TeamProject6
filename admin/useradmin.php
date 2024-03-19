@@ -223,3 +223,34 @@ if ($result && $stmt->rowCount() > 0) {
     echo "<tr><td colspan='9'>No users found.</td></tr>";
 }
 
+
+//Search for Users Table
+
+
+if (isset($_GET['search']) && !empty($_GET['search'])) {
+    $searchTerm = $_GET['search'];
+    $sql = "SELECT * FROM users WHERE firstname LIKE :searchTerm
+           OR surname LIKE :searchTerm
+           OR address LIKE :searchTerm
+           OR email LIKE :searchTerm
+           OR username LIKE :searchTerm
+           OR phone LIKE :searchTerm";
+            
+
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(':searchTerm', "%$searchTerm%", PDO::PARAM_STR);
+    $stmt->execute();
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    if ($result) {
+        foreach ($result as $row) {
+        }
+    } else {
+        echo "No users found.";
+    }
+}
+
+        
+
+        ?>
+
