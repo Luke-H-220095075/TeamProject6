@@ -46,3 +46,44 @@ if (isset($_SESSION['user'])) {
         }
 
 ?>
+
+<a href="dashboard.php">
+                    <i class="fa-solid fa-table-columns"></i>
+                    <span class="nav-item">Dashboard</span>
+                </a>
+               <!-- <span class="tooltip">Dashboard</span> -->
+            </li>
+            <li>
+                <a href="useradmin.php">
+                    <i class="fa-solid fa-user"></i>
+                    <span class="nav-item">Users</span>
+                </a>
+               <!-- <span class="tooltip">Users</span>-->
+            </li>
+            <li>
+                <a href="productadmin.php">
+                    <i class="fa-solid fa-couch"></i>
+                    <span class="nav-item">Inventory</span>
+                </a>
+               <!-- <span class="tooltip">Products</span>-->
+            </li>
+            <li>
+                <a href="orderadmin.php">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="nav-item">Orders</span>
+                </a>
+               <!-- <span class="tooltip">Orders</span> -->
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-message"></i>
+                    <span class="nav-item">Messages</span>
+                </a>
+                               <!-- <span class="tooltip">Messages</span> -->
+
+            </li>
+        </ul>
+
+   
+    </section>
+    <br><br><h1> Orders Admin Dashboard</h1> 
