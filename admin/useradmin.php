@@ -249,8 +249,147 @@ if (isset($_GET['search']) && !empty($_GET['search'])) {
         echo "No users found.";
     }
 }
-
-        
-
         ?>
 
+
+    
+<br><br> <h1> Users Admin Dashboard</h1> 
+    <div class="create-container">
+            <div class="create-form">
+    <form action="" method="post">
+        <h2>Create User</h2>
+        <div class="input-container">
+            <select id="admin" name="admin" class="small-dropdown" required>
+                <option value="customer">Customer</option>
+                <option value="admin">Admin</option>
+            </select>
+            <input type="text" name="firstname" placeholder="First Name" required>
+            <input type="text" name="surname" placeholder="Surname" required>
+        </div>
+        <div class="input-container">
+            <input type="text" name="address" placeholder="Address" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="text" name="username" placeholder="Username" required>
+        </div>
+        <div class="input-container">
+            <input type="tel" name="phone" placeholder="Phone">
+            <input type="password" name="password" placeholder="Password" required>
+        </div>
+        <button type="submit">Create User</button>
+    </form>
+</div>
+    </div>
+
+    
+<!-- Display User Details -->
+<div class="info-table">
+
+<!-- Header with filter and search-->
+<div class="table-header"style="background-color: #e2b489; padding-top: 10px;">
+<div class="container custom-background">
+<strong><h3>Current Users</h3></strong> &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp;
+
+    <div class="row justify-content-end align-items-right">
+   
+    <div class="col-md-6">
+    <form method="GET" action="">
+        <div class="input-group mb-3 custom-search-bar">
+            <input type="text" class="form-control" placeholder="Search..." aria-label="Search..." aria-describedby="search-button" name="search">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="submit" id="search-button"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+        </div>
+    </form>
+</div>
+       
+<div class="col-md-3">
+    <div class="input-group mb-3 custom-dropdown-toggle">
+        <div class="input-group-prepend">
+            <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="userDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">User Type</button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="useradmin.php?admin=admin">Admin</a>
+                <a class="dropdown-item" href="useradmin.php?admin=customer">Customer</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+<table>
+<thead>
+<tr>
+   <th>ID</th>
+   <th>User Type</th>
+   <th>Name</th>
+   <th>Account Age</th>
+   <th>Actions</th>
+</tr>
+</thead>
+<tbody>
+
+
+        <?php foreach ($result as $row) { ?>
+            <tr>
+                <td><?php echo $row['userId']; ?></td>
+                <td><?php echo $row['admin']; ?></td>
+                <td><?php echo $row['firstname'] . ' ' . $row['surname']; ?></td>
+                <td><?php 
+
+                    // Calculate account age
+                    $dateCreated = new DateTime($row['dateCreated']);
+                    $now = new DateTime();
+                    $interval = $now->diff($dateCreated);
+                    echo $interval->y . ' years, ' . $interval->m . ' months'; 
+                ?></td>
+                <td>
+                    <a href='useradmin.php?delete=<?php echo $row['userId']; ?>' class='delete-icon' title='Delete'>
+                        <i class='fa-solid fa-trash'></i>
+                    </a>
+                    
+                    <span style='margin-right: 5px;'></span>
+                    <a href="edituser.php?userId=<?php echo $row['userId']; ?>">
+                       <i class="fa-solid fa-eye"></i>
+                    </a>
+
+                    <span style='margin-right: 5px;'></span>
+                    <a href="edituser.php?userId=<?php echo $row['userId']; ?>">
+                             <i class="fa-solid fa-pencil"></i>
+                            </a>
+                    </a>
+
+               </td>
+            </tr>
+        <?php } ?>
+    </tbody>
+</table>
+            <?php
+            $sql = "SELECT COUNT(*) AS total FROM users";
+            $stmt = $db->query($sql);
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            $totalPages = ceil($row['total'] / $limit);
+            ?>
+            <div class="pagination">
+                <?php
+                for ($i = 1; $i <= $totalPages; $i++) {
+                    echo "<a href='useradmin.php?page=$i'>$i</a> ";
+                }
+                ?>
+            </div>
+        <?php
+        } else {
+            echo "No users found.";
+        }
+        ?>
+    <script src="script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
