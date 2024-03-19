@@ -153,3 +153,41 @@ h1{
 .dropdown-content:hover a {
     display: block;
 }
+
+
+/* CSS for display tables (User, Products, Admin and Orders)*/
+.info-table {
+    margin: 20px auto;
+    margin-left: 370px;
+    max-width: 1000px;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 2px solid #8b5e3c;
+}
+
+.info-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.info-table th, .info-table td {
+    padding: 15px;
+    text-align: left;
+    border: 1px solid #8b5e3c;
+}
+
+.info-table th {
+    background-color: #e2b489;
+}
+
+.info-table td.low-stock {
+    color: red;
+    font-weight: bold;
+}
+
+.info-table td.available-stock {
+    color: green;
+    font-weight: bold;
+}
