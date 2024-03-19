@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 19, 2024 at 01:53 PM
+-- Generation Time: Mar 19, 2024 at 04:35 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -216,15 +216,16 @@ CREATE TABLE `users` (
   `dateCreated` timestamp NOT NULL DEFAULT current_timestamp(),
   `secretAnswer` varchar(255) NOT NULL,
   `contactByEmail` tinyint(1) NOT NULL DEFAULT 0,
-  `contactByText` tinyint(1) NOT NULL DEFAULT 0
+  `contactByText` tinyint(1) NOT NULL DEFAULT 0,
+  `pendingApproval` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`userId`, `admin`, `firstname`, `surname`, `address`, `email`, `username`, `phone`, `password`, `dateCreated`, `secretAnswer`, `contactByEmail`, `contactByText`) VALUES
-(1, 'customer', 'admin', 'admin', 'address', 'admin@admin.com', 'admin', '1234567', '$2y$10$LmAbf3RNHJyUisHl7RH.rOB5dhWG136IRNw5lfcBArzIn9jRpWoEK', '2024-02-07 11:51:07', 'admin', 0, 1);
+INSERT INTO `users` (`userId`, `admin`, `firstname`, `surname`, `address`, `email`, `username`, `phone`, `password`, `dateCreated`, `secretAnswer`, `contactByEmail`, `contactByText`, `pendingApproval`) VALUES
+(1, 'customer', 'admin', 'admin', 'address', 'admin@admin.com', 'admin', '1234567', '$2y$10$LmAbf3RNHJyUisHl7RH.rOB5dhWG136IRNw5lfcBArzIn9jRpWoEK', '2024-02-07 11:51:07', 'admin', 0, 1, 0);
 
 --
 -- Indexes for dumped tables
