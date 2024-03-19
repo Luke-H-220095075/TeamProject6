@@ -2,7 +2,7 @@
 include 'connect.php';
 session_start();
 //$_SESSION["basket_id"] = "1"; 
-//$_SESSION["discount_name"] = "1"; 
+$_SESSION["discount_name"] = "test"; 
 #subtotal
 $basket_id = 1;
 
@@ -15,16 +15,15 @@ if ($result->rowCount() > 0) {
   }
 }
 
-
+$basketcost = $subtotal;
 # discounts
+if (isset($_SESSION['discount_name'])) {
 $discount_name = $_SESSION["discount_name"]; #$discount_name = $_POST['discount'];
 $sql = "SELECT value FROM discounts WHERE discountTitle = '" . $discount_name . "'";
 $value = $db->query($sql);
 if ($value->rowCount() > 0) {
-  $basketcost = $subtotal * (1 - $value->fetch()["value"] / 100);
-} else {
-  $basketcost = $subtotal;
-}
+  $basketcost = round($subtotal * (1 - $value->fetch()["value"] / 100), 2);
+}}
 
 #stock availability check
 function availability($db, $basket_id)
@@ -91,7 +90,6 @@ function purchase($db, $basket_id){
         </div>
       </div>
       <?php
-      session_start();
       if (isset($_SESSION['user'])) {
         echo '<li><a href="#">' . $_SESSION['user'] . '</a>';
       }
