@@ -516,4 +516,41 @@ margin-left: 300px;
 }
 
 
+.display-details .kpi-box {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right:20px;
+    margin-left: 50px;
+    padding: 24px;
+    background: #f3f4f6;
+    border-radius: 20px;
+    max-width: 500px;
+    max-height: 70px;
+    align-items: center;
+    justify-content: center;
+}
+
+.display-details .kpi-box i {
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.display-details .kpi-box .text {
+    margin-left: 10px;
+}
+
+.display-details .kpi-box .text h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #374151;
+}
+
+.display-details .kpi-box .text p {
+    color: #374151;
+}
 
