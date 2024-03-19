@@ -228,3 +228,72 @@ h1{
 .button-spacing {
     margin-right: 30px; 
 }
+
+
+/* Create New but also for editing and updating (Product, Admin, User) */
+.create-container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 40px;
+    
+    width: 100%;
+}
+
+.create-form {
+    background-color: #e2b489;
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 65%;
+    margin-left: 125px;
+}
+
+.create-form h2 {
+    border-bottom: 1px solid #555353;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.input-container {
+    display: flex;
+    gap: 10px;
+}
+
+.input-container input,
+.input-container select {
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    margin: 20px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.input-container .small-dropdown {
+    width: 350px; 
+    height:50px;
+    margin-left: 0;
+}
+
+.input-container label {
+    margin-bottom: 5px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #622;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    margin-top: 25px;
+}
+
+button:hover {
+    background-color: #ffff;
+    color: #622;
+}
