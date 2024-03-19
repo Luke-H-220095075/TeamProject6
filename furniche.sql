@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 19, 2024 at 04:22 PM
+-- Generation Time: Mar 19, 2024 at 04:35 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -220,7 +220,8 @@ CREATE TABLE `users` (
   `dateCreated` timestamp NOT NULL DEFAULT current_timestamp(),
   `secretAnswer` varchar(255) NOT NULL,
   `contactByEmail` tinyint(1) NOT NULL DEFAULT 0,
-  `contactByText` tinyint(1) NOT NULL DEFAULT 0
+  `contactByText` tinyint(1) NOT NULL DEFAULT 0,
+  `pendingApproval` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
