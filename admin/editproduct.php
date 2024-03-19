@@ -85,3 +85,51 @@ if (isset($_SESSION['user'])) {
 
    
     </section>
+
+    
+    <h1>Product Admin Dashboard</h1>
+
+    
+  
+    <?php
+    include '../connect.php';
+if (isset($_GET['productId']) && is_numeric($_GET['productId'])) {
+    $productId = $_GET['productId'];
+
+    try {
+        $stmt = $db->prepare("SELECT * FROM products WHERE productId = ?");
+        $stmt->execute([$productId]);
+        $product = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($product) {
+?>
+
+<div class="header-details">
+                <h2>Product Details</h2>
+                <a href="productadmin.php" class="back-button">Back to Product Admin</a>
+               
+            </div>
+
+<div class="display-details">
+    <div class="product-details">
+    <p><strong>Product ID:</strong> &nbsp;<?= $product['productId']; ?></p>
+    <p><strong>Product Name:</strong> &nbsp;<?= $product['productName']; ?></p>
+    <p><strong>Product Description:</strong> &nbsp;<?=$product['productDescription'];?></p>
+    <p><strong>Price:</strong> &nbsp;$<?= $product['price']; ?></p>
+    <p><strong>Category:</strong> &nbsp;<?= $product['productCategory']; ?></p>
+    <p><strong>Type:</strong> &nbsp;<?= $product['productType']; ?></p>
+    <p><strong>Date Added:</strong> &nbsp;<?= $product['dateAdded']; ?></p>
+    <p><strong>Units Sold:</strong> &nbsp;<?= $product['countSold']; ?></p>
+    <p><strong>Units in Stock:</strong> &nbsp;<?= $product['countStock']; ?></p>
+    <a href='productadmin.php?delete=<?php echo $row['productId']; ?>' class='delete-icon' title='Delete'>
+    <button class="delete-button">
+    
+                    <i class='fa-solid fa-trash'></i> Delete Product
+                </button>
+        </a>
+   </div>
+
+    <div class="product-image">
+        <img src="../Pictures for website/<?= $product['imageName']; ?>" alt="<?= $product['productName']; ?>">
+    </div>
+</div>
