@@ -106,3 +106,29 @@ if (isset($_GET['userId'])) {  $userId = $_GET['userId'];
             $totalPendingOrders = getTotalCount($db, "orders", "WHERE userId = $userId AND `deliveryStatus` = 'Pending Approval'");
     
 ?>
+
+<div class="header-details">
+                <h2>User Details</h2>
+                <a href="useradmin.php" class="back-button">Back to User Admin</a>
+               
+            </div>
+       <div class="display-details">
+            
+            <div class="user-details">
+            <p><strong>User ID:</strong> &nbsp;<?php echo $userDetails['userId']; ?></p>
+            <p><strong>User Type:</strong>&nbsp; <?php echo $userDetails['admin']; ?></p>
+            <p><strong>First Name:</strong> &nbsp;<?php echo $userDetails['firstname']; ?></p>
+            <p><strong>Surname:</strong> &nbsp;<?php echo $userDetails['surname']; ?></p>
+            <p><strong>Address:</strong> &nbsp;<?php echo $userDetails['address']; ?></p>
+            <p><strong>Email:</strong>&nbsp; <?php echo $userDetails['email']; ?></p>
+            <p><strong>Username:</strong> &nbsp;<?php echo $userDetails['username']; ?></p>
+            <p><strong>Phone:</strong> &nbsp;<?php echo $userDetails['phone']; ?></p>
+            <p><strong>Date Created:</strong>&nbsp; <?php echo $userDetails['dateCreated']; ?></p>
+            <a href='useradmin.php?delete=<?php echo $userId; ?>' class='delete-icon' title='Delete'>               
+             <button class="delete-button">
+                    <i class='fa-solid fa-trash'></i> Delete User
+                </button>
+                </a>
+
+               
+            </div>
