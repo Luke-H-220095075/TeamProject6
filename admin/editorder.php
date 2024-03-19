@@ -86,3 +86,35 @@ if (isset($_SESSION['user'])) {
     </section>
 
     <h1>Order Admin Dashboard</h1>
+
+    
+  
+    <?php
+    include '../connect.php';
+if (isset($_GET['orderId']) && is_numeric($_GET['orderId'])) {
+    $orderId = $_GET['orderId'];
+
+    try {
+        $stmt = $db->prepare("SELECT * FROM orders WHERE orderId = ?");
+        $stmt->execute([$orderId]);
+        $order = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($order) {
+            function getTotalCount($db, $table, $condition = "") {
+                $sql = "SELECT COUNT(*) as count FROM $table $condition";
+                $stmt = $db->query($sql);
+                
+                if ($stmt) {
+                    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+                    return $row['count'];
+                } else {
+                    return 0;
+                }
+            }
+    
+             
+            $totalOrders = getTotalCount($db, "orders", "WHERE userId = $order[userId]");
+            $totalInquires = getTotalCount($db, "inquiries", "WHERE userId =  $order[userId]");
+            $totalPendingOrders = getTotalCount($db, "orders", "WHERE userId =  $order[userId] AND `deliveryStatus` = 'Pending Approval'");
+    
+?>
