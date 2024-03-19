@@ -249,8 +249,71 @@ if (isset($_GET['search']) && !empty($_GET['search'])) {
         echo "No users found.";
     }
 }
-
-        
-
         ?>
 
+
+    
+<br><br> <h1> Users Admin Dashboard</h1> 
+    <div class="create-container">
+            <div class="create-form">
+    <form action="" method="post">
+        <h2>Create User</h2>
+        <div class="input-container">
+            <select id="admin" name="admin" class="small-dropdown" required>
+                <option value="customer">Customer</option>
+                <option value="admin">Admin</option>
+            </select>
+            <input type="text" name="firstname" placeholder="First Name" required>
+            <input type="text" name="surname" placeholder="Surname" required>
+        </div>
+        <div class="input-container">
+            <input type="text" name="address" placeholder="Address" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="text" name="username" placeholder="Username" required>
+        </div>
+        <div class="input-container">
+            <input type="tel" name="phone" placeholder="Phone">
+            <input type="password" name="password" placeholder="Password" required>
+        </div>
+        <button type="submit">Create User</button>
+    </form>
+</div>
+    </div>
+
+    
+<!-- Display User Details -->
+<div class="info-table">
+
+<!-- Header with filter and search-->
+<div class="table-header"style="background-color: #e2b489; padding-top: 10px;">
+<div class="container custom-background">
+<strong><h3>Current Users</h3></strong> &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp;
+
+    <div class="row justify-content-end align-items-right">
+   
+    <div class="col-md-6">
+    <form method="GET" action="">
+        <div class="input-group mb-3 custom-search-bar">
+            <input type="text" class="form-control" placeholder="Search..." aria-label="Search..." aria-describedby="search-button" name="search">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="submit" id="search-button"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+        </div>
+    </form>
+</div>
+       
+<div class="col-md-3">
+    <div class="input-group mb-3 custom-dropdown-toggle">
+        <div class="input-group-prepend">
+            <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="userDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">User Type</button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="useradmin.php?admin=admin">Admin</a>
+                <a class="dropdown-item" href="useradmin.php?admin=customer">Customer</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>
+</div>
+</div>
