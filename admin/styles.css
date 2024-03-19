@@ -1,0 +1,37 @@
+/*CSS that applies to multiple pages*/
+
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #ecececec;
+}
+
+.container {
+    display: flex;
+}
+
+header {
+    background-color: #94715a;
+    padding: 10px;
+    display: inline;
+    justify-content: space-between;
+
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1; 
+}
+
+h1{
+    margin-top:40px;
+    margin-left:260px;
+
+}
+#content {
+    margin-left: 250px;
+    transition: margin-left 0.3s ease-in-out;
+}
+
+#content.left-collapsed {
+    margin-left: 70px;
+}
