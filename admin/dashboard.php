@@ -110,3 +110,49 @@ if (isset($_SESSION['user'])) {
 
    
     </section>
+
+    <main>
+       <br><br> <h1>Welcome Admin! </h1>
+        <div class="kpi-section">
+    <div class="kpi-container">
+        <div class="kpi-box">
+        <i class="fa-solid fa-users"></i>
+            <div class="text">
+                <h3>Total Users</h3>
+                <p><?php echo $totalUsers; ?></p>
+            </div>
+        </div>
+
+        <div class="kpi-box">
+        <i class="fa-solid fa-box"></i>
+            <div class="text">
+                <h3>Total Orders</h3>
+                <p><?php echo $totalOrders; ?></p>
+            </div>
+        </div>
+
+        <div class="kpi-box">
+        <i class="fa-solid fa-spinner"></i>
+            <div class="text">
+                <h3>Total Pending</h3>
+                <p><?php echo $totalPending; ?></p>
+            </div>
+        </div>
+
+        
+    </div>
+</div>
+
+<div class="charts-section">
+ <!--   <div class="charts-box">
+    <h2 class="chart-title"> Product Breakdown</h2>
+    <div id="bar-chart"></div>
+-->
+</div>
+
+<div class="charts-box">
+    <h2 class="chart-title"> Orders Breakdown</h2>
+    <div id="area-chart"></div>
+  </div>
+</div>
+</div>
