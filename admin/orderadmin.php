@@ -87,3 +87,193 @@ if (isset($_SESSION['user'])) {
    
     </section>
     <br><br><h1> Orders Admin Dashboard</h1> 
+
+    
+
+    <?php
+include '../connect.php';
+
+function fetchRecentOrders($db) {
+    try {
+        $sql = "SELECT * FROM orders ORDER BY dateAdded DESC LIMIT 10";
+        $stmt = $db->query($sql);
+        
+        if ($stmt) {
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } else {
+            return false;
+        }
+    } catch (PDOException $ex) {
+        echo "Error fetching recent orders: " . $ex->getMessage();
+        return false;
+    }
+}
+
+
+//Change colour of Delivery Status
+
+function getStatusClass($deliveryStatus) {
+    switch ($deliveryStatus) {
+        case 'Delivered':
+            return 'status-delivered';
+        case 'Currently Delivering':
+            return 'status-delivering';
+        case 'Dispatching':
+            return 'status-dispatching';
+        case 'Pending Approval':
+            return 'status-pending';
+        default:
+            return '';
+    }
+}
+
+
+$statusFilter = isset($_GET['deliveryStatus']) ? $_GET['deliveryStatus'] : null;
+
+$sql = "SELECT * FROM orders";
+
+if ($statusFilter !== null) {
+$sql .= " WHERE deliveryStatus = :deliveryStatus";
+}
+
+$limit = 8;
+$page = isset($_GET['page']) ? $_GET['page'] : 1;
+$offset = ($page - 1) * $limit;
+$sql .= " LIMIT :limit OFFSET :offset";
+
+$stmt = $db->prepare($sql);
+$stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+$stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
+if ($statusFilter !== null) {
+$stmt->bindParam(':deliveryStatus', $statusFilter, PDO::PARAM_STR);
+}
+$stmt->execute();
+$orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+if ($orders && $stmt->rowCount() > 0) {
+foreach ($orders as $order) {
+}
+
+} else {
+echo "<tr><td colspan='8'>No orders found.</td></tr>";
+}
+
+
+// Search functionality
+if (isset($_GET['search']) && !empty($_GET['search'])) {
+    $searchTerm = $_GET['search'];
+    $sql = "SELECT * FROM orders WHERE orderId LIKE :searchTerm
+           OR basketId LIKE :searchTerm 
+           OR userId LIKE :searchTerm 
+           OR `deliveryStatus` LIKE :searchTerm 
+           OR deliveryOption LIKE :searchTerm 
+           OR deliveryDate LIKE :searchTerm 
+           OR notes LIKE :searchTerm";
+
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(':searchTerm', "%$searchTerm%", PDO::PARAM_STR);
+    $stmt->execute();
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    if ($result) {
+        foreach ($result as $row) {
+        }
+    } else {
+        echo "";
+    }
+}
+
+?>
+
+
+
+
+
+<!-- Order View Table -->
+
+<!--Header of Table, BOOTSTRAP WAS USED -->
+<div class="info-table">
+<div class="table-header" style="background-color: #e2b489; padding-top: 10px;">
+    <div class="container custom-background">
+    <br><br> <strong><h3>Orders</h3></strong> </strong> &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp;
+        
+        <div class="row justify-content-end align-items-right">
+            <div class="col-md-6">
+                <form method="GET" action="">
+                    <div class="input-group mb-3 custom-search-bar">
+                        <input type="text" class="form-control" placeholder="Search..." aria-label="Search..." aria-describedby="search-button" name="search">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="submit" id="search-button"><i class="fa-solid fa-magnifying-glass"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-3">
+            <div class="input-group mb-3 custom-dropdown-toggle">
+            <div class="input-group-prepend">
+             <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="deliveryDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Delivery Status</button>
+             <div class="dropdown-menu">
+            <a class="dropdown-item" href="orderadmin.php?deliveryStatus=Delivered">Delivered</a>
+            <a class="dropdown-item" href="orderadmin.php?deliveryStatus=Currently%20Delivering">Currently Delivering</a>
+            <a class="dropdown-item" href="orderadmin.php?deliveryStatus=Dispatching">Dispatching</a>
+            <a class="dropdown-item" href="orderadmin.php?deliveryStatus=Pending%20Approval">Pending Approval</a>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<table>
+    <thead>
+        <tr>
+            <th>Order ID</th>
+            <th>Basket ID</th>
+            <th>User ID</th>
+            <th>Date Added</th>
+            <th>Delivery Option</th>
+            <th>Delivery Status</th>
+            <th>Delivery Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+
+    <!--PHP TO DISPLAY DATA FROM DATABASE-->
+        <?php foreach ($orders as $order) { ?>
+            <tr>
+                <td><?php echo $order['orderId']; ?></td>
+                <td><?php echo $order['basketId']; ?></td>
+                <td><?php echo $order['userId']; ?></td>
+                <td><?php echo $order['dateAdded']; ?></td>
+                <td><?php echo $order['deliveryOption']; ?></td>
+                <td class="<?php echo getStatusClass($order['deliveryStatus']); ?>"><?php echo $order['deliveryStatus']; ?></td>
+                  <td><?php echo $order['deliveryDate']; ?></td>
+                <td>
+                <span style='margin-right: 5px;'></span>
+                <a href="editorder.php?orderId=<?php echo $order['orderId']; ?>">
+                        <i class="fa-solid fa-eye"></i>
+                    </a>
+                    <span style='margin-right: 5px;'></span>
+                    <a href="editorder.php?orderId=<?php echo $order['orderId']; ?>">
+                        <i class="fa-solid fa-pencil"></i>
+                    </a>
+                </td>
+            </tr>
+        <?php } ?>
+    </tbody>
+</table>
+</div>
+
+
+
+
+    <script src="script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+ </body>
+</html>
