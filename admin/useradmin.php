@@ -183,3 +183,43 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 if ($result && $stmt->rowCount() > 0) {
 
 
+//User Filter Dropdown
+$adminFilter = isset($_GET['admin']) ? $_GET['admin'] : null;
+$sql = "SELECT * FROM users";
+
+$whereClause = "";
+$params = array();
+
+if ($adminFilter !== null) {
+    if ($whereClause === "") {
+        $whereClause .= " WHERE";
+    } else {
+        $whereClause .= " AND";
+    }
+    $whereClause .= " admin = :admin";
+    $params[':admin'] = $adminFilter; 
+}
+
+$sql .= $whereClause;
+
+$limit = 8;
+$page = isset($_GET['page']) ? $_GET['page'] : 1;
+$offset = ($page - 1) * $limit;
+$sql .= " LIMIT :limit OFFSET :offset";
+
+$stmt = $db->prepare($sql);
+$stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+$stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
+foreach ($params as $param => $value) {
+    $stmt->bindParam($param, $value);
+}
+$stmt->execute();
+$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+if ($result && $stmt->rowCount() > 0) {
+    foreach ($result as $row) {
+    }
+} else {
+    echo "<tr><td colspan='9'>No users found.</td></tr>";
+}
+
