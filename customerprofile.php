@@ -14,8 +14,6 @@
 </head>
 
 
-
-
 <header>
 <section>
   <div class="fixed-top">
