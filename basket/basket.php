@@ -10,6 +10,7 @@ if (isset($_SESSION['user'])) {
     $result = $db->query($sql);
     $row = $result->fetch(PDO::FETCH_ASSOC);
     $basketId = $row['basketId'];
+    $_SESSION["basketID"] = $basket_id;
 }
 
 ?>
