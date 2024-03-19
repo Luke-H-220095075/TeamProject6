@@ -166,3 +166,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
+
+ 
+// product deletion
+if (isset($_GET['delete']) && is_numeric($_GET['delete'])) {
+    $productIdToDelete = $_GET['delete'];
+    $deleteSql = "DELETE FROM products WHERE productId = :productId";
+    $deleteStatement = $db->prepare($deleteSql);
+    $deleteStatement->bindParam(':productId', $productIdToDelete, PDO::PARAM_INT);
+
+    if ($deleteStatement->execute()) {
+        echo '<div class="success-message">Product deleted successfully.</div>';
+    } else {
+        echo '<div class="error-message">Error deleting product.</div>';
+    }
+}
