@@ -580,3 +580,35 @@ margin-left: 300px;
     width: 100%;
     margin-left: 45px;
     }
+
+    
+/*Product Edit Page Specific CSS*/
+.display-details .product-details {
+    padding-top: 15px;
+    font-size: 17.5px;
+    padding-left: 150px;
+    width: 550px;
+    background: #f3f4f6;
+   
+}
+
+.product-details p:hover {
+    background-color: rgba(255, 255, 255, 0.893);
+    padding: 1px;
+    border-radius: 5px;
+}
+
+
+.display-details .product-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.display-details .product-image img {
+    margin-left: 0;
+    width: 100%;
+    height: auto;
+    max-height: 100%;
+}
+
