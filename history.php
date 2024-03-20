@@ -46,7 +46,7 @@ try {
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // I tested with user 1, change once login page is connected 
-    $userID = 1;
+    $userID = $_SESSION["userID"];
     $ordersPerPage = 6; // limit to six order viewed per page
 
     // Sort the previous orders by newest and oldest dates ordered and those that have no been delivered yet

@@ -75,6 +75,11 @@
   </header>
   
   <sectionn>
+    <div class = "sectionn">
+      <br>
+      <br>
+      <br>
+      <br>
     <h2>Track</h2>
     <p>We know you cannot wait for your new furniture. Track its progress as we build it for you.</p>
     <h2>Message</h2>
@@ -83,6 +88,7 @@
     <p>At Help@furniche.com</p>
     <h2>Call</h2>
     <p>If we have not been able to answer your question through track your order or our FAQs, call us.</p>
+    </div>
   </sectionn>
    <form class="contact-formm" method="post">
           <label for="name">Subject:</label>
@@ -105,37 +111,48 @@
   <div class="container1">
   <h1>Frequently Asked Questions</h1>
   <details>
-  <summary>How do I create accordion?</summary>
+  <summary>Do you deliver oversea?</summary>
   <div>
- The tags <em>details</em> and <em>summary</em> have you covered.
+ Unfortunately we <em> do not</em> deliver our items oversea as we deliver items to majority of the <em>UK</em> only.
   </div>
 </details>
+<br>
 <details>
-  <summary>How do I create accordion?</summary>
+  <summary>When can I expect to hear a specific date?</summary>
   <div>
- The tags <em>details</em> and <em>summary</em> have you covered.
+  You will be contacted within the lead time given, every manufacturer will advise the day they plan to delivery before trying to deliver.
   </div>
 </details>
+<br>
 <details>
-  <summary>How do I create accordion?</summary>
+  <summary>What happens when my order has been placed?</summary>
   <div>
- The tags <em>details</em> and <em>summary</em> have you covered.
+  Once your order has been placed, you will receive a confirmation email detailing the order reference, items ordered, the delivery address and amount paid. The delivery team will then be in touch within several working days to book in a delivery day with you.
   </div>
 </details>
+<br>
 <details>
-  <summary>How do I create accordion?</summary>
+  <summary>What happens if an item is out of stock?</summary>
   <div>
- The tags <em>details</em> and <em>summary</em> have you covered.
+  If an item is out of stock you will be called to be advised of this and we will then inform you of when the item will be back in stock. You can either wait for this item, change to an alternative product or be refunded.
   </div>
 </details>
+<br>
 <details>
-  <summary>How do I create accordion?</summary>
+  <summary>Will there be charges for cancellation?</summary>
   <div>
- The tags <em>details</em> and <em>summary</em> have you covered.
+  In certain situations a charge may be levied for the collection of cancelled goods. Shedstore neither initiates nor profits from any such charges and they are levied at the direct cost for the collection of the goods. If there is a charge for collection, we will notify you as soon as we know. Any charges are retained from the refund returned to customers.
   </div>
 </details>
+<script>
+        var i;
+        for (i = 0; i < 2; i++) {
+          document.write("<br>");
+        }
+      </script>
 </div>
-      
+
+
       <div class="information">
       <!-- <img src ="Pictures for website\Light wood background.jpg" class = "woodbg"> -->
         <div class = "grid1">
@@ -186,7 +203,7 @@
       <section class="location">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2482.6980768196954!2d-0.08362608488829902!3d51.51875491769485!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4876034c44354bb1%3A0xc57f7d6c0b61ff5f!2sLiverpool%20Street!5e0!3m2!1sen!2suk!4v1677666062080!5m2!1sen!2suk"
-          width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+          width="100%" height="900" style="border:0;" allowfullscreen="" loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"></iframe>
       </section>
 
