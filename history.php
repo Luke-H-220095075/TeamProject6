@@ -114,13 +114,12 @@ try {
             echo "</div>";
 
             echo "<div class='order-buttons'>";
-            echo "<button class='order-again-button' onclick='orderAgain(" . $row["orderId"] . ")'>Order Again</button>";
             include "availability.php";
             if (availability($db, $row["orderId"])) {
-              echo "<button  class='order-again-button  method='post' name='purchase' type='submit'>Confirm order</button>";
+              echo "<button  class='order-again-button  method='post' name='purchase' type='submit'>Order Again</button>";
               if (isset($_post["purchase"])){
                 $basketId = $row["orderId"];
-                header(location: checkout.php);
+                header('Location: checkout.php');
               }
             } else {
               echo "<p>currently unavailable available</p>";

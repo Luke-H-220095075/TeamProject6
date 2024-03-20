@@ -9,12 +9,12 @@ $basketId = 0;
     $row = $result->fetch(PDO::FETCH_ASSOC);
     $basketId = $row['basketId'];
     $_SESSION["basketID"] = $basketId;
-
 ?>
+
 <head>
     <title>Furniche - Basket</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../css/basket.css" />
+    <link rel="stylesheet" href="../css/basket.css"/>
     <link href="../css/style.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
       <link rel="stylesheet" href="https://use.typekit.net/maf1fpm.css">
