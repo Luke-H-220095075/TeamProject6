@@ -73,6 +73,17 @@ class User {
   public function signUp($token){
     include 'view/connect.php';
     try{
+      $sth=$db->prepare("SELECT userId FROM users WHERE username = :username");
+      $sth->bindparam(':username', $this->username, PDO::PARAM_STR, 10);
+      $sth->execute();
+      $row=$sth->fetch(PDO::FETCH_ASSOC);
+
+      if(!empty($row))
+      {
+        echo 'That username has already been taken. Please enter another username.';
+      }
+      else{
+    try{
       $sth=$db->prepare("INSERT INTO users(username, forename, surname, password, email, admin, secretAnswer) VALUES (:username, :firstname, :surname, :password, :email, :admin, :token)");
       $sth->bindparam(':username', $this->username, PDO::PARAM_STR, 64);
       $sth->bindparam(':password', $this->password, PDO::PARAM_STR, 64);
@@ -90,7 +101,14 @@ class User {
       <p>Sorry, a database error occurred.<p>
       <p>Error details: <em> <?= $ex->getMessage() ?></em></p>
       <?php
-    }           
+    } 
+  }  
+} catch(PDOException $ex){
+  ?>
+  <p>Sorry, a database error occurred.<p>
+  <p>Error details: <em> <?= $ex->getMessage() ?></em></p>
+  <?php
+}         
   }
   public function updateDetails($cbe, $cbt){
     include 'view/connect.php';
@@ -238,6 +256,24 @@ class User {
         } 
         return false;
       }
+      public function disapproveAdmin(){
+        include 'view/connect.php';
+            try{
+              $sth=$db->prepare("UPDATE users SET pendingApproval = 0 WHERE username = :username");
+              $sth->bindparam(':username', $this->username, PDO::PARAM_STR, 10);
+              $sth->execute();
+              if($sth == true){
+                header('Location: pendingrequests.php');
+                return true;
+              }
+          }catch(PDOException $ex){
+            ?>
+            <p>Sorry, a database error occurred.<p>
+            <p>Error details: <em> <?= $ex->getMessage() ?></em></p>
+            <?php
+          } 
+          return false;
+        }
       public function requestAdmin(){
         include 'view/connect.php';
           try{
