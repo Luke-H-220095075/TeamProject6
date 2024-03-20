@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+
+<?php ob_start(); ?><!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -125,14 +126,12 @@
             //header('Location: update.php');
           } ?>
           <?php
-          echo '<button onclick="' . requestAdmin() . '" style="cursor: pointer">Request to be an admin</button>';
+          echo '<form method="post"><button type="submit" name="adminrequest" style="cursor: pointer">Request to be an admin</button></form>';
 
-          function requestAdmin()
+          if (isset ($_POST["adminrequest"]))
           {
             $user = new User($_SESSION["user"], null, null, null, null, null, null, null);
-            if ($user->requestAdmin()) {
-              echo 'success';
-            }
+            $user->requestAdmin();
           }
           ?>
       </div>

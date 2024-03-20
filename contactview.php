@@ -76,7 +76,7 @@
   
   <sectionn>
     <h2>Track</h2>
-    <p>We know you cannot  wait for your new furniture. Track its progress as we build it for you.</p>
+    <p>We know you cannot wait for your new furniture. Track its progress as we build it for you.</p>
     <h2>Message</h2>
     <p>Include a message below and we will anaswer as soon as possible</p>
     <h2>Email</h2>
