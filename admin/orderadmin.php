@@ -82,6 +82,14 @@ if (isset($_SESSION['user'])) {
                                <!-- <span class="tooltip">Messages</span> -->
 
             </li>
+            <li>
+                <a href="../index.php">
+                    <i class="fa-solid fa-star"></i>
+                    <span class="nav-item">view as user</span>
+                </a>
+                               <!-- <span class="tooltip">mainpage</span> -->
+
+            </li>
         </ul>
 
    
