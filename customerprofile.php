@@ -28,14 +28,14 @@
             aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link" href="product/products.php">Products</a>
-              </li>
               <?php
               session_start();
               if (isset ($_SESSION['user'])) {
+                echo '<div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="product/products.php">Products</a>
+              </li>';
                 echo '<li class="nav-item"><a class="nav-link" href="customerprofile.php">' . $_SESSION['user'] . '</a></li>';
                 if ($_SESSION["access"] = "admin"){
                   echo '<li class="nav-item"><a class="nav-link" href="admin\dashboard.php">' . $_SESSION['user'] . '</a></li>'; 
