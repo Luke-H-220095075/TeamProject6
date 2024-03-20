@@ -33,21 +33,7 @@ if ($value->rowCount() > 0) {
 }}
 
 #stock availability check
-function availability($db, $basket_id)
-{
-  $available = true;
-  $sql = "SELECT productName, countStock, quantity FROM products join basketproducts ON products.productId = basketproducts.productId  WHERE basketId = $basket_id";
-  $result = $db->query($sql);
-  if ($result->rowCount() > 0) {
-    while ($row = $result->fetch()) {
-      if ($row["quantity"] > $row["countStock"]) {
-        echo $row["productName"] . " is unavailable </br>";
-        $available = false;
-      }
-    }
-  }
-  return $available;
-}
+include ("availability.php");
 function purchase($db, $basket_id){
   if (isset($_POST['purchase'])) {
   if (availability($db, $basket_id)) {
