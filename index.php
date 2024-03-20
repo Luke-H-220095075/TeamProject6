@@ -59,36 +59,25 @@
   </nav>
 </header>
 </section>
-<section>
-<div id="carouselExampleRide" class="carousel slide" data-bs-ride="true">
-  <div class="carousel-inner">
-  <div class="carousel-item active">
-      <img src="Pictures%20for%20website/slide2.jpg" class="d-block w-100" alt="..." data-bs-interval="0.5s">
-    </div>
-    <div class="carousel-item">
-      <img src="Pictures%20for%20website/slide1.jpg" class="d-block w-100" alt="..." data-bs-interval="0.5s">
-    </div>
-    <div class="carousel-item">
-      <img src="Pictures%20for%20website/slide3.jpg" class="d-block w-100" alt="..." data-bs-interval="0.5s">
-    </div>
-    <div class="carousel-item">
-      <img src="Pictures%20for%20website/slide4.jpg" class="d-block w-100" alt="..." data-bs-interval="0.5s">
-    </div>
-    <div class="carousel-item">
-      <img src="Pictures%20for%20website/slide5.jpg" class="d-block w-100" alt="..." data-bs-interval="0.5s">
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
+<!-- Optional content you want to persist between sections -->
+<div class="content">BLEND</div>
+
+<section class="one">
+  <div class="wrapper"></div>
 </section>
- <section>
+
+<section class="two">
+  <div class="wrapper"></div>
+</section>
+
+<section class="three">
+  <div class="wrapper"></div>
+</section>
+
+<section class="four">
+  <div class="wrapper"></div>
+</section>
+
    <div class="categories">
    <h2>Categories</h2>
    <div>
@@ -103,46 +92,21 @@
  <div class="home">
  <p>Design your home to be a bit more like you.</p>
  </div>
-
- <div class="Newsletter">
-        <img src="Pictures%20for%20website/nl2.png" alt="My Image" class="my_img">
-            <h1 class="text1">Melissa Ball</h1>
-            <h1 class="text2">How furniche is changing  the furniture space </h1>
-        <img src="Pictures%20for%20website/nl1.png" alt="My Image" class="my_img1">
-            <h1 class="text3">Billy Jean</h1>
-            <h1 class="text4">Things to make your  living  more modern. </h1>
-    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <script>
-    let slideIndex = 1;
-showSlides(slideIndex);
 
-// Next/previous controls
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
+const background = document.querySelector('.backgroundd');
 
-// Thumbnail image controls
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
-
-function showSlides(n) {
-  let i;
-  let slides = document.getElementsByClassName("mySlides");
-  let dots = document.getElementsByClassName("dot");
-  if (n > slides.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-  }
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";
-  dots[slideIndex-1].className += " active";
-}
-    </script>
+document.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    
+    if(scrollY !== 0) {
+        background.style.backgroundPosition = `calc(50% + ${scrollY}px) calc(50% + ${scrollY}px)`;
+    } else {
+        background.style.backgroundPosition = '';
+    }
+});
+</script>
  <footer class="footer">
     <div class="container">
         <div class="row">

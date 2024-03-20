@@ -90,7 +90,7 @@ if (isset($_GET['product_id'])) {
         if ($stmt->rowCount() > 0) {
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            echo '<div class="card">';
+            echo '<div class="cardd">';
             echo '<div class="image-details">';
             echo '<p><img src="../Pictures%20for%20website/' . htmlspecialchars($row['imageName']) . '" alt="' . htmlspecialchars($row['imageName']) . '"></p>';
             echo '</div>';
