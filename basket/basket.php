@@ -4,20 +4,18 @@
 include '../connect.php';
 session_start();
 $basketId = 0;
-if (isset($_SESSION['user'])) {
-
     $sql = "SELECT basketId FROM baskets WHERE userId = ". $_SESSION['userID'] ." AND currentUserBasket = 1" ;
     $result = $db->query($sql);
     $row = $result->fetch(PDO::FETCH_ASSOC);
     $basketId = $row['basketId'];
-}
-
+    $_SESSION["basketID"] = $basketId;
 ?>
+
 <head>
     <title>Furniche - Basket</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../css/basket.css" />
-    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/basket.css"/>
+    <link href="../css/style.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
       <link rel="stylesheet" href="https://use.typekit.net/maf1fpm.css">
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -36,7 +34,7 @@ if (isset($_SESSION['user'])) {
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" href="products.php">Products</a>
+          <a class="nav-link" href="../product/products.php">Products</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="../loginview.php">Login</a>
@@ -120,8 +118,8 @@ if (isset($_SESSION['user'])) {
 
             } else {
                 echo "<p>Your basket is empty.</p>";
-                echo '<a href="../products.php"><button>Add Products?</button></a>';
-                echo '<a href="checkout.php"><button>Checkout now</button></a>';
+                echo '<a href="../product/products.php"><button>Add Products?</button></a>';
+                echo '<a href="../checkout.php"><button>Checkout now</button></a>';
 
             }
         } catch (PDOException $e) {
@@ -152,21 +150,7 @@ if (isset($_SESSION['user'])) {
 
 
         #stock availability check
-        function availability($db, $basketId)
-        {
-            $available = true;
-            $sql = "SELECT productName, countStock, quantity FROM products join basketproducts ON products.productId = basketproducts.productId  WHERE basketId = $basketId";
-            $result = $db->query($sql);
-            if ($result->rowCount() > 0) {
-                while ($row = $result->fetch()) {
-                    if ($row["quantity"] > $row["countStock"]) {
-                        echo "<p>" . $row["productName"] . " is unavailable </p>";
-                        $available = false;
-                    }
-                }
-            }
-            return $available;
-        }
+        include ("../availability.php");
         if (availability($db, $basketId)) {
             echo "<p>available</p>";
             echo '<a href="../checkout.php"><button>checkout?</button></a>';

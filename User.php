@@ -45,7 +45,7 @@ class User {
           
             $this->setSession();
             if ($_SESSION["access"] == "admin"){
-              header('Location: admin/dashboard.php.php');
+              header('Location: admin/dashboard.php');
           } else{
             header('Location: Customerprofile.php');
           }
@@ -223,11 +223,11 @@ class User {
     public function updateAdmin(){
       include 'view/connect.php';
           try{
-            $sth=$db->prepare("UPDATE users SET admin = :admin WHERE username = :username");
+            $sth=$db->prepare("UPDATE users SET admin = 'admin', pendingApproval = 0 WHERE username = :username");
             $sth->bindparam(':username', $this->username, PDO::PARAM_STR, 10);
-            $sth->bindparam(':password', $this->admin, PDO::PARAM_STR, 64);
             $sth->execute();
             if($sth == true){
+              header('Location: pendingrequests.php');
               return true;
             }
         }catch(PDOException $ex){

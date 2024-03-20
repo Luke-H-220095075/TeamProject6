@@ -229,7 +229,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`userId`, `admin`, `firstname`, `surname`, `address`, `email`, `username`, `phone`, `password`, `dateCreated`, `secretAnswer`, `contactByEmail`, `contactByText`, `pendingApproval`) VALUES
-(1, 'admin', 'admin', 'admin', 'address', 'admin@admin.com', 'admin', '1234567', 'admin', '2024-02-07 11:51:07', 'admin', 0, 1, 0),
+(1, 'admin', 'admin', 'admin', 'address', 'admin@admin.com', 'admin', '1234567', '$2y$10$.CpVg5QHunYIiOpJECtS7.iU9w7lbPnaHd/eTlZOfamtxYZOKh5zO', '2024-02-07 11:51:07', '', 0, 1, 0),
 (2, 'customer', 'lucy', 'lucy', '33 lucy lane', 'luc@luc.ac.uk', 'lucy', '1010101', '$2y$10$Nyu9gtGpqtGuGm5ba5Us1ehd3E0cLbp5gISxBYmCPip9Z6Rh2VULe', '2024-03-19 13:13:47', '', 0, 0, 0),
 (3, 'admin', 'test', 'test', '22 Jump Street', 'email@email.com', 'test', '1212112', '$2y$10$u12r0JbNCCJVI5duBVY/.edBMmvUXQh6Xg3ICc6XTGrpVCp3AuGLO', '2024-03-19 13:14:12', '', 0, 0, 0),
 (4, 'customer', 'test', 'test', '22 Jump Street', 'email@email.com', 'test', '1212112', '$2y$10$ckMq8OPirQBTIGstfkY6geyXICfrYnk7cONtjmQ6tjcTLdBDT49kO', '2024-03-19 13:54:34', '', 0, 0, 0);

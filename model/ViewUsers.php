@@ -7,7 +7,7 @@ class ViewUsers{
         $this->users = array();
     }
     public function usersToApprove(){
-        include("connect.php");
+        include("../connect.php");
         include("../User.php");
         try{
             $rows=$db->query("SELECT username FROM users WHERE pendingApproval = 1"); 

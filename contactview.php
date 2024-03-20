@@ -2,7 +2,7 @@
 <html lang="eng">
 
 <head>
-  <title>Contact Us</title>
+ 
   <meta charset="UTF-8">
   <script src="Contact Us.js"></script>
   <link rel="stylesheet" href="css/contact.css">
@@ -56,28 +56,35 @@
 </section>
 
   <body>
-    <br>
-    <br>
-    <div class="content">
-      <div class="who_are">
-        <img src="Pictures for website\Contact Us Help.png" alt="My Image" class="my_img">
-        <!-- <span>
-            <p>
-              Thank you for your interest in Furniche. Please fill out the form below to ask a 
-             question or report a technical problem. Please note: while we appreciate your 
-             questions, we are unable to respond to all inquiries.
-            </p>
-            <h1>Media</h1>
-            <p>
-              Visit our media center to find contact details for our media relations team in your region.
-            </p>
 
-        </span> -->
+    <br>
+    <br>
+    <div class="containerr container_solid">
+      <div class="title_wrapperr">
+        <h1>Contact Us</h1>
       </div>
-      <br>
-      <div class="contact">
-        <!-- <img src="Pictures for website\Contact Us Form Background.png" alt="My Image" class="my_img"> -->
-        <form class="contact-form" method="post">
+    </div>
+  
+    <!-- Second container -->
+    <div class="containerr containerr_image" aria-hidden="true">
+      <div class="title_wrapperr">
+        <h1>Contact Us</h1>
+      </div>
+    </div>
+  
+  </header>
+  
+  <sectionn>
+    <h2>Track</h2>
+    <p>We know you cannot  wait for your new furniture. Track its progress as we build it for you.</p>
+    <h2>Message</h2>
+    <p>Include a message below and we will anaswer as soon as possible</p>
+    <h2>Email</h2>
+    <p>At Help@furniche.com</p>
+    <h2>Call</h2>
+    <p>If we have not been able to answer your question through track your order or our FAQs, call us.</p>
+  </sectionn>
+   <form class="contact-formm" method="post">
           <label for="name">Subject:</label>
           <input type="text" id="name" name="subject" required><br><br>
           <label for="description">Message:</label><br>
@@ -88,14 +95,47 @@
           require("view/contact.php");
           ?>
         </form>
-        <!-- <img src="Pictures for website\thumbnail.jpeg" alt="My Image" class="my_img"> -->
-      </div>
       <script>
         var i;
         for (i = 0; i < 2; i++) {
           document.write("<br>");
         }
       </script>
+
+  <div class="container1">
+  <h1>Frequently Asked Questions</h1>
+  <details>
+  <summary>How do I create accordion?</summary>
+  <div>
+ The tags <em>details</em> and <em>summary</em> have you covered.
+  </div>
+</details>
+<details>
+  <summary>How do I create accordion?</summary>
+  <div>
+ The tags <em>details</em> and <em>summary</em> have you covered.
+  </div>
+</details>
+<details>
+  <summary>How do I create accordion?</summary>
+  <div>
+ The tags <em>details</em> and <em>summary</em> have you covered.
+  </div>
+</details>
+<details>
+  <summary>How do I create accordion?</summary>
+  <div>
+ The tags <em>details</em> and <em>summary</em> have you covered.
+  </div>
+</details>
+<details>
+  <summary>How do I create accordion?</summary>
+  <div>
+ The tags <em>details</em> and <em>summary</em> have you covered.
+  </div>
+</details>
+</div>
+      
       <div class="information">
       <!-- <img src ="Pictures for website\Light wood background.jpg" class = "woodbg"> -->
         <div class = "grid1">
