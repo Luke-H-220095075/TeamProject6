@@ -1,81 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-    <title>Furniche - Home</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="css/style.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
-      <link rel="stylesheet" href="https://use.typekit.net/maf1fpm.css">
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    </head>
+
+<head>
+  <title>Furniche - Home</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="css/style.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+  <link rel="stylesheet" href="https://use.typekit.net/maf1fpm.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
 
 
 
-  <header>
-<section>
-  <div class="fixed-top">
-<nav class="navbar">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="index.php">Furniche</a>
+<header>
+  <section>
+    <div class="fixed-top">
+      <nav class="navbar">
+      <div class="container-fluid">
+          <a class="navbar-brand" href="index.php">Furniche</a>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link" href="product/products.php">Products</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="loginview.php">Login</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            The team
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="aboutus.php">About Us</a></li>
-            <li><a class="dropdown-item" href="contactview.php">Contact us</a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="basket/basket.php"><i class="fa-solid fa-basket-shopping"></i></a>
-        </li>
-      </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
-    </div>
-  </div>
-</div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="product/products.php">Products</a>
+              </li>
+              
+              
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  The team
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="aboutus.php">About Us</a></li>
+                  <li><a class="dropdown-item" href="contactview.php">Contact us</a></li>
+                </ul>
+              </li>
+
               <?php
-                session_start();
-              if (isset($_SESSION['user'])) {
-                  echo '<li><a href="#">' . $_SESSION['user'] . '</a>';
+              session_start();
+              if (isset ($_SESSION['user'])) {
+                echo '<li class="nav-item"><a class="nav-link" href="customerprofile.php">' . $_SESSION['user'] . '</a></li>';
+                echo '<li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  <i class="fa-solid fa-basket-shopping"></i>
+                </a>';
+                echo '<ul class="dropdown-menu"><li class="nav-item"><a class="nav-link" href="history.php">order history</a></li>';
+                echo '<li class="nav-item">
+                      <a class="nav-link" href="basket/basket.php">basket</a>
+                      </li></ul>';
+                if ($_SESSION["access"] = "admin"){
+                  echo '<li class="nav-item"><a class="nav-link" href="admin\dashboard.php">admin page</a></li></li>'; 
+                }
+
+              } else {
+                echo '<li class="nav-item">
+                <a class="nav-link" href="loginview.php">Login</a>
+              </li>';
               }
               ?>
-  </nav>
+            </ul>
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+    </div>
+    </nav>
 </header>
-</section>
-<!-- Optional content you want to persist between sections -->
-<div class="content">BLEND</div>
-
-<section class="one">
-  <div class="wrapper"></div>
-</section>
-
-<section class="two">
-  <div class="wrapper"></div>
-</section>
-
-<section class="three">
-  <div class="wrapper"></div>
-</section>
-
-<section class="four">
-  <div class="wrapper"></div>
 </section>
 
    <div class="categories">
@@ -88,6 +90,7 @@
       <a href="product/products.php?typeFilter=all&categoryFilter=modern&sortFilter=all"><img src="Pictures%20for%20website/Modern.jpg" alt="Modern" class="image-filter"></a>
    </div>
    </div>
+   
 </section>
  <div class="home">
  <p>Design your home to be a bit more like you.</p>
@@ -142,7 +145,9 @@ document.addEventListener('scroll', () => {
                   </div>
             </div>
         </div>
+      </div>
     </div>
+  </div>
 </footer>
 </body>
 

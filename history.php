@@ -115,6 +115,7 @@ try {
 
             echo "<div class='order-buttons'>";
             echo "<button class='order-again-button' onclick='orderAgain(" . $row["orderId"] . ")'>Order Again</button>";
+            
             echo "<button class='  ' onclick='location.href=\"view_order.php?orderId=" . $row["orderId"] . "\"'>View Details</button>";
             echo "</div>";
 
