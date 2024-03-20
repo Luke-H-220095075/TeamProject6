@@ -117,7 +117,11 @@ try {
             echo "<button class='order-again-button' onclick='orderAgain(" . $row["orderId"] . ")'>Order Again</button>";
             include "availability.php";
             if (availability($db, $row["orderId"])) {
-              echo "<p>currently available</p>";
+              echo "<button  class='order-again-button  method='post' name='purchase' type='submit'>Confirm order</button>";
+              if (isset($_post["purchase"])){
+                $basketId = $row["orderId"];
+                header(location: checkout.php);
+              }
             } else {
               echo "<p>currently unavailable available</p>";
             }
