@@ -11,9 +11,8 @@ if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 
   session_destroy();   // destroy session data in storage
 }
 $_SESSION['LAST_ACTIVITY'] = time(); // update last activity time stamp
-
-$basket_id = $_SESSION["basketID"];
-$sql = "SELECT price, quantity FROM products JOIN basketproducts ON products.productId = basketproducts.productId WHERE basketId = $basket_id";
+$basketId = $_SESSION["basketID"];
+$sql = "SELECT price, quantity FROM products JOIN basketproducts ON products.productId = basketproducts.productId WHERE basketId = $basketId";
 $result = $db->query($sql);
 $subtotal = 0;
 if ($result->rowCount() > 0) {
@@ -34,10 +33,10 @@ if ($value->rowCount() > 0) {
 
 #stock availability check
 include ("availability.php");
-function purchase($db, $basket_id){
+function purchase($db, $basketId){
   if (isset($_POST['purchase'])) {
-  if (availability($db, $basket_id)) {
-    $sql = "SELECT countStock, countSold, quantity, basketproducts.productId FROM products join basketproducts ON products.productId = basketproducts.productId  WHERE basketId = $basket_id";
+  if (availability($db, $basketId)) {
+    $sql = "SELECT countStock, countSold, quantity, basketproducts.productId FROM products join basketproducts ON products.productId = basketproducts.productId  WHERE basketId = $basketId";
     $result = $db->query($sql);
     if ($result->rowCount() > 0) {
       while ($row = $result->fetch()) {
@@ -45,9 +44,9 @@ function purchase($db, $basket_id){
         $db->query($sql);
       }
       }
-      $sql = "INSERT INTO orders (basketId, userId, deliveryOption) VALUES (".$basket_id.", ".$_SESSION['userID'].", 'standard')";
+      $sql = "INSERT INTO orders (basketId, userId, deliveryOption) VALUES (".$basketId.", ".$_SESSION['userID'].", 'standard')";
       $db->query($sql);
-      $sql = "UPDATE baskets SET currentUserBasket = 0 WHERE basketId = $basket_id";
+      $sql = "UPDATE baskets SET currentUserBasket = 0 WHERE basketId = $basketId";
       $db->query($sql);
       $sql = "INSERT INTO baskets (userId, currentUserBasket) VALUES (".$_SESSION['userID'].", 1)";
       $db->query($sql);
@@ -134,9 +133,9 @@ function purchase($db, $basket_id){
 
           </div>
           <?php
-          if (availability($db, $basket_id)) {
+          if (availability($db, $basketId)) {
             echo "<button  method='post' name='purchase' type='submit'>Confirm order</button>";
-            purchase($db, $basket_id);
+            purchase($db, $basketId);
           } else {
             echo "<button type='button'>unavailable</button>";
           }
@@ -150,7 +149,7 @@ function purchase($db, $basket_id){
 
       <div class="totals">
         <?php
-        if (availability($db, $basket_id)) {
+        if (availability($db, $basketId)) {
           echo "<p>currently available</p>";
         } else {
           echo "<p>currently unavailable available</p>";

@@ -8,8 +8,7 @@ $basketId = 0;
     $result = $db->query($sql);
     $row = $result->fetch(PDO::FETCH_ASSOC);
     $basketId = $row['basketId'];
-    $_SESSION["basketID"] = $basket_id;
-
+    $_SESSION["basketID"] = $basketId;
 
 ?>
 <head>
