@@ -90,17 +90,20 @@
     <p>If we have not been able to answer your question through track your order or our FAQs, call us.</p>
     </div>
   </sectionn>
-   <form class="contact-formm" method="post">
-          <label for="name">Subject:</label>
-          <input type="text" id="name" name="subject" required><br><br>
-          <label for="description">Message:</label><br>
-          <textarea id="description" name="message" rows="5" cols="50"></textarea><br><br>
-
-          <button type="submit" name="submitted" id="submit-btn">Submit</button>
-          <?php
-          require("view/contact.php");
-          ?>
-        </form>
+<?php
+    echo '<form class="contact-formm" method="post">';
+    echo '<label for="name">Subject:</label>';
+    echo '<input type="text" id="name" name="subject" required><br><br>';
+    echo '<label for="description">Message:</label><br>';
+    echo '<textarea id="description" name="message" rows="5" cols="50"></textarea><br><br>';
+    if (isset($_SESSION['userID'])) {
+        echo '<button type="submit" name="submitted" id="submit-btn">Submit</button>';
+    } else {
+        echo '<a href="loginview.php" id="submit-btn" style="text-decoration: none">Please log in to submit inquiries.</a>';
+    }
+    require("view/contact.php");
+    echo '</form>'
+?>
       <script>
         var i;
         for (i = 0; i < 2; i++) {
