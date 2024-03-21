@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="histroynew.css">
+    <title>Furniche - Previous Orders</title>
+<header>
+  <nav class="navbar">
+    <!-- LOGO -->
+    <div class="logo">MUO</div>
+
+    <!-- NAVIGATION MENU -->
+    <ul class="nav-links">
+
+      <!-- USING CHECKBOX HACK -->
+      <input type="checkbox" id="checkbox_toggle" />
+      <label for="checkbox_toggle" class="hamburger">&#9776;</label>
+
+      <!-- NAVIGATION MENUS -->
+      <div class="menu">
+
+        <li><a href="/">Home</a></li>
+        <li><a href="/">About</a></li>
+
+        <li class="services">
+          <a href="/">Services</a>
+
+          <!-- DROPDOWN MENU -->
+          <ul class="dropdown">
+            <li><a href="/">Dropdown 1 </a></li>
+            <li><a href="/">Dropdown 2</a></li>
+            <li><a href="/">Dropdown 2</a></li>
+            <li><a href="/">Dropdown 3</a></li>
+            <li><a href="/">Dropdown 4</a></li>
+          </ul>
+
+        </li>
+
+        <li><a href="/">Pricing</a></li>
+        <li><a href="/">Contact</a></li>
+      </div>
+    </ul>
+  </nav>
+  </header>
+<body>
+
+  <script>
+    const navbarToggle = navbar.querySelector("#navbar-toggle");
+const navbarMenu = document.querySelector("#navbar-menu");
+const navbarLinksContainer = navbarMenu.querySelector(".navbar-links");
+let isNavbarExpanded = navbarToggle.getAttribute("aria-expanded") === "true";
+
+const toggleNavbarVisibility = () => {
+  isNavbarExpanded = !isNavbarExpanded;
+  navbarToggle.setAttribute("aria-expanded", isNavbarExpanded);
+};
+
+navbarToggle.addEventListener("click", toggleNavbarVisibility);
+
+navbarLinksContainer.addEventListener("click", (e) => e.stopPropagation());
+navbarMenu.addEventListener("click", toggleNavbarVisibility);
+  </script>
+</body>
+</html>

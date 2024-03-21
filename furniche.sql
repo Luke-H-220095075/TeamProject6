@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 07, 2024 at 01:26 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Generation Time: Mar 19, 2024 at 04:35 PM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -38,7 +38,9 @@ CREATE TABLE `basketproducts` (
 --
 
 INSERT INTO `basketproducts` (`basketId`, `productId`, `quantity`) VALUES
-(1, 4, 1);
+(1, 4, 4),
+(1, 5, 3),
+(1, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -50,15 +52,16 @@ CREATE TABLE `baskets` (
   `basketId` int(11) NOT NULL,
   `userId` int(11) NOT NULL,
   `dateAdded` timestamp NOT NULL DEFAULT current_timestamp(),
-  `discountId` int(11) DEFAULT NULL
+  `discountId` int(11) DEFAULT NULL,
+  `currentUserBasket` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `baskets`
 --
 
-INSERT INTO `baskets` (`basketId`, `userId`, `dateAdded`, `discountId`) VALUES
-(1, 1, '2024-02-07 12:22:40', 1);
+INSERT INTO `baskets` (`basketId`, `userId`, `dateAdded`, `discountId`, `currentUserBasket`) VALUES
+(1, 1, '2024-02-07 12:22:40', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -78,7 +81,7 @@ CREATE TABLE `discounts` (
 --
 
 INSERT INTO `discounts` (`discountId`, `discountTitle`, `discountDescription`, `value`) VALUES
-(1, 'test', 'test', 15.00);
+(1, 'test', 'test', '15.00');
 
 -- --------------------------------------------------------
 
@@ -134,15 +137,19 @@ CREATE TABLE `orders` (
   `userId` int(11) NOT NULL,
   `dateAdded` timestamp NOT NULL DEFAULT current_timestamp(),
   `deliveryOption` enum('standard','premium') DEFAULT NULL,
-  `deliveryDate` date DEFAULT NULL
+  `deliveryDate` date DEFAULT NULL,
+  `deliveryStatus` enum('Delivered','Currently Delivering','Dispatching','Pending Approval') DEFAULT NULL,
+  `notes` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`orderId`, `basketId`, `userId`, `dateAdded`, `deliveryOption`, `deliveryDate`) VALUES
-(111, 1, 1, '2024-02-07 12:24:42', 'standard', '2024-02-07');
+INSERT INTO `orders` (`orderId`, `basketId`, `userId`, `dateAdded`, `deliveryOption`, `deliveryDate`, `deliveryStatus`, `notes`) VALUES
+(55, 1, 2, '2024-03-19 13:32:32', 'premium', '2023-12-28', 'Delivered', 'Delivered Successfully!!!'),
+(66, 1, 2, '2024-03-19 13:31:52', 'standard', '2024-06-02', 'Dispatching', 'Still Waiting on new Stock, will update soon!'),
+(111, 1, 1, '2024-02-07 12:24:42', 'standard', '2024-02-07', NULL, '');
 
 -- --------------------------------------------------------
 
@@ -153,6 +160,7 @@ INSERT INTO `orders` (`orderId`, `basketId`, `userId`, `dateAdded`, `deliveryOpt
 CREATE TABLE `products` (
   `productId` int(11) NOT NULL,
   `productName` varchar(255) DEFAULT NULL,
+  `productDescription` varchar(255) DEFAULT NULL,
   `price` decimal(10,2) DEFAULT NULL,
   `dateAdded` timestamp NOT NULL DEFAULT current_timestamp(),
   `countSold` int(11) DEFAULT NULL,
@@ -166,32 +174,32 @@ CREATE TABLE `products` (
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`productId`, `productName`, `price`, `dateAdded`, `countSold`, `countStock`, `productCategory`, `productType`, `imageName`) VALUES
-(1, 'Modern Sofa', 499.99, '2023-12-01 13:25:36', 10, 50, 'modern', 'sofa', 'modern_sofa.jpg'),
-(2, 'Minimal Desk', 199.99, '2023-12-01 13:25:36', 5, 20, 'minimal', 'desk', 'minimal_desk.jpg'),
-(3, 'Rustic Chair', 129.99, '2023-12-01 13:25:36', 8, 30, 'rustic', 'chair', 'rustic_chair.jpg'),
-(4, 'Bohemian Bed', 699.99, '2023-12-01 13:25:36', 12, 40, 'bohemian', 'bed', 'bohemian_bed.jpg'),
-(5, 'Tropical Wardrobe', 299.99, '2023-12-01 13:25:36', 6, 25, 'tropical', 'wardrobe', 'tropical_wardrobe.jpg'),
-(6, 'Modern Chair', 149.99, '2023-12-01 13:25:36', 9, 35, 'modern', 'chair', 'modern_chair.jpg'),
-(7, 'Minimal Bed', 599.99, '2023-12-01 13:25:36', 15, 45, 'minimal', 'bed', 'minimal_bed.jpg'),
-(8, 'Rustic Desk', 179.99, '2023-12-01 13:25:36', 7, 28, 'rustic', 'desk', 'rustic_desk.jpg'),
-(9, 'Bohemian Sofa', 549.99, '2023-12-01 13:25:36', 11, 38, 'bohemian', 'sofa', 'bohemian_sofa.jpg'),
-(10, 'Tropical Chair', 169.99, '2023-12-01 13:25:36', 10, 32, 'tropical', 'chair', 'tropical_chair.jpg'),
-(11, 'Modern Sofa 2', 479.99, '2023-12-01 13:25:36', 8, 45, 'modern', 'sofa', 'modern_sofa_2.jpg'),
-(12, 'Minimal Desk 2', 219.99, '2023-12-01 13:25:36', 6, 18, 'minimal', 'desk', 'minimal_desk_2.jpg'),
-(13, 'Rustic Chair 2', 149.99, '2023-12-01 13:25:36', 7, 32, 'rustic', 'chair', 'rustic_chair_2.jpg'),
-(14, 'Bohemian Bed 2', 679.99, '2023-12-01 13:25:36', 10, 35, 'bohemian', 'bed', 'bohemian_bed_2.jpg'),
-(15, 'Tropical Wardrobe 2', 279.99, '2023-12-01 13:25:36', 5, 28, 'tropical', 'wardrobe', 'tropical_wardrobe_2.jpg'),
-(16, 'Modern Chair 2', 129.99, '2023-12-01 13:25:36', 12, 30, 'modern', 'chair', 'modern_chair_2.jpg'),
-(17, 'Minimal Bed 2', 569.99, '2023-12-01 13:25:36', 14, 40, 'minimal', 'bed', 'minimal_bed_2.jpg'),
-(18, 'Rustic Desk 2', 199.99, '2023-12-01 13:25:36', 10, 26, 'rustic', 'desk', 'rustic_desk_2.jpg'),
-(19, 'Bohemian Sofa 2', 529.99, '2023-12-01 13:25:36', 13, 38, 'bohemian', 'sofa', 'bohemian_sofa_2.jpg'),
-(20, 'Tropical Chair 2', 149.99, '2023-12-01 13:25:36', 11, 30, 'tropical', 'chair', 'tropical_chair_2.jpg'),
-(21, 'Modern Sofa 3', 459.99, '2023-12-01 13:25:36', 9, 42, 'modern', 'sofa', 'modern_sofa_3.jpg'),
-(22, 'Minimal Desk 3', 239.99, '2023-12-01 13:25:36', 8, 22, 'minimal', 'desk', 'minimal_desk_3.jpg'),
-(23, 'Rustic Chair 3', 139.99, '2023-12-01 13:25:36', 11, 28, 'rustic', 'chair', 'rustic_chair_3.jpg'),
-(24, 'Bohemian Bed 3', 649.99, '2023-12-01 13:25:36', 13, 30, 'bohemian', 'bed', 'bohemian_bed_3.jpg'),
-(25, 'Tropical Wardrobe 3', 259.99, '2023-12-01 13:25:36', 9, 25, 'tropical', 'wardrobe', 'tropical_wardrobe_3.jpg');
+INSERT INTO `products` (`productId`, `productName`, `productDescription`, `price`, `dateAdded`, `countSold`, `countStock`, `productCategory`, `productType`, `imageName`) VALUES
+(1, 'Modern Sofa', 'Living room\r\n', '499.99', '2023-12-01 13:25:36', 10, 50, 'modern', 'sofa', 'modern_sofa.jpg'),
+(2, 'Minimal Desk', 'Dressing table', '199.99', '2023-12-01 13:25:36', 5, 20, 'minimal', 'desk', 'minimal_desk.jpg'),
+(3, 'Rustic Chair', 'Kitchen', '129.99', '2023-12-01 13:25:36', 8, 30, 'rustic', 'chair', 'rustic_chair.jpg'),
+(4, 'Bohemian Bed', 'Double bedroom', '699.99', '2023-12-01 13:25:36', 12, 40, 'bohemian', 'bed', 'bohemian_bed.jpg'),
+(5, 'Tropical Wardrobe', 'Bedroom', '299.99', '2023-12-01 13:25:36', 6, 25, 'tropical', 'wardrobe', 'tropical_wardrobe.jpg'),
+(6, 'Modern Chair', 'Gaming', '149.99', '2023-12-01 13:25:36', 9, 35, 'modern', 'chair', 'modern_chair.jpg'),
+(7, 'Minimal Bed', 'Double bedroom', '599.99', '2023-12-01 13:25:36', 15, 45, 'minimal', 'bed', 'minimal_bed.jpg'),
+(8, 'Rustic Desk', 'Kitchen', '179.99', '2023-12-01 13:25:36', 7, 28, 'rustic', 'desk', 'rustic_desk.jpg'),
+(9, 'Bohemian Sofa', 'Living room', '549.99', '2023-12-01 13:25:36', 11, 38, 'bohemian', 'sofa', 'bohemian_sofa.jpg'),
+(10, 'Tropical Chair', 'Kitchen', '169.99', '2023-12-01 13:25:36', 10, 32, 'tropical', 'chair', 'tropical_chair.jpg'),
+(11, 'Modern Sofa 2', 'Living room', '479.99', '2023-12-01 13:25:36', 8, 45, 'modern', 'sofa', 'modern_sofa_2.jpg'),
+(12, 'Minimal Desk 2', 'Office', '219.99', '2023-12-01 13:25:36', 6, 18, 'minimal', 'desk', 'minimal_desk_2.jpg'),
+(13, 'Rustic Chair 2', 'Bedroom', '149.99', '2023-12-01 13:25:36', 7, 32, 'rustic', 'chair', 'rustic_chair_2.jpg'),
+(14, 'Bohemian Bed 2', 'Double bedroom', '679.99', '2023-12-01 13:25:36', 10, 35, 'bohemian', 'bed', 'bohemian_bed_2.jpg'),
+(15, 'Tropical Wardrobe 2', 'Single bedroom', '279.99', '2023-12-01 13:25:36', 5, 28, 'tropical', 'wardrobe', 'tropical_wardrobe_2.jpg'),
+(16, 'Modern Chair 2', 'Office', '129.99', '2023-12-01 13:25:36', 12, 30, 'modern', 'chair', 'modern_chair_2.jpg'),
+(17, 'Minimal Bed 2', 'Office', '569.99', '2023-12-01 13:25:36', 14, 40, 'minimal', 'bed', 'minimal_bed_2.jpg'),
+(18, 'Rustic Desk 2', 'Kitchen', '199.99', '2023-12-01 13:25:36', 10, 26, 'rustic', 'desk', 'rustic_desk_2.jpg'),
+(19, 'Bohemian Sofa 2', 'Living room', '529.99', '2023-12-01 13:25:36', 13, 38, 'bohemian', 'sofa', 'bohemian_sofa_2.jpg'),
+(20, 'Tropical Chair 2', 'Bedroom', '149.99', '2023-12-01 13:25:36', 11, 30, 'tropical', 'chair', 'tropical_chair_2.jpg'),
+(21, 'Modern Sofa 3', 'Living room', '459.99', '2023-12-01 13:25:36', 9, 42, 'modern', 'sofa', 'modern_sofa_3.jpg'),
+(22, 'Minimal Desk 3', 'Bedroom', '239.99', '2023-12-01 13:25:36', 8, 22, 'minimal', 'desk', 'minimal_desk_3.jpg'),
+(23, 'Rustic Chair 3', 'Kitchen', '139.99', '2023-12-01 13:25:36', 11, 28, 'rustic', 'chair', 'rustic_chair_3.jpg'),
+(24, 'Bohemian Bed 3', 'Single bedroom', '649.99', '2023-12-01 13:25:36', 13, 30, 'bohemian', 'bed', 'bohemian_bed_3.jpg'),
+(25, 'Tropical Wardrobe 3', 'Double bedroom', '259.99', '2023-12-01 13:25:36', 9, 25, 'tropical', 'wardrobe', 'tropical_wardrobe_3.jpg');
 
 -- --------------------------------------------------------
 
@@ -209,15 +217,22 @@ CREATE TABLE `users` (
   `username` varchar(50) NOT NULL,
   `phone` varchar(255) DEFAULT NULL,
   `password` varchar(255) NOT NULL,
-  `dateCreated` timestamp NOT NULL DEFAULT current_timestamp()
+  `dateCreated` timestamp NOT NULL DEFAULT current_timestamp(),
+  `secretAnswer` varchar(255) NOT NULL,
+  `contactByEmail` tinyint(1) NOT NULL DEFAULT 0,
+  `contactByText` tinyint(1) NOT NULL DEFAULT 0,
+  `pendingApproval` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`userId`, `admin`, `firstname`, `surname`, `address`, `email`, `username`, `phone`, `password`, `dateCreated`) VALUES
-(1, 'customer', 'admin', 'admin', NULL, 'admin@admin.com', 'admin', NULL, '$2y$10$LmAbf3RNHJyUisHl7RH.rOB5dhWG136IRNw5lfcBArzIn9jRpWoEK', '2024-02-07 11:51:07');
+INSERT INTO `users` (`userId`, `admin`, `firstname`, `surname`, `address`, `email`, `username`, `phone`, `password`, `dateCreated`, `secretAnswer`, `contactByEmail`, `contactByText`, `pendingApproval`) VALUES
+(1, 'admin', 'admin', 'admin', 'address', 'admin@admin.com', 'admin', '1234567', '$2y$10$.CpVg5QHunYIiOpJECtS7.iU9w7lbPnaHd/eTlZOfamtxYZOKh5zO', '2024-02-07 11:51:07', '', 0, 1, 0),
+(2, 'customer', 'lucy', 'lucy', '33 lucy lane', 'luc@luc.ac.uk', 'lucy', '1010101', '$2y$10$Nyu9gtGpqtGuGm5ba5Us1ehd3E0cLbp5gISxBYmCPip9Z6Rh2VULe', '2024-03-19 13:13:47', '', 0, 0, 0),
+(3, 'admin', 'test', 'test', '22 Jump Street', 'email@email.com', 'test', '1212112', '$2y$10$u12r0JbNCCJVI5duBVY/.edBMmvUXQh6Xg3ICc6XTGrpVCp3AuGLO', '2024-03-19 13:14:12', '', 0, 0, 0),
+(4, 'customer', 'test', 'test', '22 Jump Street', 'email@email.com', 'test', '1212112', '$2y$10$ckMq8OPirQBTIGstfkY6geyXICfrYnk7cONtjmQ6tjcTLdBDT49kO', '2024-03-19 13:54:34', '', 0, 0, 0);
 
 --
 -- Indexes for dumped tables
@@ -322,7 +337,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `userId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `userId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables

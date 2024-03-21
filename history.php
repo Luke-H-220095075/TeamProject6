@@ -17,20 +17,21 @@
       <nav>
           <h1 class="logo">Furniche</h1>
           <ul>
-              <li><a href="index.php">Home</a></li>
-              <li><a href="products.php">Products</a></li>
-              <li><a href="basket.php">Basket</a></li>
-              <li><a href="loginview.php">Login</a></li>
-              <li><a href="signUpPage.php">Sign up</a></li>
-              <li><a href="history.php">Previous Orders</a></li>
-              <li><a href="contact.php">Contact Us</a></li>
-              <li><a href="aboutus.php">About Us</a></li>
-              <?php
-              session_start();
-              if (isset($_SESSION['user'])) {
-                  echo '<li><a href="#">' . $_SESSION['user'] . '</a>';
-              }
-              ?>
+          <li><a href="index.php">Home</a></li>
+                <li><a href="product/products.php">Products</a></li>
+                <li><a href="history.php">Previous Orders</a></li>
+                <li><a href="contactview.php">Contact Us</a></li>
+                <li><a href="aboutus.php">About Us</a></li>
+                <?php
+                session_start();
+                if (isset($_SESSION['user'])) {
+                    echo '<li><a href="customerprofile.php">' . $_SESSION['user'] . '</a>';
+                    echo '<li><a href="basket/basket.php">Basket</a></li>';
+                }else {
+                    echo '<li><a href="signup/signUpPage.php">Sign up</a></li>';
+                    echo '<li><a href="loginview.php">Login</a></li>';
+                }
+                ?>
           </ul>
        </nav>
   </div>
@@ -44,8 +45,8 @@ include 'connect.php';
 try {
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    // Test with user 1 change once login page is connected
-    $userID = 1;
+    // I tested with user 1, change once login page is connected 
+    $userID = $_SESSION["userID"];
     $ordersPerPage = 6; // limit to six order viewed per page
 
     // Sort the previous orders by newest and oldest dates ordered and those that have no been delivered yet
@@ -70,7 +71,7 @@ try {
     $offset = ($page - 1) * $ordersPerPage;
     
     //SQL code needed to do the get the product count
-    $sql = "SELECT o.orderId, o.dateAdded, o.deliveryDate, COUNT(b.productId) AS itemCount
+    $sql = "SELECT o.orderId, o.dateAdded, o.deliveryDate, b.basketId, COUNT(b.productId) AS itemCount
             FROM orders o
             JOIN basketproducts b ON o.basketId = b.basketId
             WHERE o.userId = ?
@@ -112,10 +113,19 @@ try {
             echo "</div>";
             echo "</div>";
 
-            echo "<div class='order-buttons'>";
-            echo "<button class='order-again-button' onclick='orderAgain(" . $row["orderId"] . ")'>Order Again</button>";
+            echo "<div class='order-buttons'><form method='post'>";
+            include "availability.php";
+            if (availability($db, $row["basketId"])) {
+              echo "<button class='order-again-button  method='post' name='purchase' type='submit'>Order Again</button>";
+              if (isset ($_POST['purchase'])) {
+                $_SESSION["basketID"] = $row["basketId"];
+                header('Location: checkout.php');
+              }
+            } else {
+              echo "<p>currently unavailable available</p>";
+            }
             echo "<button class='  ' onclick='location.href=\"view_order.php?orderId=" . $row["orderId"] . "\"'>View Details</button>";
-            echo "</div>";
+            echo "</form></div>";
 
         }
 
@@ -278,7 +288,7 @@ $db = null;
                       <h5>Email us at: comms@furniche.com</h5>
                       <h5>Call us at: 01563385967</h5>
                       <ul>
-                          <li><a href="C:\Users\Osaze\OneDrive\Documents\GitHub\TeamProject6\contact.css">Contact Us via our Website</a> </li>
+                          <li><a href="contactview.php">Contact Us via our Website</a> </li>
                       </ul>
                   </div>
                   <div class="footer-col">

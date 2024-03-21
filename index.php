@@ -1,155 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-    <title>Furniche - Home</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="css/style.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
-      <link rel="stylesheet" href="https://use.typekit.net/maf1fpm.css">
-    </head>
+
+<head>
+  <title>Furniche - Home</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="css/style.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+  <link rel="stylesheet" href="https://use.typekit.net/maf1fpm.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
 
 
 
-  <header>
-    
-<section>
-    <nav>
-    <div id="navbar">
-        <a href="index.php" id="logo">Furniche</a>
-        <div id="navbar-right">
-            <a href="products.php">Products</a>
-            <a href="contact.php">Contact Us</a>
-            <a href="aboutus.php">About Us</a>
-            <a href="loginview.php">Login</a>
-            <a href="basket.php"><i class="fa-solid fa-basket-shopping"></i></a>
-        </div>
-    </div>
+<header>
+  <section>
+    <div class="fixed-top">
+      <nav class="navbar">
+      <div class="container-fluid">
+          <a class="navbar-brand" href="index.php">Furniche</a>
+
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="product/products.php">Products</a>
+              </li>
+              
+              
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  The team
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="aboutus.php">About Us</a></li>
+                  <li><a class="dropdown-item" href="contactview.php">Contact us</a></li>
+                </ul>
+              </li>
+
               <?php
-                session_start();
-              if (isset($_SESSION['user'])) {
-                  echo '<li><a href="#">' . $_SESSION['user'] . '</a>';
+              session_start();
+              if (isset ($_SESSION['user'])) {
+                echo '<li class="nav-item"><a class="nav-link" href="customerprofile.php">' . $_SESSION['user'] . '</a></li>';
+                  echo '<li class="nav-item"><a class="nav-link" href="logout.php" >Logout</a></li>';
+                  echo '<li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  <i class="fa-solid fa-basket-shopping"></i>
+                </a>';
+                echo '<ul class="dropdown-menu"><li class="nav-item"><a class="nav-link" href="history.php">order history</a></li>';
+                echo '<li class="nav-item">
+                      <a class="nav-link" href="basket/basket.php">basket</a>
+                      </li></ul>';
+                if ($_SESSION["access"] = "admin"){
+                  echo '<li class="nav-item"><a class="nav-link" href="admin\dashboard.php">admin page</a></li></li>'; 
+                }
+
+              } else {
+                echo '<li class="nav-item">
+                <a class="nav-link" href="loginview.php">Login</a>
+              </li>';
               }
               ?>
-  </nav>
-</section>
+            </ul>
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+    </div>
+    </section>
 </header>
-    <body class="bg-gray-100">
-<!-- Slideshow container -->
-<div class="slideshow-container">
+</section>
 
-  <!-- Full-width images with number and caption text -->
-  <div class="mySlides fade">
-    <div class="numbertext">1 / 5</div>
-    <img src="Pictures%20for%20website/slide1.jpg" style="width:100%">
-    <div class="text">Tropical Style Kitchen</div>
-  </div>
-
-  <div class="mySlides fade">
-    <div class="numbertext">2 / 5</div>
-    <img src="Pictures%20for%20website/slide2.jpg" style="width:100%">
-    <div class="text">Minimial Wooden Foyer</div>
-  </div>
-
-  <div class="mySlides fade">
-    <div class="numbertext">3 / 5</div>
-    <img src="Pictures%20for%20website/slide3.jpg" style="width:100%">
-    <div class="text">Rustic Dinning set</div>
-  </div>
-
-  <div class="mySlides fade">
-    <div class="numbertext">4 / 5</div>
-    <img src="Pictures%20for%20website/slide4.jpg" style="width:100%">
-    <div class="text">Bohemian Living room</div>
-  </div>
-
-  <div class="mySlides fade">
-    <div class="numbertext">5 / 5</div>
-    <img src="Pictures%20for%20website/slide5.jpg" style="width:100%">
-    <div class="text">Modern Bathroom</div>
-  </div>
-
-  <!-- Next and previous buttons -->
-  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-  <a class="next" onclick="plusSlides(1)">&#10095;</a>
- </div>
- <br>
-
- <!-- The dots/circles --> 
- <div style="text-align:center">
-  <span class="dot" onclick="currentSlide(1)"></span>
-  <span class="dot" onclick="currentSlide(2)"></span>
-  <span class="dot" onclick="currentSlide(3)"></span>
-  <span class="dot" onclick="currentSlide(4)"></span>
-  <span class="dot" onclick="currentSlide(5)"></span>
- </div>
+   <div class="categories">
+   <h2>Categories</h2>
+   <div>
+      <a href="product/products.php?typeFilter=all&categoryFilter=bohemian&sortFilter=all"><img src="Pictures%20for%20website/Bohemian.jpg" alt="Bohemian" class="image-filter"></a>
+      <a href="product/products.php?typeFilter=all&categoryFilter=rustic&sortFilter=all"><img src="Pictures%20for%20website/Rustic.jpg" alt="Rustic" class="image-filter"></a>
+      <a href="product/products.php?typeFilter=all&categoryFilter=minimal&sortFilter=all"><img src="Pictures%20for%20website/Minimalistic.jpg" alt="Minimalistic" class="image-filter"></a>
+      <a href="product/products.php?typeFilter=all&categoryFilter=tropical&sortFilter=all"><img src="Pictures%20for%20website/Tropical.jpg" alt="Tropical" class="image-filter"></a>
+      <a href="product/products.php?typeFilter=all&categoryFilter=modern&sortFilter=all"><img src="Pictures%20for%20website/Modern.jpg" alt="Modern" class="image-filter"></a>
+   </div>
+   </div>
+   
+</section>
  <div class="home">
  <p>Design your home to be a bit more like you.</p>
  </div>
-<div class="categories">
-<h2>Categories</h2>
- <div>
-     <a href="products.php?typeFilter=all&categoryFilter=bohemian&sortFilter=all"><img src="Pictures%20for%20website/Bohemian.jpg" alt="Bohemian" class="image-filter"></a>
-     <a href="products.php?typeFilter=all&categoryFilter=rustic&sortFilter=all"><img src="Pictures%20for%20website/Rustic.jpg" alt="Rustic" class="image-filter"></a>
-     <a href="products.php?typeFilter=all&categoryFilter=minimal&sortFilter=all"><img src="Pictures%20for%20website/Minimalistic.jpg" alt="Minimalistic" class="image-filter"></a>
-     <a href="products.php?typeFilter=all&categoryFilter=tropical&sortFilter=all"><img src="Pictures%20for%20website/Tropical.jpg" alt="Tropical" class="image-filter"></a>
-     <a href="products.php?typeFilter=all&categoryFilter=modern&sortFilter=all"><img src="Pictures%20for%20website/Modern.jpg" alt="Modern" class="image-filter"></a>
- </div>
-</div>
-
-
- <div class="Newsletter">
-        <img src="Pictures%20for%20website/nl2.png" alt="My Image" class="my_img">
-            <h1 class="text1">Melissa Ball</h1>
-            <h1 class="text2">How furniche is changing  the furniture space </h1>
-        <img src="Pictures%20for%20website/nl1.png" alt="My Image" class="my_img1">
-            <h1 class="text3">Billy Jean</h1>
-            <h1 class="text4">Things to make your  living  more modern. </h1>
-    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <script>
 
-    // When the user scrolls down 80px from the top of the document, resize the navbar's padding and the logo's font size
-    window.onscroll = function() {scrollFunction()};
+const background = document.querySelector('.backgroundd');
 
-    function scrollFunction() {
-        if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
-            document.getElementById("navbar").style.padding = "30px 10px";
-            document.getElementById("logo").style.fontSize = "25px";
-        } else {
-            document.getElementById("navbar").style.padding = "80px 10px";
-            document.getElementById("logo").style.fontSize = "35px";
-        }
+document.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    
+    if(scrollY !== 0) {
+        background.style.backgroundPosition = `calc(50% + ${scrollY}px) calc(50% + ${scrollY}px)`;
+    } else {
+        background.style.backgroundPosition = '';
     }
-
-    let slideIndex = 1;
-showSlides(slideIndex);
-
-// Next/previous controls
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
-
-// Thumbnail image controls
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
-
-function showSlides(n) {
-  let i;
-  let slides = document.getElementsByClassName("mySlides");
-  let dots = document.getElementsByClassName("dot");
-  if (n > slides.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-  }
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";
-  dots[slideIndex-1].className += " active";
-}
-    </script>
+});
+</script>
  <footer class="footer">
     <div class="container">
         <div class="row">
@@ -185,7 +146,9 @@ function showSlides(n) {
                   </div>
             </div>
         </div>
+      </div>
     </div>
+  </div>
 </footer>
 </body>
 

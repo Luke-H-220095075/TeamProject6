@@ -5,7 +5,6 @@ class SendMessageController {
         $this->message= $message;
     }
     public function invoke(){ 
-        echo 'invoking...';
         $this->message->sendMessage();
     }
 }
