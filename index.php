@@ -40,7 +40,7 @@
                   The team
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="aboutus.php">About Us</a></li>
+                  <li><a class="dropdown-item" href="About%20Us.php">About Us</a></li>
                   <li><a class="dropdown-item" href="contactview.php">Contact us</a></li>
                 </ul>
               </li>
@@ -132,7 +132,7 @@ document.addEventListener('scroll', () => {
                 <h5>Email us at: comms@furniche.com</h5>
                 <h5>Call us at: 01563385967</h5>
                 <ul>
-                    <li><a href="contactus\contact.html">Contact Us via our Website</a> </li>
+                    <li><a href="contactview.php">Contact Us via our Website</a> </li>
                 </ul>
             </div>
             <div class="footer-col">
