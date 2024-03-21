@@ -31,7 +31,7 @@
                 <label class="checkbox"><input type="checkbox" name="passcbx" onclick="showPassword()">Show Password</label>
 
                 <div class="forgot_password_box">
-                    <div class="forgot_password"><a href="#">Forgot Password?</a></div>
+                    <div class="forgot_password"><a href="changePassword.php">Forgot Password?</a></div>
                 </div>
 
                 <div class="link_box">

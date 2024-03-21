@@ -203,31 +203,33 @@ class User {
     }
 
     }
-    public function verifyToken($token){
-      include '../../view/connect.php';
-    if(isset($_SESSION)){
-      $sth=$db->prepare("SELECT token FROM users WHERE username = :username");
-      $sth->bindparam(':username', $_SESSION["user"], PDO::PARAM_STR, 10);
+    public function verifySecretAnswer($token){
+      include("connect.php");
+      echo 'verifying';
+      $sth=$db->prepare("SELECT secretAnswer FROM users WHERE username = :username");
+      $sth->bindparam(':username', $this->username, PDO::PARAM_STR, 10);
       $sth->execute();
       $row=$sth->fetch(PDO::FETCH_ASSOC);
-      if($row != null && password_verify($token, $row)) 
+      $row = implode("", $row);
+      if($row != null && password_verify($token, $row))
       {
-          return true;//success
+        $this->updatePassword();
         }
         else{
-          return false;
+          echo 'Incorrect secret answer';
         }
       
     }
-    }
     public function updatePassword(){
-      include 'view/connect.php';
+      include 'connect.php';
+
           try{
             $sth=$db->prepare("UPDATE users SET password = :password WHERE username = :username");
             $sth->bindparam(':username', $this->username, PDO::PARAM_STR, 10);
             $sth->bindparam(':password', $this->password, PDO::PARAM_STR, 64);
             $sth->execute();
             if($sth == true){
+              header('Location: loginview.php');
               return true;
             }
         }catch(PDOException $ex){

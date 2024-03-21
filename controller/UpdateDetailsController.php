@@ -7,5 +7,8 @@ class UpdateDetailsController {
     public function invoke($cbe, $cbt){ 
             $this->user->updateDetails($cbe, $cbt);
     }
+    public function chgPass($sanswer){ 
+        $this->user->verifySecretAnswer($sanswer);
+}
 }
 ?>
