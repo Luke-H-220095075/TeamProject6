@@ -117,43 +117,43 @@
     }
   });
 </script>
-<footer class="footer">
-  <div class="container">
-    <div class="row">
-      <div class="footer-col">
-        <h4 href="About Us.html">About Us</h4>
-        <ul>
-          <li><a href="#">Our Founder</a> </li>
-          <li><a href="#">Our Values</a> </li>
-          <li><a href="#">Our Privacy Policy</a> </li>
-          <li><a href="#">Our Services</a> </li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Address</h4>
-        <h5>206 Canada Place, Liverpool Street, E12 1CL</h5>
-      </div>
-      <div class="footer-col">
-        <h4>Contact Us</h4>
-        <h5>Email us at: comms@furniche.com</h5>
-        <h5>Call us at: 01563385967</h5>
-        <ul>
-          <li><a href="contactus\contact.html">Contact Us via our Website</a> </li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Follow us</h4>
-        <div class="social-links">
-          <a href="https://en-gb.facebook.com/"><i class="fab fa-facebook - f"></i></a>
-          <a href="https://twitter.com/?lang=en"><i class="fab fa-twitter"></i></a>
-          <a href="https://uk.linkedin.com/"><i class="fab fa-linkedin - in"></i></a>
-          <a href="https://github.com/"><i class="fab fa-github"></i></a>
-          <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
+ <footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="footer-col">
+                <h4 href="About Us.html">About Us</h4>
+               <ul>
+                <li><a href="#">Our Founder</a> </li>
+                <li><a href="#">Our Values</a> </li>
+                <li><a href="#">Our Privacy Policy</a> </li>
+                <li><a href="#">Our Services</a> </li>
+            </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Address</h4>
+                <h5>206 Canada Place, Liverpool Street, E12 1CL</h5>
+            </div>
+            <div class="footer-col">
+                <h4>Contact Us</h4>
+                <h5>Email us at: comms@furniche.com</h5>
+                <h5>Call us at: 01563385967</h5>
+                <ul>
+                    <li><a href="contactus\contact.html">Contact Us via our Website</a> </li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Follow us</h4>
+                <div class="social-links">
+                    <a href="https://en-gb.facebook.com/"><i class="fab fa-facebook - f"></i></a>
+                    <a href="https://twitter.com/?lang=en"><i class="fab fa-twitter"></i></a>
+                    <a href="https://uk.linkedin.com/"><i class="fab fa-linkedin - in"></i></a>
+                    <a href="https://github.com/"><i class="fab fa-github"></i></a>
+                    <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
+                  </div>
+            </div>
         </div>
       </div>
     </div>
-  </div>
-  </div>
   </div>
 </footer>
 </body>

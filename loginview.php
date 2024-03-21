@@ -31,7 +31,7 @@
                 <label class="checkbox"><input type="checkbox" name="passcbx" onclick="showPassword()">Show Password</label>
 
                 <div class="forgot_password_box">
-                    <div class="forgot_password"><a href="#">Forgot Password?</a></div>
+                    <div class="forgot_password"><a href="changePassword.php">Forgot Password?</a></div>
                 </div>
 
                 <div class="link_box">
@@ -45,8 +45,8 @@
                 ?>
 
                 <div class="link_box">
-                    <div class="signup_link">Don't have an account? <a href="signUpPage.php">Sign Up</a></div>
-                    <div class="contact_link">Need Help? <a href="contact.php">Contact Us</a></div>
+                    <div class="signup_link">Don't have an account? <a href="signup/signUpPage.php">Sign Up</a></div>
+                    <div class="contact_link">Need Help? <a href="contactview.php">Contact Us</a></div>
                 </div>
 
             </form>
