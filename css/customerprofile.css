@@ -37,17 +37,28 @@
    height: 100%;
  }
 
- /*
-.profile{
-    background-color: #4f4d62;
-    color: #f5d5bb;
-    display: grid;
-    align-items: center; 
-    grid-template-columns: 1fr 1fr;
-    text-align: center;
-  }
-  */
 
+.profile1 {
+  background-color: #4f4d62;
+  color: #f5d5bb;
+  display: grid;
+  gap: 20px;
+  padding: 20px;
+  border-radius: 25px;
+  margin: 20px;
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  padding-right: 20px;
+  }
+
+  .change {
+    width: 30%;
+    margin-bottom: 20px;
+    font-size: 30px;
+  }
+  
 
  /* Profile Section */
  .profile {
