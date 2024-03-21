@@ -45,6 +45,7 @@
 
 <?php
 include 'connect.php';
+include "availability.php";
 try {
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -117,27 +118,14 @@ try {
                 echo "</div>";
 
             echo "<div class='order-buttons'><form method='post'>";
-            include "availability.php";
-            if (availability($db, $row["basketId"])) {
-              echo "<button class='order-again-button  method='post' name='purchase' type='submit'>Order Again</button>";
-              if (isset ($_POST['purchase'])) {
-                $_SESSION["basketID"] = $row["basketId"];
-                header('Location: checkout.php');
-              }
-            } else {
-              echo "<p>currently unavailable available</p>";
-            }
-            echo "<button class='  ' onclick='location.href=\"view_order.php?orderId=" . $row["orderId"] . "\"'>View Details</button>";
-            echo "</form></div>";
-
                 if (availability($db, $row["basketId"])) {
                     echo "<button class='order-again-button  method='post' name='purchase' type='submit'>Order Again</button>";
                     if (isset ($_POST['purchase'])) {
                         $_SESSION["basketID"] = $row["basketId"];
                         header('Location: checkout.php');
                     }
-                    echo "<button class='  '  method='post' name='purchase' type='submit'>View Details</button>";
-                    if (isset ($_POST['purchase'])) {
+                    echo "<button class='  '  method='post' name='Details' type='submit'>View Details</button>";
+                    if (isset ($_POST['Details'])) {
                         $_SESSION["basketID"] = $row["basketId"];
                         header('Location: basket/basket.php');
                     }
