@@ -3,13 +3,15 @@
 <?php
 include '../connect.php';
 session_start();
-if (isset ($_SESSION["basketID"])) {
-    $basketId = $_SESSION["basketID"];
-}
+
 $sql = "SELECT basketId FROM baskets WHERE userId = " . $_SESSION['userID'] . " AND currentUserBasket = 1";
 $result = $db->query($sql);
 $row = $result->fetch(PDO::FETCH_ASSOC);
 $mainbasketId = $row['basketId'];
+$basketId = $mainbasketId;
+if (isset ($_SESSION["basketID"])) {
+    $basketId = $_SESSION["basketID"];
+}
 $_SESSION["basketID"] = $mainbasketId;
 if ($basketId != $mainbasketId) {
     $prevOrder = " in that order add to your basket?";
