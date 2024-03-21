@@ -114,7 +114,7 @@ try {
             echo "</div>";
 
             echo "<div class='order-buttons'><form method='post'>";
-            include "availability.php";
+            include_once "availability.php";
             if (availability($db, $row["basketId"])) {
               echo "<button class='order-again-button  method='post' name='purchase' type='submit'>Order Again</button>";
               if (isset ($_POST['purchase'])) {

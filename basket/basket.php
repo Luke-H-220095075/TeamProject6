@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
 <?php
-include '../connect.php';
 session_start();
-$basketId = 0;
-    $sql = "SELECT basketId FROM baskets WHERE userId = ". $_SESSION['userID'] ." AND currentUserBasket = 1" ;
-    $result = $db->query($sql);
-    $row = $result->fetch(PDO::FETCH_ASSOC);
-    $basketId = $row['basketId'];
+if (!isset($_SESSION['userID'])) {
+    echo '<a href="../loginview.php" style="position: fixed; left: 50%; top: 50%; transform: translate(-50%, -50%); font-family: Calibri,serif; font-size: xx-large">Please log in to view basket.</a>';
+    die();
+}
+    include '../connect.php';
+    $userID = $_SESSION['userID'];
+    $basketId = $_SESSION['userID'];
     $_SESSION["basketID"] = $basketId;
 ?>
 
@@ -128,7 +129,7 @@ $basketId = 0;
         }
         echo "<br>";
 
-        $sql = "SELECT price, quantity FROM products JOIN basketproducts ON products.productId = basketproducts.productId WHERE basketId = $basketId";
+        $sql = "SELECT price, quantity FROM products JOIN basketproducts ON products.productId = basketproducts.productId WHERE basketId = '.$basketId.'";
         $result = $db->query($sql);
         $basketcost = 0;
         if ($result->rowCount() > 0) {
