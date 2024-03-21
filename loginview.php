@@ -46,7 +46,7 @@
 
                 <div class="link_box">
                     <div class="signup_link">Don't have an account? <a href="signup/signUpPage.php">Sign Up</a></div>
-                    <div class="contact_link">Need Help? <a href="contact.php">Contact Us</a></div>
+                    <div class="contact_link">Need Help? <a href="contactview.php">Contact Us</a></div>
                 </div>
 
             </form>
