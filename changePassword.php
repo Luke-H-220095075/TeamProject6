@@ -85,10 +85,9 @@
 </div>
 
 <body>
-</section>
- <div class="home">
- <p>Change Password</p>
- </div>
+<div class="categories" style="height: 20vh">
+   <h2>Change password</h2>
+            </div>
     <?php
     require("User.php"); ?>
     <section>
@@ -111,10 +110,13 @@
                         $controller = new UpdateDetailsController($user);
                         $controller->chgPass($_POST['secretAnswer']);
                     } ?>
+
             </div>
         </div>
+        </div>
     </section>
-</body>
+
+    </body>
 <footer class="footer">
     <div class="container">
         <div class="row">
@@ -152,6 +154,6 @@
         </div>
     </div>
 </footer>
-</body>
+
 
 </html>

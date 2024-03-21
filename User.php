@@ -205,7 +205,6 @@ class User {
     }
     public function verifySecretAnswer($token){
       include("connect.php");
-      echo 'verifying';
       $sth=$db->prepare("SELECT secretAnswer FROM users WHERE username = :username");
       $sth->bindparam(':username', $this->username, PDO::PARAM_STR, 10);
       $sth->execute();
@@ -222,7 +221,6 @@ class User {
     }
     public function updatePassword(){
       include 'connect.php';
-
           try{
             $sth=$db->prepare("UPDATE users SET password = :password WHERE username = :username");
             $sth->bindparam(':username', $this->username, PDO::PARAM_STR, 10);
