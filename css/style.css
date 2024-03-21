@@ -66,6 +66,7 @@ font-weight: 600;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 25px;
     overflow: hidden;
+    background-color: #f5d5bb;
   }
   
   .cardd .image-details {
@@ -84,12 +85,17 @@ font-weight: 600;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    text-align: center;
   }
   
   .cardd .info h2 {
     margin-top: 0;
   }
   
+  .recommendations{
+    background-image: url("../Pictures for website/products.png"); 
+  text-align: center;
+  }
   
   
 .footer {

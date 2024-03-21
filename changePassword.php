@@ -91,8 +91,8 @@
     <?php
     require("User.php"); ?>
     <section>
-        <div class="profile">
-            <div class="contact-col">
+        <div class="profile1">
+            <div class="change">
                 <form method="post">
                     <?php
                     echo '
@@ -115,7 +115,7 @@
         </div>
         </div>
     </section>
-
+</div>
     </body>
 <footer class="footer">
     <div class="container">

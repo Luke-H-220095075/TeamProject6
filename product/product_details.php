@@ -91,7 +91,7 @@ if (isset($_GET['product_id'])) {
         if ($stmt->rowCount() > 0) {
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            echo '<div class="cardd">';
+            echo '<section class="cardd">';
             echo '<div class="image-details">';
             echo '<p><img src="../Pictures%20for%20website/' . htmlspecialchars($row['imageName']) . '" alt="' . htmlspecialchars($row['imageName']) . '"></p>';
             echo '</div>';
@@ -104,7 +104,9 @@ if (isset($_GET['product_id'])) {
             echo '<p><strong>Amount in Stock:</strong> ' . $row['countStock'] . '</p>';
             echo '<p><strong>Amount Sold:</strong> ' . $row['countSold'] . '</p>';
             echo '</div>';
-            echo '<div class="recommendations">';
+            echo '</section>';
+
+            echo '<Section class="recommendations">';
             echo '<h3>Recommendations</h3>';
             $stmtRecommendations = $db->prepare("SELECT * FROM products WHERE productId != :product_id ORDER BY RAND() LIMIT 4");
             $stmtRecommendations->bindParam(':product_id', $product_id, PDO::PARAM_INT);
@@ -118,8 +120,7 @@ if (isset($_GET['product_id'])) {
                 echo '<p><strong>Price:</strong> $' . $recommendation['price'] . '</p>';
                 echo '</div>';
             }
-            echo '</div>';
-            echo '</div>';
+            echo '</section>';
         } else {
             echo "<p>Product not found.</p>";
         }
