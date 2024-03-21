@@ -84,7 +84,7 @@ class User {
       }
       else{
     try{
-      $sth=$db->prepare("INSERT INTO users(username, forename, surname, password, email, admin, secretAnswer) VALUES (:username, :firstname, :surname, :password, :email, :admin, :token)");
+      $sth=$db->prepare("INSERT INTO users(username, firstname, surname, password, email, admin, secretAnswer) VALUES (:username, :firstname, :surname, :password, :email, :admin, :token)");
       $sth->bindparam(':username', $this->username, PDO::PARAM_STR, 64);
       $sth->bindparam(':password', $this->password, PDO::PARAM_STR, 64);
       $sth->bindparam(':firstname', $this->firstname, PDO::PARAM_STR, 64);
