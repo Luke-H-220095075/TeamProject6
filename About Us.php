@@ -14,42 +14,42 @@
         <!-- Full-width images with number and caption text -->
         <div class="mySlides fade">
             <div class="numbertext">1 / 8</div>
-            <img src="slide1.jpg" style="width:100%">
+            <img src="Pictures for website/LuckyV2.png" style="width:100%">
         </div>
 
         <div class="mySlides fade">
             <div class="numbertext">2 / 8</div>
-            <img src="slide2.jpg" style="width:100%">
+            <img src="Pictures for website/LukeV2.png" style="width:100%">
         </div>
 
         <div class="mySlides fade">
             <div class="numbertext">3 / 8</div>
-            <img src="slide3.jpg" style="width:100%">
+            <img src="Pictures for website/IzzyV2.png" style="width:100%">
         </div>
 
         <div class="mySlides fade">
             <div class="numbertext">4 / 8</div>
-            <img src="slide1.jpg" style="width:100%">
+            <img src="Pictures for website/OsazeV2.png" style="width:100%">
         </div>
 
         <div class="mySlides fade">
             <div class="numbertext">5 / 8</div>
-            <img src="slide5.jpg" style="width:100%">
+            <img src="Pictures for website/KhaabiilV2.png" style="width:100%">
         </div>
 
         <div class="mySlides fade">
             <div class="numbertext">6 / 8</div>
-            <img src="slide2.jpg" style="width:100%">
+            <img src="Pictures for website/KinV2.png" style="width:100%">
         </div>
 
         <div class="mySlides fade">
             <div class="numbertext">7 / 8</div>
-            <img src="slide3.jpg" style="width:100%">
+            <img src="Pictures for website/Thomas V2.png" style="width:100%">
         </div>
 
         <div class="mySlides fade">
             <div class="numbertext">8 / 8</div>
-            <img src="slide5.jpg" style="width:100%">
+            <img src="Pictures for website/ShayaanV2.png" style="width:100%">
         </div>
 
         <!-- Next and previous buttons -->
