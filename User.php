@@ -117,20 +117,24 @@ class User {
     $this->cbEmail = $cbe;
     $this->cbText = $cbt;
         try{
-          $sth=$db->prepare("UPDATE users SET email = :email, phone = :phone, firstname = :name, surname = :surname, address = :address, contactByEmail = :cbe, contactByText = :cbt WHERE username = :username");
-          $sth->bindparam(':username', $this->username, PDO::PARAM_STR, 10);
-          $sth->bindparam(':email', $this->email, PDO::PARAM_STR, 64);
-          $sth->bindparam(':phone', $this->phone, PDO::PARAM_STR, 10);
-          $sth->bindparam(':name', $this->firstname, PDO::PARAM_STR, 10);
-          $sth->bindparam(':surname', $this->surname, PDO::PARAM_STR, 10);
-          $sth->bindparam(':address', $this->address, PDO::PARAM_STR, 10);
-          $sth->bindparam(':cbe', $this->cbEmail, PDO::PARAM_STR, 10);
-          $sth->bindparam(':cbt', $this->cbText, PDO::PARAM_STR, 10);
-          $sth->execute();
-          if($sth == true){
-            header('Location: Customerprofile.php');
-          }
-      }catch(PDOException $ex){
+        $sth=$db->prepare("INSERT INTO users(username, forename, surname, password, email, admin, secretAnswer) VALUES (:username, :firstname, :surname, :password, :email, :admin, :token)");
+        $sth->bindparam(':username', $this->username, PDO::PARAM_STR, 64);
+        $sth->bindparam(':password', $this->password, PDO::PARAM_STR, 64);
+        $sth->bindparam(':firstname', $this->firstname, PDO::PARAM_STR, 64);
+        $sth->bindparam(':surname', $this->surname, PDO::PARAM_STR, 64);
+        $sth->bindparam(':email', $this->email, PDO::PARAM_STR, 64);
+        $sth->bindparam(':admin', $this->admin, PDO::PARAM_STR, 64);
+        $sth->bindparam(':token', $token, PDO::PARAM_STR, 64);
+        $sth->execute();
+        $sql = "SELECT userId FROM users WHERE username = $this->username";
+        $result = $db->query($sql);
+        $row = $result->fetch();
+        $sql = "INSERT INTO baskets (userId, currentUserBasket) VALUES (" . $row["userId"] . ", 1)";
+        $db->query($sql);
+        /*alert($sth);*/
+        ?><script type='text/javascript'>alert("You have successfully signed up");</script><?php
+        $this->setSession();
+      } catch(PDOException $ex){
         ?>
         <p>Sorry, a database error occurred.<p>
         <p>Error details: <em> <?= $ex->getMessage() ?></em></p>
