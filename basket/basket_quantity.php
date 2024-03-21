@@ -4,11 +4,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $change = isset($_POST['change']) ? intval($_POST['change']) : 0;
 
     include '../connect.php';
-    $userId = $_SESSION['userID'];
-    $sql = "SELECT basketId FROM baskets WHERE userId = ". $userId ." AND currentUserBasket = 1" ;
-    $result = $db->query($sql);
-    $row = $result->fetch(PDO::FETCH_ASSOC);
-    $basketId = $row['basketId'];
+    $basketId = $_SESSION['basketID'];
+//    $sql = "SELECT basketId FROM baskets WHERE userId = ". $userId ." AND currentUserBasket = 1" ;
+//    $result = $db->query($sql);
+//    $row = $result->fetch(PDO::FETCH_ASSOC);
+//    $basketId = $row['basketId'];
 
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -19,7 +19,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             WHERE basketId = $basketId
             AND productId = :product_id
         ");
-        $stmtUpdate->bindParam(':user_id', $userId, PDO::PARAM_INT);
         $stmtUpdate->bindParam(':product_id', $productId, PDO::PARAM_INT);
         $stmtUpdate->bindParam(':change', $change, PDO::PARAM_INT);
         $stmtUpdate->execute();
@@ -31,7 +30,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 WHERE basketId = $basketId
                 AND productId = :product_id
             ");
-            $stmtRemove->bindParam(':user_id', $userId, PDO::PARAM_INT);
             $stmtRemove->bindParam(':product_id', $productId, PDO::PARAM_INT);
             $stmtRemove->execute();
         }
