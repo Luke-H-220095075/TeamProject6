@@ -49,7 +49,8 @@
               session_start();
               if (isset ($_SESSION['user'])) {
                 echo '<li class="nav-item"><a class="nav-link" href="customerprofile.php">' . $_SESSION['user'] . '</a></li>';
-                echo '<li class="nav-item dropdown">
+                  echo '<li class="nav-item"><a class="nav-link" href="logout.php" >Logout</a></li>';
+                  echo '<li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                   aria-expanded="false">
                   <i class="fa-solid fa-basket-shopping"></i>
@@ -76,7 +77,7 @@
           </div>
         </div>
     </div>
-    </nav>
+    </section>
 </header>
 </section>
 

@@ -13,7 +13,7 @@
 
 
 <header>
-<span>Furniche <i class="fa-solid fa-bars" id="togglebtn"></i></span>
+<a href="../index.php" style="color: inherit; text-decoration: none">Furniche <i class="fa-solid fa-bars" id="togglebtn"></i></a>
 
 <?php
 include '../connect.php';
