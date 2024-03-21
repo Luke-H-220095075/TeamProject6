@@ -1,6 +1,6 @@
-
 <?php
-echo '<script>alert("Welcome to Geeks for Geeks")</script>'; 
+include '../connect.php';
+session_start();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $productId = isset ($_POST['product_id']) ? intval($_POST['product_id']) : 0;
     $userId = $_SESSION['userID'];
@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "Error: " . $e->getMessage();
     }
 
-    $db = null;
+    $pdo = null;
 }
 
 ?>

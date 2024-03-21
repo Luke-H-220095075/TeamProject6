@@ -5,15 +5,16 @@ session_start();
 //$_SESSION["discount_name"] = "1"; 
 #subtotal
 
-if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 1800)) {
+if (isset ($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 1800)) {
   // last request was more than 30 minutes ago
   session_unset();     // unset $_SESSION variable for the run-time 
   session_destroy();   // destroy session data in storage
+  echo '<script>alert("session timed out")</script>';
+  header('Location: loginview.php');
 }
 $_SESSION['LAST_ACTIVITY'] = time(); // update last activity time stamp
-
-$basket_id = $_SESSION["basketID"];
-$sql = "SELECT price, quantity FROM products JOIN basketproducts ON products.productId = basketproducts.productId WHERE basketId = $basket_id";
+$basketId = $_SESSION["basketID"];
+$sql = "SELECT price, quantity FROM products JOIN basketproducts ON products.productId = basketproducts.productId WHERE basketId = $basketId";
 $result = $db->query($sql);
 $subtotal = 0;
 if ($result->rowCount() > 0) {
@@ -22,49 +23,36 @@ if ($result->rowCount() > 0) {
   }
 }
 
-
+$basketcost = $subtotal;
 # discounts
-$discount_name = $_SESSION["discount_name"]; #$discount_name = $_POST['discount'];
-$sql = "SELECT value FROM discounts WHERE discountTitle = '" . $discount_name . "'";
-$value = $db->query($sql);
-if ($value->rowCount() > 0) {
-  $basketcost = $subtotal * (1 - $value->fetch()["value"] / 100);
-} else {
-  $basketcost = $subtotal;
+if (isset ($_SESSION['discount_name'])) {
+  $discount_name = $_SESSION["discount_name"]; #$discount_name = $_POST['discount'];
+  $sql = "SELECT value FROM discounts WHERE discountTitle = '" . $discount_name . "'";
+  $value = $db->query($sql);
+  if ($value->rowCount() > 0) {
+    $basketcost = round($subtotal * (1 - $value->fetch()["value"] / 100), 2);
+  }
 }
 
 #stock availability check
-function availability($db, $basket_id)
+include ("availability.php");
+function purchase($db, $basketId)
 {
-  $available = true;
-  $sql = "SELECT productName, countStock, quantity FROM products join basketproducts ON products.productId = basketproducts.productId  WHERE basketId = $basket_id";
-  $result = $db->query($sql);
-  if ($result->rowCount() > 0) {
-    while ($row = $result->fetch()) {
-      if ($row["quantity"] > $row["countStock"]) {
-        echo $row["productName"] . " is unavailable </br>";
-        $available = false;
+  if (isset ($_POST['purchase'])) {
+    if (availability($db, $basketId)) {
+      $sql = "SELECT countStock, countSold, quantity, basketproducts.productId FROM products join basketproducts ON products.productId = basketproducts.productId  WHERE basketId = $basketId";
+      $result = $db->query($sql);
+      if ($result->rowCount() > 0) {
+        while ($row = $result->fetch()) {
+          $sql = "UPDATE products SET countStock = " . $row["countStock"] - $row["quantity"] . ", countSold = " . $row["countSold"] + $row["quantity"] . " WHERE productId = " . $row["productId"];
+          $db->query($sql);
+        }
       }
-    }
-  }
-  return $available;
-}
-function purchase($db, $basket_id){
-  if (isset($_POST['purchase'])) {
-  if (availability($db, $basket_id)) {
-    $sql = "SELECT countStock, countSold, quantity, basketproducts.productId FROM products join basketproducts ON products.productId = basketproducts.productId  WHERE basketId = $basket_id";
-    $result = $db->query($sql);
-    if ($result->rowCount() > 0) {
-      while ($row = $result->fetch()) {
-        $sql = "UPDATE products SET countStock = " . $row["countStock"] - $row["quantity"] . ", countSold = " . $row["countSold"] + $row["quantity"] . " WHERE productId = " . $row["productId"];
-        $db->query($sql);
-      }
-      }
-      $sql = "INSERT INTO orders (basketId, userId, deliveryOption) VALUES (".$basket_id.", ".$_SESSION['userID'].", 'standard')";
+      $sql = "INSERT INTO orders (basketId, userId, deliveryOption) VALUES (" . $basketId . ", " . $_SESSION['userID'] . ", 'standard')";
       $db->query($sql);
-      $sql = "UPDATE baskets SET currentUserBasket = 0 WHERE basketId = $basket_id";
+      $sql = "UPDATE baskets SET currentUserBasket = 0 WHERE basketId = $basketId";
       $db->query($sql);
-      $sql = "INSERT INTO baskets (userId, currentUserBasket) VALUES (".$_SESSION['userID'].", 1)";
+      $sql = "INSERT INTO baskets (userId, currentUserBasket) VALUES (" . $_SESSION['userID'] . ", 1)";
       $db->query($sql);
       header('Location: Customerprofile.php');
     }
@@ -98,8 +86,7 @@ function purchase($db, $basket_id){
         </div>
       </div>
       <?php
-      session_start();
-      if (isset($_SESSION['user'])) {
+      if (isset ($_SESSION['user'])) {
         echo '<li><a href="#">' . $_SESSION['user'] . '</a>';
       }
       ?>
@@ -150,9 +137,9 @@ function purchase($db, $basket_id){
 
           </div>
           <?php
-          if (availability($db, $basket_id)) {
+          if (availability($db, $basketId)) {
             echo "<button  method='post' name='purchase' type='submit'>Confirm order</button>";
-            purchase($db, $basket_id);
+            purchase($db, $basketId);
           } else {
             echo "<button type='button'>unavailable</button>";
           }
@@ -166,7 +153,7 @@ function purchase($db, $basket_id){
 
       <div class="totals">
         <?php
-        if (availability($db, $basket_id)) {
+        if (availability($db, $basketId)) {
           echo "<p>currently available</p>";
         } else {
           echo "<p>currently unavailable available</p>";
@@ -282,7 +269,7 @@ function purchase($db, $basket_id){
 </footer>
 
 </html>
-<?php 
+<?php
 
 
 

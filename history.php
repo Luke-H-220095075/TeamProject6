@@ -4,23 +4,20 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/history.css">
-    <link rel="stylesheet" href="css/style.css">
     <title>Furniche - Previous Orders</title>
 </head>
 <div class="colour">
-
-    <header>
-        <link rel="stylesheet" type="text/css"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
-        <link rel="stylesheet" href="https://use.typekit.net/maf1fpm.css">
-    </header>
+  <header>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+      <link rel="stylesheet" href="https://use.typekit.net/maf1fpm.css">
+  </header>
 </div>
 <section>
-    <div class="topnav">
-        <nav>
-            <h1 class="logo">Furniche</h1>
-            <ul>
-                <li><a href="index.php">Home</a></li>
+  <div class="topnav">
+      <nav>
+          <h1 class="logo">Furniche</h1>
+          <ul>
+          <li><a href="index.php">Home</a></li>
                 <li><a href="product/products.php">Products</a></li>
                 <li><a href="history.php">Previous Orders</a></li>
                 <li><a href="contactview.php">Contact Us</a></li>
@@ -46,43 +43,38 @@
         <h2>Order History</h2>
     </strong>
 
-    <?php
-    include 'connect.php';
-    include "availability.php";
-    try {
-        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+<?php
+include 'connect.php';
+try {
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        // I tested with user 1, change once login page is connected 
-        $userID = $_SESSION["userID"];
-        $ordersPerPage = 6; // limit to six order viewed per page
+    // I tested with user 1, change once login page is connected 
+    $userID = $_SESSION["userID"];
+    $ordersPerPage = 6; // limit to six order viewed per page
+
+    // Sort the previous orders by newest and oldest dates ordered and those that have no been delivered yet
+    $sortOption = isset($_GET['sort']) ? $_GET['sort'] : 'newest_order';
+    $sorting = '';
+    switch ($sortOption) {
+        case 'newest_order':
+            $sorting = 'ORDER BY o.dateAdded DESC';
+            break;
+        case 'oldest_order':
+            $sorting = 'ORDER BY o.dateAdded ASC';
+            break;
+        case 'not_delivered':
+            $sorting = 'ORDER BY COALESCE(o.deliveryDate > CURDATE(), 0) DESC, o.deliveryDate ASC';
+            break;
+        default:
+            $sorting = 'ORDER BY o.dateAdded DESC';
+            break;
+    }
+
+    $page = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1;
+    $offset = ($page - 1) * $ordersPerPage;
     
-        // Sort the previous orders by newest and oldest dates ordered and those that have no been delivered yet
-        $sortOption = isset ($_GET['sort']) ? $_GET['sort'] : 'newest_order';
-        $sorting = '';
-        switch ($sortOption) {
-            case 'newest_order':
-                $sorting = 'ORDER BY o.dateAdded DESC';
-                break;
-            case 'oldest_order':
-                $sorting = 'ORDER BY o.dateAdded ASC';
-                break;
-            case 'not_delivered':
-                $sorting = 'ORDER BY COALESCE(o.deliveryDate > CURDATE(), 0) DESC, o.deliveryDate ASC';
-                break;
-            default:
-                $sorting = 'ORDER BY o.dateAdded DESC';
-                break;
-        }
-        $sql = "SELECT basketId FROM baskets WHERE userId = " . $_SESSION['userID'] . " AND currentUserBasket = 1";
-        $result = $db->query($sql);
-        $row = $result->fetch(PDO::FETCH_ASSOC);
-        $mainbasketId = $row['basketId'];
-        $_SESSION["basketID"] = $mainbasketId;
-        $page = isset ($_GET['page']) ? max(1, intval($_GET['page'])) : 1;
-        $offset = ($page - 1) * $ordersPerPage;
-
-        //SQL code needed to do the get the product count
-        $sql = "SELECT o.orderId, o.dateAdded, o.deliveryDate, b.basketId, COUNT(b.productId) AS itemCount
+    //SQL code needed to do the get the product count
+    $sql = "SELECT o.orderId, o.dateAdded, o.deliveryDate, b.basketId, COUNT(b.productId) AS itemCount
             FROM orders o
             JOIN basketproducts b ON o.basketId = b.basketId
             WHERE o.userId = ?
@@ -124,7 +116,19 @@
                 echo "</div>";
                 echo "</div>";
 
-                echo "<div class='order-buttons'><form method='post'>";
+            echo "<div class='order-buttons'><form method='post'>";
+            include "availability.php";
+            if (availability($db, $row["basketId"])) {
+              echo "<button class='order-again-button  method='post' name='purchase' type='submit'>Order Again</button>";
+              if (isset ($_POST['purchase'])) {
+                $_SESSION["basketID"] = $row["basketId"];
+                header('Location: checkout.php');
+              }
+            } else {
+              echo "<p>currently unavailable available</p>";
+            }
+            echo "<button class='  ' onclick='location.href=\"view_order.php?orderId=" . $row["orderId"] . "\"'>View Details</button>";
+            echo "</form></div>";
 
                 if (availability($db, $row["basketId"])) {
                     echo "<button class='order-again-button  method='post' name='purchase' type='submit'>Order Again</button>";

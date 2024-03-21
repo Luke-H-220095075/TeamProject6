@@ -1,5 +1,6 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    session_start();
     $productId = isset($_POST['product_id']) ? intval($_POST['product_id']) : 0;
     $change = isset($_POST['change']) ? intval($_POST['change']) : 0;
 
@@ -16,18 +17,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmtUpdate = $db->prepare("
             UPDATE basketproducts
             SET quantity = quantity + :change
-            WHERE basketId = $basketId
+            WHERE basketId = (SELECT basketId FROM baskets WHERE userId = :user_id)
             AND productId = :product_id
         ");
         $stmtUpdate->bindParam(':product_id', $productId, PDO::PARAM_INT);
         $stmtUpdate->bindParam(':change', $change, PDO::PARAM_INT);
         $stmtUpdate->execute();
 
-        $newQuantity = $db->query("SELECT quantity FROM basketproducts WHERE basketId = $basketId AND productId = $productId")->fetchColumn();
+        $newQuantity = $db->query("SELECT quantity FROM basketproducts WHERE basketId = (SELECT basketId FROM baskets WHERE userId = $userId) AND productId = $productId")->fetchColumn();
         if ($newQuantity === 0) {
             $stmtRemove = $db->prepare("
                 DELETE FROM basketproducts
-                WHERE basketId = $basketId
+                WHERE basketId = (SELECT basketId FROM baskets WHERE userId = :user_id)
                 AND productId = :product_id
             ");
             $stmtRemove->bindParam(':product_id', $productId, PDO::PARAM_INT);
@@ -39,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "Error: " . $e->getMessage();
     }
 
-    $db = null;
+    $pdo = null;
 }
 
 ?>

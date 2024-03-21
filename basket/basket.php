@@ -3,7 +3,6 @@
 <?php
 include '../connect.php';
 session_start();
-
 if (isset ($_SESSION["basketID"])) {
     $basketId = $_SESSION["basketID"];
 }
@@ -18,17 +17,15 @@ if ($basketId != $mainbasketId) {
     $prevOrder = "";
 }
 ?>
+
 <head>
     <title>Furniche - Basket</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../css/basket.css" />
-
+    <link rel="stylesheet" href="../css/basket.css"/>
     <link href="../css/style.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
-    <link rel="stylesheet" href="https://use.typekit.net/maf1fpm.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+      <link rel="stylesheet" href="https://use.typekit.net/maf1fpm.css">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 
 <header>
@@ -38,41 +35,49 @@ if ($basketId != $mainbasketId) {
                 <div class="container-fluid">
                     <a class="navbar-brand" href="../index.php">Furniche</a>
 
-
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <a class="nav-link" href="../product/products.php">Products</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="../loginview.php">Login</a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                    The team
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="../aboutus.php">About Us</a></li>
-                                    <li><a class="dropdown-item" href="../contactview.php">Contact us</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="../basket/basket.php"><i
-                                        class="fa-solid fa-basket-shopping"></i></a>
-                            </li>
-                        </ul>
-                        <form class="d-flex" role="search">
-                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-outline-success" type="submit">Search</button>
-                        </form>
-                    </div>
-                </div>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="../product/products.php">Products</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../loginview.php">Login</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            The team
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="../aboutus.php">About Us</a></li>
+            <li><a class="dropdown-item" href="../contactview.php">Contact us</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../basket/basket.php"><i class="fa-solid fa-basket-shopping"></i></a>
+        </li>
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+    </div>
+    </nav>
+                <?php
+                if (isset($_SESSION['user'])) {
+                    echo '<li><a href="../customerprofile.php">' . $_SESSION['user'] . '</a>';
+                    echo '<li><a href="basket.php">Basket</a></li>';
+                }else {
+                    echo '<li><a href="../signup/signUpPage.php">Sign up</a></li>';
+                    echo '<li><a href="../loginview.php">Login</a></li>';
+                }
+                ?>
+          </ul>
+         </nav>
         </div>
         </nav>
         <?php
@@ -94,6 +99,8 @@ if ($basketId != $mainbasketId) {
 <body>
 
     <div class="basketss">
+        
+
         <h2>Your Basket</h2>
 
         <?php
@@ -130,12 +137,12 @@ if ($basketId != $mainbasketId) {
                     echo '</div>';
                 }
                 echo '</div>';
-                echo '<a href="../product/products.php"><button>Add More Products?</button></a>';
+                echo '<div class="mmm"><a href="../product/products.php"><button class="nnn">Add More Products?</button></a></div>';
 
             } else {
                 echo "<p>Your basket is empty.</p>";
-                echo '<a href="../products.php"><button>Add Products?</button></a>';
-                echo '<a href="checkout.php"><button>Checkout now</button></a>';
+                echo '<a href="../product/products.php"><button class="nnn">Add Products?</button></a>';
+                echo '<a href="../checkout.php"><button class="nnn">Checkout now</button></a>';
 
             }
         } catch (PDOException $e) {
@@ -166,27 +173,15 @@ if ($basketId != $mainbasketId) {
 
 
         #stock availability check
-        function availability($db, $basketId)
-        {
-            $available = true;
-            $sql = "SELECT productName, countStock, quantity FROM products join basketproducts ON products.productId = basketproducts.productId  WHERE basketId = $basketId";
-            $result = $db->query($sql);
-            if ($result->rowCount() > 0) {
-                while ($row = $result->fetch()) {
-                    if ($row["quantity"] > $row["countStock"]) {
-                        echo "<p>" . $row["productName"] . " is unavailable </p>";
-                        $available = false;
-                    }
-                }
-            }
-            return $available;
-        }
+        include ("../availability.php");
         if (availability($db, $basketId)) {
             echo "<p>available</p>";
             echo '<a href="../checkout.php"><button class="checkout-button">checkout?</button></a>';
-        } else {
+
+        } 
+        else {
             echo "<p>Your basket is empty.</p>";
-            echo '<a href="../product/products.php"><button>Add Products?</button></a>';
+            echo '<div class="mmm"><a href="../product/products.php"><button>Add Products?</button></a></div>';
 
         }
         ?>

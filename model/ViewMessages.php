@@ -7,6 +7,7 @@ class ViewMessages {
         $this->messages = array();
     }
     public function viewMessages(){
+        include("Message.php");
         include("connect.php");
         try{
             $rows=$db->query("SELECT inquiries.inquiryDate, inquiries.subject, inquiries.message, users.username FROM inquiries INNER JOIN users ON inquiries.userId = users.userId"); 

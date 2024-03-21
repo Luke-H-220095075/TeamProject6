@@ -2,7 +2,7 @@
 <html lang="eng">
 
 <head>
-  <title>Contact Us</title>
+ 
   <meta charset="UTF-8">
   <script src="Contact Us.js"></script>
   <link rel="stylesheet" href="css/contact.css">
@@ -56,27 +56,41 @@
 </section>
 
   <body>
-    <br>
-    <div class="content">
-      <div class="who_are">
-        <img src="Pictures for website\Contact Us Help.png" alt="My Image" class="my_img">
-        <!-- <span>
-            <p>
-              Thank you for your interest in Furniche. Please fill out the form below to ask a 
-             question or report a technical problem. Please note: while we appreciate your 
-             questions, we are unable to respond to all inquiries.
-            </p>
-            <h1>Media</h1>
-            <p>
-              Visit our media center to find contact details for our media relations team in your region.
-            </p>
 
-        </span> -->
+    <br>
+    <br>
+    <div class="containerr container_solid">
+      <div class="title_wrapperr">
+        <h1>Contact Us</h1>
       </div>
+    </div>
+  
+    <!-- Second container -->
+    <div class="containerr containerr_image" aria-hidden="true">
+      <div class="title_wrapperr">
+        <h1>Contact Us</h1>
+      </div>
+    </div>
+  
+  </header>
+  
+  <sectionn>
+    <div class = "sectionn">
       <br>
-      <div class="contact">
-        <!-- <img src="Pictures for website\Contact Us Form Background.png" alt="My Image" class="my_img"> -->
-        <form class="contact-form" method="post">
+      <br>
+      <br>
+      <br>
+    <h2>Track</h2>
+    <p>We know you cannot wait for your new furniture. Track its progress as we build it for you.</p>
+    <h2>Message</h2>
+    <p>Include a message below and we will anaswer as soon as possible</p>
+    <h2>Email</h2>
+    <p>At Help@furniche.com</p>
+    <h2>Call</h2>
+    <p>If we have not been able to answer your question through track your order or our FAQs, call us.</p>
+    </div>
+  </sectionn>
+   <form class="contact-formm" method="post">
           <label for="name">Subject:</label>
           <input type="text" id="name" name="subject" required><br><br>
           <label for="description">Message:</label><br>
@@ -87,32 +101,78 @@
           require("view/contact.php");
           ?>
         </form>
-        <!-- <img src="Pictures for website\thumbnail.jpeg" alt="My Image" class="my_img"> -->
-      </div>
       <script>
         var i;
-        for (i = 0; i < 5; i++) {
+        for (i = 0; i < 2; i++) {
           document.write("<br>");
         }
       </script>
+
+  <div class="container1">
+  <h1>Frequently Asked Questions</h1>
+  <details>
+  <summary>Do you deliver oversea?</summary>
+  <div>
+ Unfortunately we <em> do not</em> deliver our items oversea as we deliver items to majority of the <em>UK</em> only.
+  </div>
+</details>
+<br>
+<details>
+  <summary>When can I expect to hear a specific date?</summary>
+  <div>
+  You will be contacted within the lead time given, every manufacturer will advise the day they plan to delivery before trying to deliver.
+  </div>
+</details>
+<br>
+<details>
+  <summary>What happens when my order has been placed?</summary>
+  <div>
+  Once your order has been placed, you will receive a confirmation email detailing the order reference, items ordered, the delivery address and amount paid. The delivery team will then be in touch within several working days to book in a delivery day with you.
+  </div>
+</details>
+<br>
+<details>
+  <summary>What happens if an item is out of stock?</summary>
+  <div>
+  If an item is out of stock you will be called to be advised of this and we will then inform you of when the item will be back in stock. You can either wait for this item, change to an alternative product or be refunded.
+  </div>
+</details>
+<br>
+<details>
+  <summary>Will there be charges for cancellation?</summary>
+  <div>
+  In certain situations a charge may be levied for the collection of cancelled goods. Shedstore neither initiates nor profits from any such charges and they are levied at the direct cost for the collection of the goods. If there is a charge for collection, we will notify you as soon as we know. Any charges are retained from the refund returned to customers.
+  </div>
+</details>
+<script>
+        var i;
+        for (i = 0; i < 2; i++) {
+          document.write("<br>");
+        }
+      </script>
+</div>
+
+
       <div class="information">
+      <!-- <img src ="Pictures for website\Light wood background.jpg" class = "woodbg"> -->
         <div class = "grid1">
           <img src="Pictures for website\Brown Lorry.png" class = "lorry">
           <br>
-          <img src="Pictures for website\Brown Text Bar.png">
-          <h2>We know you can’t wait for your new furniture. Track it’s progress as we build it for you.</h2>
-          <h2 class="yourmum">Track your package</h2>
+          <img src="Pictures for website\Brown Text Bar.png" class = "lorrytext">
+          <h2 class="description_one">We know you can’t wait for your new furniture. Track it’s progress as we build it for you.</h2>
+          <h4 class="header_one">Track your package</h4>
           <script>
             var i;
             for (i = 0; i < 10; i++) {
               document.write("<br>");
             }
           </script>
-        <img src="Pictures for website\Brown Information.png">
+        </div>
+        <img src="Pictures for website\Brown Information.png" class = "FAQs">
         <br>
-        <img src="Pictures for website\Brown Text Bar.png">
-        <h2 class="yourmum">FAQs</h2>
-        <p>Over 90% of our customers find their questions answered in our FAQ’s.</p>
+        <img src="Pictures for website\Brown Text Bar.png" class = "FAQstext">
+        <h2 class="description_two">Over 90% of our customers find <br> their questions answered in our FAQ’s.</h2>
+        <h2 class="header_two">FAQs</h2>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
             <script>
           var i;
@@ -121,36 +181,29 @@
           }
         </script>
         </div>
-        <div class = "grid2">
-        <img src="Pictures for website\Brown Text.png">
+        <img src="Pictures for website\Brown Text.png" class = "chat">
         <br>
-        <img src="Pictures for website\Brown Text Bar.png">
-        <h2 class="yourmum">Live chat</h2>
-        <p>The quickest way to speak to us is via our live chat option.</p>
+        <img src="Pictures for website\Brown Text Bar.png" class = "chattext">
+        <h2 class = "description_three">The quickest way to speak to us <br> is via our live chat option.</h2>
+        <h2 class = "header_three">Live chat</h2>
         <script>
           var i;
           for (i = 0; i < 10; i++) {
             document.write("<br>");
           }
         </script>
-        <img src="Pictures for website\Brown Phone.png">
+        <img src="Pictures for website\Brown Phone.png" class = "phone">
         <br>
-        <img src="Pictures for website\Brown Text Bar.png">
-        <h2 class="yourmum">Call us</h2>
-        <p>If we have not been able to answer your question through track your order or our FAQ’s, call us.</p>
-        <script>
-          var i;
-          for (i = 0; i < 10; i++) {
-            document.write("<br>");
-          }
-        </script>
-        </div>
-        <h1>If you have any query please contact us using on the options below. We’d love to hear from you.</h1>
+        <img src="Pictures for website\Brown Text Bar.png" class = "phonetext">
+        <h2 class = "description_four">If we have not been able to answer your question <br> through track your order or our FAQ’s, call us.</h2>
+        <h2 class = "header_four">Call us</h2>
+        <h1 class = "endtext">If you have any query please contact us using on the options below. We’d love to hear from you.</h1>
+        
       </div>
       <section class="location">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2482.6980768196954!2d-0.08362608488829902!3d51.51875491769485!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4876034c44354bb1%3A0xc57f7d6c0b61ff5f!2sLiverpool%20Street!5e0!3m2!1sen!2suk!4v1677666062080!5m2!1sen!2suk"
-          width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+          width="100%" height="900" style="border:0;" allowfullscreen="" loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"></iframe>
       </section>
 
