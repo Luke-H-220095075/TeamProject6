@@ -46,6 +46,7 @@
 <?php
 include 'connect.php';
 include "availability.php";
+$_SESSION["basketID"] = null;
 try {
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 

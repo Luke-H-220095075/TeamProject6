@@ -54,6 +54,7 @@ function purchase($db, $basketId)
       $db->query($sql);
       $sql = "INSERT INTO baskets (userId, currentUserBasket) VALUES (" . $_SESSION['userID'] . ", 1)";
       $db->query($sql);
+      $_SESSION["basketID"] = null;
       header('Location: Customerprofile.php');
     }
   }
