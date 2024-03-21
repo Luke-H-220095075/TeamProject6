@@ -126,6 +126,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $insertStatement->bindParam(':password', $password, PDO::PARAM_STR);
 
     if ($insertStatement->execute()) {
+        $sql = "SELECT userId FROM users WHERE username = $this->username";
+        $result = $db->query($sql);
+        $row = $result->fetch();
+        $sql = "INSERT INTO baskets (userId, currentUserBasket) VALUES (" . $row["userId"] . ", 1)";
+        $db->query($sql);
         echo "User created successfully!";
     } else {
         echo "Error creating user: " . $insertStatement->errorInfo()[2];
