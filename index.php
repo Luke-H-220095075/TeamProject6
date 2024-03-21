@@ -76,6 +76,7 @@
             </form>
           </div>
         </div>
+      </nav>
     </div>
     </section>
 </header>

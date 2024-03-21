@@ -2,11 +2,10 @@
 <html lang="eng">
 
 <head>
- 
+<title>Furniche - Contact Us</title>
   <meta charset="UTF-8">
   <script src="Contact Us.js"></script>
   <link rel="stylesheet" href="css/contact.css">
-  <link rel="stylesheet" type="text/css" href="css/style.css">
 
   <link href="css/style.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
@@ -37,7 +36,7 @@
             The team
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="aboutus.php">About Us</a></li>
+            <li><a class="dropdown-item" href="About Us.php">About Us</a></li>
             <li><a class="dropdown-item" href="contactview.php">Contact us</a></li>
           </ul>
         </li>
