@@ -93,7 +93,10 @@ class User {
       $sth->bindparam(':admin', $this->admin, PDO::PARAM_STR, 64);
       $sth->bindparam(':token', $token, PDO::PARAM_STR, 64);
       $sth->execute();
-      $sql = "INSERT INTO baskets (userId, currentUserBasket) VALUES (" . $_SESSION['userID'] . ", 1)";
+      $sql = "SELECT userId FROM users WHERE username = $this->username";
+      $result = $db->query($sql);
+      $row = $result->fetch();
+      $sql = "INSERT INTO baskets (userId, currentUserBasket) VALUES (" . $row["userId"] . ", 1)";
       $db->query($sql);
       /*alert($sth);*/
       ?><script type='text/javascript'>alert("You have successfully signed up");</script><?php
@@ -126,11 +129,6 @@ class User {
         $sth->bindparam(':admin', $this->admin, PDO::PARAM_STR, 64);
         $sth->bindparam(':token', $token, PDO::PARAM_STR, 64);
         $sth->execute();
-        $sql = "SELECT userId FROM users WHERE username = $this->username";
-        $result = $db->query($sql);
-        $row = $result->fetch();
-        $sql = "INSERT INTO baskets (userId, currentUserBasket) VALUES (" . $row["userId"] . ", 1)";
-        $db->query($sql);
         /*alert($sth);*/
         ?><script type='text/javascript'>alert("You have successfully signed up");</script><?php
         $this->setSession();
