@@ -14,7 +14,7 @@
         <!-- Full-width images with number and caption text -->
         <div class="mySlides fade">
             <div class="numbertext">1 / 8</div>
-            <img src="slide1.jpg" style="width:100%">
+            <img src="Pictures for website/Bohemian.png" style="width:100%">
         </div>
 
         <div class="mySlides fade">
