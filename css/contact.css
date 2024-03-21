@@ -34,7 +34,6 @@ bottom: 40px;
 }
 
 .header_one {
-background-image: url('../Pictures for website/Light wood background.jpg');
 position: relative;
 bottom: 198px;
 right: 15px;
@@ -191,6 +190,10 @@ column-gap: 10px;
 text-align: center;
 }
 
+.dropdowns {
+  text-align: center;
+}
+
 .contact{
 /* background-color: #4f4d62; */
 background-image: url('../Pictures for website/Contact Us Form Background.png');
@@ -203,6 +206,11 @@ grid-template-columns: 1fr 1fr;
 column-gap: 20px;
 text-align: center;
 height: 90vh;
+}
+
+.container1{
+text-align: center;
+font-size: 30px;
 }
 
 .location {

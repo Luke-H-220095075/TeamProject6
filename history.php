@@ -46,7 +46,7 @@ try {
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // I tested with user 1, change once login page is connected 
-    $userID = 1;
+    $userID = $_SESSION["userID"];
     $ordersPerPage = 6; // limit to six order viewed per page
 
     // Sort the previous orders by newest and oldest dates ordered and those that have no been delivered yet
@@ -71,7 +71,7 @@ try {
     $offset = ($page - 1) * $ordersPerPage;
     
     //SQL code needed to do the get the product count
-    $sql = "SELECT o.orderId, o.dateAdded, o.deliveryDate, COUNT(b.productId) AS itemCount
+    $sql = "SELECT o.orderId, o.dateAdded, o.deliveryDate, b.basketId, COUNT(b.productId) AS itemCount
             FROM orders o
             JOIN basketproducts b ON o.basketId = b.basketId
             WHERE o.userId = ?
@@ -113,19 +113,19 @@ try {
             echo "</div>";
             echo "</div>";
 
-            echo "<div class='order-buttons'>";
+            echo "<div class='order-buttons'><form method='post'>";
             include "availability.php";
-            if (availability($db, $row["orderId"])) {
-              echo "<button  class='order-again-button  method='post' name='purchase' type='submit'>Order Again</button>";
-              if (isset($_post["purchase"])){
-                $basketId = $row["orderId"];
+            if (availability($db, $row["basketId"])) {
+              echo "<button class='order-again-button  method='post' name='purchase' type='submit'>Order Again</button>";
+              if (isset ($_POST['purchase'])) {
+                $_SESSION["basketID"] = $row["basketId"];
                 header('Location: checkout.php');
               }
             } else {
               echo "<p>currently unavailable available</p>";
             }
             echo "<button class='  ' onclick='location.href=\"view_order.php?orderId=" . $row["orderId"] . "\"'>View Details</button>";
-            echo "</div>";
+            echo "</form></div>";
 
         }
 

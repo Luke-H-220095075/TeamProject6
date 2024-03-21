@@ -79,6 +79,7 @@ $basketId = 0;
 <body>
 
     <div class="basketss">
+        
 
         <h2>Your Basket</h2>
 
@@ -114,12 +115,12 @@ $basketId = 0;
                     echo '</div>';
                 }
                 echo '</div>';
-                echo '<a href="../product/products.php"><button>Add More Products?</button></a>';
+                echo '<div class="mmm"><a href="../product/products.php"><button class="nnn">Add More Products?</button></a></div>';
 
             } else {
                 echo "<p>Your basket is empty.</p>";
-                echo '<a href="../product/products.php"><button>Add Products?</button></a>';
-                echo '<a href="../checkout.php"><button>Checkout now</button></a>';
+                echo '<a href="../product/products.php"><button class="nnn">Add Products?</button></a>';
+                echo '<a href="../checkout.php"><button class="nnn">Checkout now</button></a>';
 
             }
         } catch (PDOException $e) {
@@ -153,11 +154,11 @@ $basketId = 0;
         include ("../availability.php");
         if (availability($db, $basketId)) {
             echo "<p>available</p>";
-            echo '<a href="../checkout.php"><button>checkout?</button></a>';
+            echo '<a href="../checkout.php"><button class="checkout-button">checkout?</button></a>';
         } 
         else {
             echo "<p>Your basket is empty.</p>";
-            echo '<a href="../product/products.php"><button>Add Products?</button></a>';
+            echo '<div class="mmm"><a href="../product/products.php"><button>Add Products?</button></a></div>';
 
         }
         ?>
