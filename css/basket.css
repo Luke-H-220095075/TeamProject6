@@ -164,7 +164,7 @@
             .basketss{
                 align-items: center;
                 text-align: center;
-                background-color: #f0e5d8;
+                background-image: url("../Pictures for website/basket.png");
                 padding: 30px;
                 
             }
@@ -187,7 +187,7 @@
               margin-top: 30px;
               margin-bottom: 65px;
               padding: 15px;
-              background-color: #f5d5bb;
+              background-color: #d9baa0;
               border: 1px solid #ddd;
               box-shadow: 0 2px 4px rgba(0,0,0,0.1);
           }
@@ -227,20 +227,21 @@
           }
 
           .mmm{
-            margin-bottom: 5px;
+            border-radius: 25px;
           }
           .nnn{
             padding: 6px;
             background-color:#fff;
+            margin-bottom: 5px;
 
           }
          
           .checkout-button {
               width: 12%;   
               padding: 10px;
-              background-color: #eaff31;
+              background-color: #cec588;
               border: none;
-              border-radius: 4px;
+              border-radius: 25px;
               color: black;
               cursor: pointer;
               

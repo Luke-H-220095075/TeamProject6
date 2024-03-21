@@ -8,23 +8,6 @@
 }
 
 
-.who_are {
-width: 200%;
-background-color: #f5d5bb;
-
-/* align-items: center; */
-
-}
-
-.my_img{
-position: relative;
-left: 400px;
-width: 200px;
-}
-
-.woodbg {
-  background-image: url('../Pictures for website/Contact Us Form Background.png')
-}
 
 .information{
 align-items: center;
@@ -228,6 +211,8 @@ font-family: Arial, sans-serif;
 background-color: #f4f4f4;
 text-align: center;
 padding: 20px;
+width: 80%;
+align-items: center;
 }
 
 h1 {
@@ -313,6 +298,7 @@ header {
 }
 
 .containerr {
+  background-image: url("../Pictures for website/contact.png");
   /* hide fixed overflow contents */
   clip: rect(0, auto, auto, 0);
 
@@ -333,7 +319,7 @@ header {
 }
 
 .containerr_solid {
-  background: white;
+  background: #F5D5BB;
   
   /* position this container at the top of its parent element */
   top: 0;
@@ -388,7 +374,7 @@ header {
 }
 
 .containerr_image .title_wrapperr h1 {
-  color: white;
+  color: #F5D5BB;
 }
 
 .sectionn {
@@ -396,7 +382,8 @@ header {
   align-items: center;
   min-height: 100vh;
   margin: auto;
-  max-width: 800px;
+  max-width: 100%;
+  background-color: #F5D5BB;
 }
 
 .sectionn h2 {

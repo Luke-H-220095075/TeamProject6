@@ -154,7 +154,6 @@
 
 
       <div class="information">
-      <!-- <img src ="Pictures for website\Light wood background.jpg" class = "woodbg"> -->
         <div class = "grid1">
           <img src="Pictures for website\Brown Lorry.png" class = "lorry">
           <br>

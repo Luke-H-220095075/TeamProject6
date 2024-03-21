@@ -48,7 +48,8 @@
             <li><a class="dropdown-item" href="../aboutus.php">About Us</a></li>
             <li><a class="dropdown-item" href="../contactview.php">Contact us</a></li>
           </ul>
-        </li><?php
+        </li>
+        <?php
               if (isset($_SESSION['user'])) {
         echo '<li class="nav-item">
           <a class="nav-link" href="../basket/basket.php"><i class="fa-solid fa-basket-shopping"></i></a>
@@ -362,7 +363,6 @@
             <button id="addToBasketButton" onclick="addToBasket()" style="display: none;">Add to Basket</button>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <script>
 
     function showProductModal(productId) {
@@ -457,6 +457,7 @@
     </script>
 </body>
 <footer class="footer">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <div class="container">
         <div class="row">
             <div class="footer-col">
