@@ -19,7 +19,7 @@
   <section>
     <div class="fixed-top">
       <nav class="navbar">
-      <div class="container-fluid">
+        <div class="container-fluid">
           <a class="navbar-brand" href="index.php">Furniche</a>
 
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -32,8 +32,8 @@
               <li class="nav-item">
                 <a class="nav-link" href="product/products.php">Products</a>
               </li>
-              
-              
+
+
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                   aria-expanded="false">
@@ -58,8 +58,8 @@
                 echo '<li class="nav-item">
                       <a class="nav-link" href="basket/basket.php">basket</a>
                       </li></ul>';
-                if ($_SESSION["access"] = "admin"){
-                  echo '<li class="nav-item"><a class="nav-link" href="admin\dashboard.php">admin page</a></li></li>'; 
+                if ($_SESSION["access"] = "admin") {
+                  echo '<li class="nav-item"><a class="nav-link" href="admin\dashboard.php">admin page</a></li></li>';
                 }
 
               } else {
@@ -80,73 +80,79 @@
 </header>
 </section>
 
-   <div class="categories">
-   <h2>Categories</h2>
-   <div>
-      <a href="product/products.php?typeFilter=all&categoryFilter=bohemian&sortFilter=all"><img src="Pictures%20for%20website/Bohemian.jpg" alt="Bohemian" class="image-filter"></a>
-      <a href="product/products.php?typeFilter=all&categoryFilter=rustic&sortFilter=all"><img src="Pictures%20for%20website/Rustic.jpg" alt="Rustic" class="image-filter"></a>
-      <a href="product/products.php?typeFilter=all&categoryFilter=minimal&sortFilter=all"><img src="Pictures%20for%20website/Minimalistic.jpg" alt="Minimalistic" class="image-filter"></a>
-      <a href="product/products.php?typeFilter=all&categoryFilter=tropical&sortFilter=all"><img src="Pictures%20for%20website/Tropical.jpg" alt="Tropical" class="image-filter"></a>
-      <a href="product/products.php?typeFilter=all&categoryFilter=modern&sortFilter=all"><img src="Pictures%20for%20website/Modern.jpg" alt="Modern" class="image-filter"></a>
-   </div>
-   </div>
-   
+<div class="categories">
+  <h2>Categories</h2>
+  <div>
+    <a href="product/products.php?typeFilter=all&categoryFilter=bohemian&sortFilter=all"><img
+        src="Pictures%20for%20website/Bohemian.jpg" alt="Bohemian" class="image-filter"></a>
+    <a href="product/products.php?typeFilter=all&categoryFilter=rustic&sortFilter=all"><img
+        src="Pictures%20for%20website/Rustic.jpg" alt="Rustic" class="image-filter"></a>
+    <a href="product/products.php?typeFilter=all&categoryFilter=minimal&sortFilter=all"><img
+        src="Pictures%20for%20website/Minimalistic.jpg" alt="Minimalistic" class="image-filter"></a>
+    <a href="product/products.php?typeFilter=all&categoryFilter=tropical&sortFilter=all"><img
+        src="Pictures%20for%20website/Tropical.jpg" alt="Tropical" class="image-filter"></a>
+    <a href="product/products.php?typeFilter=all&categoryFilter=modern&sortFilter=all"><img
+        src="Pictures%20for%20website/Modern.jpg" alt="Modern" class="image-filter"></a>
+  </div>
+</div>
+
 </section>
- <div class="home">
- <p>Design your home to be a bit more like you.</p>
- </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<div class="home">
+  <p>Design your home to be a bit more like you.</p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <script>
 
-const background = document.querySelector('.backgroundd');
+  const background = document.querySelector('.backgroundd');
 
-document.addEventListener('scroll', () => {
+  document.addEventListener('scroll', () => {
     const scrollY = window.scrollY;
-    
-    if(scrollY !== 0) {
-        background.style.backgroundPosition = `calc(50% + ${scrollY}px) calc(50% + ${scrollY}px)`;
+
+    if (scrollY !== 0) {
+      background.style.backgroundPosition = `calc(50% + ${scrollY}px) calc(50% + ${scrollY}px)`;
     } else {
-        background.style.backgroundPosition = '';
+      background.style.backgroundPosition = '';
     }
-});
+  });
 </script>
- <footer class="footer">
-    <div class="container">
-        <div class="row">
-            <div class="footer-col">
-                <h4 href="About Us.html">About Us</h4>
-               <ul>
-                <li><a href="#">Our Founder</a> </li>
-                <li><a href="#">Our Values</a> </li>
-                <li><a href="#">Our Privacy Policy</a> </li>
-                <li><a href="#">Our Services</a> </li>
-            </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Address</h4>
-                <h5>206 Canada Place, Liverpool Street, E12 1CL</h5>
-            </div>
-            <div class="footer-col">
-                <h4>Contact Us</h4>
-                <h5>Email us at: comms@furniche.com</h5>
-                <h5>Call us at: 01563385967</h5>
-                <ul>
-                    <li><a href="contactus\contact.html">Contact Us via our Website</a> </li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Follow us</h4>
-                <div class="social-links">
-                    <a href="https://en-gb.facebook.com/"><i class="fab fa-facebook - f"></i></a>
-                    <a href="https://twitter.com/?lang=en"><i class="fab fa-twitter"></i></a>
-                    <a href="https://uk.linkedin.com/"><i class="fab fa-linkedin - in"></i></a>
-                    <a href="https://github.com/"><i class="fab fa-github"></i></a>
-                    <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
-                  </div>
-            </div>
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="footer-col">
+        <h4 href="About Us.html">About Us</h4>
+        <ul>
+          <li><a href="#">Our Founder</a> </li>
+          <li><a href="#">Our Values</a> </li>
+          <li><a href="#">Our Privacy Policy</a> </li>
+          <li><a href="#">Our Services</a> </li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Address</h4>
+        <h5>206 Canada Place, Liverpool Street, E12 1CL</h5>
+      </div>
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <h5>Email us at: comms@furniche.com</h5>
+        <h5>Call us at: 01563385967</h5>
+        <ul>
+          <li><a href="contactus\contact.html">Contact Us via our Website</a> </li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Follow us</h4>
+        <div class="social-links">
+          <a href="https://en-gb.facebook.com/"><i class="fab fa-facebook - f"></i></a>
+          <a href="https://twitter.com/?lang=en"><i class="fab fa-twitter"></i></a>
+          <a href="https://uk.linkedin.com/"><i class="fab fa-linkedin - in"></i></a>
+          <a href="https://github.com/"><i class="fab fa-github"></i></a>
+          <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
         </div>
       </div>
     </div>
+  </div>
+  </div>
   </div>
 </footer>
 </body>

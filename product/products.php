@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../css/product.css">
-    <link href="../css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/product.css?v=<?php echo time(); ?>">
     <link href="css/style.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
