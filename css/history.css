@@ -46,7 +46,6 @@ ul {
   list-style: none;
 }
 
-/*
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -284,7 +283,7 @@ body {
   .review-details {
     flex-grow: 1;
   }  
-*/
+
 
 .footer {
   background-image: url("../Pictures for website/wood.png");
