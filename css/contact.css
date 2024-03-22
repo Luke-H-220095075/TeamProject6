@@ -15,6 +15,12 @@ position: relative;
 bottom: 40px;
 }
 
+.contactform{
+text-align: center;
+position: relative;
+left: 170px;
+}
+
 .header_one {
 position: relative;
 bottom: 198px;

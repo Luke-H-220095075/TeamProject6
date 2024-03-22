@@ -88,7 +88,9 @@
     <h2>Call</h2>
     <p>If we have not been able to answer your question through track your order or our FAQs, call us.</p>
     </div>
+    <br>
   </sectionn>
+  <div class = "contactform">
 <?php
     echo '<form class="contact-formm" method="post">';
     echo '<label for="name">Subject:</label>';
@@ -103,6 +105,7 @@
     require("view/contact.php");
     echo '</form>'
 ?>
+  </div>
       <script>
         var i;
         for (i = 0; i < 2; i++) {
