@@ -69,11 +69,12 @@
     <br>
     <br>
     <br>
-
+    <br>
     <strong>
       <h2>Order History</h2>
     </strong>
-
+    <br>
+    <br>
     <?php
     include 'connect.php';
     try {
