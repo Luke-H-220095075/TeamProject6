@@ -98,7 +98,7 @@ select {
   font-size: 14px;
 }
 
-label{
+label {
   padding: 10px;
 }
 
@@ -113,6 +113,7 @@ button {
   width: 150px;
 }
 
+
 input[type='submit'] {
   background-color: #4f4d62;
   color: #fff;
@@ -123,8 +124,6 @@ input[type='submit'] {
   margin-left: 100px;
   width: 150px;
 }
-
-.view
 
 .recently-viewed-container {
   margin-top: 20px;
@@ -153,7 +152,7 @@ input[type='submit'] {
 }
 
 .pagination .button {
-  background-color: #01ff12;
+  background-color: #1b2438;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -174,7 +173,6 @@ input[type='submit'] {
   flex-wrap: wrap;
   justify-content: space-around;
   width: 100%;
-
 }
 
 .recommendation-item {
@@ -206,10 +204,25 @@ input[type='submit'] {
   margin-top: 20px;
 }
 
+.order-buttons {
+  padding-bottom: 20px;
+}
+
 .order-again-button {
   background-color: #4f4d62;
   color: #fff;
-  margin-left: 650px;
+  margin-left: 0px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  width: 150px;
+}
+
+.view-details-button {
+  background-color: #4f4d62;
+  color: #fff;
+  margin-left: 100px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -219,10 +232,9 @@ input[type='submit'] {
 
 .review-form-container {
   max-width: 600px;
-  margin: 20px auto;
+  margin: 10px auto;
   background-color: #4f4d62;
   border: 1px solid #f5d5bb;
-  padding: 10px;
   color: #ffffff;
   border-radius: 10px;
 }
@@ -235,16 +247,18 @@ input[type='submit'] {
   padding-right: 100px;
 }
 
+#description {
+  color: #000000;
+}
+
 .review-form-container form {
   display: flex;
   flex-direction: column;
   align-items: right;
-  background-color:  #4f4d62;
-  padding-top: 10px;
+  background-color: #4f4d62;
 }
 
 .review-form-container label {
-  margin: 10px 0;
   font-size: 16px;
 }
 
@@ -252,7 +266,7 @@ input[type='submit'] {
 .review-form-container textarea {
   width: 100%;
   padding: 8px;
-  margin: 5px 0;
+  margin: 10px 0;
   font-size: 16px;
   border: 1px solid #958068;
   border-radius: 5px;
@@ -267,19 +281,37 @@ input[type='submit'] {
   border-radius: 5px;
   cursor: pointer;
   font-size: 18px;
-  padding-right: 20px;
 }
+
+label[for="description"] {
+  padding-top: 20px;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+}
+
+label[for="order_id"] {
+  padding-top: 20px;
+  padding-bottom: 10px;
+  margin-bottom: 0px;
+}
+
+label[for="rating"] {
+  padding-top: 20px;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+}
+
 .review-form-container input[type="submit"]:hover {
   background-color: #5e5c74;
 }
+
 
 .user-reviews-container {
   margin-top: 20px;
 }
 
 .user-review-item {
-  background-color: #f5d5bb;
-  border: 1px solid #4f4d62;
+  background-color: #5e5c74;
   padding: 15px;
   margin-top: 10px;
   margin-left: auto;
