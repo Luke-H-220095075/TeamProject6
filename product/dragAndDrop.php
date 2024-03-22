@@ -92,8 +92,8 @@
         <h2>Upload an image of your room to see how the furniture would look</h2>
                   </div>
                   <div class="image">
+                  <img src="" id="displayImg">
         <input type="file" id="inpimage">
-        <img src="" id="displayImg">
         <?php
         echo '<div id="drag1"> <img id="img1" src="../PicturesForDragAndDrop/'.$img.'"></div>'; ?> </div>
         <script>
