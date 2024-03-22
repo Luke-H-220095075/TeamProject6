@@ -99,6 +99,39 @@
 </div>
 
 </section>
+<div class="card">
+  <div class="card-header">
+    Design your home to be a bit more like you. 
+  </div>
+  <div class="card-body">
+    <blockquote class="blockquote mb-0">
+      <p>Let Furniche find your niche.</p>
+      <footer class="blockquote-footer">Lucky Muse <cite title="Source Title">CEO</cite></footer>
+    </blockquote>
+  </div>
+</div>
+<section>
+<div class="row">
+  <div class="col-sm-6 mb-3 mb-sm-0">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Learn more about Furniche</h5>
+        <p class="card-text">Learn ab</p>
+        <a href="contactview.php" class="btn btn-primary">Contact us</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">New to Furniche?</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
 <div class="home">
   <p>Design your home to be a bit more like you.</p>
 </div>
