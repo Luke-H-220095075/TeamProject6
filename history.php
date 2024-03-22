@@ -156,7 +156,7 @@ try {
             } else {
               echo "<p>currently unavailable available</p>";
             }
-            echo "<button class='  ' onclick='location.href=\"view_order.php?orderId=" . $row["orderId"] . "\"'>View Details</button>";
+            echo "<button class='view-details-button' onclick='location.href=\"view_order.php?orderId=" . $row["orderId"] . "\"'>View Details</button>";
             echo "</form></div>";
 
         }
