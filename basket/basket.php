@@ -153,9 +153,7 @@ if ($basketId != $mainbasketId) {
                 echo '<a href="../checkout.php"><button class="nnn">Checkout now</button></a>';
 
             }
-        } catch (PDOException $e) {
-            echo "Error: " . $e->getMessage();
-        }
+        
         echo "<br>";
 
         $sql = "SELECT price, quantity FROM products JOIN basketproducts ON products.productId = basketproducts.productId WHERE basketId = '.$basketId.'";
@@ -164,11 +162,7 @@ if ($basketId != $mainbasketId) {
         if ($result->rowCount() > 0) {
             while ($row = $result->fetch()) {
                 $basketcost = $basketcost + $row["quantity"] * $row["price"];
-            }
-            echo "<p>£" . $basketcost . " before discount</p>";
-        } else {
-            echo "0 results";
-        }
+            
 
 
 
@@ -192,12 +186,19 @@ if ($basketId != $mainbasketId) {
             echo '<div class="mmm"><a href="../product/products.php"><button>Add Products?</button></a></div>';
 
         }
+        }
+            echo "<p>£" . $basketcost . " before discount</p>";
+        } else {
+            echo "0 results";
+        }
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
         ?>
     </div>
 
     <script>
         function adjustQuantity(productId, change) {
-            alert(message successfully sent)
             var xhr = new XMLHttpRequest();
             xhr.open('POST', 'basket_quantity.php', true);
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -246,10 +247,12 @@ if ($basketId != $mainbasketId) {
                 window.location.reload();
             }, 20);
         }
-    </body>
-    <footer class="footer">
+        </script>
+        
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
   integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    </body>
+    <footer class="footer">
         <div class="container">
             <div class="row">
                 <div class="footer-col">
