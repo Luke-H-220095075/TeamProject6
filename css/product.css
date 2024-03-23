@@ -192,6 +192,7 @@ flex-wrap: wrap;
     width: 250px;
     height: 400px;
     align-items: center;
+    border-radius: 25%;
 }
 
 .product {
@@ -202,8 +203,21 @@ flex-wrap: wrap;
   align-items: center; 
   text-align: center;
   position: relative;
+  display: flex; 
+  flex-direction: column; 
 }
 
+.one {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap; 
+}
+
+.product-card { 
+  width: 300px; 
+  margin: 10px; 
+  text-align: left; 
+}
 
 .offerscode {
   min-height: 60vh;
@@ -233,12 +247,6 @@ flex-wrap: wrap;
 }
 
 
-.one {
-  display: grid;
-  border-radius: 25%;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  column-gap: 10px;
-}
 
 .my_img_2 {
     padding: 40px;
