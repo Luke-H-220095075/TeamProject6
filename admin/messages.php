@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/d4aa4c134e.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
         <title>User messages</title>
@@ -108,7 +109,7 @@ if (isset($_SESSION['user'])) {
                <!-- <span class="tooltip">Users</span>-->
             </li>
             <li>
-                <a href="#">
+                <a href="messages.php">
                     <i class="fa-solid fa-message"></i>
                     <span class="nav-item">Messages</span>
                 </a>
@@ -131,7 +132,7 @@ if (isset($_SESSION['user'])) {
 <!-- Header with filter and search-->
 <div class="table-header"style="background-color: #e2b489; padding-top: 10px;">
 <div class="container custom-background">
-<strong><h3>Pending Admin Requests</h3></strong> &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp;
+<strong><h3>Messages</h3></strong> &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp;
 
     <div class="row justify-content-end align-items-right">
    
@@ -144,19 +145,6 @@ if (isset($_SESSION['user'])) {
             </div>
         </div>
     </form>
-</div>
-       
-<div class="col-md-3">
-    <div class="input-group mb-3 custom-dropdown-toggle">
-        <div class="input-group-prepend">
-            <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="userDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">User Type</button>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" href="useradmin.php?admin=admin">Admin</a>
-                <a class="dropdown-item" href="useradmin.php?admin=customer">Customer</a>
-            </div>
-        </div>
-    </div>
-
 </div>
 </div>
 </div>
@@ -178,34 +166,23 @@ foreach ($messages->messages as $msg) {
     echo '<h3>'.$msg->username.'</h3></td>';
     echo '<td><h3>'.$msg->subject.'</h3></td>';
     echo '<td><h3>'.$msg->messagetext.'</h3></td>';
-// echo '<form  method="post">';
-// echo '<input type="hidden" name="user" value="'.$displayUsers[$i]->username.'"/input>';
-// echo '<button type="submit" name="approve" style="cursor: pointer; width: 50%; display: inline">Approve </button>';
-// echo '<form  method="post">';
-// echo '<input type="hidden" name="user" value="'.$displayUsers[$i]->username.'"/input>';
-// echo '<button type="submit" name="disapprove" style="cursor: pointer; width:50%; display: inline">Disapprove </button>';
-// echo '</form>
-echo '</tr>'; 
+    echo '<td><h3>'.$msg->email.'</h3></td>';
+    echo '<form method="post">';
+    echo '<input type="hidden" name="id" value="'.$msg->id.'"/input>';
+    echo '<button type="submit" name="reply" style="cursor: pointer; width: 50%; display: inline">Mark as replied</button>';
+    echo '</form>';
+    echo '</tr>'; 
  }
- if($_SERVER['REQUEST_METHOD'] == "POST"){
-    $user = new User($_POST['user'], null, null, null, null, null, null, null);
-    if(isset($_POST['approve'])){
-        if($user->updateAdmin()){
-           // echo '<script>location.reload();</script>';
+    
+    if(isset($_POST['reply'])){
+        $message = new Message($_POST['id'], null, null, null, null);
+        if($message->reply()){
+            header('Location: messages.php');
         }
         else{
         echo 'A problem occured, please try again later';
         }
     }
-    else if(isset($_POST['disapprove'])){
-        if($user->disapproveAdmin()){
-           // echo '<script>location.reload();</script>';
-        }
-    else{
-        echo 'A problem occured, please try again later';
-    }
-    }
-}
  ?>
 </tbody>
 </table>

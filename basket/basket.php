@@ -2,14 +2,25 @@
 <html>
 <?php
 session_start();
+include '../connect.php';
 if (!isset($_SESSION['userID'])) {
     echo '<a href="../loginview.php" style="position: fixed; left: 50%; top: 50%; transform: translate(-50%, -50%); font-family: Calibri,serif; font-size: xx-large">Please log in to view basket.</a>';
     die();
 }
-    include '../connect.php';
-    $userID = $_SESSION['userID'];
-    $basketId = $_SESSION['userID'];
-    $_SESSION["basketID"] = $basketId;
+$sql = "SELECT basketId FROM baskets WHERE userId = " . $_SESSION['userID'] . " AND currentUserBasket = 1";
+$result = $db->query($sql);
+$row = $result->fetch(PDO::FETCH_ASSOC);
+$mainbasketId = $row['basketId'];
+$basketId = $mainbasketId;
+if (isset ($_SESSION["basketID"])) {
+    $basketId = $_SESSION["basketID"];
+}
+$_SESSION["basketID"] = $mainbasketId;
+if ($basketId != $mainbasketId) {
+    $prevOrder = " in that order add to your basket?";
+} else {
+    $prevOrder = "";
+}
 ?>
 
 <head>
@@ -23,11 +34,11 @@ if (!isset($_SESSION['userID'])) {
 </head>
 
 <header>
-<section>
-    <div class="fixed-top">
-    <nav class="navbar">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="../index.php">Furniche</a>
+    <section>
+        <div class="fixed-top">
+            <nav class="navbar">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="../index.php">Furniche</a>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -73,7 +84,20 @@ if (!isset($_SESSION['userID'])) {
           </ul>
          </nav>
         </div>
-</section>
+        </nav>
+        <?php
+        if (isset ($_SESSION['user'])) {
+            echo '<li><a href="../customerprofile.php">' . $_SESSION['user'] . '</a>';
+            echo '<li><a href="basket.php">Basket</a></li>';
+        } else {
+            echo '<li><a href="../signup/signUpPage.php">Sign up</a></li>';
+            echo '<li><a href="../loginview.php">Login</a></li>';
+        }
+        ?>
+        </ul>
+        </nav>
+        </div>
+    </section>
 </header>
 
 
@@ -85,7 +109,7 @@ if (!isset($_SESSION['userID'])) {
         <h2>Your Basket</h2>
 
         <?php
-        
+        $_SESSION["basketID"] = $basketId;
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         try {
@@ -103,14 +127,19 @@ if (!isset($_SESSION['userID'])) {
                 echo '<div class="basket-items">';
                 while ($row = $stmtBasket->fetch(PDO::FETCH_ASSOC)) {
                     echo '<div class="basket-item" data-productId="' . $row['productId'] . '">';
-                    echo '<div class="item-image"><img src= "../Pictures%20for%20website/' . $row['imageName'] . '" " width="250" height="300" alt="' . $row['imageName']  . '"></img></div>';
+                    echo '<div class="item-image"><img src= "../Pictures%20for%20website/' . $row['imageName'] . '" " width="250" height="300" alt="' . $row['imageName'] . '"></img></div>';
                     echo '<div class="item-details">';
                     echo '<p><strong>' . $row['productName'] . '</strong></p>';
                     echo '<p>Price: £' . $row['price'] . '</p>';
                     echo '<div class="quantity-controls">';
-                    echo '<button onclick="adjustQuantity(' . $row['productId'] . ', -1)">-</button>';
-                    echo '<span> </span><span class="quantity">' . $row['quantity'] . '</span><span> </span>';
-                    echo '<button onclick="adjustQuantity(' . $row['productId'] . ', 1)">+</button>';
+                    if ($prevOrder == "") {
+                        echo '<button onclick="adjustQuantity(' . $row['productId'] . ', -1)">-</button>';
+                        echo '<span> </span><span class="quantity">' . $row['quantity'] .  '</span><span> </span>';
+                        echo '<button onclick="adjustQuantity(' . $row['productId'] . ', 1)">+</button>';
+                    }else{
+                        echo '<span> </span><span class="quantity">' . $row['quantity'] .  '</span>'.$prevOrder .'<span> </span>';
+                        echo '<button onclick="addQuantity(' . $row['productId'] . ')">+</button>';
+                    }
                     echo '</div>';
                     echo '</div>';
                     echo '</div>';
@@ -156,6 +185,7 @@ if (!isset($_SESSION['userID'])) {
         if (availability($db, $basketId)) {
             echo "<p>available</p>";
             echo '<a href="../checkout.php"><button class="checkout-button">checkout?</button></a>';
+
         } 
         else {
             echo "<p>Your basket is empty.</p>";
@@ -163,36 +193,59 @@ if (!isset($_SESSION['userID'])) {
 
         }
         ?>
-        </div>
+    </div>
 
-        <script>
-            function adjustQuantity(productId, change) {
+    <script>
+        function adjustQuantity(productId, change) {
+            alert(message successfully sent)
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', 'basket_quantity.php', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var quantityElement = document.querySelector('.basket-item[data-productId="' + productId + '"] .quantity');
+                    var newQuantity = parseInt(quantityElement.textContent) + change;
+                    quantityElement.textContent = newQuantity;
+
+                    if (newQuantity === 0) {
+                        var basketItem = document.querySelector('.basket-item[data-productId="' + productId + '"]');
+                        if (basketItem) {
+                            basketItem.remove();
+                        }
+                    }
+                }
+            }
+            xhr.send('product_id=' + productId + '&change=' + change);
+            setTimeout(function () {
+                window.location.reload();
+            }, 20);
+
+        }
+        function addQuantity(productId) {
+            var productId = productId;
+            var isConfirmed = confirm('Add Product to Basket?');
+            if (isConfirmed) {
                 var xhr = new XMLHttpRequest();
-                xhr.open('POST', 'basket_quantity.php', true);
+                xhr.open('POST', '../basket/basket_add.php', true);
                 xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
                 xhr.onreadystatechange = function () {
                     if (xhr.readyState === 4 && xhr.status === 200) {
-                        var quantityElement = document.querySelector('.basket-item[data-productId="' + productId + '"] .quantity');
-                        var newQuantity = parseInt(quantityElement.textContent) + change;
+                        alert('Product added to basket!');
+                        closeProductModal();
 
-                        quantityElement.textContent = newQuantity;
-
-                        if (newQuantity === 0) {
-                            var basketItem = document.querySelector('.basket-item[data-productId="' + productId + '"]');
-                            if (basketItem) {
-                                basketItem.remove();
-                            }
+                        var goToBasket = confirm('Proceed to Basket?');
+                        if (goToBasket) {
+                            $_SESSION["basketID"] = $mainbasketId;
+                            window.location.href = '../basket/basket.php';
                         }
                     }
                 };
-                xhr.send('product_id=' + productId + '&change=' + change);
-                setTimeout(function () {
-                    window.location.reload();
-                }, 20);
-                
+                xhr.send('product_id=' + productId);
             }
-        </script>
-
+            setTimeout(function () {
+                window.location.reload();
+            }, 20);
+        }
     </body>
     <footer class="footer">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
@@ -232,6 +285,7 @@ if (!isset($_SESSION['userID'])) {
                 </div>
             </div>
         </div>
-    </footer>
+    </div>
+</footer>
 
 </html>

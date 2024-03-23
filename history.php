@@ -88,6 +88,10 @@
     <br>
     <?php
     include 'connect.php';
+    
+    include "availability.php";
+    $_SESSION["basketID"] = null;
+
     try {
       $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -125,86 +129,96 @@
             $sorting
             LIMIT $offset, $ordersPerPage";
 
-      $stmt = $db->prepare($sql);
-      $stmt->execute([$userID]);
+        $stmt = $db->prepare($sql);
+        $stmt->execute([$userID]);
 
-      // code needed for drop down and the submit button
-      echo "<form method='get'>";
-      echo "<div style='text-align: center;'>";
-      echo "<label for='sort'>Sort by:</label>";
-      echo "<select name='sort' id='sort'>";
-      $options = [
-        'newest_order' => 'Newest Order',
-        'oldest_order' => 'Oldest Order',
-        'not_delivered' => 'Not Delivered',
-      ];
-      foreach ($options as $key => $label) {
-        $selected = ($key === $sortOption) ? 'selected' : '';
-        echo "<option value='$key' $selected>$label</option>";
-      }
-      echo "</select>";
-      echo "<input type='submit' value='Sort'>";
-      echo "</form>";
-
-      //Container for the orders and image of order
-      if ($stmt->rowCount() > 0) {
-        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-          echo "<div class='order-container'>";
-          echo "<img class='order-image' src='Pictures%20for%20website/orderimage.jpg' alt='Order Image'>";
-          echo "<div>";
-          echo "<p><strong>Order ID:</strong> " . $row["orderId"] . "</p>";
-          echo "<p><strong>Items Ordered:</strong> " . $row["itemCount"] . "</p>";
-          echo "<p><strong>Date Ordered:</strong> " . $row["dateAdded"] . "</p>";
-          echo "<p><strong>Date Delivered:</strong> " . ($row["deliveryDate"] ? $row["deliveryDate"] : "Not delivered yet") . "</p>";
-          echo "</div>";
-          echo "</div>";
-
-          echo "<div class='order-buttons'><form method='post'>";
-          include_once "availability.php";
-          if (availability($db, $row["basketId"])) {
-            echo "<button class='order-again-button  method='post' name='purchase' type='submit'>Order Again</button>";
-            if (isset($_POST['purchase'])) {
-              $_SESSION["basketID"] = $row["basketId"];
-              header('Location: checkout.php');
-            }
-          } else {
-            echo "<p>currently unavailable available</p>";
-          }
-          echo "<button class='view-details-button' onclick='location.href=\"view_order.php?orderId=" . $row["orderId"] . "\"'>View Details</button>";
-          echo "</form></div>";
+        // code needed for drop down and the submit button
+        echo "<form method='get'>";
+        echo "<div style='text-align: center;'>";
+        echo "<label for='sort'>Sort by:</label>";
+        echo "<select name='sort' id='sort'>";
+        $options = [
+            'newest_order' => 'Newest Order',
+            'oldest_order' => 'Oldest Order',
+            'not_delivered' => 'Not Delivered',
+        ];
+        foreach ($options as $key => $label) {
+            $selected = ($key === $sortOption) ? 'selected' : '';
+            echo "<option value='$key' $selected>$label</option>";
         }
-      } else {
-        echo "<p>No results</p>";
-      }
+        echo "</select>";
+        echo "<input type='submit' value='Sort'>";
+        echo "</form>";
 
-      // Determines how many pages are required with the 6 order per page limit
+        //Container for the orders and image of order
+        if ($stmt->rowCount() > 0) {
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                echo "<div class='order-container'>";
+                echo "<img class='order-image' src='Pictures%20for%20website/orderimage.jpg' alt='Order Image'>";
+                echo "<div>";
+                echo "<p><strong>Order ID:</strong> " . $row["orderId"] . "</p>";
+                echo "<p><strong>Items Ordered:</strong> " . $row["itemCount"] . "</p>";
+                echo "<p><strong>Date Ordered:</strong> " . $row["dateAdded"] . "</p>";
+                echo "<p><strong>Date Delivered:</strong> " . ($row["deliveryDate"] ? $row["deliveryDate"] : "Not delivered yet") . "</p>";
+                echo "</div>";
+                echo "</div>";
 
-      $totalOrdersSql = "SELECT COUNT(DISTINCT o.orderId) AS totalOrders
+            echo "<div class='order-buttons'><form method='post'>";
+                if (availability($db, $row["basketId"])) {
+                    
+                    if (isset ($_POST['purchase'.$row["orderId"]])) {
+                        $_SESSION["basketID"] = $row["basketId"];
+                        header('Location: checkout.php');
+                    }
+                    
+                    if (isset ($_POST['Details'.$row["orderId"]])) {
+                        $_SESSION["basketID"] = $row["basketId"];
+                        header('Location: basket/basket.php');
+                    }
+                    echo "<button class='order-again-button  method='post' name='purchase".$row["orderId"]."' type='submit'>Order Again</button>";
+                    echo "<button class='  '  method='post' name='Details".$row["orderId"]."' type='submit'>View Details</button>";
+                } else {
+                    echo "<p>currently unavailable available</p>";
+                }
+                echo "</form></div>";
+
+            }
+
+        } else {
+            echo "<p>No results</p>";
+        }
+
+        // Determines how many pages are required with the 6 order per page limit
+    
+        $totalOrdersSql = "SELECT COUNT(DISTINCT o.orderId) AS totalOrders
    FROM orders o
    JOIN basketproducts b ON o.basketId = b.basketId
    WHERE o.userId = ?";
-      $totalOrdersStmt = $db->prepare($totalOrdersSql);
-      $totalOrdersStmt->execute([$userID]);
-      $totalOrders = $totalOrdersStmt->fetchColumn();
+        $totalOrdersStmt = $db->prepare($totalOrdersSql);
+        $totalOrdersStmt->execute([$userID]);
+        $totalOrders = $totalOrdersStmt->fetchColumn();
 
-      $totalPages = ceil($totalOrders / $ordersPerPage);
+        $totalPages = ceil($totalOrders / $ordersPerPage);
 
-      // Creation of pages and page numbers
-      echo "<div class='pagination'>";
-      for ($pageNum = 1; $pageNum <= $totalPages; $pageNum++) {
-        $activeClass = ($pageNum == $page) ? 'active' : '';
-        $specialClass = ($pageNum <= 2) ? 'special-page' : '';
-        echo "<a class='button $activeClass $specialClass' href='?page=$pageNum&sort=$sortOption'>$pageNum</a>";
-      }
-      echo "</div>";
+        // Creation of pages and page numbers
+        echo "<div class='pagination'>";
+        for ($pageNum = 1; $pageNum <= $totalPages; $pageNum++) {
+            $activeClass = ($pageNum == $page) ? 'active' : '';
+            $specialClass = ($pageNum <= 2) ? 'special-page' : '';
+            echo "<a class='button $activeClass $specialClass' href='?page=$pageNum&sort=$sortOption'>$pageNum</a>";
+        }
+        echo "</div>";
 
-      // Recommendations of products based of previous purchases
-      $recommendationSql = "SELECT p.productName, p.imageName
+        // Recommendations of products based of previous purchases
+        $recommendationSql = "SELECT p.productName, p.imageName
 FROM products p
 JOIN basketproducts b ON p.productId = b.productId
 JOIN orders o ON b.basketId = o.basketId
 WHERE o.userId = ?
 LIMIT 6"; //amount of recommendations
+    
+        $recommendationStmt = $db->prepare($recommendationSql);
+        $recommendationStmt->execute([$userID]);
 
       $recommendationStmt = $db->prepare($recommendationSql);
       $recommendationStmt->execute([$userID]);
@@ -305,13 +319,6 @@ LIMIT 6"; //amount of recommendations
     }
 
     ?>
-    <script>
-      //js needed to order the items from an order again
-      function orderAgain(orderId) {
-        // Redirects users to the order page with the selected order ID
-        window.location.href = 'order_page.php?orderId=' + orderId;
-      }
-    </script>
 
     <footer class="footer">
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
