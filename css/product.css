@@ -205,6 +205,8 @@ flex-wrap: wrap;
   position: relative;
   display: flex; 
   flex-direction: column; 
+  flex-wrap: wrap;
+  padding: 8px;
 }
 
 .one {
@@ -296,7 +298,8 @@ th {
     height: 200px;
     object-fit: fill;
     cursor: pointer;
-    border-radius: 25%;
+    border-radius: 25px;
+    gap: 10px;
 }
 
 .product-image {

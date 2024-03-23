@@ -41,6 +41,16 @@
   align-items: center;
 }
 
+.dropdown-menu {
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.carousel-inner{
+  height: 100vh;
+}
+
 .br{
   background-image: url("../Pictures for website/header-new-2.png");
 }
@@ -109,7 +119,8 @@ font-weight: 600;
       height: 300px;
       object-fit: fill;
       cursor: pointer;
-      border-radius: 25%;
+      border-radius: 25px;
+      gap: 10px;
   }
 
   .cardd {
