@@ -8,12 +8,12 @@ class ViewMessages {
     }
     public function viewMessages(){
         include("Message.php");
-        include("connect.php");
+        include("../connect.php");
         try{
             $rows=$db->query("SELECT inquiries.inquiryDate, inquiries.subject, inquiries.message, users.username FROM inquiries INNER JOIN users ON inquiries.userId = users.userId"); 
             for($i=0; $i<$rows->rowCount(); $i++){
                $row = $rows->fetch();
-               $message = new Message($row['inquiries.subject'], $row['inquiries.message'], $row['users.username']);
+               $message = new Message($row['subject'], $row['message'], $row['username']);
                $this->messages[] = $message;
             }
         } catch(PDOException $ex){
