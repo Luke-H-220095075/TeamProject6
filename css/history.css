@@ -103,7 +103,7 @@ label {
 }
 
 button {
- /* background-color: #4f4d62;*/
+  background-color: #4f4d62;
   background-color: chartreuse;
   color: #fff;
   padding: 8px;
@@ -166,8 +166,7 @@ input[type='submit'] {
   background-color: #4f4d62;
 }
 
-
-.recommendations {
+.recommendations-container {
   background-color: #f5d5bb;
   text-align: center;
   display: flex;
@@ -177,26 +176,27 @@ input[type='submit'] {
   padding: 20px 0; /* Add some padding around the entire container */
 }
 
-.recommendation-item {
+.recommendation-card {
   text-align: center;
   margin-bottom: 10px;
-  max-width: calc(33.33% - 20px);
-  background-color: #fff; /* Make the card's background stand out */
-  border: 1px solid #ddd; /* Subtle border */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
-  border-radius: 10px; /* Rounded corners for a softer look */
-  overflow: hidden; /* Ensure content fits nicely */
+  max-width: calc(33.33% - 20px); 
+  background-color: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
 }
 
-.recommendation-item img {
-  width: 10%;
-  height: auto;
-  max-height: 10px;
-  border-bottom: 1px solid #ddd; /* Separate image from text */
+.recommendation-card img {
+  width: 100%; 
+  height: auto; 
+  max-height: 395px; 
+  object-fit: cover; 
 }
 
-.recommendation-item p {
+.recommendation-card p {
   color: #3e2723;
+  background-color: green;
   margin-top: 5px;
   padding: 10px;
   background-color: #f0e5d8; /* Slightly different background for the text */
