@@ -187,8 +187,8 @@
               margin-top: 30px;
               margin-bottom: 65px;
               padding: 15px;
-              background-color: #d9baa0;
-              border: 1px solid #ddd;
+              background-color: #e9dbc7;
+              border: 1px solid #cec3b4;
               box-shadow: 0 2px 4px rgba(0,0,0,0.1);
           }
           .item-image img {
@@ -220,6 +220,7 @@
               border: 1px solid #ddd;
               background-color: #ecebeb;
               cursor: pointer;
+              border-radius: 6px;
           }
           .quantity-controls span {
               min-width: 10px;
