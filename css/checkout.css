@@ -1,7 +1,8 @@
 body {
     font-family: sans-serif;
-    background-color: #f1c095db;
+    background-color: #f1c095db !important;
     color: #312e2e;
+    align-items: center;
 }
 
 
@@ -14,12 +15,13 @@ body {
 .contact-shipping, .order-summary {
     background-color: #f5d5bb;
     padding: 20px;
-    border-radius: 4px;
+    border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .contact-shipping {
     width: 60%;
+    margin-left: 30px;
 }
 
 .input-container {
@@ -32,6 +34,7 @@ body {
     width: 30%;
     position: sticky;
     top: 20px;
+    margin-right: 30px;
 }
 
 .contact-shipping section {
@@ -42,15 +45,13 @@ body {
     border-bottom: 1px solid #555353;
     padding-bottom: 10px;
     margin-bottom: 20px;
-    
-    
 }
 
 
 input[type="name"] {
     width: 80%;
     height: 27px;
-    padding: 10px;
+    padding: 20px;
     margin: 20px 0;
     border: 1px solid #ddd;
     border-radius: 4px;
@@ -59,7 +60,7 @@ input[type="name"] {
 input[type="text"] {
     width: 97%;
     height: 27px;
-    padding: 10px;
+    padding: 20px;
     margin: 20px 0;
     border: 1px solid #ddd;
     border-radius: 4px;
@@ -84,15 +85,14 @@ select[name="country"]{
     text-align: center;
     height: 85px;
     width: 100%;
-    font-size: 20px;
-    
+    font-size: 20px;    
 }
 button {
     width: 47%;   
     padding: 10px;
     background-color: #5e2ced;
     border: none;
-    border-radius: 4px;
+    border-radius: 10px !important;
     color: white;
     cursor: pointer;
     margin-top: 25px; 
