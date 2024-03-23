@@ -8,154 +8,43 @@
 }
 
 
-.information{
-align-items: center;
-text-align: center;
-position: relative;
-bottom: 40px;
-}
 
-.header_one {
-position: relative;
-bottom: 198px;
-right: 15px;
-}
+.information { 
+  display: flex; 
+  flex-wrap: wrap; 
+  justify-content: space-between; 
+  align-items: center; 
+  text-align: center; 
+} 
 
-.description_one {
-position: relative;
-bottom: 160px;
-right: 15px;
-}
+.grid1 { 
+  flex-basis: 30%; 
+  margin-bottom: 20px; 
+} 
 
-.header_two {
-  position: relative;
-  bottom: 198px;
-  right: 15px;
-  }
-  
-.description_two {
-  position: relative;
-  bottom: 160px;
-  right: 15px;
-  }
+.FAQs { 
+  flex-basis: 20%; 
+  margin-bottom: 20px; 
+} 
 
-.lorry {
-position: relative;
-left: 30px;
-}
+.chat { 
+  flex-basis: 20%; 
+  margin-bottom: 20px; 
+} 
 
-.lorrytext {
-  position: relative; 
-  bottom:50px;
-}
+.phone { 
+  flex-basis: 20%; 
+  margin-bottom: 20px; 
+} 
 
-.header_one{
-position: relative;
-bottom: 305px;
-}
+.lorry, .FAQs, .chat, .phone { 
+  width: 70px; 
+  height: 70px; 
+} 
 
-.description_one{
-position: relative;
-bottom: 210px;
-}
-
-.FAQs{
-  position: relative;
-  right: 225px;
-  bottom: 450px;
-}
-
-.FAQstext{
-  position: relative; 
-  bottom: 440px;
-  right: 220px;
-}
-
-.header_two{
-  position: relative;
-  bottom: 565px;
-  right: 220px;
-  }
-  
-.description_two{
-  position: relative;
-  bottom: 600px;
-  left: 260px;
-  }
-
-.chat{
-  position: relative;
-  left: 470px;
-  bottom: 700px;
-}
-
-.chattext{
-  position: relative;
-  left: 445px;
-  bottom: 690px;
-}
-
-.header_three{
-position: relative;
-bottom: 815px;
-left: 510px;
-}
-    
-.description_three{
-position: relative;
-bottom: 850px;
-left: 800px;
- }
-
-.phone {
-  position: relative;
-  left: 470px;
-  bottom: 900px;
-}
-
-.phonetext{
-  position: relative;
-  left: 445px;
-  bottom: 890px;
-}
-
-.header_four{
-  position: relative;
-  left: 525px;
-  bottom: 1015px;
-}
-      
-.description_four{
-  position: relative;
-  left: 800px;
-  bottom: 1055px;
-}
-
-.endtext{
-  position: relative;
-  bottom: 800px;
-}
-
-.grid1 {
-margin: 20px auto;
-width:800px;
-height:800px;
-display:grid;
-grid-template-columns: 300px 300px;
-grid-row: auto auto;
-grid-column-gap: 100px;
-grid-row-gap: 10px;
-}
-
-.grid2 {
-margin: 20px auto;
-width:800px;
-height:800px;
-display:grid;
-grid-template-columns: 300px 300px;
-grid-row: auto auto;
-grid-column-gap: 100px;
-grid-row-gap: 100px;
+.lorrytext, .FAQstext, .chattext, .phonetext { 
+  width: 150px; 
+  margin: 0 auto; 
 }
 
 .my_img{
@@ -163,19 +52,56 @@ grid-row-gap: 100px;
   height: 100%;
   }
 
-.who_are{
-background-color: #f5d5bb;
-display: grid;
-align-items: center; 
-grid-template-columns: 1fr 1fr;
-column-gap: 10px;
-text-align: center;
-}
-
 .dropdowns {
   text-align: center;
 }
 
+.cont-form{
+  background-color: #f5d5bb;
+}
+.contact-formm { 
+  width: 70%; 
+  margin: 0 auto; 
+  height: 50%;
+} 
+
+.contact-formm label { 
+  display: block; 
+  margin-bottom: 5px; 
+} 
+
+.contact-formm input, .contact-formm textarea { 
+  width: 100%; 
+  padding: 10px; 
+  margin-bottom: 10px; 
+  display: block; 
+} 
+
+.contact-formm button { 
+  padding: 10px 20px; 
+  background-color: #F5D5BB; 
+  color: #fff; border: 
+  none; border-radius: 5px; 
+  cursor: pointer; 
+} 
+
+.contact-formm button:hover { 
+  background-color: #F5D5BB; 
+} 
+
+.contact-formm a { 
+  padding: 10px 20px; 
+  background-color: #F5D5BB; 
+  color: #fff; 
+  border: none; 
+  border-radius: 5px; 
+  cursor: pointer; 
+  text-decoration: none; 
+} 
+
+.contact-formm a:hover { 
+  background-color: #F5D5BB; 
+}
 .contact{
 /* background-color: #4f4d62; */
 background-image: url('../Pictures for website/Contact Us Form Background.png');
@@ -192,7 +118,7 @@ height: 90vh;
 
 .container1{
 text-align: center;
-font-size: 30px;
+background-color: #f5d5bb;
 }
 
 .location {
@@ -213,6 +139,7 @@ padding: 20px;
 width: 80%;
 align-items: center;
 }
+
 
 h1 {
 font-size: 32px;
