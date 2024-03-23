@@ -194,7 +194,6 @@ if ($basketId != $mainbasketId) {
 
     <script>
         function adjustQuantity(productId, change) {
-            alert(message successfully sent)
             var xhr = new XMLHttpRequest();
             xhr.open('POST', 'basket_quantity.php', true);
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
