@@ -153,9 +153,7 @@ if ($basketId != $mainbasketId) {
                 echo '<a href="../checkout.php"><button class="nnn">Checkout now</button></a>';
 
             }
-        } catch (PDOException $e) {
-            echo "Error: " . $e->getMessage();
-        }
+        
         echo "<br>";
 
         $sql = "SELECT price, quantity FROM products JOIN basketproducts ON products.productId = basketproducts.productId WHERE basketId = '.$basketId.'";
@@ -164,11 +162,7 @@ if ($basketId != $mainbasketId) {
         if ($result->rowCount() > 0) {
             while ($row = $result->fetch()) {
                 $basketcost = $basketcost + $row["quantity"] * $row["price"];
-            }
-            echo "<p>£" . $basketcost . " before discount</p>";
-        } else {
-            echo "0 results";
-        }
+            
 
 
 
@@ -191,6 +185,14 @@ if ($basketId != $mainbasketId) {
             echo "<p>Your basket is empty.</p>";
             echo '<div class="mmm"><a href="../product/products.php"><button>Add Products?</button></a></div>';
 
+        }
+        }
+            echo "<p>£" . $basketcost . " before discount</p>";
+        } else {
+            echo "0 results";
+        }
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
         }
         ?>
     </div>
