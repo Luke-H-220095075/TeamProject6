@@ -121,7 +121,7 @@ try {
             echo "<div class='order-buttons'><form method='post'>";
                 if (availability($db, $row["basketId"])) {
                     echo "<button class='order-again-button  method='post' name='purchase".$row["orderId"]."' type='submit'>Order Again</button>";
-                    if (isset ($_POST['purchase'.$row["basketId"]])) {
+                    if (isset ($_POST['purchase'.$row["orderId"]])) {
                         $_SESSION["basketID"] = $row["basketId"];
                         header('Location: checkout.php');
                     }
