@@ -165,16 +165,18 @@
 
             echo "<div class='order-buttons'><form method='post'>";
                 if (availability($db, $row["basketId"])) {
-                    echo "<button class='order-again-button  method='post' name='purchase".$row["orderId"]."' type='submit'>Order Again</button>";
+                    
                     if (isset ($_POST['purchase'.$row["orderId"]])) {
                         $_SESSION["basketID"] = $row["basketId"];
                         header('Location: checkout.php');
                     }
-                    echo "<button class='  '  method='post' name='Details".$row["orderId"]."' type='submit'>View Details</button>";
+                    
                     if (isset ($_POST['Details'.$row["orderId"]])) {
                         $_SESSION["basketID"] = $row["basketId"];
                         header('Location: basket/basket.php');
                     }
+                    echo "<button class='order-again-button  method='post' name='purchase".$row["orderId"]."' type='submit'>Order Again</button>";
+                    echo "<button class='  '  method='post' name='Details".$row["orderId"]."' type='submit'>View Details</button>";
                 } else {
                     echo "<p>currently unavailable available</p>";
                 }
