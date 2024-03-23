@@ -1,19 +1,16 @@
+<?php ob_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    
-    <script src="https://kit.fontawesome.com/d4aa4c134e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-        <title>FurnicheDashboard</title>
-</head>   
-
-
-
+        <title>User messages</title>
+</head>
 <header>
-<a href="../index.php" style="color: inherit; text-decoration: none">Furniche <i class="fa-solid fa-bars" id="togglebtn"></i></a>
+<span>Furniche <i class="fa-solid fa-bars" id="togglebtn"></i></span>
 
 <?php
 include '../connect.php';
@@ -51,6 +48,8 @@ $totalPending = getTotalCount($db, "orders", "WHERE `deliveryStatus` = 'Pending 
             </div>
            
             <li class="active">
+                
+
             <?php
 
 if (isset($_SESSION['user'])) {
@@ -109,7 +108,7 @@ if (isset($_SESSION['user'])) {
                <!-- <span class="tooltip">Users</span>-->
             </li>
             <li>
-                <a href="messages.php">
+                <a href="#">
                     <i class="fa-solid fa-message"></i>
                     <span class="nav-item">Messages</span>
                 </a>
@@ -125,67 +124,89 @@ if (isset($_SESSION['user'])) {
 
             </li>
         </ul>
-
    
-    </section>
+    </section> 
+    <div class="info-table">
 
-    <main>
-       <br><br> <h1>Welcome Admin! </h1>
-        <div class="kpi-section">
-    <div class="kpi-container">
-        <div class="kpi-box">
-        <i class="fa-solid fa-users"></i>
-            <div class="text">
-                <h3>Total Users</h3>
-                <p><?php echo $totalUsers; ?></p>
+<!-- Header with filter and search-->
+<div class="table-header"style="background-color: #e2b489; padding-top: 10px;">
+<div class="container custom-background">
+<strong><h3>Pending Admin Requests</h3></strong> &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp;
+
+    <div class="row justify-content-end align-items-right">
+   
+    <div class="col-md-6">
+    <form method="GET" action="">
+        <div class="input-group mb-3 custom-search-bar">
+            <input type="text" class="form-control" placeholder="Search..." aria-label="Search..." aria-describedby="search-button" name="search">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="submit" id="search-button"><i class="fa-solid fa-magnifying-glass"></i></button>
             </div>
         </div>
-
-        <div class="kpi-box">
-        <i class="fa-solid fa-box"></i>
-            <div class="text">
-                <h3>Total Orders</h3>
-                <p><?php echo $totalOrders; ?></p>
+    </form>
+</div>
+       
+<div class="col-md-3">
+    <div class="input-group mb-3 custom-dropdown-toggle">
+        <div class="input-group-prepend">
+            <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="userDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">User Type</button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="useradmin.php?admin=admin">Admin</a>
+                <a class="dropdown-item" href="useradmin.php?admin=customer">Customer</a>
             </div>
         </div>
-
-        <div class="kpi-box">
-        <i class="fa-solid fa-spinner"></i>
-            <div class="text">
-                <h3>Total Pending</h3>
-                <p><?php echo $totalPending; ?></p>
-            </div>
-        </div>
-
-        
     </div>
-</div>
 
-<div class="charts-section">
- <!--   <div class="charts-box">
-    <h2 class="chart-title"> Product Breakdown</h2>
-    <div id="bar-chart"></div>
--->
 </div>
-
-<div class="charts-box">
-    <h2 class="chart-title"> Orders Breakdown</h2>
-    <div id="area-chart"></div>
-  </div>
+</div>
 </div>
 </div>
 
-
-      
-
-
-</main>
-
-</div>
-
-<!-- ApexCharts and our own Javascript file -->
-<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.46.0/apexcharts.min.js" integrity="sha512-S0o4cCUyDGDTT7LdYR0skjjZ47xBay7KYorwWlevl+/7mADWHZhklWMLvoJprbKALVNpwFacL7VZAgjI3Ga2Rg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
- <script src="script.js"></script>
-</body>
-</html>
+    <table>
+<tbody>
+    <?php 
+//display users to approve
+include("../model/ViewMessages.php");
+$messages = new ViewMessages();
+$messages->viewMessages();
+// $displayUsers = $messages->users;
+if(count($messages->messages) == 0){
+echo 'No messages';
+}
+foreach ($messages->messages as $msg) {
+    echo '<tr><td>';
+    echo '<h3>'.$msg->username.'</h3></td>';
+    echo '<td><h3>'.$msg->subject.'</h3></td>';
+    echo '<td><h3>'.$msg->messagetext.'</h3></td>';
+// echo '<form  method="post">';
+// echo '<input type="hidden" name="user" value="'.$displayUsers[$i]->username.'"/input>';
+// echo '<button type="submit" name="approve" style="cursor: pointer; width: 50%; display: inline">Approve </button>';
+// echo '<form  method="post">';
+// echo '<input type="hidden" name="user" value="'.$displayUsers[$i]->username.'"/input>';
+// echo '<button type="submit" name="disapprove" style="cursor: pointer; width:50%; display: inline">Disapprove </button>';
+// echo '</form>
+echo '</tr>'; 
+ }
+ if($_SERVER['REQUEST_METHOD'] == "POST"){
+    $user = new User($_POST['user'], null, null, null, null, null, null, null);
+    if(isset($_POST['approve'])){
+        if($user->updateAdmin()){
+           // echo '<script>location.reload();</script>';
+        }
+        else{
+        echo 'A problem occured, please try again later';
+        }
+    }
+    else if(isset($_POST['disapprove'])){
+        if($user->disapproveAdmin()){
+           // echo '<script>location.reload();</script>';
+        }
+    else{
+        echo 'A problem occured, please try again later';
+    }
+    }
+}
+ ?>
+</tbody>
+</table>
+ 
