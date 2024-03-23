@@ -271,6 +271,8 @@ function purchase($db, $basketId)
   <div class="container">
     <div class="row">
       <div class="footer-col">
+      <br>
+      <br>
         <h4 href="About Us.html">About Us</h4>
         <ul>
           <li><a href="#">Our Founder</a> </li>
