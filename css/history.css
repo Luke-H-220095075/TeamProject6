@@ -57,6 +57,7 @@ label {
 
 button {
   background-color: #4f4d62;
+  background-color: chartreuse;
   color: #fff;
   padding: 8px;
   border: none;
@@ -118,42 +119,49 @@ input[type='submit'] {
   background-color: #4f4d62;
 }
 
-
-.recommendations {
+.recommendations-container {
   background-color: #f5d5bb;
   text-align: center;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  width: 100%;
+  gap: 20px; 
+  padding: 20px 0; 
+  align-items: stretch;
 }
 
-.recommendation-item {
+.recommendation-card {
   text-align: center;
   margin-bottom: 10px;
-  max-width: calc(33.33% - 20px);
+  max-width: calc(33.33% - 20px); 
+  background-color: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
 }
 
-
-.recommendation-item img {
-  width: 100%;
-  height: auto;
-  max-height: 400px;
+.recommendation-card img {
+  width: 100%; 
+  height: auto; 
+  max-height: 395px; 
+  object-fit: cover; 
 }
 
-.recommendation-item p {
+.recommendation-card p {
   color: #3e2723;
   margin-top: 5px;
-  border: 1px solid #4f4d62;
   padding: 10px;
+  background-color: #f0e5d8; 
+  margin: 0; 
 }
 
 .recommendations-title {
-  background-color: #f0e5d8;
-  padding-top: 15px;
+  background-color: #f5d5bcff;
   text-align: center;
   font-size: 24px;
   color: #3e2723;
+  padding: 10px;
   margin-top: 20px;
 }
 
@@ -184,9 +192,9 @@ input[type='submit'] {
 }
 
 .review-form-container {
-  max-width: 600px;
+  max-width: 800px;
   margin: 10px auto;
-  background-color: #4f4d62;
+  background-color: #4f4d62; 
   border: 1px solid #f5d5bb;
   color: #ffffff;
   border-radius: 10px;
@@ -197,7 +205,7 @@ input[type='submit'] {
   color: #4f4d62;
   background-color: #4f4d62;
   align-items: left;
-  padding-right: 100px;
+  padding-right: 200px;
 }
 
 #description {
@@ -261,6 +269,7 @@ label[for="rating"] {
 
 .user-reviews-container {
   margin-top: 20px;
+  max-width: 800px;
 }
 
 .user-review-item {

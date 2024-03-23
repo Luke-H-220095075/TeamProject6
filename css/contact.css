@@ -82,8 +82,17 @@ background-color: #f5d5bb;
 }
 
 .location {
+  position: relative;
+  bottom: 700px;
   width: 100%;
   background-color: #f5d5bb;
+}
+
+.woodbackground {
+  position: relative;
+  /* left: 500px; */
+  bottom: 450px;
+  width: 100%;
 }
 
 .locaction iframe {

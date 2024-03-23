@@ -212,11 +212,13 @@ LIMIT 6"; //amount of recommendations
       echo "<div class='recommendations-title'>Recommendations</div>";
 
       if ($recommendationStmt->rowCount() > 0) {
-        echo "<div class='recommendations'>";
+        echo "<div class='recommendations-container'>";
         while ($recommendationRow = $recommendationStmt->fetch(PDO::FETCH_ASSOC)) {
-          echo "<div class='recommendation-item'>";
-          echo "<img src='Pictures%20for%20website/" . htmlspecialchars($recommendationRow['imageName']) . "' alt='" . htmlspecialchars($recommendationRow['imageName']) . "'>";
-          echo "<p>" . htmlspecialchars($recommendationRow['productName']) . "</p>";
+          echo "<div class='recommendation-card'>";
+          echo "<img class='recommendation-image' src='Pictures%20for%20website/" . htmlspecialchars($recommendationRow['imageName']) . "' alt='" . htmlspecialchars($recommendationRow['productName']) . "'>";
+          echo "<div class='recommendation-info'>";
+          echo "<p class='recommendation-name'>" . htmlspecialchars($recommendationRow['productName']) . "</p>";
+          echo "</div>"; 
           echo "</div>";
         }
         echo "</div>";
