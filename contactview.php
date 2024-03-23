@@ -210,7 +210,7 @@
           referrerpolicy="no-referrer-when-downgrade"></iframe>
       </section>
 
-      <img src = "Pictures for website\Light wood background.jpg" class = "woodbackground">
+      <!-- <img src = "Pictures for website\Light wood background.jpg" class = "woodbackground"> -->
 
       </div>
 
