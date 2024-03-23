@@ -111,7 +111,6 @@ function purchase($db, $basketId)
               </li>
 
               <?php
-              session_start();
               if (isset ($_SESSION['user'])) {
                 echo '<li class="nav-item"><a class="nav-link" href="customerprofile.php">' . $_SESSION['user'] . '</a></li>';
                   echo '<li class="nav-item"><a class="nav-link" href="logout.php" >Logout</a></li>';
