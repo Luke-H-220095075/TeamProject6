@@ -1,122 +1,64 @@
- * {
-   box-sizing: border-box;
-   margin: 0;
-   padding: 0;
-   box-sizing: border-box;
-   font-family: "enra-semi-variable", sans-serif;
-   font-variation-settings: "wght" 400;
- }
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-
- .contact-col {
-   flex-basis: 48%;
-   margin-bottom: 20px;
-   font-size: 30px;
- }
-
- .contact-col div {
-   display: flex;
-   align-items: center;
-   margin-bottom: 30px;
- }
-
- .contact-col div .fa {
-   font-size: 30px;
-   color: white;
- }
-
- .contact-col div h5 {
-   font-size: 300px;
-   margin-bottom: 5px;
-   color: white;
-   font-weight: 400;
- }
-
- .my_img {
-   width: 100%;
-   height: 100%;
- }
-
-
-.profile1 {
-  background-color: #4f4d62;
-  color: #f5d5bb;
-  display: grid;
-  gap: 20px;
-  padding: 20px;
-  border-radius: 25px;
-  margin: 20px;
-  width: 80%;
+section {
   display: flex;
   justify-content: center;
-  text-align: center;
-  padding-right: 20px;
-  }
+  align-items: center;
+  padding: 20px;
+  background-image: url("../Pictures for website/cate-products.png");
+}
 
-  .change {
-    width: 30%;
-    margin-bottom: 20px;
-    font-size: 30px;
-  }
-  
-
- /* Profile Section */
- .profile {
-  height: 50%;
+.profile {
   width: 80%;
-   background-color: #4f4d62;
-   color: #f5d5bb;
-   display: grid;
-   grid-template-columns: 1fr 2fr;
-   gap: 20px;
-   padding: 20px;
-   border-radius: 8px;
-   margin: 20px;
-   align-items: start;
- }
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 10px;
+}
 
- /* Form inside Profile Section */
- .profile form {
-   display: grid;
-   gap: 10px;
-   padding: 20px;
-   background: rgba(255, 255, 255, 0.1);
-   border-radius: 8px;
- }
+.my_img {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  border-radius: 50%;
+}
 
- .profile form input[type="text"],
- .profile form input[type="email"],
- .profile form input[type="number"],
- .profile form input[type="address"] {
-   width: 100%;
-   padding: 10px;
-   border: 2px solid #ddd;
-   border-radius: 4px;
-   background-color: #ffffff;
-   color: #333;
- }
+.contact-col {
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+}
 
- .profile form input[type="submit"] {
-   cursor: pointer;
-   background-color: #f5d5bb;
-   color: #4f4d62;
-   border: none;
-   border-radius: 4px;
-   padding: 10px 20px;
-   transition: background-color 0.3s ease;
- }
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="address"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
 
+button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background-color: #f5d5bb;
+  color: #fff;
+  border: black;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
 
- .profile form input[type="submit"]:hover{
-  background-color: #e4b499;
- }
-
- /* Styling Checkboxes */
- .profile form label {
-   display: inline-block;
-   margin-right: 10px;
- }
-
- .profile form input[type="checkbox"] {
-   margin-right: 5px;
- }
+button[type="submit"]:hover {
+  background-color: #f5d5bb;
+}

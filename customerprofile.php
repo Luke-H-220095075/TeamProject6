@@ -84,8 +84,10 @@
   <?php
 
   require ("User.php"); ?>
-
   <section>
+    <br>
+    <br>
+    <br>
     <div class="profile">
       <img src="Pictures for website/Thomas.jpg" alt="My Image" class="my_img">
       <div class="contact-col">
