@@ -103,7 +103,8 @@ label {
 }
 
 button {
-  background-color: #4f4d62;
+ /* background-color: #4f4d62;*/
+  background-color: chartreuse;
   color: #fff;
   padding: 8px;
   border: none;
@@ -172,36 +173,43 @@ input[type='submit'] {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  width: 100%;
+  gap: 20px; /* Ensure space between cards */
+  padding: 20px 0; /* Add some padding around the entire container */
 }
 
 .recommendation-item {
   text-align: center;
   margin-bottom: 10px;
   max-width: calc(33.33% - 20px);
+  background-color: #fff; /* Make the card's background stand out */
+  border: 1px solid #ddd; /* Subtle border */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  border-radius: 10px; /* Rounded corners for a softer look */
+  overflow: hidden; /* Ensure content fits nicely */
 }
 
-
 .recommendation-item img {
-  width: 100%;
+  width: 10%;
   height: auto;
-  max-height: 400px;
+  max-height: 10px;
+  border-bottom: 1px solid #ddd; /* Separate image from text */
 }
 
 .recommendation-item p {
   color: #3e2723;
   margin-top: 5px;
-  border: 1px solid #4f4d62;
   padding: 10px;
+  background-color: #f0e5d8; /* Slightly different background for the text */
+  margin: 0; /* Remove default margin */
 }
 
 .recommendations-title {
   background-color: #f0e5d8;
-  padding-top: 15px;
+  padding: 15px 0;
   text-align: center;
   font-size: 24px;
   color: #3e2723;
-  margin-top: 20px;
+  margin: 20px 0;
 }
 
 .order-buttons {
@@ -231,9 +239,9 @@ input[type='submit'] {
 }
 
 .review-form-container {
-  max-width: 600px;
+  max-width: 800px;
   margin: 10px auto;
-  background-color: #4f4d62;
+  background-color: #4f4d62; 
   border: 1px solid #f5d5bb;
   color: #ffffff;
   border-radius: 10px;
@@ -244,7 +252,7 @@ input[type='submit'] {
   color: #4f4d62;
   background-color: #4f4d62;
   align-items: left;
-  padding-right: 100px;
+  padding-right: 200px;
 }
 
 #description {
@@ -308,6 +316,7 @@ label[for="rating"] {
 
 .user-reviews-container {
   margin-top: 20px;
+  max-width: 800px;
 }
 
 .user-review-item {
