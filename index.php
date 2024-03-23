@@ -22,9 +22,7 @@
         <div class="container-fluid">
           <a class="navbar-brand" href="index.php">Furniche</a>
 
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-            aria-label="Toggle navigation">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -81,7 +79,44 @@
     </section>
 </header>
 </section>
-
+<div id="carouselExampleCaptions" class="carousel slide">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="Pictures%20for%20website/slide2.jpg" class="d-block w-100" alt="image">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Tropical Lounge</h5>
+        <p> Make it simple.</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="Pictures%20for%20website/slide1.jpg" class="d-block w-100" alt="image">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Modern kitchen</h5>
+        <p>Make it modern.</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="Pictures%20for%20website/slide3.jpg" class="d-block w-100" alt="image">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Rustic Dinning set</h5>
+        <p>Make it you.</p>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
 <div class="categories">
   <h2>Categories</h2>
   <div>
@@ -97,44 +132,32 @@
         src="Pictures%20for%20website/Modern.jpg" alt="Modern" class="image-filter"></a>
   </div>
 </div>
-
-</section>
-<div class="card">
-  <div class="card-header">
-    Design your home to be a bit more like you. 
-  </div>
+<section class="containers">
+<div class="card" style="width: 18rem;">
+  <img src="Pictures%20for%20website/slide4.jpg" class="card-img-top" alt="Image">
   <div class="card-body">
-    <blockquote class="blockquote mb-0">
-      <p>Let Furniche find your niche.</p>
-      <footer class="blockquote-footer">Lucky Muse <cite title="Source Title">CEO</cite></footer>
-    </blockquote>
+    <h5 class="card-title">New to Furniche?</h5>
+    <p class="card-text">Fall in love in the process, customise your future home.</p>
+    <a href="signIn.php" class="btn btn-primary">Sign Up</a>
   </div>
 </div>
-<section>
-<div class="row">
-  <div class="col-sm-6 mb-3 mb-sm-0">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Learn more about Furniche</h5>
-        <p class="card-text">Learn ab</p>
-        <a href="contactview.php" class="btn btn-primary">Contact us</a>
-      </div>
-    </div>
+<div class="card" style="width: 18rem;">
+  <img src="Pictures%20for%20website/wood.png" class="card-img-top" alt="Image">
+  <div class="card-body">
+    <h5 class="card-title">Who are we</h5>
+    <p class="card-text">Learn about our mission and values.</p>
+    <a href="contactview.php" class="btn btn-primary">Contact us</a>
   </div>
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">New to Furniche?</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
+</div>
+<div class="card" style="width: 18rem;">
+  <img src="Pictures%20for%20website/slide5.jpg" class="card-img-top" alt="Image">
+  <div class="card-body">
+    <h5 class="card-title">Ready to shop?</h5>
+    <p class="card-text">Look through our best work.</p>
+    <a href="product/products.php" class="btn btn-primary">Products</a>
   </div>
 </div>
 </section>
-<div class="home">
-  <p>Design your home to be a bit more like you.</p>
-</div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
   integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <script>

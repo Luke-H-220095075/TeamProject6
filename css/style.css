@@ -7,6 +7,34 @@
   font-variation-settings: "wght" 400;
 }
 
+.navbar-nav { 
+  justify-content: flex-start; 
+} 
+
+.nav-item { 
+  margin-left: 45%; 
+} 
+.nav-link { 
+  color: #fff;
+   text-transform: uppercase; 
+  } 
+  
+  .nav-link:hover { 
+    color: #ccc; 
+    text-decoration: none; 
+  } 
+  
+  @media (max-width: 767.98px) { 
+    .navbar-nav { 
+      flex-direction: column;
+       align-items: center; 
+      } 
+      .nav-item { 
+        margin-left: 0; 
+        margin-bottom: 0.5rem; 
+      } 
+    }
+
 .navbar{
   background-image: url("../Pictures for website/nav-3 (1).png");
   color: #fff;
@@ -37,6 +65,32 @@ font-weight: 600;
   background-image: url("../Pictures for website/categories.png");
 }
 
+.card{
+  display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 25px;
+    overflow: hidden;
+    background-color: #f5d5bb;
+    width: 50%;
+}
+.containers {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  background-image: url("../Pictures for website/categories.png");
+}
+
+.card-body{
+  background-color: #f5d5bb;
+}
+
+.card-img-top{
+  background-color: #f5d5bb;
+}
 .my_img{
   width: 50%;
   height: 100%;
