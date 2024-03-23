@@ -88,7 +88,6 @@
     <h2>Call</h2>
     <p>If we have not been able to answer your question through track your order or our FAQs, call us.</p>
     </div>
-    <br>
   </sectionn>
   <section class= "cont-form">
   <div class = "contactform">
@@ -166,55 +165,44 @@
       </section>
 
       </div>
-
       <footer class="footer">
-        <div class="container">
-          <div class="row">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <div class="container">
+        <div class="row">
             <div class="footer-col">
-              <h4>About Us</h4>
-              <ul>
-                <li><a href="#">Our Founder</a> </li>
-                <li><a href="#">Our Values</a> </li>
-                <li><a href="#">Our Privacy Policy</a> </li>
-                <li><a href="#">Our Services</a> </li>
-              </ul>
+                <h4>About Us</h4>
+                <ul>
+                    <li><a href="#">Our Founder</a> </li>
+                    <li><a href="#">Our Values</a> </li>
+                    <li><a href="#">Our Privacy Policy</a> </li>
+                    <li><a href="#">Our Services</a> </li>
+                </ul>
             </div>
             <div class="footer-col">
-              <h4>Address</h4>
-              <h5>206 Canada Place, Liverpool Street, E12 1CL</h5>
+                <h4>Address</h4>
+                <h5>206 Canada Place, Liverpool Street, E12 1CL</h5>
             </div>
             <div class="footer-col">
-              <h4>Contact Us</h4>
-              <h5>Email us at: comms@furniche.com</h5>
-              <h5>Call us at: 01563385967</h5>
-              <ul>
-                <li><a href="contactview.php">Contact Us via our Website</a> </li>
-              </ul>
+                <h4>Contact Us</h4>
+                <h5>Email us at: comms@furniche.com</h5>
+                <h5>Call us at: 01563385967</h5>
+                <ul>
+                    <li><a href="contactview.php">Contact Us via our Website</a> </li>
+                </ul>
             </div>
             <div class="footer-col">
-              <h4>Follow us</h4>
-              <div class="social-links">
-                <a href="https://en-gb.facebook.com/"><i class="fab fa-facebook - f"></i></a>
-                <a href="https://twitter.com/?lang=en"><i class="fab fa-twitter"></i></a>
-                <a href="https://uk.linkedin.com/"><i class="fab fa-linkedin - in"></i></a>
-                <a href="https://github.com/"><i class="fab fa-github"></i></a>
-                <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
-              </div>
+                <h4>Follow us</h4>
+                <div class="social-links">
+                    <a href="https://en-gb.facebook.com/"><i class="fab fa-facebook - f"></i></a>
+                    <a href="https://twitter.com/?lang=en"><i class="fab fa-twitter"></i></a>
+                    <a href="https://uk.linkedin.com/"><i class="fab fa-linkedin - in"></i></a>
+                    <a href="https://github.com/"><i class="fab fa-github"></i></a>
+                    <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
+                </div>
             </div>
-          </div>
         </div>
-      </footer>
-      <script>
-        /* Set the width of the sidebar to 250px (show it) */
-        function openNav() {
-          document.getElementById("mySidepanel").style.width = "250px";
-        }
+    </div>
+</footer>
 
-        /* Set the width of the sidebar to 0 (hide it) */
-        function closeNav() {
-          document.getElementById("mySidepanel").style.width = "0";
-        }
-      </script>
-  </body>
 
 </html>
