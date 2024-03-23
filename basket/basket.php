@@ -197,6 +197,7 @@ if ($basketId != $mainbasketId) {
 
     <script>
         function adjustQuantity(productId, change) {
+            alert(message successfully sent)
             var xhr = new XMLHttpRequest();
             xhr.open('POST', 'basket_quantity.php', true);
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -213,7 +214,7 @@ if ($basketId != $mainbasketId) {
                         }
                     }
                 }
-            };
+            }
             xhr.send('product_id=' + productId + '&change=' + change);
             setTimeout(function () {
                 window.location.reload();
@@ -244,7 +245,7 @@ if ($basketId != $mainbasketId) {
             setTimeout(function () {
                 window.location.reload();
             }, 20);
-
+        }
     </body>
     <footer class="footer">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
