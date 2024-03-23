@@ -108,7 +108,7 @@ if (isset($_SESSION['user'])) {
                <!-- <span class="tooltip">Users</span>-->
             </li>
             <li>
-                <a href="#">
+                <a href="messages.php">
                     <i class="fa-solid fa-message"></i>
                     <span class="nav-item">Messages</span>
                 </a>

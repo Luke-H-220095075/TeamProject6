@@ -76,6 +76,13 @@ if (isset($_SESSION['user'])) {
                <!-- <span class="tooltip">Orders</span> -->
             </li>
             <li>
+                <a href="pendingrequests.php">
+                    <i class="fa-solid fa-user"></i>
+                    <span class="nav-item">Approve pending admin requests</span>
+                </a>
+               <!-- <span class="tooltip">Users</span>-->
+            </li>
+            <li>
                 <a href="messages.php">
                     <i class="fa-solid fa-message"></i>
                     <span class="nav-item">Messages</span>
