@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmtUpdate = $db->prepare("
             UPDATE basketproducts
             SET quantity = quantity + :change
-            WHERE basketId = (SELECT basketId FROM baskets WHERE userId = :user_id)
+            WHERE basketId = (SELECT basketId FROM baskets WHERE userId = :user_id AND currentUserBasket = 1)
             AND productId = :product_id
         ");
         $stmtUpdate->bindParam(':user_id', $userId, PDO::PARAM_INT);
@@ -25,11 +25,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmtUpdate->bindParam(':change', $change, PDO::PARAM_INT);
         $stmtUpdate->execute();
 
-        $newQuantity = $db->query("SELECT quantity FROM basketproducts WHERE basketId = (SELECT basketId FROM baskets WHERE userId = $userId) AND productId = $productId")->fetchColumn();
+        $newQuantity = $db->query("SELECT quantity FROM basketproducts WHERE basketId = (SELECT basketId FROM baskets WHERE userId = $userId AND currentUserBasket = 1) AND productId = $productId")->fetchColumn();
         if ($newQuantity === 0) {
             $stmtRemove = $db->prepare("
                 DELETE FROM basketproducts
-                WHERE basketId = (SELECT basketId FROM baskets WHERE userId = :user_id)
+                WHERE basketId = (SELECT basketId FROM baskets WHERE userId = :user_id AND currentUserBasket = 1)
                 AND productId = :product_id
             ");
             $stmtRemove->bindParam(':user_id', $userId, PDO::PARAM_INT);

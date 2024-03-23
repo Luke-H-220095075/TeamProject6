@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/d4aa4c134e.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
         <title>User messages</title>
@@ -108,7 +109,7 @@ if (isset($_SESSION['user'])) {
                <!-- <span class="tooltip">Users</span>-->
             </li>
             <li>
-                <a href="#">
+                <a href="messages.php">
                     <i class="fa-solid fa-message"></i>
                     <span class="nav-item">Messages</span>
                 </a>
