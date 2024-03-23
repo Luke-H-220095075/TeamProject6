@@ -197,7 +197,6 @@ if ($basketId != $mainbasketId) {
 
     <script>
         function adjustQuantity(productId, change) {
-            alert(message successfully sent)
             var xhr = new XMLHttpRequest();
             xhr.open('POST', 'basket_quantity.php', true);
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -246,10 +245,12 @@ if ($basketId != $mainbasketId) {
                 window.location.reload();
             }, 20);
         }
-    </body>
-    <footer class="footer">
+        </script>
+        
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
   integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    </body>
+    <footer class="footer">
         <div class="container">
             <div class="row">
                 <div class="footer-col">
