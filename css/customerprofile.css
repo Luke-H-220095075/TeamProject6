@@ -62,6 +62,8 @@
 
  /* Profile Section */
  .profile {
+  height: 50%;
+  width: 80%;
    background-color: #4f4d62;
    color: #f5d5bb;
    display: grid;
