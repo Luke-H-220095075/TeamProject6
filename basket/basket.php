@@ -2,6 +2,7 @@
 <html>
 <?php
 session_start();
+include '../connect.php';
 if (!isset($_SESSION['userID'])) {
     echo '<a href="../loginview.php" style="position: fixed; left: 50%; top: 50%; transform: translate(-50%, -50%); font-family: Calibri,serif; font-size: xx-large">Please log in to view basket.</a>';
     die();
@@ -133,9 +134,12 @@ if ($basketId != $mainbasketId) {
                     echo '<div class="quantity-controls">';
                     if ($prevOrder == "") {
                         echo '<button onclick="adjustQuantity(' . $row['productId'] . ', -1)">-</button>';
+                        echo '<span> </span><span class="quantity">' . $row['quantity'] .  '</span><span> </span>';
+                        echo '<button onclick="adjustQuantity(' . $row['productId'] . ', 1)">+</button>';
+                    }else{
+                        echo '<span> </span><span class="quantity">' . $row['quantity'] .  '</span>'.$prevOrder .'<span> </span>';
+                        echo '<button onclick="addQuantity(' . $row['productId'] . ')">+</button>';
                     }
-                    echo '<span> </span><span class="quantity">' . $row['quantity'] . $prevOrder . '</span><span> </span>';
-                    echo '<button onclick="adjustQuantity(' . $row['productId'] . ', 1)">+</button>';
                     echo '</div>';
                     echo '</div>';
                     echo '</div>';
@@ -200,7 +204,6 @@ if ($basketId != $mainbasketId) {
                 if (xhr.readyState === 4 && xhr.status === 200) {
                     var quantityElement = document.querySelector('.basket-item[data-productId="' + productId + '"] .quantity');
                     var newQuantity = parseInt(quantityElement.textContent) + change;
-
                     quantityElement.textContent = newQuantity;
 
                     if (newQuantity === 0) {
@@ -212,6 +215,32 @@ if ($basketId != $mainbasketId) {
                 }
             };
             xhr.send('product_id=' + productId + '&change=' + change);
+            setTimeout(function () {
+                window.location.reload();
+            }, 20);
+
+        }
+        function addQuantity(productId) {
+            var productId = productId;
+            var isConfirmed = confirm('Add Product to Basket?');
+            if (isConfirmed) {
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', '../basket/basket_add.php', true);
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        alert('Product added to basket!');
+                        closeProductModal();
+
+                        var goToBasket = confirm('Proceed to Basket?');
+                        if (goToBasket) {
+                            $_SESSION["basketID"] = $mainbasketId;
+                            window.location.href = '../basket/basket.php';
+                        }
+                    }
+                };
+                xhr.send('product_id=' + productId);
+            }
             setTimeout(function () {
                 window.location.reload();
             }, 20);
