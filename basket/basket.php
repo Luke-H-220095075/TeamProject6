@@ -34,69 +34,66 @@ if ($basketId != $mainbasketId) {
 </head>
 
 <header>
-    <section>
-        <div class="fixed-top">
-            <nav class="navbar">
-                <div class="container-fluid">
-                    <a class="navbar-brand" href="../index.php">Furniche</a>
+  <section>
+    <div class="fixed-top">
+      <nav class="navbar">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="index.php">Furniche</a>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link" href="../product/products.php">Products</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../loginview.php">Login</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            The team
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="../aboutus.php">About Us</a></li>
-            <li><a class="dropdown-item" href="../contactview.php">Contact us</a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../basket/basket.php"><i class="fa-solid fa-basket-shopping"></i></a>
-        </li>
-      </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
-    </div>
-  </div>
-    </div>
-    </nav>
-                <?php
-                if (isset($_SESSION['user'])) {
-                    echo '<li><a href="../customerprofile.php">' . $_SESSION['user'] . '</a>';
-                    echo '<li><a href="basket.php">Basket</a></li>';
-                }else {
-                    echo '<li><a href="../signup/signUpPage.php">Sign up</a></li>';
-                    echo '<li><a href="../loginview.php">Login</a></li>';
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="product/products.php">Products</a>
+              </li>
+
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  The team
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="About%20Us.php">About Us</a></li>
+                  <li><a class="dropdown-item" href="contactview.php">Contact us</a></li>
+                </ul>
+              </li>
+
+              <?php
+              session_start();
+              if (isset ($_SESSION['user'])) {
+                echo '<li class="nav-item"><a class="nav-link" href="customerprofile.php">' . $_SESSION['user'] . '</a></li>';
+                  echo '<li class="nav-item"><a class="nav-link" href="logout.php" >Logout</a></li>';
+                  echo '<li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  <i class="fa-solid fa-basket-shopping"></i>
+                </a>';
+                echo '<ul class="dropdown-menu"><li class="nav-item"><a class="nav-link" href="history.php">order history</a></li>';
+                echo '<li class="nav-item">
+                      <a class="nav-link" href="basket/basket.php">basket</a>
+                      </li></ul>';
+                if ($_SESSION["access"] = "admin") {
+                  echo '<li class="nav-item"><a class="nav-link" href="admin\dashboard.php">admin page</a></li></li>';
                 }
-                ?>
-          </ul>
-         </nav>
+
+              } else {
+                echo '<li class="nav-item">
+                <a class="nav-link" href="loginview.php">Login</a>
+              </li>';
+              }
+              ?>
+            </ul>
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          </div>
         </div>
-        </nav>
-        <?php
-        if (isset ($_SESSION['user'])) {
-            echo '<li><a href="../customerprofile.php">' . $_SESSION['user'] . '</a>';
-            echo '<li><a href="basket.php">Basket</a></li>';
-        } else {
-            echo '<li><a href="../signup/signUpPage.php">Sign up</a></li>';
-            echo '<li><a href="../loginview.php">Login</a></li>';
-        }
-        ?>
-        </ul>
-        </nav>
-        </div>
+      </nav>
+    </div>
     </section>
 </header>
 
@@ -248,44 +245,43 @@ if ($basketId != $mainbasketId) {
         }
     </body>
     <footer class="footer">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-  integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-        <div class="container">
-            <div class="row">
-                <div class="footer-col">
-                    <h4>About Us</h4>
-                    <ul>
-                        <li><a href="../#">Our Founder</a> </li>
-                        <li><a href="../#">Our Values</a> </li>
-                        <li><a href="../#">Our Privacy Policy</a> </li>
-                        <li><a href="../#">Our Services</a> </li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Address</h4>
-                    <h5>206 Canada Place, Liverpool Street, E12 1CL</h5>
-                </div>
-                <div class="footer-col">
-                    <h4>Contact Us</h4>
-                    <h5>Email us at: comms@furniche.com</h5>
-                    <h5>Call us at: 01563385967</h5>
-                    <ul>
-                        <li><a href="../contact.html">Contact Us via our Website</a> </li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Follow us</h4>
-                    <div class="social-links">
-                        <a href="https://en-gb.facebook.com/"><i class="fab fa-facebook - f"></i></a>
-                        <a href="https://twitter.com/?lang=en"><i class="fab fa-twitter"></i></a>
-                        <a href="https://uk.linkedin.com/"><i class="fab fa-linkedin - in"></i></a>
-                        <a href="https://github.com/"><i class="fab fa-github"></i></a>
-                        <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
-                    </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <div class="container">
+        <div class="row">
+            <div class="footer-col">
+                <h4>About Us</h4>
+                <ul>
+                    <li><a href="#">Our Founder</a> </li>
+                    <li><a href="#">Our Values</a> </li>
+                    <li><a href="#">Our Privacy Policy</a> </li>
+                    <li><a href="#">Our Services</a> </li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Address</h4>
+                <h5>206 Canada Place, Liverpool Street, E12 1CL</h5>
+            </div>
+            <div class="footer-col">
+                <h4>Contact Us</h4>
+                <h5>Email us at: comms@furniche.com</h5>
+                <h5>Call us at: 01563385967</h5>
+                <ul>
+                    <li><a href="contactview.php">Contact Us via our Website</a> </li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Follow us</h4>
+                <div class="social-links">
+                    <a href="https://en-gb.facebook.com/"><i class="fab fa-facebook - f"></i></a>
+                    <a href="https://twitter.com/?lang=en"><i class="fab fa-twitter"></i></a>
+                    <a href="https://uk.linkedin.com/"><i class="fab fa-linkedin - in"></i></a>
+                    <a href="https://github.com/"><i class="fab fa-github"></i></a>
+                    <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
         </div>
     </div>
 </footer>
+
 
 </html>

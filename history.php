@@ -14,7 +14,7 @@
 </head>
 
 <header>
-<section>
+  <section>
     <div class="fixed-top">
       <nav class="navbar">
         <div class="container-fluid">
@@ -74,13 +74,10 @@
         </div>
       </nav>
     </div>
-    </section
+    </section>
+</header>
 
   <body>
-    <br>
-    <br>
-    <br>
-    <br>
     <strong>
       <h2>Order History</h2>
     </strong>

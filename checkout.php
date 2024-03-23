@@ -83,7 +83,7 @@ function purchase($db, $basketId)
 
 
 <header>
-<section>
+  <section>
     <div class="fixed-top">
       <nav class="navbar">
         <div class="container-fluid">
@@ -143,7 +143,7 @@ function purchase($db, $basketId)
         </div>
       </nav>
     </div>
-            </section>
+    </section>
 </header>
 
 <body>
@@ -280,9 +280,6 @@ function purchase($db, $basketId)
 
 
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-  integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-<script>
 </body>
 
 <footer class="footer">
