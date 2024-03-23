@@ -15,6 +15,12 @@ position: relative;
 bottom: 40px;
 }
 
+.contactform{
+text-align: center;
+position: relative;
+left: 170px;
+}
+
 .header_one {
 position: relative;
 bottom: 198px;
@@ -196,8 +202,17 @@ font-size: 30px;
 }
 
 .location {
+  position: relative;
+  bottom: 700px;
   width: 100%;
   background-color: #f5d5bb;
+}
+
+.woodbackground {
+  position: relative;
+  /* left: 500px; */
+  bottom: 450px;
+  width: 100%;
 }
 
 .locaction iframe {
