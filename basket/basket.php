@@ -143,6 +143,7 @@ if ($basketId != $mainbasketId) {
                 while ($row = $result->fetch()) {
                     $basketcost = $basketcost + $row["quantity"] * $row["price"];
                    }
+                   echo "<p>£" . $basketcost . " before discount</p>";
                     $discount_name = "test"; #$discount_name = $_POST['discount'];
                     $sql = "SELECT value FROM discounts WHERE discountTitle = '" . $discount_name . "'";
                     $value = $db->query($sql);
@@ -160,7 +161,7 @@ if ($basketId != $mainbasketId) {
                     echo '<div class="mmm"><a href="../product/products.php"><button>Add Products?</button></a></div>';
 
                 }
-                echo "<p>£" . $basketcost . " before discount</p>";
+                
             } else {
                 echo "0 results" . $basketId;
             }
