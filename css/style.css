@@ -47,10 +47,6 @@
   flex-wrap: wrap;
 }
 
-.carousel-inner{
-  height: 110vh;
-}
-
 .home{
   background-image: url("../Pictures for website/home.jpg");
   color: #f5d5bb;
@@ -68,19 +64,19 @@ font-weight: 600;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 30px;
+  margin-top: 0px;
 }
 
 .categories h2 {
   text-align: center;
   align-items: center;
   justify-content: center;
-  width: 70%;
-  margin-bottom: 20px;
+  width: 60%;
+  margin-bottom: 0px;
 }
 
 .image-filter {
-  width: 100%;
+  width: 80%;
   height: auto;
   margin-bottom: 20px;
   border-radius: 10px;
