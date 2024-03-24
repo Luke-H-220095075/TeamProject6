@@ -137,8 +137,9 @@
           }
           ?>
       </div>
+
+      <form method="post" onsubmit="return confirm('Are you sure you want to delete your account?');"><button type="submit" name="delete" style="cursor: pointer">Delete my account</button></form>
       <?php
-          echo '<form method="post" onsubmit="return confirm("Are you sure you want to delete your account?");"><button type="submit" onclick="messagebox.show("Are you sure?")" name="delete" style="cursor: pointer">Delete my account</button></form>';
 
           if (isset ($_POST["delete"]))
           {
