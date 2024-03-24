@@ -72,64 +72,27 @@
     </section>
   <body>
 
-    <br>
-    <br>
-    <div class="containerr container_solid">
-      <div class="title_wrapperr">
-        <h1>Contact Us</h1>
-      </div>
+  <header>
+
+  <!-- First container -->
+  <div class="containerr containerr_solid">
+    <div class="title_wrapperr">
+      <h1>Contact Us</h1>
     </div>
-  
-    <!-- Second container -->
-    <div class="containerr containerr_image" aria-hidden="true">
-      <div class="title_wrapperr">
-        <h1>Contact Us</h1>
-      </div>
-    </div>
-  
-  </header>
-  
-  <sectionn>
-    <div class = "sectionn">
-      <br>
-      <br>
-      <br>
-      <br>
-    <h2>Track</h2>
-    <p>We know you cannot wait for your new furniture. Track its progress as we build it for you.</p>
-    <h2>Message</h2>
-    <p>Include a message below and we will anaswer as soon as possible</p>
-    <h2>Email</h2>
-    <p>At Help@furniche.com</p>
-    <h2>Call</h2>
-    <p>If we have not been able to answer your question through track your order or our FAQs, call us.</p>
-    </div>
-  </sectionn>
-  <section class= "cont-form">
-  <div class = "contactform">
-<?php
-    echo '<form class="contact-formm" method="post">';
-    echo '<label for="name">Subject:</label>';
-    echo '<input type="text" id="name" name="subject" required><br><br>';
-    echo '<label for="description">Message:</label><br>';
-    echo '<textarea id="description" name="message" rows="5" cols="50"></textarea><br><br>';
-    if (isset($_SESSION['userID'])) {
-        echo '<button type="submit" name="submitted" id="submit-btn">Submit</button>';
-    } else {
-        echo '<a href="loginview.php" id="submit-btn" style="text-decoration: none">Please log in to submit inquiries.</a>';
-    }
-    require("view/contact.php");
-    echo '</form>'
-?>
   </div>
-      <script>
-        var i;
-        for (i = 0; i < 2; i++) {
-          document.write("<br>");
-        }
-      </script>
-  </section>
+
+  <!-- Second container -->
+  <div class="containerr containerr_image" aria-hidden="true">
+    <div class="title_wrapperr">
+      <h1>Contact Us</h1>
+    </div>
+  </div>
+
+</header>
+    
+  </header>
   <div class="container1">
+    <br>
   <h1>Frequently Asked Questions</h1>
   <details>
   <summary>Do you deliver oversea?</summary>
@@ -171,9 +134,44 @@
           document.write("<br>");
         }
       </script>
+      <sectionn>
+<h2>Track</h2>
+    <p>We know you cannot wait for your new furniture. Track its progress as we build it for you.</p>
+    <h2>Message</h2>
+    <p>Include a message below and we will anaswer as soon as possible</p>
+    <h2>Email</h2>
+    <p>At Help@furniche.com</p>
+    <h2>Call</h2>
+    <p>If we have not been able to answer your question through track your order or our FAQs, call us.</p>
+</sectionn>
+<br>
 </div>
-
-      <section class="location">
+<div class= "cont-form">
+  <br>
+  <div class = "contactform">
+<?php
+    echo '<form class="contact-formm" method="post">';
+    echo '<label for="name">Subject:</label>';
+    echo '<input type="text" id="name" name="subject" required><br><br>';
+    echo '<label for="description">Message:</label><br>';
+    echo '<textarea id="description" name="message" rows="5" cols="50"></textarea><br><br>';
+    if (isset($_SESSION['userID'])) {
+        echo '<button type="submit" name="submitted" id="submit-btn">Submit</button>';
+    } else {
+        echo '<a href="loginview.php" id="submit-btn" style="text-decoration: none">Please log in to submit inquiries.</a>';
+    }
+    require("view/contact.php");
+    echo '</form>'
+?>
+  </div>
+      <script>
+        var i;
+        for (i = 0; i < 2; i++) {
+          document.write("<br>");
+        }
+      </script>
+  </div>
+<section class="location">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2482.6980768196954!2d-0.08362608488829902!3d51.51875491769485!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4876034c44354bb1%3A0xc57f7d6c0b61ff5f!2sLiverpool%20Street!5e0!3m2!1sen!2suk!4v1677666062080!5m2!1sen!2suk"
           width="100%" height="1000" style="border:0;" allowfullscreen="" loading="lazy"
