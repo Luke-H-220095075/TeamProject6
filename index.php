@@ -78,6 +78,7 @@
     </div>
     </section>
 </header>
+<body>
 <div id="carouselExampleCaptions" class="carousel slide">
   <div class="carousel-indicators">
     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -132,6 +133,14 @@
         src="Pictures%20for%20website/Modern.jpg" alt="Modern" class="image-filter"></a>
   </div>
 </div>
+<section class="who-are">
+  <br>
+  <br>
+<h2>Fall in love with the process of falling in love with yourself</h2>
+<p>Furniche is focussed on helping you find what you want your home to look like, through a range of styles. 
+<br>
+<br>
+</section>
 <section class="containers">
 <div class="card" style="width: 18rem;">
   <img src="Pictures%20for%20website/slide4.jpg" class="card-img-top" alt="Image">
@@ -175,6 +184,7 @@
     }
   });
 </script>
+</body>
  <footer class="footer">
     <div class="container">
         <div class="row">

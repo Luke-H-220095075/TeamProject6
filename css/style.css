@@ -68,7 +68,11 @@ font-weight: 600;
   text-align: center;
   height: 80vh;
   width: 100%;
-  background-image: url("../Pictures for website/categories.png");
+}
+
+.who-are{
+  justify-content: center;
+  text-align: center;
 }
 
 .card{
@@ -82,12 +86,17 @@ font-weight: 600;
     background-color: #f5d5bb;
     width: 50%;
 }
+
 .containers {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  background-image: url("../Pictures for website/categories.png");
+}
+
+.index{
+  background-image: url("../Pictures for website/back-1.png");
+  background-repeat: no-repeat;
 }
 
 .card-body{
