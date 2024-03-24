@@ -141,7 +141,7 @@ if (isset($_SESSION['user'])) {
 <!-- Header with filter and search-->
 <div class="table-header"style="background-color: #e2b489; padding-top: 10px;">
 <div class="container custom-background">
-<strong><h3>Pending Admin Requests</h3></strong> &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp;
+<br><br>strong><h3>Pending Admin Requests</h3></strong> &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp;
 
     <div class="row justify-content-end align-items-right">
    
