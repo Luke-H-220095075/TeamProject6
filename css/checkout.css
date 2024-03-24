@@ -9,7 +9,6 @@ body {
 .checkout-container {
     display: flex;
     justify-content: space-between;
-    
 }
 
 .contact-shipping, .order-summary {

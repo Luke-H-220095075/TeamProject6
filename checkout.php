@@ -296,6 +296,7 @@ function purchase($db, $basketId, $basketcost)
 
   </script>
 </body>
+<br>
 
 <footer class="footer">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
@@ -336,41 +337,6 @@ function purchase($db, $basketId, $basketcost)
       </div>
     </div>
   </div>
-    <div class="container">
-        <div class="row">
-            <div class="footer-col">
-                <h4>About Us</h4>
-                <ul>
-                    <li><a href="#">Our Founder</a> </li>
-                    <li><a href="#">Our Values</a> </li>
-                    <li><a href="#">Our Privacy Policy</a> </li>
-                    <li><a href="#">Our Services</a> </li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Address</h4>
-                <h5>206 Canada Place, Liverpool Street, E12 1CL</h5>
-            </div>
-            <div class="footer-col">
-                <h4>Contact Us</h4>
-                <h5>Email us at: comms@furniche.com</h5>
-                <h5>Call us at: 01563385967</h5>
-                <ul>
-                    <li><a href="contactview.php">Contact Us via our Website</a> </li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Follow us</h4>
-                <div class="social-links">
-                    <a href="https://en-gb.facebook.com/"><i class="fab fa-facebook - f"></i></a>
-                    <a href="https://twitter.com/?lang=en"><i class="fab fa-twitter"></i></a>
-                    <a href="https://uk.linkedin.com/"><i class="fab fa-linkedin - in"></i></a>
-                    <a href="https://github.com/"><i class="fab fa-github"></i></a>
-                    <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-        </div>
-    </div>
 </footer>
 
 
