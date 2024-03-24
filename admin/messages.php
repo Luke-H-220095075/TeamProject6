@@ -127,6 +127,8 @@ if (isset($_SESSION['user'])) {
         </ul>
    
     </section> 
+    <br>
+    <br>
     <div class="info-table">
 
 <!-- Header with filter and search-->
