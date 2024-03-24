@@ -71,7 +71,7 @@ label {
   padding: 10px;
 }
 
-button {
+form button {
   background-color: #4f4d62;
   background-color: chartreuse;
   color: #fff;
@@ -80,7 +80,7 @@ button {
   border-radius: 0px;
   cursor: pointer;
   margin-left: 100px;
-  
+  width: 150px;
 }
 
 
