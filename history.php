@@ -170,12 +170,12 @@
                     
                     if (isset ($_POST['purchase'.$row["orderId"]])) {
                         $_SESSION["basketID"] = $row["basketId"];
-                        header('Location: checkout.php');
+                        echo"<script>window.location.href =('checkout.php')</script>";
                     }
                     
                     if (isset ($_POST['Details'.$row["orderId"]])) {
                         $_SESSION["basketID"] = $row["basketId"];
-                        header('Location: basket/basket.php');
+                        echo"<script>window.location.href =('basket/basket.php')</script>";
                     }
                     echo "<button class='order-again-button  method='post' name='purchase".$row["orderId"]."' type='submit'>Order Again</button>";
                     echo "<button class='  '  method='post' name='Details".$row["orderId"]."' type='submit'>View Details</button>";
