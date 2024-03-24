@@ -3,7 +3,7 @@
 <?php
 session_start();
 include '../connect.php';
-if (!isset($_SESSION['userID'])) {
+if (!isset ($_SESSION['userID'])) {
     echo '<a href="../loginview.php" style="position: fixed; left: 50%; top: 50%; transform: translate(-50%, -50%); font-family: Calibri,serif; font-size: xx-large">Please log in to view basket.</a>';
     die();
 }
@@ -26,60 +26,65 @@ if ($basketId != $mainbasketId) {
 <head>
     <title>Furniche - Basket</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../css/basket.css"/>
+    <link rel="stylesheet" href="../css/basket.css" />
     <link href="../css/style.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
-      <link rel="stylesheet" href="https://use.typekit.net/maf1fpm.css">
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link rel="stylesheet" href="https://use.typekit.net/maf1fpm.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 
 <header>
-<section>
-  <div class="fixed-top">
-<nav class="navbar">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="../index.php">Furniche</a>
+    <section>
+        <div class="fixed-top">
+            <nav class="navbar">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="../index.php">Furniche</a>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link" href="../product/products.php">Products</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../loginview.php">Login</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            The team
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="../About%20Us.php">About Us</a></li>
-            <li><a class="dropdown-item" href="../contactview.php">Contact us</a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../basket/basket.php"><i class="fa-solid fa-basket-shopping"></i></a>
-        </li>
-      </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
-    </div>
-  </div>
-</div>
-</nav>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link" href="../product/products.php">Products</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../loginview.php">Login</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    The team
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="../About%20Us.php">About Us</a></li>
+                                    <li><a class="dropdown-item" href="../contactview.php">Contact us</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../basket/basket.php"><i
+                                        class="fa-solid fa-basket-shopping"></i></a>
+                            </li>
+                        </ul>
+                        <form class="d-flex" role="search">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success" type="submit">Search</button>
+                        </form>
+                    </div>
+                </div>
+        </div>
+        </nav>
 </header>
 
 
 <body>
 
     <div class="basketss">
-        
+
 
         <h2>Your Basket</h2>
 
@@ -109,10 +114,10 @@ if ($basketId != $mainbasketId) {
                     echo '<div class="quantity-controls">';
                     if ($prevOrder == "") {
                         echo '<button onclick="adjustQuantity(' . $row['productId'] . ', -1)">-</button>';
-                        echo '<span> </span><span class="quantity">' . $row['quantity'] .  '</span><span> </span>';
+                        echo '<span> </span><span class="quantity">' . $row['quantity'] . '</span><span> </span>';
                         echo '<button onclick="adjustQuantity(' . $row['productId'] . ', 1)">+</button>';
-                    }else{
-                        echo '<span> </span><span class="quantity">' . $row['quantity'] .  '</span>'.$prevOrder .'<span> </span>';
+                    } else {
+                        echo '<span> </span><span class="quantity">' . $row['quantity'] . '</span>' . $prevOrder . '<span> </span>';
                         echo '<button onclick="addQuantity(' . $row['productId'] . ')">+</button>';
                     }
                     echo '</div>';
@@ -128,44 +133,38 @@ if ($basketId != $mainbasketId) {
                 echo '<a href="../checkout.php"><button class="nnn">Checkout now</button></a>';
 
             }
-        
-        echo "<br>";
 
-        $sql = "SELECT price, quantity FROM products JOIN basketproducts ON products.productId = basketproducts.productId WHERE basketId = '.$basketId.'";
-        $result = $db->query($sql);
-        $basketcost = 0;
-        if ($result->rowCount() > 0) {
-            while ($row = $result->fetch()) {
-                $basketcost = $basketcost + $row["quantity"] * $row["price"];
-            
+            echo "<br>";
 
+            $sql = "SELECT price, quantity FROM products JOIN basketproducts ON products.productId = basketproducts.productId WHERE basketId = '".$basketId."'";
+            $result = $db->query($sql);
+            $basketcost = 0;
+            if ($result->rowCount() > 0) {
+                while ($row = $result->fetch()) {
+                    $basketcost = $basketcost + $row["quantity"] * $row["price"];
+                   }
+                   echo "<p>£" . $basketcost . " before discount</p>";
+                    $discount_name = "test"; #$discount_name = $_POST['discount'];
+                    $sql = "SELECT value FROM discounts WHERE discountTitle = '" . $discount_name . "'";
+                    $value = $db->query($sql);
+                    $basketcost = $basketcost * (1 - $value->fetch()["value"] / 100);
+                    $basketcost = number_format($basketcost, 2);
+                    echo "<p>£" . $basketcost . " total</p>";
+                #stock availability check
+                include ("../availability.php");
+                if (availability($db, $basketId)) {
+                    echo "<p>available</p>";
+                    echo '<a href="../checkout.php"><button class="checkout-button">checkout?</button></a>';
 
+                } else {
+                    echo "<p>Your basket is empty.</p>";
+                    echo '<div class="mmm"><a href="../product/products.php"><button>Add Products?</button></a></div>';
 
-        $discount_name = "test"; #$discount_name = $_POST['discount'];
-        $sql = "SELECT value FROM discounts WHERE discountTitle = '" . $discount_name . "'";
-        $value = $db->query($sql);
-        $basketcost = $basketcost * (1 - $value->fetch()["value"] / 100);
-        $basketcost = number_format($basketcost, 2);
-        echo "<p>£" . $basketcost . " total</p>";
-
-
-        #stock availability check
-        include ("../availability.php");
-        if (availability($db, $basketId)) {
-            echo "<p>available</p>";
-            echo '<a href="../checkout.php"><button class="checkout-button">checkout?</button></a>';
-
-        } 
-        else {
-            echo "<p>Your basket is empty.</p>";
-            echo '<div class="mmm"><a href="../product/products.php"><button>Add Products?</button></a></div>';
-
-        }
-        }
-            echo "<p>£" . $basketcost . " before discount</p>";
-        } else {
-            echo "0 results";
-        }
+                }
+                
+            } else {
+                echo "0 results" . $basketId;
+            }
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
         }
@@ -222,10 +221,12 @@ if ($basketId != $mainbasketId) {
                 window.location.reload();
             }, 20);
         }
-        </script>
-    </body>
-    <footer class="footer">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    </script>
+</body>
+<footer class="footer">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
     <div class="container">
         <div class="row">
             <div class="footer-col">
