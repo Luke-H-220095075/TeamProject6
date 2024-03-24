@@ -165,6 +165,109 @@ $transactions = $stmt->fetchAll(PDO::FETCH_ASSOC);
 if ($transactions) {
 ?>
  
+    <div class="info-table">
+
+    <div class="table-header"style="background-color: #e2b489; padding-top: 10px;">
+<div class="container custom-background">
+<strong><h3>Transactions</h3></strong> &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp;
+
+    <div class="row justify-content-end align-items-right">
+   
+    <div class="col-md-1">
+    <div class="input-group mb-3 custom-dropdown-toggle">
+        <div class="input-group-prepend">
+            <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="status" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >status</button>
+            <div class="dropdown-menu">
+            <a class="dropdown-item" href="transactions.php?status=pending">Pending</a>
+                <a class="dropdown-item" href="transactions.php?status=approved">Approved</a>
+             
+  
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Order ID</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                    <th>Card Details</th>
+                    <th>Transaction Date</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($transactions as $transaction) { ?>
+                    <tr>
+                        <td><?php echo $transaction['transactionId']; ?></td>
+                        <td><?php echo $transaction['orderId']; ?></td>
+                        <td><?php echo $transaction['amount']; ?></td>
+                        <td><?php echo $transaction['status']; ?></td>
+                        <td><?php echo $transaction['cardDetails']; ?></td>
+                        <td><?php echo $transaction['transactionDate']; ?></td>
+                        <td>
+                        <form action="transactions.php" method="POST">
+    <input type="hidden" name="transactionId" value="<?php echo $transaction['transactionId']; ?>">
+    <button type="submit" name="approve" class="btn btn-primary">Approve</button>
+</form>
+
+                        </td>
+                    </tr>
+                <?php } ?>
+            </tbody>
+        </table>
+    </div>
+<?php
+} else  {
+    echo'
+    <div class="info-table">
+
+    <div class="table-header"style="background-color: #e2b489; padding-top: 10px;">
+<div class="container custom-background">
+<strong><h3>Transactions</h3></strong> &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp;
+
+    <div class="row justify-content-end align-items-right">
+   
+    <div class="col-md-1">
+    <div class="input-group mb-3 custom-dropdown-toggle">
+        <div class="input-group-prepend">
+            <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="status" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >status</button>
+            <div class="dropdown-menu">
+            <a class="dropdown-item" href="transactions.php?status=pending">Pending</a>
+                <a class="dropdown-item" href="transactions.php?status=approved">Approved</a>
+             
+  
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Order ID</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                    <th>Card Details</th>
+                    <th>Transaction Date</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+           
+        </table>
+        <P1> No Transactions Found. </P1>
+    </div>';
+}
 
 
 ?>
