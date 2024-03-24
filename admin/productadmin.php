@@ -49,7 +49,8 @@ if (isset($_SESSION['user'])) {
         }
 
 ?>
-                <a href="dashboard.php">
+            <li>
+                 <a href="dashboard.php">
                     <i class="fa-solid fa-table-columns"></i>
                     <span class="nav-item">Dashboard</span>
                 </a>
@@ -57,7 +58,7 @@ if (isset($_SESSION['user'])) {
             </li>
             <li>
                 <a href="useradmin.php">
-                    <i class="fa-solid fa-user"></i>
+                <i class="fa-solid fa-users"></i>
                     <span class="nav-item">Users</span>
                 </a>
                <!-- <span class="tooltip">Users</span>-->
@@ -65,7 +66,7 @@ if (isset($_SESSION['user'])) {
             <li>
                 <a href="productadmin.php">
                     <i class="fa-solid fa-couch"></i>
-                    <span class="nav-item">Inventory</span>
+                    <span class="nav-item">Products</span>
                 </a>
                <!-- <span class="tooltip">Products</span>-->
             </li>
@@ -77,11 +78,11 @@ if (isset($_SESSION['user'])) {
                <!-- <span class="tooltip">Orders</span> -->
             </li>
             <li>
-                <a href="pendingrequests.php">
-                    <i class="fa-solid fa-user"></i>
-                    <span class="nav-item">Approve pending admin requests</span>
+            <a href="transactions.php">
+            <i class="fa-solid fa-money-bill"></i>
+                    <span class="nav-item">Transactions</span>
                 </a>
-               <!-- <span class="tooltip">Users</span>-->
+
             </li>
             <li>
                 <a href="messages.php">
@@ -89,12 +90,20 @@ if (isset($_SESSION['user'])) {
                     <span class="nav-item">Messages</span>
                 </a>
                                <!-- <span class="tooltip">Messages</span> -->
-
+            </li>
+            <li>
+          
+            <li>
+                <a href="pendingrequests.php">
+                    <i class="fa-solid fa-user"></i>
+                    <span class="nav-item">Admin Requests</span>
+                </a>
+               <!-- <span class="tooltip">Users</span>-->
             </li>
             <li>
                 <a href="../index.php">
                     <i class="fa-solid fa-star"></i>
-                    <span class="nav-item">view as user</span>
+                    <span class="nav-item">View As User</span>
                 </a>
                                <!-- <span class="tooltip">mainpage</span> -->
 
