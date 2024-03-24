@@ -12,12 +12,25 @@ body{
     justify-content: center;
 }
 .container{
-    display: flex;
-    align-items: center;
     background-color: #fff;
     border-radius: 20px;
     box-shadow: 0px 5px 100px -80px #000;
+      display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
 }
+
+@media (max-width: 767px) {
+    .image_box,
+    .box {
+      flex: 100%;
+      max-width: 100%;
+    }
+  }
+
 .image_box{
     width: 400px;
     height: 600px;
@@ -35,9 +48,9 @@ body{
     transform: translate(-50% , -50%);
 }
 .box{
+    height: 400px;
     width: 400px;
     margin: 10px;
-    padding: 15px;
 }
 h2{
     text-align: center;
@@ -58,8 +71,6 @@ h2::before{
     width: 100%;
     text-align: center;
     border-bottom: 2px solid #ffb74d;
-    margin-top: 35px;
-    margin-bottom: 10px;
     position: relative;
 }
 .box form .input_box input{
@@ -112,7 +123,6 @@ h2::before{
     font-size: 25px;
     font-weight: bold;
     padding: 10px 16px;
-    margin-top: 30px;
     border-radius: 100px;
     color: #fff;
     cursor: pointer;

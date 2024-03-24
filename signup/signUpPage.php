@@ -9,7 +9,7 @@
 <body>
     
     <div class="container">
-
+<br>
         <div class="image_box">
             <img src="signuppic.jpg" alt="Sign Up Image">
         </div>
@@ -68,7 +68,7 @@
 
             </form>
         </div>
-
+<br>
     </div>
 
 </body>
