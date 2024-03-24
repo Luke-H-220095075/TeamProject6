@@ -36,7 +36,7 @@ if (isset ($_SESSION['discount_name'])) {
 
 #stock availability check
 include ("availability.php");
-function purchase($db, $basketId)
+function purchase($db, $basketId, $basketcost)
 {
   if (isset ($_POST['purchase'])) {
     if (availability($db, $basketId)) {
@@ -50,12 +50,28 @@ function purchase($db, $basketId)
       }
       $sql = "INSERT INTO orders (basketId, userId, deliveryOption) VALUES (" . $basketId . ", " . $_SESSION['userID'] . ", 'standard')";
       $db->query($sql);
+
+      $orderId = $db->lastInsertId();
+      
       $sql = "UPDATE baskets SET currentUserBasket = 0 WHERE basketId = $basketId";
       $db->query($sql);
       $sql = "INSERT INTO baskets (userId, currentUserBasket) VALUES (" . $_SESSION['userID'] . ", 1)";
       $db->query($sql);
       $_SESSION["basketID"] = null;
+
       echo"<script>window.location.href =('history.php')</script>";
+
+      header('Location: history.php');
+
+      
+      $cardNumber = isset($_POST['CardNumber']) ? $_POST['CardNumber'] : '';
+      $cvv = isset($_POST['CVV']) ? $_POST['CVV'] : '';
+      $expDate = isset($_POST['expDate']) ? $_POST['expDate'] : '';
+      $cardDetails = "$cardNumber|$cvv|$expDate";
+      $status = 'pending';
+      $sql = "INSERT INTO transactions (orderId, amount, status, cardDetails) VALUES ($orderId, $basketcost, '$status', '$cardDetails')";
+      $db->query($sql);
+
     }
   }
   $_POST['purchase'] = null;
@@ -190,7 +206,7 @@ function purchase($db, $basketId)
           <?php
           if (availability($db, $basketId)) {
             echo "<button  method='post' name='purchase' type='submit'>Confirm order</button>";
-            purchase($db, $basketId);
+            purchase($db, $basketId,  $basketcost);
           } else {
             echo "<button type='button'>unavailable</button>";
           }
