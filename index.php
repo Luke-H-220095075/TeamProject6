@@ -147,7 +147,7 @@
   <div class="card-body">
     <h5 class="card-title">New to Furniche?</h5>
     <p class="card-text">Fall in love in the process, customise your future home.</p>
-    <a href="signIn.php" class="btn btn-primary">Sign Up</a>
+    <a href="signup/signUpPage.php" class="btn btn-primary">Sign Up</a>
   </div>
 </div>
 <div class="card" style="width: 18rem;">
