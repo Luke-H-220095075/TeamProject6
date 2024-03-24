@@ -65,6 +65,10 @@
               }
               ?>
             </ul>
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
           </div>
         </div>
       </nav>
@@ -166,12 +170,12 @@
                     
                     if (isset ($_POST['purchase'.$row["orderId"]])) {
                         $_SESSION["basketID"] = $row["basketId"];
-                        echo"<script>window.location.href =('checkout.php')</script>";
+                        header('Location: checkout.php');
                     }
                     
                     if (isset ($_POST['Details'.$row["orderId"]])) {
                         $_SESSION["basketID"] = $row["basketId"];
-                        echo"<script>window.location.href =('basket/basket.php')</script>";
+                        header('Location: basket/basket.php');
                     }
                     echo "<button class='order-again-button  method='post' name='purchase".$row["orderId"]."' type='submit'>Order Again</button>";
                     echo "<button class='  '  method='post' name='Details".$row["orderId"]."' type='submit'>View Details</button>";
@@ -208,61 +212,44 @@
         echo "</div>";
 
         // Recommendations of products based of previous purchases
-        $categorySql = "SELECT DISTINCT productCategory FROM products WHERE productId IN (SELECT productId FROM basketproducts WHERE basketId IN (SELECT basketId FROM orders WHERE userId = ?))";
-        $categoryStmt = $db->prepare($categorySql);
-        $categoryStmt->execute([$userID]);
-        
-        $categories = [];
-        while ($categoryRow = $categoryStmt->fetch(PDO::FETCH_ASSOC)) {
-            $categories[] = $categoryRow['productCategory'];
-        }
-        
-     
-        $recommendationSql = "SELECT p.productName, p.imageName
-        FROM products p
-        JOIN basketproducts b ON p.productId = b.productId
+        $recommendationSql = "
+    SELECT p.productName, p.imageName
+    FROM products p
+    WHERE p.productCategory IN (
+        SELECT DISTINCT p.productCategory
+        FROM basketproducts b
+        JOIN products p ON b.productId = p.productId
         JOIN orders o ON b.basketId = o.basketId
         WHERE o.userId = ?
-        AND p.productId NOT IN (
-            SELECT productId 
-            FROM basketproducts 
-            WHERE basketId IN (SELECT basketId FROM orders WHERE userId = ?)
-        )
-        AND p.productType NOT IN (
-            SELECT DISTINCT productType 
-            FROM basketproducts bp 
-            JOIN products pr ON bp.productId = pr.productId 
-            JOIN orders ord ON bp.basketId = ord.basketId
-            WHERE ord.userId = ?
-        )
-        AND p.productCategory NOT IN (
-            SELECT DISTINCT productCategory 
-            FROM basketproducts bp 
-            JOIN products pr ON bp.productId = pr.productId 
-            JOIN orders ord ON bp.basketId = ord.basketId
-            WHERE ord.userId = ?
-        )
-                      LIMIT 6"; // amount of recommendations
+    )
+    AND p.productId NOT IN (
+        SELECT DISTINCT b.productId
+        FROM basketproducts b
+        JOIN orders o ON b.basketId = o.basketId
+        WHERE o.userId = ?
+    )
+    LIMIT 6
+";
+    
+    // Prepare and execute the recommendation SQL statement
+    $recommendationStmt = $db->prepare($recommendationSql);
+    $recommendationStmt->execute([$userID, $userID]);
 
-        $recommendationStmt = $db->prepare($recommendationSql);
-        $recommendationStmt->execute([$userID, $userID, $userID, $userID]);
-        
-        echo "<div class='recommendations-title'>Recommendations</div>";
-        
-        if ($recommendationStmt->rowCount() > 0) {
-            echo "<div class='recommendations-container'>";
-            while ($recommendationRow = $recommendationStmt->fetch(PDO::FETCH_ASSOC)) {
-                echo "<div class='recommendation-card'>";
-                echo "<img class='recommendation-image' src='Pictures%20for%20website/" . htmlspecialchars($recommendationRow['imageName']) . "' alt='" . htmlspecialchars($recommendationRow['productName']) . "'>";
-                echo "<div class='recommendation-info'>";
-                echo "<p class='recommendation-name'>" . htmlspecialchars($recommendationRow['productName']) . "</p>";
-                echo "</div>"; 
-                echo "</div>";
-            }
-            echo "</div>";
-        } else {
-            echo "No recommendations available.";
+      echo "<div class='recommendations-title'>Recommendations</div>";
+
+      if ($recommendationStmt->rowCount() > 0) {
+        echo "<div class='recommendations-container'>";
+        while ($recommendationRow = $recommendationStmt->fetch(PDO::FETCH_ASSOC)) {
+          echo "<div class='recommendation-card'>";
+          echo "<img class='recommendation-image' src='Pictures%20for%20website/" . htmlspecialchars($recommendationRow['imageName']) . "' alt='" . htmlspecialchars($recommendationRow['productName']) . "'>";
+          echo "<div class='recommendation-info'>";
+          echo "<p class='recommendation-name'>" . htmlspecialchars($recommendationRow['productName']) . "</p>";
+          echo "</div>"; 
+          echo "</div>";
         }
+        echo "</div>";
+      }
+
 
       //Create new review form 
 
