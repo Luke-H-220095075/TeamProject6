@@ -86,15 +86,15 @@
     <br>
   <h2>Categories</h2>
   <div>
-    <a href="product/products.php?typeFilter=all&categoryFilter=bohemian&sortFilter=all"><img
+    <a href="products.php?typeFilter=all&categoryFilter=bohemian&sortFilter=all"><img
         src="../Pictures%20for%20website/Bohemian.jpg" alt="Bohemian" class="image-filter"></a>
-    <a href="product/products.php?typeFilter=all&categoryFilter=rustic&sortFilter=all"><img
+    <a href="products.php?typeFilter=all&categoryFilter=rustic&sortFilter=all"><img
         src="../Pictures%20for%20website/Rustic.jpg" alt="Rustic" class="image-filter"></a>
-    <a href="product/products.php?typeFilter=all&categoryFilter=minimal&sortFilter=all"><img
+    <a href="products.php?typeFilter=all&categoryFilter=minimal&sortFilter=all"><img
         src="../Pictures%20for%20website/Minimalistic.jpg" alt="Minimalistic" class="image-filter"></a>
-    <a href="product/products.php?typeFilter=all&categoryFilter=tropical&sortFilter=all"><img
+    <a href="products.php?typeFilter=all&categoryFilter=tropical&sortFilter=all"><img
         src="../Pictures%20for%20website/Tropical.jpg" alt="Tropical" class="image-filter"></a>
-    <a href="product/products.php?typeFilter=all&categoryFilter=modern&sortFilter=all"><img
+    <a href="products.php?typeFilter=all&categoryFilter=modern&sortFilter=all"><img
         src="../Pictures%20for%20website/Modern.jpg" alt="Modern" class="image-filter"></a>
   </div>
 </div>
