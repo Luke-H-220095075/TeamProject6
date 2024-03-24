@@ -79,7 +79,21 @@ if (isset($_GET['product_id'])) {
     $product_id = $_GET['product_id'];
 
     include '../connect.php';
+    $reviewSql = "SELECT rating FROM orderreviews";
 
+    $reviewStmt = $db->prepare($reviewSql);
+    $reviewStmt->execute();
+    $avgUsrRating = 0;
+    $count = 0;
+    if ($reviewStmt->rowCount() > 0) {
+      while ($reviewRow = $reviewStmt->fetch(PDO::FETCH_ASSOC)) {
+        $avgUsrRating = $reviewRow["rating"];
+        $count++;
+      }
+    }
+    $avgUsrRating = $avgUsrRating / $count;
+    echo "the average user rated us " . $avgUsrRating . " out of 5";
+    
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         // Calling the product details from the database
     try {
