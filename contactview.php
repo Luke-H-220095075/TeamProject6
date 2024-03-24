@@ -57,7 +57,7 @@
                 if ($_SESSION["access"] = "admin") {
                   echo '<li class="nav-item"><a class="nav-link" href="admin\dashboard.php">admin page</a></li></li>';
                 }
-
+                $_SESSION["basketID"] = null;
               } else {
                 echo '<li class="nav-item">
                 <a class="nav-link" href="loginview.php">Login</a>
