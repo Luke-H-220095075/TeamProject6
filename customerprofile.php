@@ -24,29 +24,16 @@
         <div class="container-fluid">
           <a class="navbar-brand" href="index.php">Furniche</a>
 
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-            aria-label="Toggle navigation">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-              <?php
-              session_start();
-              if (isset ($_SESSION['user'])) {
-                echo '<div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
                 <a class="nav-link" href="product/products.php">Products</a>
-              </li>';
-                echo '<li class="nav-item"><a class="nav-link" href="customerprofile.php">' . $_SESSION['user'] . '</a></li>';
-                if ($_SESSION["access"] = "admin"){
-                  echo '<li class="nav-item"><a class="nav-link" href="admin\dashboard.php">' . $_SESSION['user'] . '</a></li>'; 
-                }
-              } else {
-                echo '<li class="nav-item">
-                <a class="nav-link" href="loginview.php">Login</a>
-              </li>';
-              }
-              ?>
+              </li>
+
+
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                   aria-expanded="false">
@@ -57,11 +44,29 @@
                   <li><a class="dropdown-item" href="contactview.php">Contact us</a></li>
                 </ul>
               </li>
+
               <?php
+              session_start();
               if (isset ($_SESSION['user'])) {
+                echo '<li class="nav-item"><a class="nav-link" href="customerprofile.php">' . $_SESSION['user'] . '</a></li>';
+                  echo '<li class="nav-item"><a class="nav-link" href="logout.php" >Logout</a></li>';
+                  echo '<li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  <i class="fa-solid fa-basket-shopping"></i>
+                </a>';
+                echo '<ul class="dropdown-menu"><li class="nav-item"><a class="nav-link" href="history.php">order history</a></li>';
                 echo '<li class="nav-item">
-                      <a class="nav-link" href="basket/basket.php"><i class="fa-solid fa-basket-shopping"></i></a>
-                      </li>';
+                      <a class="nav-link" href="basket/basket.php">basket</a>
+                      </li></ul>';
+                if ($_SESSION["access"] = "admin") {
+                  echo '<li class="nav-item"><a class="nav-link" href="admin\dashboard.php">admin page</a></li></li>';
+                }
+
+              } else {
+                echo '<li class="nav-item">
+                <a class="nav-link" href="loginview.php">Login</a>
+              </li>';
               }
               ?>
             </ul>
@@ -71,15 +76,10 @@
             </form>
           </div>
         </div>
+      </nav>
     </div>
-
-    </nav>
-    </div>
-    </div>
-    </nav>
-  </section>
+    </section>
 </header>
-
 <body>
   <?php
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 23, 2024 at 07:28 PM
+-- Generation Time: Mar 24, 2024 at 03:28 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -40,7 +40,16 @@ CREATE TABLE `basketproducts` (
 INSERT INTO `basketproducts` (`basketId`, `productId`, `quantity`) VALUES
 (1, 4, 4),
 (1, 5, 3),
-(1, 2, 1);
+(1, 2, 1),
+(63, 3, 1),
+(64, 2, 1),
+(65, 1, 1),
+(66, 3, 1),
+(67, 1, 1),
+(68, 1, 1),
+(69, 3, 1),
+(70, 4, 1),
+(71, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -61,7 +70,17 @@ CREATE TABLE `baskets` (
 --
 
 INSERT INTO `baskets` (`basketId`, `userId`, `dateAdded`, `discountId`, `currentUserBasket`) VALUES
-(1, 1, '2024-02-07 12:22:40', 1, 1);
+(1, 1, '2024-02-07 12:22:40', 1, 0),
+(63, 1, '2024-03-24 11:51:39', NULL, 0),
+(64, 1, '2024-03-24 12:20:21', NULL, 0),
+(65, 1, '2024-03-24 12:25:58', NULL, 0),
+(66, 1, '2024-03-24 12:30:25', NULL, 0),
+(67, 1, '2024-03-24 12:31:25', NULL, 0),
+(68, 1, '2024-03-24 12:36:30', NULL, 0),
+(69, 1, '2024-03-24 12:37:32', NULL, 0),
+(70, 1, '2024-03-24 12:45:30', NULL, 0),
+(71, 1, '2024-03-24 12:48:59', NULL, 0),
+(72, 1, '2024-03-24 12:51:15', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -119,13 +138,6 @@ CREATE TABLE `orderreviews` (
   `description` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `orderreviews`
---
-
-INSERT INTO `orderreviews` (`reviewId`, `orderId`, `reviewDate`, `rating`, `description`) VALUES
-(1, 111, '2024-02-07 12:25:05', 5, 'test');
-
 -- --------------------------------------------------------
 
 --
@@ -148,9 +160,9 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`orderId`, `basketId`, `userId`, `dateAdded`, `deliveryOption`, `deliveryDate`, `deliveryStatus`, `notes`) VALUES
-(55, 1, 2, '2024-03-19 13:32:32', 'premium', '2023-12-28', 'Delivered', 'Delivered Successfully!!!'),
-(66, 1, 2, '2024-03-19 13:31:52', 'standard', '2024-06-02', 'Dispatching', 'Still Waiting on new Stock, will update soon!'),
-(111, 1, 1, '2024-02-07 12:24:42', 'standard', '2024-02-07', NULL, '');
+(119, 69, 1, '2024-03-24 12:45:30', 'standard', NULL, NULL, ''),
+(120, 70, 1, '2024-03-24 12:48:59', 'standard', NULL, NULL, ''),
+(121, 71, 1, '2024-03-24 12:51:15', 'standard', NULL, NULL, '');
 
 -- --------------------------------------------------------
 
@@ -176,11 +188,11 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`productId`, `productName`, `productDescription`, `price`, `dateAdded`, `countSold`, `countStock`, `productCategory`, `productType`, `imageName`) VALUES
-(1, 'Modern Sofa', 'Living room\r\n', '499.99', '2023-12-01 13:25:36', 10, 50, 'modern', 'sofa', 'modern_sofa.jpg'),
-(2, 'Minimal Desk', 'Dressing table', '199.99', '2023-12-01 13:25:36', 5, 20, 'minimal', 'desk', 'minimal_desk.jpg'),
-(3, 'Rustic Chair', 'Kitchen', '129.99', '2023-12-01 13:25:36', 8, 30, 'rustic', 'chair', 'rustic_chair.jpg'),
-(4, 'Bohemian Bed', 'Double bedroom', '699.99', '2023-12-01 13:25:36', 12, 40, 'bohemian', 'bed', 'bohemian_bed.jpg'),
-(5, 'Tropical Wardrobe', 'Bedroom', '299.99', '2023-12-01 13:25:36', 6, 25, 'tropical', 'wardrobe', 'tropical_wardrobe.jpg'),
+(1, 'Modern Sofa', 'Living room\r\n', '499.99', '2023-12-01 13:25:36', 13, 47, 'modern', 'sofa', 'modern_sofa.jpg'),
+(2, 'Minimal Desk', 'Dressing table', '199.99', '2023-12-01 13:25:36', 8, 17, 'minimal', 'desk', 'minimal_desk.jpg'),
+(3, 'Rustic Chair', 'Kitchen', '129.99', '2023-12-01 13:25:36', 11, 27, 'rustic', 'chair', 'rustic_chair.jpg'),
+(4, 'Bohemian Bed', 'Double bedroom', '699.99', '2023-12-01 13:25:36', 17, 35, 'bohemian', 'bed', 'bohemian_bed.jpg'),
+(5, 'Tropical Wardrobe', 'Bedroom', '299.99', '2023-12-01 13:25:36', 9, 22, 'tropical', 'wardrobe', 'tropical_wardrobe.jpg'),
 (6, 'Modern Chair', 'Gaming', '149.99', '2023-12-01 13:25:36', 9, 35, 'modern', 'chair', 'modern_chair.jpg'),
 (7, 'Minimal Bed', 'Double bedroom', '599.99', '2023-12-01 13:25:36', 15, 45, 'minimal', 'bed', 'minimal_bed.jpg'),
 (8, 'Rustic Desk', 'Kitchen', '179.99', '2023-12-01 13:25:36', 7, 28, 'rustic', 'desk', 'rustic_desk.jpg'),
@@ -201,6 +213,28 @@ INSERT INTO `products` (`productId`, `productName`, `productDescription`, `price
 (23, 'Rustic Chair 3', 'Kitchen', '139.99', '2023-12-01 13:25:36', 11, 28, 'rustic', 'chair', 'rustic_chair_3.jpg'),
 (24, 'Bohemian Bed 3', 'Single bedroom', '649.99', '2023-12-01 13:25:36', 13, 30, 'bohemian', 'bed', 'bohemian_bed_3.jpg'),
 (25, 'Tropical Wardrobe 3', 'Double bedroom', '259.99', '2023-12-01 13:25:36', 9, 25, 'tropical', 'wardrobe', 'tropical_wardrobe_3.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `transactions`
+--
+
+CREATE TABLE `transactions` (
+  `transactionId` int(11) NOT NULL,
+  `orderId` int(11) NOT NULL,
+  `amount` decimal(10,2) NOT NULL,
+  `status` enum('approved','pending') NOT NULL DEFAULT 'pending',
+  `cardDetails` varchar(255) DEFAULT NULL,
+  `transactionDate` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `transactions`
+--
+
+INSERT INTO `transactions` (`transactionId`, `orderId`, `amount`, `status`, `cardDetails`, `transactionDate`) VALUES
+(2, 121, '199.99', 'approved', '|000|00/00', '2024-03-24 12:51:15');
 
 -- --------------------------------------------------------
 
@@ -289,6 +323,13 @@ ALTER TABLE `products`
   ADD PRIMARY KEY (`productId`);
 
 --
+-- Indexes for table `transactions`
+--
+ALTER TABLE `transactions`
+  ADD PRIMARY KEY (`transactionId`),
+  ADD KEY `orderId` (`orderId`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -302,7 +343,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `baskets`
 --
 ALTER TABLE `baskets`
-  MODIFY `basketId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `basketId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 
 --
 -- AUTO_INCREMENT for table `discounts`
@@ -326,13 +367,19 @@ ALTER TABLE `orderreviews`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=112;
+  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
   MODIFY `productId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+
+--
+-- AUTO_INCREMENT for table `transactions`
+--
+ALTER TABLE `transactions`
+  MODIFY `transactionId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -376,6 +423,12 @@ ALTER TABLE `orderreviews`
 ALTER TABLE `orders`
   ADD CONSTRAINT `order_basket` FOREIGN KEY (`basketId`) REFERENCES `baskets` (`basketId`) ON DELETE CASCADE,
   ADD CONSTRAINT `order_user` FOREIGN KEY (`userId`) REFERENCES `users` (`userId`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `transactions`
+--
+ALTER TABLE `transactions`
+  ADD CONSTRAINT `transactions_ibfk_1` FOREIGN KEY (`orderId`) REFERENCES `orders` (`orderId`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
