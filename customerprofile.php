@@ -70,10 +70,6 @@
               }
               ?>
             </ul>
-            <form class="d-flex" role="search">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
           </div>
         </div>
       </nav>
@@ -137,6 +133,16 @@
           }
           ?>
       </div>
+
+      <form method="post" onsubmit="return confirm('Are you sure you want to delete your account?');"><button type="submit" name="delete" style="cursor: pointer">Delete my account</button></form>
+      <?php
+
+          if (isset ($_POST["delete"]))
+          {
+            $user = new User($_SESSION["user"], null, null, null, null, null, null, null);
+            $user->delete();
+          }
+          ?>
     </div>
   </section>
 </body>

@@ -395,34 +395,34 @@ ALTER TABLE `users`
 -- Constraints for table `basketproducts`
 --
 ALTER TABLE `basketproducts`
-  ADD CONSTRAINT `pivot_basket` FOREIGN KEY (`basketId`) REFERENCES `baskets` (`basketId`),
-  ADD CONSTRAINT `pivot_product` FOREIGN KEY (`productId`) REFERENCES `products` (`productId`);
+  ADD CONSTRAINT `pivot_basket` FOREIGN KEY (`basketId`) REFERENCES `baskets` (`basketId`) ON DELETE CASCADE,
+  ADD CONSTRAINT `pivot_product` FOREIGN KEY (`productId`) REFERENCES `products` (`productId`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `baskets`
 --
 ALTER TABLE `baskets`
-  ADD CONSTRAINT `basket_discount` FOREIGN KEY (`discountId`) REFERENCES `discounts` (`discountId`),
-  ADD CONSTRAINT `basket_user` FOREIGN KEY (`userId`) REFERENCES `users` (`userId`);
+  ADD CONSTRAINT `basket_discount` FOREIGN KEY (`discountId`) REFERENCES `discounts` (`discountId`) ON DELETE CASCADE,
+  ADD CONSTRAINT `basket_user` FOREIGN KEY (`userId`) REFERENCES `users` (`userId`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `inquiries`
 --
 ALTER TABLE `inquiries`
-  ADD CONSTRAINT `inquiry_user` FOREIGN KEY (`userId`) REFERENCES `users` (`userId`);
+  ADD CONSTRAINT `inquiry_user` FOREIGN KEY (`userId`) REFERENCES `users` (`userId`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `orderreviews`
 --
 ALTER TABLE `orderreviews`
-  ADD CONSTRAINT `fk_order_reviews_order_id` FOREIGN KEY (`orderId`) REFERENCES `orders` (`orderId`);
+  ADD CONSTRAINT `fk_order_reviews_order_id` FOREIGN KEY (`orderId`) REFERENCES `orders` (`orderId`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `orders`
 --
 ALTER TABLE `orders`
-  ADD CONSTRAINT `order_basket` FOREIGN KEY (`basketId`) REFERENCES `baskets` (`basketId`),
-  ADD CONSTRAINT `order_user` FOREIGN KEY (`userId`) REFERENCES `users` (`userId`);
+  ADD CONSTRAINT `order_basket` FOREIGN KEY (`basketId`) REFERENCES `baskets` (`basketId`) ON DELETE CASCADE,
+  ADD CONSTRAINT `order_user` FOREIGN KEY (`userId`) REFERENCES `users` (`userId`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `transactions`
