@@ -79,17 +79,25 @@
 </header>
 
 <body>
-    <div class="design">
-        <h1>Categories</h1>
-
-    <div>
-    <img src="../Pictures%20for%20website/Bohemian.jpg" alt="Category 1" onclick="fillCategoryFilter('bohemian')" class="image-filter">
-    <img src="../Pictures%20for%20website/Rustic.jpg" alt="Category 2" onclick="fillCategoryFilter('rustic')" class="image-filter">
-    <img src="../Pictures%20for%20website/Minimalistic.jpg" alt="Category 3" onclick="fillCategoryFilter('minimal')" class="image-filter">
-    <img src="../Pictures%20for%20website/Tropical.jpg" alt="Category 4" onclick="fillCategoryFilter('tropical')" class="image-filter">
-    <img src="../Pictures%20for%20website/Modern.jpg" alt="Category 5" onclick="fillCategoryFilter('modern')" class="image-filter">
-    </div>
-    </div>
+<div class="categories">
+    <br>
+    <br>
+    <br>
+    <br>
+  <h2>Categories</h2>
+  <div>
+    <a href="product/products.php?typeFilter=all&categoryFilter=bohemian&sortFilter=all"><img
+        src="../Pictures%20for%20website/Bohemian.jpg" alt="Bohemian" class="image-filter"></a>
+    <a href="product/products.php?typeFilter=all&categoryFilter=rustic&sortFilter=all"><img
+        src="../Pictures%20for%20website/Rustic.jpg" alt="Rustic" class="image-filter"></a>
+    <a href="product/products.php?typeFilter=all&categoryFilter=minimal&sortFilter=all"><img
+        src="../Pictures%20for%20website/Minimalistic.jpg" alt="Minimalistic" class="image-filter"></a>
+    <a href="product/products.php?typeFilter=all&categoryFilter=tropical&sortFilter=all"><img
+        src="../Pictures%20for%20website/Tropical.jpg" alt="Tropical" class="image-filter"></a>
+    <a href="product/products.php?typeFilter=all&categoryFilter=modern&sortFilter=all"><img
+        src="../Pictures%20for%20website/Modern.jpg" alt="Modern" class="image-filter"></a>
+  </div>
+</div>
 
     
  <div class="pd-display">
