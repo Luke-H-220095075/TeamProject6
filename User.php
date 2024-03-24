@@ -101,6 +101,7 @@ class User {
       /*alert($sth);*/
       ?><script type='text/javascript'>alert("You have successfully signed up");</script><?php
       $this->setSession();
+      header('Location: index.php');
       } catch(PDOException $ex){
       ?>
       <p>Sorry, a database error occurred.<p>
@@ -302,6 +303,7 @@ class User {
             $sth->bindparam(':username', $this->username, PDO::PARAM_STR, 10);
             $sth->execute();
             if($sth == true){
+              include('logout.php');
               header('Location: index.php');
             }
         }catch(PDOException $ex){
