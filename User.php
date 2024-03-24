@@ -93,14 +93,17 @@ class User {
       $sth->bindparam(':admin', $this->admin, PDO::PARAM_STR, 64);
       $sth->bindparam(':token', $token, PDO::PARAM_STR, 64);
       $sth->execute();
-      $sql = "SELECT userId FROM users WHERE username = $this->username";
-      $result = $db->query($sql);
-      $row = $result->fetch();
-      $sql = "INSERT INTO baskets (userId, currentUserBasket) VALUES (" . $row["userId"] . ", 1)";
+      // $sql = "SELECT userId FROM users WHERE username = $this->username";
+      // $result = $db->query($sql);
+      // $row = $result->fetch();
+      // $sql = "INSERT INTO baskets (userId, currentUserBasket) VALUES (" . $row["userId"] . ", 1)";
+      // $db->query($sql);
+      $this->setSession();
+      $sql = "INSERT INTO baskets (userId, currentUserBasket) VALUES (" . $_SESSION['userID'] . ", 1)";
       $db->query($sql);
       /*alert($sth);*/
-      ?><script type='text/javascript'>alert("You have successfully signed up");</script><?php
-      $this->setSession();
+      echo "<script type='text/javascript'>alert('You have successfully signed up');</script>";
+      header('Location: ../index.php'); //is accessed whilst in the signup folder
       } catch(PDOException $ex){
       ?>
       <p>Sorry, a database error occurred.<p>
@@ -286,6 +289,24 @@ class User {
             $sth->execute();
             if($sth == true){
               return true;
+            }
+        }catch(PDOException $ex){
+          ?>
+          <p>Sorry, a database error occurred.<p>
+          <p>Error details: <em> <?= $ex->getMessage() ?></em></p>
+          <?php
+        } 
+        return false;
+      }
+      public function delete(){
+        include 'view/connect.php';
+          try{
+            $sth=$db->prepare("DELETE FROM users WHERE username = :username");
+            $sth->bindparam(':username', $this->username, PDO::PARAM_STR, 10);
+            $sth->execute();
+            if($sth == true){
+              include('logout.php');
+              header('Location: index.php');
             }
         }catch(PDOException $ex){
           ?>

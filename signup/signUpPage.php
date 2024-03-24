@@ -62,8 +62,8 @@
                 ?>
 
                 <div class="link_box">
-                    <div class="signup_link">Have an account? <a href="loginview.php">Login</a></div>
-                    <div class="contact_link">Need Help? <a href="#">Contact Us</a></div>
+                    <div class="signup_link">Have an account? <a href="../loginview.php">Login</a></div>
+                    <div class="contact_link">Need Help? <a href="../contactview.php">Contact Us</a></div>
                 </div>
 
             </form>
