@@ -207,13 +207,13 @@
 
               echo '<Section class="recommendations">';
               echo '<h3>Recommendations</h3>';
-              $stmtRecommendations = $db->prepare("SELECT * FROM products WHERE productId != :product_id ORDER BY RAND() LIMIT 4");
+              $stmtRecommendations = $db->prepare("SELECT * FROM products WHERE productId != :product_id ORDER BY RAND() LIMIT 3");
               $stmtRecommendations->bindParam(':product_id', $product_id, PDO::PARAM_INT);
               $stmtRecommendations->execute();
               while ($recommendation = $stmtRecommendations->fetch(PDO::FETCH_ASSOC)) {
                 echo '<div class="recommendation-card">';
                 echo '<div class="card">';
-                echo '<p><img src="../Pictures%20for%20website/' . htmlspecialchars($recommendation['imageName']) . '" alt="' . htmlspecialchars($row['imageName']) . '" style="width:500px;height:600px;></p>';
+                echo '<p><img src="../Pictures%20for%20website/' . htmlspecialchars($recommendation['imageName']) . '" alt="' . htmlspecialchars($row['imageName']) . '" style="width:500px;height:600px;"></p>';
                 echo '</div>';
                 echo '<h4>' . $recommendation['productName'] . '</h4>';
                 echo '<p><strong>Price:</strong> $' . $recommendation['price'] . '</p>';
