@@ -87,7 +87,7 @@
 
         if (isset ($_GET['product_id'])) {
           $product_id = $_GET['product_id'];
-
+          $userID = $_SESSION['userID'];
           include '../connect.php';
           $reviewSql = "SELECT rating FROM orderreviews";
 
@@ -101,9 +101,9 @@
               $count++;
             }
             $avgOrdrRating = $avgOrdrRating / $count;
-          echo "the average user rated us " . $avgOrdrRating . " out of 5";
+            echo "the average user rated us " . $avgOrdrRating . " out of 5";
           }
-          
+
 
           $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
           // Calling the product details from the database
@@ -127,6 +127,30 @@
               echo '<p><strong>Release Date/Time:</strong> ' . $row['dateAdded'] . '</p>';
               echo '<p><strong>Amount in Stock:</strong> ' . $row['countStock'] . '</p>';
               echo '<p><strong>Amount Sold:</strong> ' . $row['countSold'] . '</p>';
+              $reviewSql = "SELECT reviewDate, rating, description FROM productreviews WHERE productId =" . $product_id;
+                $reviewStmt = $db->prepare($reviewSql);
+                $reviewStmt->execute();
+                $avgUsrRating = 0;
+                $count = 0;
+                if ($reviewStmt->rowCount() > 0) {
+                  while ($reviewRow = $reviewStmt->fetch(PDO::FETCH_ASSOC)) {
+                    $avgUsrRating = $avgUsrRating + $reviewRow["rating"];
+                    $count++;
+                  }
+                $avgUsrRating = $avgUsrRating / $count;
+                echo "the average user rated this product " . $avgUsrRating . " out of 5";
+              echo "<form method='post'>";
+              echo "<label for='rating'>Rating:</label>";
+              echo "<select name='rating' id='rating' required>";
+              for ($i = 1; $i <= 5; $i++) {
+                echo "<option value='$i'>$i</option>";
+              }
+              echo "</select>";
+              echo "<label for='description'>Review:</label>";
+              echo "<textarea name='description' id='description' rows='3' required></textarea>";
+              echo "<input type='submit' name='review' value='Submit Review'>";
+              echo "</form>";
+
               echo '</div>';
               echo '</section>';
 
@@ -143,20 +167,9 @@
                 echo '<h4>' . $recommendation['productName'] . '</h4>';
                 echo '<p><strong>Price:</strong> $' . $recommendation['price'] . '</p>';
                 echo '</div>';
-                $reviewSql = "SELECT r.reviewDate, r.rating, r.description FROM productreviews WHERE productId =" . $product_id;
-                $reviewStmt = $db->prepare($reviewSql);
-                $reviewStmt->execute([$userID]);
-                $avgUsrRating = 0;
-                $count = 0;
-                if ($reviewStmt->rowCount() > 0) {
-                  while ($reviewRow = $reviewStmt->fetch(PDO::FETCH_ASSOC)) {
-                    $avgUsrRating = $avgUsrRating + $reviewRow["rating"];
-                    $count++;
-                  }
                 }
-                $avgUsrRating = $avgUsrRating / $count;
-                echo "the average user rated this product " . $avgUsrRating . " out of 5";
               }
+
               echo '</section>';
             } else {
               echo "<p>Product not found.</p>";
@@ -227,3 +240,14 @@
       </footer>
 
 </html>
+<?php
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  if (isset ($_POST['review'])) {
+    $rating = $_POST['rating'];
+    $description = $_POST['description'];
+    $insertReviewSql = "INSERT INTO productreviews (productId, userId,rating, description) VALUES (?, ?, ?, ?)";
+    $insertReviewStmt = $db->prepare($insertReviewSql);
+    $insertReviewStmt->execute([$product_id, $userID, $rating, $description]);
+  }
+}
+?>
