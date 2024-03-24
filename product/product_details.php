@@ -101,7 +101,6 @@
               $count++;
             }
             $avgOrdrRating = $avgOrdrRating / $count;
-            echo "the average user rated us " . $avgOrdrRating . " out of 5";
           }
 
 
@@ -128,47 +127,49 @@
               echo '<p><strong>Amount in Stock:</strong> ' . $row['countStock'] . '</p>';
               echo '<p><strong>Amount Sold:</strong> ' . $row['countSold'] . '</p>';
               $reviewSql = "SELECT reviewDate, rating, description FROM productreviews WHERE productId =" . $product_id;
-                $reviewStmt = $db->prepare($reviewSql);
-                $reviewStmt->execute();
-                $avgUsrRating = 0;
-                $count = 0;
-                if ($reviewStmt->rowCount() > 0) {
-                  while ($reviewRow = $reviewStmt->fetch(PDO::FETCH_ASSOC)) {
-                    $avgUsrRating = $avgUsrRating + $reviewRow["rating"];
-                    $count++;
-                  }
-                $avgUsrRating = $avgUsrRating / $count;
-                echo "the average user rated this product " . $avgUsrRating . " out of 5";
-              echo "<form method='post'>";
-              echo "<label for='rating'>Rating:</label>";
-              echo "<select name='rating' id='rating' required>";
-              for ($i = 1; $i <= 5; $i++) {
-                echo "<option value='$i'>$i</option>";
-              }
-              echo "</select>";
-              echo "<label for='description'>Review:</label>";
-              echo "<textarea name='description' id='description' rows='3' required></textarea>";
-              echo "<input type='submit' name='review' value='Submit Review'>";
-              echo "</form>";
-
-              echo '</div>';
-              echo '</section>';
-
-              echo '<Section class="recommendations">';
-              echo '<h3>Recommendations</h3>';
-              $stmtRecommendations = $db->prepare("SELECT * FROM products WHERE productId != :product_id ORDER BY RAND() LIMIT 4");
-              $stmtRecommendations->bindParam(':product_id', $product_id, PDO::PARAM_INT);
-              $stmtRecommendations->execute();
-              while ($recommendation = $stmtRecommendations->fetch(PDO::FETCH_ASSOC)) {
-                echo '<div class="recommendation-card">';
-                echo '<div class="card">';
-                echo '<p><img src="../Pictures%20for%20website/' . htmlspecialchars($recommendation['imageName']) . '" alt="' . htmlspecialchars($row['imageName']) . '" style="width:500px;height:600px;></p>';
-                echo '</div>';
-                echo '<h4>' . $recommendation['productName'] . '</h4>';
-                echo '<p><strong>Price:</strong> $' . $recommendation['price'] . '</p>';
-                echo '</div>';
+              $reviewStmt = $db->prepare($reviewSql);
+              $reviewStmt->execute();
+              $avgUsrRating = 0;
+              $count = 0;
+              if ($reviewStmt->rowCount() > 0) {
+                while ($reviewRow = $reviewStmt->fetch(PDO::FETCH_ASSOC)) {
+                  $avgUsrRating = $avgUsrRating + $reviewRow["rating"];
+                  $count++;
                 }
+                $avgUsrRating = $avgUsrRating / $count;
+                echo "<p>the average user rated ordering with us " . $avgOrdrRating . " out of 5</p>";
+                echo "<p>this product is rated " . $avgUsrRating . " out of 5 by our users</p>";
               }
+                echo "<form method='post'>";
+                echo "<label for='rating'>Rating:</label>";
+                echo "<select name='rating' id='rating' required>";
+                for ($i = 1; $i <= 5; $i++) {
+                  echo "<option value='$i'>$i</option>";
+                }
+                echo "</select>";
+                echo "<label for='description'>Review:</label>";
+                echo "<textarea name='description' id='description' rows='3' required></textarea>";
+                echo "<input type='submit' name='review' value='Submit Review'>";
+                echo "</form>";
+
+                echo '</div>';
+                echo '</section>';
+
+                echo '<Section class="recommendations">';
+                echo '<h3>Recommendations</h3>';
+                $stmtRecommendations = $db->prepare("SELECT * FROM products WHERE productId != :product_id ORDER BY RAND() LIMIT 4");
+                $stmtRecommendations->bindParam(':product_id', $product_id, PDO::PARAM_INT);
+                $stmtRecommendations->execute();
+                while ($recommendation = $stmtRecommendations->fetch(PDO::FETCH_ASSOC)) {
+                  echo '<div class="recommendation-card">';
+                  echo '<div class="card">';
+                  echo '<p><img src="../Pictures%20for%20website/' . htmlspecialchars($recommendation['imageName']) . '" alt="' . htmlspecialchars($row['imageName']) . '" style="width:500px;height:600px;></p>';
+                  echo '</div>';
+                  echo '<h4>' . $recommendation['productName'] . '</h4>';
+                  echo '<p><strong>Price:</strong> $' . $recommendation['price'] . '</p>';
+                  echo '</div>';
+                }
+              
 
               echo '</section>';
             } else {
