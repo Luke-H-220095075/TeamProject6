@@ -58,10 +58,8 @@ function purchase($db, $basketId, $basketcost)
       $sql = "INSERT INTO baskets (userId, currentUserBasket) VALUES (" . $_SESSION['userID'] . ", 1)";
       $db->query($sql);
       $_SESSION["basketID"] = null;
-
-      echo"<script>window.location.href =('history.php')</script>";
-
-      header('Location: history.php');
+      $_SESSION["basketID"] = null;
+      
 
       //Store payment details into the transactions table
       $cardNumber = isset($_POST['CardNumber']) ? $_POST['CardNumber'] : '';
@@ -71,7 +69,7 @@ function purchase($db, $basketId, $basketcost)
       $status = 'pending';
       $sql = "INSERT INTO transactions (orderId, amount, status, cardDetails) VALUES ($orderId, $basketcost, '$status', '$cardDetails')";
       $db->query($sql);
-
+    echo"<script>window.location.href =('history.php')</script>";
     }
   }
   $_POST['purchase'] = null;

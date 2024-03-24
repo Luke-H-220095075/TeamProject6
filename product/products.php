@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>Furniche - Products</title>
     <meta charset="UTF-8">
@@ -7,320 +8,326 @@
     <link rel="stylesheet" type="text/css" href="../css/product.css">
     <link rel="stylesheet" href="../css/product.css?v=<?php echo time(); ?>">
     <link href="css/style.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
-      <link rel="stylesheet" href="https://use.typekit.net/maf1fpm.css">
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    </head>
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link rel="stylesheet" href="https://use.typekit.net/maf1fpm.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
 
 
 
-    <header>
-  <section>
-    <div class="fixed-top">
-      <nav class="navbar">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="../index.php">Furniche</a>
+<header>
+    <section>
+        <div class="fixed-top">
+            <nav class="navbar">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="../index.php">Furniche</a>
 
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link" href="../product/products.php">Products</a>
-              </li>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link" href="../product/products.php">Products</a>
+                            </li>
 
 
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                  aria-expanded="false">
-                  The team
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="../About%20Us.php">About Us</a></li>
-                  <li><a class="dropdown-item" href="../contactview.php">Contact us</a></li>
-                </ul>
-              </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    The team
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="../About%20Us.php">About Us</a></li>
+                                    <li><a class="dropdown-item" href="../contactview.php">Contact us</a></li>
+                                </ul>
+                            </li>
 
-              <?php
-              session_start();
-              if (isset ($_SESSION['user'])) {
-                echo '<li class="nav-item"><a class="nav-link" href="../customerprofile.php">' . $_SESSION['user'] . '</a></li>';
-                  echo '<li class="nav-item"><a class="nav-link" href="../logout.php" >Logout</a></li>';
-                  echo '<li class="nav-item dropdown">
+                            <?php
+                            session_start();
+                            $_SESSION["basketID"] = null;
+
+                            if (isset ($_SESSION['user'])) {
+                                echo '<li class="nav-item"><a class="nav-link" href="../customerprofile.php">' . $_SESSION['user'] . '</a></li>';
+                                echo '<li class="nav-item"><a class="nav-link" href="../logout.php" >Logout</a></li>';
+                                echo '<li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                   aria-expanded="false">
                   <i class="fa-solid fa-basket-shopping"></i>
                 </a>';
-                echo '<ul class="dropdown-menu"><li class="nav-item"><a class="nav-link" href="../history.php">order history</a></li>';
-                echo '<li class="nav-item">
+                                echo '<ul class="dropdown-menu"><li class="nav-item"><a class="nav-link" href="../history.php">order history</a></li>';
+                                echo '<li class="nav-item">
                       <a class="nav-link" href="../basket/basket.php">basket</a>
                       </li></ul>';
-                if ($_SESSION["access"] = "admin") {
-                  echo '<li class="nav-item"><a class="nav-link" href="../admin\dashboard.php">admin page</a></li></li>';
-                }
+                                if ($_SESSION["access"] = "admin") {
+                                    echo '<li class="nav-item"><a class="nav-link" href="../admin\dashboard.php">admin page</a></li></li>';
+                                }
 
-              } else {
-                echo '<li class="nav-item">
+                            } else {
+                                echo '<li class="nav-item">
                 <a class="nav-link" href="../loginview.php">Login</a>
               </li>';
-              }
-              ?>
-            </ul>
-          </div>
+                            }
+                            ?>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
         </div>
-      </nav>
-    </div>
     </section>
 </header>
 
 <body>
-<div class="categories">
-    <br>
-    <br>
-    <br>
-    <br>
-  <h2>Categories</h2>
-  <div>
-    <a href="products.php?typeFilter=all&categoryFilter=bohemian&sortFilter=all"><img
-        src="../Pictures%20for%20website/Bohemian.jpg" alt="Bohemian" class="image-filter"></a>
-    <a href="products.php?typeFilter=all&categoryFilter=rustic&sortFilter=all"><img
-        src="../Pictures%20for%20website/Rustic.jpg" alt="Rustic" class="image-filter"></a>
-    <a href="products.php?typeFilter=all&categoryFilter=minimal&sortFilter=all"><img
-        src="../Pictures%20for%20website/Minimalistic.jpg" alt="Minimalistic" class="image-filter"></a>
-    <a href="products.php?typeFilter=all&categoryFilter=tropical&sortFilter=all"><img
-        src="../Pictures%20for%20website/Tropical.jpg" alt="Tropical" class="image-filter"></a>
-    <a href="products.php?typeFilter=all&categoryFilter=modern&sortFilter=all"><img
-        src="../Pictures%20for%20website/Modern.jpg" alt="Modern" class="image-filter"></a>
-  </div>
-</div>
+    <div class="categories">
+        <br>
+        <br>
+        <br>
+        <br>
+        <h2>Categories</h2>
+        <div>
+            <a href="products.php?typeFilter=all&categoryFilter=bohemian&sortFilter=all"><img
+                    src="../Pictures%20for%20website/Bohemian.jpg" alt="Bohemian" class="image-filter"></a>
+            <a href="products.php?typeFilter=all&categoryFilter=rustic&sortFilter=all"><img
+                    src="../Pictures%20for%20website/Rustic.jpg" alt="Rustic" class="image-filter"></a>
+            <a href="products.php?typeFilter=all&categoryFilter=minimal&sortFilter=all"><img
+                    src="../Pictures%20for%20website/Minimalistic.jpg" alt="Minimalistic" class="image-filter"></a>
+            <a href="products.php?typeFilter=all&categoryFilter=tropical&sortFilter=all"><img
+                    src="../Pictures%20for%20website/Tropical.jpg" alt="Tropical" class="image-filter"></a>
+            <a href="products.php?typeFilter=all&categoryFilter=modern&sortFilter=all"><img
+                    src="../Pictures%20for%20website/Modern.jpg" alt="Modern" class="image-filter"></a>
+        </div>
+    </div>
 
-    
- <div class="pd-display">
-     <?php
+
+    <div class="pd-display">
+        <?php
         include '../connect.php';
         try {
-        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $stmtCheapest = $db->prepare("
+            $stmtCheapest = $db->prepare("
         SELECT productId, productName, price, imageName
         FROM products
         ORDER BY price ASC
         LIMIT 3
      ");
-        $stmtCheapest->execute();
+            $stmtCheapest->execute();
 
-        $cheapestProducts = $stmtCheapest->fetchAll(PDO::FETCH_ASSOC);
-        } catch (PDOException $e) {
-     echo "Error: " . $e->getMessage();
-        }
-
-        $db = null;
-    ?>
-</div>
-
-
- <div class="pd-back">
-<h2 id="productTop">Products</h2>
-
-    <label for="sortFilter">Sort by:</label>
-    <select id="sortFilter" onchange="filterProducts()" class="custom-select">
-        <?php
-        $sortFilterOptions = [
-            'all' => 'Sort by:',
-            'name-asc' => 'Name (A-Z)',
-            'name-desc' => 'Name (Z-A)',
-            'price-asc' => 'Price (Low to High)',
-            'price-desc' => 'Price (High to Low)'
-        ];
-
-        $selectedSortFilter = isset($_GET['sortFilter']) ? $_GET['sortFilter'] : 'all';
-
-        foreach ($sortFilterOptions as $value => $label) {
-            $selected = ($value == $selectedSortFilter) ? 'selected' : '';
-            echo '<option value="' . $value . '" ' . $selected . '>' . $label . '</option>';
-        }
-        ?>
-    </select>
-
-    <label for="categoryFilter">Filter by Category:</label>
-    <select id="categoryFilter" onchange="filterProducts()" class="custom-select">
-        <option value="all">All</option>
-        <?php
-        $selectedcategoryFilter = isset($_GET['categoryFilter']) ? $_GET['categoryFilter'] : 'all';
-
-        include '../connect.php';
-        try {
-            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-            $stmt = $db->query("SELECT DISTINCT productCategory FROM products");
-
-            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                $category = htmlspecialchars($row['productCategory']);
-                $selected = ($category == $selectedcategoryFilter) ? 'selected' : '';
-                if ($category != null) {
-                    echo '<option value="' . $category . '" ' . $selected . '>' . $category . '</option>';
-                }
-            }
+            $cheapestProducts = $stmtCheapest->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
         }
 
         $db = null;
         ?>
-    </select>
+    </div>
 
-    <label for="typeFilter">Filter by Type:</label>
-    <select id="typeFilter" onchange="filterProducts()" class="custom-select">
 
-        <option value="all">All</option>
+    <div class="pd-back">
+        <h2 id="productTop">Products</h2>
+
+        <label for="sortFilter">Sort by:</label>
+        <select id="sortFilter" onchange="filterProducts()" class="custom-select">
+            <?php
+            $sortFilterOptions = [
+                'all' => 'Sort by:',
+                'name-asc' => 'Name (A-Z)',
+                'name-desc' => 'Name (Z-A)',
+                'price-asc' => 'Price (Low to High)',
+                'price-desc' => 'Price (High to Low)'
+            ];
+
+            $selectedSortFilter = isset ($_GET['sortFilter']) ? $_GET['sortFilter'] : 'all';
+
+            foreach ($sortFilterOptions as $value => $label) {
+                $selected = ($value == $selectedSortFilter) ? 'selected' : '';
+                echo '<option value="' . $value . '" ' . $selected . '>' . $label . '</option>';
+            }
+            ?>
+        </select>
+
+        <label for="categoryFilter">Filter by Category:</label>
+        <select id="categoryFilter" onchange="filterProducts()" class="custom-select">
+            <option value="all">All</option>
+            <?php
+            $selectedcategoryFilter = isset ($_GET['categoryFilter']) ? $_GET['categoryFilter'] : 'all';
+
+            include '../connect.php';
+            try {
+                $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+                $stmt = $db->query("SELECT DISTINCT productCategory FROM products");
+
+                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $category = htmlspecialchars($row['productCategory']);
+                    $selected = ($category == $selectedcategoryFilter) ? 'selected' : '';
+                    if ($category != null) {
+                        echo '<option value="' . $category . '" ' . $selected . '>' . $category . '</option>';
+                    }
+                }
+            } catch (PDOException $e) {
+                echo "Error: " . $e->getMessage();
+            }
+
+            $db = null;
+            ?>
+        </select>
+
+        <label for="typeFilter">Filter by Type:</label>
+        <select id="typeFilter" onchange="filterProducts()" class="custom-select">
+
+            <option value="all">All</option>
+            <?php
+            $selectedtypeFilter = isset ($_GET['typeFilter']) ? $_GET['typeFilter'] : 'all';
+
+            include '../connect.php';
+            try {
+                $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+                $stmt = $db->query("SELECT DISTINCT productType FROM products");
+
+                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $type = htmlspecialchars($row['productType']);
+                    $selected = ($type == $selectedtypeFilter) ? 'selected' : '';
+                    if ($type != null) {
+                        echo '<option value="' . $type . '" ' . $selected . '>' . $type . '</option>';
+                    }
+                }
+            } catch (PDOException $e) {
+                echo "Error: " . $e->getMessage();
+            }
+
+            $db = null;
+            ?>
+        </select>
+
+        <button onclick="resetFilters()" style="cursor: pointer">Reset Filters</button>
+
         <?php
-        $selectedtypeFilter = isset($_GET['typeFilter']) ? $_GET['typeFilter'] : 'all';
-
         include '../connect.php';
+        $productsPerPage = 10;
+        $page = isset ($_GET['page']) ? $_GET['page'] : 1;
+
         try {
             $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-            $stmt = $db->query("SELECT DISTINCT productType FROM products");
+            $query = "SELECT * FROM products";
 
-            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                $type = htmlspecialchars($row['productType']);
-                $selected = ($type == $selectedtypeFilter) ? 'selected' : '';
-                if ($type != null) {
-                    echo '<option value="' . $type . '" ' . $selected . '>' . $type . '</option>';
-                }
-            }
-        } catch (PDOException $e) {
-            echo "Error: " . $e->getMessage();
-        }
+            $sortFilter = isset ($_GET['sortFilter']) ? $_GET['sortFilter'] : 'all';
+            $typeFilter = isset ($_GET['typeFilter']) ? $_GET['typeFilter'] : 'all';
+            $categoryFilter = isset ($_GET['categoryFilter']) ? $_GET['categoryFilter'] : 'all';
 
-        $db = null;
-        ?>
-    </select>
-
-    <button onclick="resetFilters()" style="cursor: pointer">Reset Filters</button>
-
-    <?php
-    include '../connect.php';
-    $productsPerPage = 10;
-    $page = isset($_GET['page']) ? $_GET['page'] : 1;
-
-    try {
-        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-        $query = "SELECT * FROM products";
-
-        $sortFilter = isset($_GET['sortFilter']) ? $_GET['sortFilter'] : 'all';
-        $typeFilter = isset($_GET['typeFilter']) ? $_GET['typeFilter'] : 'all';
-        $categoryFilter = isset($_GET['categoryFilter']) ? $_GET['categoryFilter'] : 'all';
-
-        if ($typeFilter != 'all') {
-            $query .= " WHERE productType = :type";
-        }
-
-        if ($categoryFilter != 'all') {
-            $query .= ($typeFilter != 'all') ? " AND" : " WHERE";
-            $query .= " productCategory = :category";
-        }
-
-        switch ($sortFilter) {
-            case 'name-asc':
-                $query .= " ORDER BY productName ASC";
-                break;
-            case 'name-desc':
-                $query .= " ORDER BY productName DESC";
-                break;
-            case 'price-asc':
-                $query .= " ORDER BY price ASC";
-                break;
-            case 'price-desc':
-                $query .= " ORDER BY price DESC";
-                break;
-            default:
-                break;
-        }
-
-        $limit = $productsPerPage;
-        $start = ($page - 1) * $limit;
-
-        $stmt = $db->prepare($query . " LIMIT :start, :limit");
-
-        if ($typeFilter != 'all') {
-            $stmt->bindParam(':type', $typeFilter, PDO::PARAM_STR);
-        }
-
-        if ($categoryFilter != 'all') {
-            $stmt->bindParam(':category', $categoryFilter, PDO::PARAM_STR);
-        }
-
-        $stmt->bindParam(':start', $start, PDO::PARAM_INT);
-        $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
-
-        $stmt->execute();
-
-        if ($stmt->rowCount() > 0) {
-            echo '<table id="productTable">';
-            $count = 0;
-
-            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                if ($count % 1 == 0) {
-                    echo '<tr>';
-                }
-
-                echo '<td class="center">';
-                echo '<a onclick="showProductModal(' . $row['productId'] . ')"><img src="../Pictures for website/' . htmlspecialchars($row['imageName']) . '" alt="' . htmlspecialchars($row['imageName']) . '" id="prodImage" class="product-image"></a><br>';
-                echo '</td>';
-
-
-                if ($count % 1 == 2 || $count == $stmt->rowCount() - 1) {
-                    echo '</tr>';
-                }
-
-                $count++;
-            }
-            echo '</table>';
-
-            $stmtTotal = $db->prepare($query);
             if ($typeFilter != 'all') {
-                $stmtTotal->bindParam(':type', $typeFilter, PDO::PARAM_STR);
+                $query .= " WHERE productType = :type";
             }
 
             if ($categoryFilter != 'all') {
-                $stmtTotal->bindParam(':category', $categoryFilter, PDO::PARAM_STR);
+                $query .= ($typeFilter != 'all') ? " AND" : " WHERE";
+                $query .= " productCategory = :category";
             }
 
-            $stmtTotal->execute();
-            $total_results = $stmtTotal->rowCount();
-            $total_pages = ceil($total_results / $productsPerPage);
-
-            echo '<div class="pagination">';
-            echo '<ul class="pagination justify-content-center">';
-
-            for ($i = 1; $i <= $total_pages; $i++) {
-                $active = ($page == $i) ? 'active' : '';
-                echo '<li class="page-item ' . $active . '"><a class="page-link" href="?page=' . $i . '&typeFilter=' . $typeFilter . '&categoryFilter=' . $categoryFilter . '&sortFilter=' . $sortFilter . '#productTop">' . $i . '</a></li>';
+            switch ($sortFilter) {
+                case 'name-asc':
+                    $query .= " ORDER BY productName ASC";
+                    break;
+                case 'name-desc':
+                    $query .= " ORDER BY productName DESC";
+                    break;
+                case 'price-asc':
+                    $query .= " ORDER BY price ASC";
+                    break;
+                case 'price-desc':
+                    $query .= " ORDER BY price DESC";
+                    break;
+                default:
+                    break;
             }
 
-            echo '</ul>';
-            echo '</div>';
-        } else {
-            echo "<p>No products available, add some to the database</p>";
+            $limit = $productsPerPage;
+            $start = ($page - 1) * $limit;
+
+            $stmt = $db->prepare($query . " LIMIT :start, :limit");
+
+            if ($typeFilter != 'all') {
+                $stmt->bindParam(':type', $typeFilter, PDO::PARAM_STR);
+            }
+
+            if ($categoryFilter != 'all') {
+                $stmt->bindParam(':category', $categoryFilter, PDO::PARAM_STR);
+            }
+
+            $stmt->bindParam(':start', $start, PDO::PARAM_INT);
+            $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+
+            $stmt->execute();
+
+            if ($stmt->rowCount() > 0) {
+                echo '<table id="productTable">';
+                $count = 0;
+
+                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    if ($count % 1 == 0) {
+                        echo '<tr>';
+                    }
+
+                    echo '<td class="center">';
+                    echo '<a onclick="showProductModal(' . $row['productId'] . ')"><img src="../Pictures for website/' . htmlspecialchars($row['imageName']) . '" alt="' . htmlspecialchars($row['imageName']) . '" id="prodImage" class="product-image"></a><br>';
+                    echo '</td>';
+
+
+                    if ($count % 1 == 2 || $count == $stmt->rowCount() - 1) {
+                        echo '</tr>';
+                    }
+
+                    $count++;
+                }
+                echo '</table>';
+
+                $stmtTotal = $db->prepare($query);
+                if ($typeFilter != 'all') {
+                    $stmtTotal->bindParam(':type', $typeFilter, PDO::PARAM_STR);
+                }
+
+                if ($categoryFilter != 'all') {
+                    $stmtTotal->bindParam(':category', $categoryFilter, PDO::PARAM_STR);
+                }
+
+                $stmtTotal->execute();
+                $total_results = $stmtTotal->rowCount();
+                $total_pages = ceil($total_results / $productsPerPage);
+
+                echo '<div class="pagination">';
+                echo '<ul class="pagination justify-content-center">';
+
+                for ($i = 1; $i <= $total_pages; $i++) {
+                    $active = ($page == $i) ? 'active' : '';
+                    echo '<li class="page-item ' . $active . '"><a class="page-link" href="?page=' . $i . '&typeFilter=' . $typeFilter . '&categoryFilter=' . $categoryFilter . '&sortFilter=' . $sortFilter . '#productTop">' . $i . '</a></li>';
+                }
+
+                echo '</ul>';
+                echo '</div>';
+            } else {
+                echo "<p>No products available, add some to the database</p>";
+            }
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
         }
-    } catch (PDOException $e) {
-        echo "Error: " . $e->getMessage();
-    }
 
-    $db = null;
+        $db = null;
 
 
-    ?>
-</select>
+        ?>
+        </select>
     </div>
-     <div class="offerscode">
+    <div class="offerscode">
         <h1> Current offers</h1>
         <section class="itemscode">
             <?php
-            if (!empty($cheapestProducts)) {
+            if (!empty ($cheapestProducts)) {
                 echo '<div class="current-offers">';
                 foreach ($cheapestProducts as $offer) {
                     echo '<div class="offer-item">';
@@ -338,47 +345,53 @@
         </section>
     </div>
     <section class="prod">
-    <div class="desk">
-        <h1> Desk inspiration</h1>
-        <section class="inspo">
-            <img src="../Pictures%20for%20website/Desk Inspiration 1.jpg" alt="Product 1" class="my_img_2">
-            <img src="../Pictures%20for%20website/Desk Inspiration 2.jpg" alt="Product 2" class="my_img_2">
+        <div class="desk">
+            <h1> Desk inspiration</h1>
+            <section class="inspo">
+                <img src="../Pictures%20for%20website/Desk Inspiration 1.jpg" alt="Product 1" class="my_img_2">
+                <img src="../Pictures%20for%20website/Desk Inspiration 2.jpg" alt="Product 2" class="my_img_2">
 
-        </section>
-    </div>
-
-    <div class="product">
-        <h1> Tips and ideas for a more sustainable home</h1>
-        <section class="one">
-        <a href="https://medium.com/@beancarmens/wooden-boxes-and-their-storage-benefits-7e94e1665200"><img src="../Pictures%20for%20website/Tips and Ideas 1.jpg" alt="Product 1" class="my_img"></a>
-
-
-
-        <a href="https://www.ofwat.gov.uk/households/conservingwater/watersavingtips/"><img src="../Pictures%20for%20website/Tips and Ideas 2.jpg" alt="Product 2" class="my_img"></a>
-
-
-
-        <a href="https://tuckerjoinery.co.uk/blog/how-sustainable-wood-is-shaping-the-furniture-sector/"><img src="../Pictures%20for%20website/Tips and Ideas 3.jpg" alt="Product 3" class="my_img"></a>
-
-        <a href="https://www.fruitnet.com/eurofruit/new-study-endorses-wood-as-the-most-sustainable-packaging-for-fandv/256847.article#:~:text=Wooden%20packaging%20was%20the%20best,with%20the%20lowest%20environmental%20impact."><img src="../Pictures%20for%20website/Tips and Ideas 4.jpg" alt="Product 3" class="my_img"></a>
-
-        <a href="https://www.routledge.com/blog/article/what-is-sustainable-energy-and-why-do-we-need-it"><img src="../Pictures%20for%20website/Tips and Ideas 5.jpg" alt="Product 3" class="my_img"></a>
-        </section>
-    </div>
-
-    <div id="productModal" class="modal">
-        <div class="modal-contant">
-            <div id="productDetailsModal"></div>
-            <button id="addToBasketButton" onclick="addToBasket()" style="display: none;">Add to Basket</button>
+            </section>
         </div>
-    </div>
+
+        <div class="product">
+            <h1> Tips and ideas for a more sustainable home</h1>
+            <section class="one">
+                <a href="https://medium.com/@beancarmens/wooden-boxes-and-their-storage-benefits-7e94e1665200"><img
+                        src="../Pictures%20for%20website/Tips and Ideas 1.jpg" alt="Product 1" class="my_img"></a>
+
+
+
+                <a href="https://www.ofwat.gov.uk/households/conservingwater/watersavingtips/"><img
+                        src="../Pictures%20for%20website/Tips and Ideas 2.jpg" alt="Product 2" class="my_img"></a>
+
+
+
+                <a href="https://tuckerjoinery.co.uk/blog/how-sustainable-wood-is-shaping-the-furniture-sector/"><img
+                        src="../Pictures%20for%20website/Tips and Ideas 3.jpg" alt="Product 3" class="my_img"></a>
+
+                <a
+                    href="https://www.fruitnet.com/eurofruit/new-study-endorses-wood-as-the-most-sustainable-packaging-for-fandv/256847.article#:~:text=Wooden%20packaging%20was%20the%20best,with%20the%20lowest%20environmental%20impact."><img
+                        src="../Pictures%20for%20website/Tips and Ideas 4.jpg" alt="Product 3" class="my_img"></a>
+
+                <a href="https://www.routledge.com/blog/article/what-is-sustainable-energy-and-why-do-we-need-it"><img
+                        src="../Pictures%20for%20website/Tips and Ideas 5.jpg" alt="Product 3" class="my_img"></a>
+            </section>
+        </div>
+
+        <div id="productModal" class="modal">
+            <div class="modal-contant">
+                <div id="productDetailsModal"></div>
+                <button id="addToBasketButton" onclick="addToBasket()" style="display: none;">Add to Basket</button>
+            </div>
+        </div>
 
     </section>
-<script>
+    <script>
 
-    function showProductModal(productId) {
-        var modal = document.getElementById('productModal');
-        var productDetailsContainer = document.getElementById('productDetailsModal');
+        function showProductModal(productId) {
+            var modal = document.getElementById('productModal');
+            var productDetailsContainer = document.getElementById('productDetailsModal');
 
             var xhr = new XMLHttpRequest();
             xhr.onreadystatechange = function () {
@@ -468,7 +481,9 @@
     </script>
 </body>
 <footer class="footer">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
     <div class="container">
         <div class="row">
             <div class="footer-col">
