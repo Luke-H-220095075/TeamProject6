@@ -134,7 +134,40 @@ if (isset($_SESSION['user'])) {
     <main>
        <br><br> <h1>Pending Transactions </h1>
     
+       <?php
+include '../connect.php';
+
+
+// Retrieve transactions from the database
+$sql = "SELECT * FROM transactions";
+$stmt = $db->query($sql);
+$transactions = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+//Filter transactions by Status
+$statusFilter = isset($_GET['status']) ? $_GET['status'] : null;
+$sql = "SELECT * FROM transactions";
+
+if ($statusFilter !== null) {
+    $sql .= " WHERE status = :status";
+}
+
+$stmt = $db->prepare($sql);
+
+if ($statusFilter !== null) {
+    $stmt->bindParam(':status', $statusFilter, PDO::PARAM_STR);
+}
+
+$stmt->execute();
+
+$transactions = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+// Check if there are transactions
+if ($transactions) {
+?>
  
+
+
+?>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
