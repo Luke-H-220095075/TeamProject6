@@ -133,9 +133,7 @@ class User {
         $sth->bindparam(':token', $token, PDO::PARAM_STR, 64);
         $sth->execute();
         /*alert($sth);*/
-        ?><script type='text/javascript'>alert("You have successfully signed up");</script><?php
-        $this->setSession();
-      } catch(PDOException $ex){
+              } catch(PDOException $ex){
         ?>
         <p>Sorry, a database error occurred.<p>
         <p>Error details: <em> <?= $ex->getMessage() ?></em></p>
