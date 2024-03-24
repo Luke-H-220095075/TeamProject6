@@ -70,7 +70,7 @@
   </nav>
 </section>
 </header>
-
+<body>
     <div class="design">
         <h1>Categories</h1>
 
@@ -303,9 +303,8 @@
 
     ?>
 </select>
-
     </div>
-    <div class="offerscode">
+     <div class="offerscode">
         <h1> Current offers</h1>
         <section class="itemscode">
             <?php
@@ -323,19 +322,18 @@
                 echo '<p>No current offers available.</p>';
             }
             ?>
-
+            <br><br>
+        </section>
     </div>
-    </section>
-
+    <section class="prod">
     <div class="desk">
         <h1> Desk inspiration</h1>
         <section class="inspo">
             <img src="../Pictures%20for%20website/Desk Inspiration 1.jpg" alt="Product 1" class="my_img_2">
             <img src="../Pictures%20for%20website/Desk Inspiration 2.jpg" alt="Product 2" class="my_img_2">
 
-
+        </section>
     </div>
-    </section>
 
     <div class="product">
         <h1> Tips and ideas for a more sustainable home</h1>
@@ -353,9 +351,8 @@
         <a href="https://www.fruitnet.com/eurofruit/new-study-endorses-wood-as-the-most-sustainable-packaging-for-fandv/256847.article#:~:text=Wooden%20packaging%20was%20the%20best,with%20the%20lowest%20environmental%20impact."><img src="../Pictures%20for%20website/Tips and Ideas 4.jpg" alt="Product 3" class="my_img"></a>
 
         <a href="https://www.routledge.com/blog/article/what-is-sustainable-energy-and-why-do-we-need-it"><img src="../Pictures%20for%20website/Tips and Ideas 5.jpg" alt="Product 3" class="my_img"></a>
-
+        </section>
     </div>
-    </section>
 
     <div id="productModal" class="modal">
         <div class="modal-contant">
@@ -363,6 +360,8 @@
             <button id="addToBasketButton" onclick="addToBasket()" style="display: none;">Add to Basket</button>
         </div>
     </div>
+
+    </section>
 <script>
 
     function showProductModal(productId) {

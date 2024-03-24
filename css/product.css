@@ -179,7 +179,7 @@ flex-wrap: wrap;
 }
 
 .design {
-  background-image: url("../Pictures for website/cate-products.png");
+  background-color: #BDA18A;
   padding: 5%;
   text-align: center;
   height: 60vh;
@@ -197,7 +197,6 @@ flex-wrap: wrap;
 
 .product {
   min-height: 40vh;
-  background-image: url("../Pictures for website/product-page.png");
   width: 100%;
   color: #f5d5bb;
   align-items: center; 
@@ -206,7 +205,6 @@ flex-wrap: wrap;
   display: flex; 
   flex-direction: column; 
   flex-wrap: wrap;
-  padding: 8px;
 }
 
 .one {
@@ -224,12 +222,12 @@ flex-wrap: wrap;
 .offerscode {
   min-height: 60vh;
   width: 100%;
-  background-image: url("../Pictures for website/product-page.png");
   color: #f5d5bb;
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: ;
+  text-align: center ;
+  background-color: #BDA18A ;
 }
 
 .itemscode {
@@ -254,6 +252,7 @@ flex-wrap: wrap;
     padding: 40px;
     width: 300px;
     height: 400px;
+    border-radius: 25px;
 }
 
 h2 {
@@ -294,6 +293,7 @@ th {
 
 
 .image-filter {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
     width: 125px;
     height: 200px;
     object-fit: fill;
@@ -302,6 +302,9 @@ th {
     gap: 10px;
 }
 
+.image-filter:hover{
+  box-shadow: 8 16px 32px 8 rgba(0,0,0,0.2);
+}
 .product-image {
     width: 150px;
     height: 150px;
@@ -418,7 +421,6 @@ th {
 }
 
 .desk {
-  background-image: url("../Pictures for website/cate-products.png");
   min-height: 60vh;
   width: 100%;
   color: #323232;
@@ -436,6 +438,11 @@ th {
     display: inline-block;
     width: 65%;
     vertical-align: top;
+}
+
+.prod{
+  background-image: url("../Pictures for website/back-1.png");
+  background-repeat: no-repeat;
 }
 
 .pd-back {
