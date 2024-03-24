@@ -55,7 +55,7 @@ function purchase($db, $basketId)
       $sql = "INSERT INTO baskets (userId, currentUserBasket) VALUES (" . $_SESSION['userID'] . ", 1)";
       $db->query($sql);
       $_SESSION["basketID"] = null;
-      header('Location: history.php');
+      echo"<script>window.location.href =('history.php')</script>";
     }
   }
   $_POST['purchase'] = null;
