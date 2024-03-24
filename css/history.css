@@ -6,10 +6,13 @@ body {
   background-color: #f0e5d8;
 }
 
+.his {
+  background-color: #f5d5bb;
+}
+
 h2 {
   color: #89500B;
   font-size: 28px;
-  margin-top: 20px;
   text-align: center;
 }
 
@@ -22,7 +25,8 @@ h2 {
 .review-form-container,
 .user-reviews-container {
   background-color: #4f4d62;
-  border: 15px solid #f5d5bb;
+  border: 5px solid #000000;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   margin: 20px auto;
   padding: 15px;
   color: #fff;
@@ -34,11 +38,23 @@ h2 {
   border-radius: 10px;
 }
 
+.details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.details p {
+  margin: 0;
+}
+
 .order-image,
 .review-image {
-  width: 200px;
+  width: 300px;
   height: auto;
-  margin-right: 15px;
+  object-fit: cover;
+  margin-right: 50px;
+  border-radius: 25px;
 }
 
 .order-details,
@@ -55,7 +71,7 @@ label {
   padding: 10px;
 }
 
-button {
+form button {
   background-color: #4f4d62;
   background-color: chartreuse;
   color: #fff;
@@ -195,7 +211,7 @@ input[type='submit'] {
   max-width: 800px;
   margin: 10px auto;
   background-color: #4f4d62; 
-  border: 1px solid #f5d5bb;
+  border: 5px solid #000000;
   color: #ffffff;
   border-radius: 10px;
 }
@@ -267,9 +283,11 @@ label[for="rating"] {
 }
 
 
+
 .user-reviews-container {
   margin-top: 20px;
   max-width: 800px;
+  border: 5px solid #000000;
 }
 
 .user-review-item {

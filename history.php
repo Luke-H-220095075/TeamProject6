@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/history.css">
   <title>Furniche - Previous Orders</title>
-  <link rel="stylesheet" href="css/contact.css">
 
   <link href="css/style.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
@@ -78,6 +77,12 @@
 </header>
 
   <body>
+    <section class="his">
+    <br>
+    <br>
+    <br>
+    <br>
+
     <strong>
       <h2>Order History</h2>
     </strong>
@@ -151,8 +156,8 @@
         if ($stmt->rowCount() > 0) {
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 echo "<div class='order-container'>";
-                echo "<img class='order-image' src='Pictures%20for%20website/orderimage.jpg' alt='Order Image'>";
-                echo "<div>";
+                  echo "<img class='order-image' src='Pictures%20for%20website/orderimage.jpg' alt='Order Image'>";
+                echo "<div class='details'>";
                 echo "<p><strong>Order ID:</strong> " . $row["orderId"] . "</p>";
                 echo "<p><strong>Items Ordered:</strong> " . $row["itemCount"] . "</p>";
                 echo "<p><strong>Date Ordered:</strong> " . $row["dateAdded"] . "</p>";
@@ -305,10 +310,7 @@ LIMIT 6"; //amount of recommendations
       $totalReviews = $totalReviewsStmt->fetchColumn();
 
       $totalReviewsPages = ceil($totalReviews / $ordersPerPage);
-
-
-
-      echo "</div>";
+ echo "</div>";
     } catch (PDOException $e) {
       echo "Error: " . $e->getMessage();
     } finally {
@@ -316,6 +318,8 @@ LIMIT 6"; //amount of recommendations
     }
 
     ?>
+  </body>
+  </section>
 
     <footer class="footer">
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

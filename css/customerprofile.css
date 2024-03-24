@@ -62,3 +62,63 @@ button[type="submit"] {
 button[type="submit"]:hover {
   background-color: #8a7767;
 }
+
+.categories1 {
+  height: 20vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url("../Pictures for website/backkkk.png");
+}
+
+.profile1 {
+  width: 50%;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  padding: 20px;
+}
+
+.change {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.change h2 {
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+.change form {
+  display: flex;
+  flex-direction: column;
+}
+
+.change form input {
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: #f8f8f8;
+}
+
+.change form button {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: #4CAF50;
+  color: #fff;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.change form button:hover {
+  background-color: #45a049;
+}
+
+.change form button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}

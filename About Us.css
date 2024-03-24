@@ -13,7 +13,8 @@ body, html {
     justify-content: center;
     align-items: center;
     height: 100%;
-    background-image: url("../Pictures for website/cate-products.png");
+    background-image: url("../Pictures for website/backkkk.png");
+    background-repeat: no-repeat;
 }
 
 h1{
@@ -146,7 +147,7 @@ iframe {
 /* Slideshow container */
 
 .slide {
-    background-image: url("../Pictures for website/contact.png");
+    background-image: url("../Pictures for website/show1.png");
 }
 
 .h1{

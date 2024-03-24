@@ -14,63 +14,71 @@
 
 
 
-  <header>
-<section>
-  <div class="fixed-top">
- <nav class="navbar">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="../index.php">Furniche</a>
+    <header>
+  <section>
+    <div class="fixed-top">
+      <nav class="navbar">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="../index.php">Furniche</a>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link" href="products.php">Products</a>
-        </li>
-        <?php
-                session_start();
-              if (isset($_SESSION['user'])) {
-                    echo '<li class="nav-item"><a class="nav-link" href="../customerprofile.php">' . $_SESSION['user'] . '</a></li>';
-                  
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="../product/products.php">Products</a>
+              </li>
+
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  The team
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="../About%20Us.php">About Us</a></li>
+                  <li><a class="dropdown-item" href="../contactview.php">Contact us</a></li>
+                </ul>
+              </li>
+
+              <?php
+              session_start();
+              if (isset ($_SESSION['user'])) {
+                echo '<li class="nav-item"><a class="nav-link" href="../customerprofile.php">' . $_SESSION['user'] . '</a></li>';
+                  echo '<li class="nav-item"><a class="nav-link" href="../logout.php" >Logout</a></li>';
+                  echo '<li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  <i class="fa-solid fa-basket-shopping"></i>
+                </a>';
+                echo '<ul class="dropdown-menu"><li class="nav-item"><a class="nav-link" href="../history.php">order history</a></li>';
+                echo '<li class="nav-item">
+                      <a class="nav-link" href="../basket/basket.php">basket</a>
+                      </li></ul>';
+                if ($_SESSION["access"] = "admin") {
+                  echo '<li class="nav-item"><a class="nav-link" href="../admin\dashboard.php">admin page</a></li></li>';
+                }
+
               } else {
                 echo '<li class="nav-item">
                 <a class="nav-link" href="../loginview.php">Login</a>
-              </li>';//
+              </li>';
               }
               ?>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            The team
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="../About%20Us.php">About Us</a></li>
-            <li><a class="dropdown-item" href="../contactview.php">Contact us</a></li>
-          </ul>
-        </li>
-        <?php
-              if (isset($_SESSION['user'])) {
-        echo '<li class="nav-item">
-          <a class="nav-link" href="../basket/basket.php"><i class="fa-solid fa-basket-shopping"></i></a>
-        </li>';              }
-        ?>
-      </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+            </ul>
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
     </div>
-  </div>
-    </div>
-    
-    </nav>
-    </div>
-    </div>
-  </nav>
-</section>
+    </section>
 </header>
 
+<body>
     <div class="design">
         <h1>Categories</h1>
 
@@ -303,9 +311,8 @@
 
     ?>
 </select>
-
     </div>
-    <div class="offerscode">
+     <div class="offerscode">
         <h1> Current offers</h1>
         <section class="itemscode">
             <?php
@@ -323,19 +330,18 @@
                 echo '<p>No current offers available.</p>';
             }
             ?>
-
+            <br><br>
+        </section>
     </div>
-    </section>
-
+    <section class="prod">
     <div class="desk">
         <h1> Desk inspiration</h1>
         <section class="inspo">
             <img src="../Pictures%20for%20website/Desk Inspiration 1.jpg" alt="Product 1" class="my_img_2">
             <img src="../Pictures%20for%20website/Desk Inspiration 2.jpg" alt="Product 2" class="my_img_2">
 
-
+        </section>
     </div>
-    </section>
 
     <div class="product">
         <h1> Tips and ideas for a more sustainable home</h1>
@@ -353,9 +359,8 @@
         <a href="https://www.fruitnet.com/eurofruit/new-study-endorses-wood-as-the-most-sustainable-packaging-for-fandv/256847.article#:~:text=Wooden%20packaging%20was%20the%20best,with%20the%20lowest%20environmental%20impact."><img src="../Pictures%20for%20website/Tips and Ideas 4.jpg" alt="Product 3" class="my_img"></a>
 
         <a href="https://www.routledge.com/blog/article/what-is-sustainable-energy-and-why-do-we-need-it"><img src="../Pictures%20for%20website/Tips and Ideas 5.jpg" alt="Product 3" class="my_img"></a>
-
+        </section>
     </div>
-    </section>
 
     <div id="productModal" class="modal">
         <div class="modal-contant">
@@ -363,6 +368,8 @@
             <button id="addToBasketButton" onclick="addToBasket()" style="display: none;">Add to Basket</button>
         </div>
     </div>
+
+    </section>
 <script>
 
     function showProductModal(productId) {
