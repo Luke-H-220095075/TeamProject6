@@ -88,51 +88,7 @@ if (isset($_SESSION['user'])) {
 <i class="fa-solid fa-money-bill"></i>
    <span class="nav-item">Transactions</span>
 </a>
-
-?>
-              <li>
-                 <a href="dashboard.php">
-                    <i class="fa-solid fa-table-columns"></i>
-                    <span class="nav-item">Dashboard</span>
-                </a>
-               
-            </li>
-            <li>
-                <a href="useradmin.php">
-                <i class="fa-solid fa-users"></i>
-                    <span class="nav-item">Users</span>
-                </a>
-               
-            </li>
-            <li>
-                <a href="productadmin.php">
-                    <i class="fa-solid fa-couch"></i>
-                    <span class="nav-item">Products</span>
-                </a>
-               
-            </li>
-            <li>
-                <a href="orderadmin.php">
-                    <i class="fa-solid fa-cart-shopping"></i>
-                    <span class="nav-item">Orders</span>
-                </a>
-               
-            </li>
-            <li>
-            <a href="transactions.php">
-            <i class="fa-solid fa-money-bill"></i>
-                    <span class="nav-item">Transactions</span>
-                </a>
-
-            </li>
-            <li>
-                <a href="returnsadmin.php">
-                    <i class="fa-solid fa-user"></i>
-                    <span class="nav-item">Return Requests</span>
-                </a>
-              
-            </li>
-            <li>
+<li>
                 <a href="messages.php">
                     <i class="fa-solid fa-message"></i>
                     <span class="nav-item">Messages</span>
@@ -154,6 +110,7 @@ if (isset($_SESSION['user'])) {
 
             </li>
         </ul>
+
 
    
     </section>
@@ -243,11 +200,7 @@ if (isset($_GET['productId']) && is_numeric($_GET['productId'])) {
                         <option value="wardrobe" <?php echo ($product['productType'] == 'wardrobe') ? 'selected' : ''; ?>>Wardrobe</option>
                     </select>
                 </div>
-                <div class="input-container">
-                <input type="text" name="imageName" placeholder="Image Name" value="<?php echo $product['imageName']; ?>" required>                  
-                    <label for="imageUpload">Upload Image:</label>
-                     <input type="file" id="imageUpload" name="imageUpload" accept="image/*" required>
-                </div>
+                
 
                
                 <button type="submit">Update Product</button>
@@ -353,7 +306,6 @@ if (isset($_GET['delete']) && is_numeric($_GET['delete'])) {
                 echo "Error uploading file.";
             }
         } else {
-            echo "Error: No file uploaded.";
         }
     }
 
