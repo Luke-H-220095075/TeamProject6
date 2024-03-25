@@ -31,7 +31,7 @@
           <div class="fixed-top">
             <nav class="navbar">
               <div class="container-fluid">
-                <a class="navbar-brand" href="../index.php">Furniche</a>
+                <a class="navbar-brand" href="index.php">Furniche</a>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                   data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -43,9 +43,8 @@
                     <li class="nav-item">
                       <a class="nav-link" href="../product/products.php">Products</a>
                     </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="../loginview.php">Login</a>
-                    </li>
+
+
                     <li class="nav-item dropdown">
                       <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
@@ -56,96 +55,91 @@
                         <li><a class="dropdown-item" href="../contactview.php">Contact us</a></li>
                       </ul>
                     </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="../basket/basket.php"><i class="fa-solid fa-basket-shopping"></i></a>
-                    </li>
+
+                    <?php
+                    session_start();
+                    if (isset ($_SESSION['user'])) {
+                      echo '<li class="nav-item"><a class="nav-link" href="../customerprofile.php">' . $_SESSION['user'] . '</a></li>';
+                      echo '<li class="nav-item"><a class="nav-link" href="../logout.php" >Logout</a></li>';
+                      echo '<li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  <i class="fa-solid fa-basket-shopping"></i>
+                </a>';
+                      echo '<ul class="dropdown-menu"><li class="nav-item"><a class="nav-link" href="../history.php">order history</a></li>';
+                      echo '<li class="nav-item">
+                      <a class="nav-link" href="../basket/basket.php">basket</a>
+                      </li></ul>';
+                      if ($_SESSION["access"] = "admin") {
+                        echo '<li class="nav-item"><a class="nav-link" href="../admin\dashboard.php">admin page</a></li></li>';
+                      }
+                      $_SESSION["basketID"] = null;
+                    } else {
+                      echo '<li class="nav-item">
+                <a class="nav-link" href="../loginview.php">Login</a>
+              </li>';
+                    }
+                    ?>
                   </ul>
-                  <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                  </form>
                 </div>
               </div>
           </div>
-          </nav>
-          <?php
-          session_start();
-          if (isset ($_SESSION['user'])) {
-            echo '<li><a href="#">' . $_SESSION['user'] . '</a>';
-          }
-          ?>
-          </nav>
         </section>
-
       </header>
 
       <body>
-        <br>
-        <br>
-        <?php
+        <section class="pddd">
+          <br>
+          <br>
+          <?php
 
 
-        if (isset ($_GET['product_id'])) {
-          $product_id = $_GET['product_id'];
+          if (isset ($_GET['product_id'])) {
+            $product_id = $_GET['product_id'];
+            $userID = $_SESSION['userID'];
+            include '../connect.php';
+            $reviewSql = "SELECT rating FROM orderreviews";
 
-          include '../connect.php';
-          $reviewSql = "SELECT rating FROM orderreviews";
-
-          $reviewStmt = $db->prepare($reviewSql);
-          $reviewStmt->execute();
-          $avgOrdrRating = 0;
-          $count = 0;
-          if ($reviewStmt->rowCount() > 0) {
-            while ($reviewRow = $reviewStmt->fetch(PDO::FETCH_ASSOC)) {
-              $avgOrdrRating = $avgOrdrRating + $reviewRow["rating"];
-              $count++;
+            $reviewStmt = $db->prepare($reviewSql);
+            $reviewStmt->execute();
+            $avgOrdrRating = 0;
+            $count = 0;
+            if ($reviewStmt->rowCount() > 0) {
+              while ($reviewRow = $reviewStmt->fetch(PDO::FETCH_ASSOC)) {
+                $avgOrdrRating = $avgOrdrRating + $reviewRow["rating"];
+                $count++;
+              }
+              $avgOrdrRating = $avgOrdrRating / $count;
             }
-            $avgOrdrRating = $avgOrdrRating / $count;
-          echo "the average user rated us " . $avgOrdrRating . " out of 5";
-          }
-          
 
-          $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-          // Calling the product details from the database
-          try {
-            $stmt = $db->prepare("SELECT * FROM products WHERE productId = :product_id");
-            $stmt->bindParam(':product_id', $product_id, PDO::PARAM_INT);
-            $stmt->execute();
 
-            if ($stmt->rowCount() > 0) {
-              $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            // Calling the product details from the database
+            try {
+              $stmt = $db->prepare("SELECT * FROM products WHERE productId = :product_id");
+              $stmt->bindParam(':product_id', $product_id, PDO::PARAM_INT);
+              $stmt->execute();
 
-              echo '<section class="cardd">';
-              echo '<div class="image-details">';
-              echo '<p><img src="../Pictures%20for%20website/' . htmlspecialchars($row['imageName']) . '" alt="' . htmlspecialchars($row['imageName']) . '"></p>';
-              echo '</div>';
-              echo '<div class="info">';
-              echo '<h2>' . $row['productName'] . '</h2>';
-              echo '<p><strong>Price:</strong> $' . $row['price'] . '</p>';
-              echo '<p><strong>Category:</strong> ' . $row['productCategory'] . '</p>';
-              echo '<p><strong>Type:</strong> ' . $row['productType'] . '</p>';
-              echo '<p><strong>Release Date/Time:</strong> ' . $row['dateAdded'] . '</p>';
-              echo '<p><strong>Amount in Stock:</strong> ' . $row['countStock'] . '</p>';
-              echo '<p><strong>Amount Sold:</strong> ' . $row['countSold'] . '</p>';
-              echo '</div>';
-              echo '</section>';
+              if ($stmt->rowCount() > 0) {
+                $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-              echo '<Section class="recommendations">';
-              echo '<h3>Recommendations</h3>';
-              $stmtRecommendations = $db->prepare("SELECT * FROM products WHERE productId != :product_id ORDER BY RAND() LIMIT 4");
-              $stmtRecommendations->bindParam(':product_id', $product_id, PDO::PARAM_INT);
-              $stmtRecommendations->execute();
-              while ($recommendation = $stmtRecommendations->fetch(PDO::FETCH_ASSOC)) {
-                echo '<div class="recommendation-card">';
-                echo '<div class="card">';
-                echo '<p><img src="../Pictures%20for%20website/' . htmlspecialchars($recommendation['imageName']) . '" alt="' . htmlspecialchars($row['imageName']) . '" style="width:500px;height:600px;></p>';
+                echo '<section class="cardd">';
+                echo '<div class="image-details">';
+                echo '<p><img src="../Pictures%20for%20website/' . htmlspecialchars($row['imageName']) . '" alt="' . htmlspecialchars($row['imageName']) . '"></p>';
                 echo '</div>';
-                echo '<h4>' . $recommendation['productName'] . '</h4>';
-                echo '<p><strong>Price:</strong> $' . $recommendation['price'] . '</p>';
-                echo '</div>';
-                $reviewSql = "SELECT r.reviewDate, r.rating, r.description FROM productreviews WHERE productId =" . $product_id;
+                echo '<div class="info">';
+                echo '<h2>' . $row['productName'] . '</h2>';
+                echo '<p><strong>Price:</strong> $' . $row['price'] . '</p>';
+                echo '<p><strong>Category:</strong> ' . $row['productCategory'] . '</p>';
+                echo '<p><strong>Type:</strong> ' . $row['productType'] . '</p>';
+                echo '<p><strong>Release Date/Time:</strong> ' . $row['dateAdded'] . '</p>';
+                echo '<p><strong>Amount in Stock:</strong> ' . $row['countStock'] . '</p>';
+                echo '<p><strong>Amount Sold:</strong> ' . $row['countSold'] . '</p>';
+
+                echo "<p>the average user rated ordering with us " . $avgOrdrRating . " out of 5</p>";
+                $reviewSql = "SELECT reviewDate, rating, description FROM productreviews WHERE productId =" . $product_id;
                 $reviewStmt = $db->prepare($reviewSql);
-                $reviewStmt->execute([$userID]);
+                $reviewStmt->execute();
                 $avgUsrRating = 0;
                 $count = 0;
                 if ($reviewStmt->rowCount() > 0) {
@@ -153,42 +147,123 @@
                     $avgUsrRating = $avgUsrRating + $reviewRow["rating"];
                     $count++;
                   }
+                  $avgUsrRating = $avgUsrRating / $count;
+                  echo "<p>this product is rated " . $avgUsrRating . " out of 5 by our users</p>";
                 }
-                $avgUsrRating = $avgUsrRating / $count;
-                echo "the average user rated this product " . $avgUsrRating . " out of 5";
-              }
-              echo '</section>';
-            } else {
-              echo "<p>Product not found.</p>";
-            }
-          } catch (PDOException $e) {
-            echo "Error: " . $e->getMessage();
-          }
+                echo "<form method='post'>";
+                echo "<label for='rating'>Rating:</label>";
+                echo "<select name='rating' id='rating' required>";
+                for ($i = 1; $i <= 5; $i++) {
+                  echo "<option value='$i'>$i</option>";
+                }
+                echo "</select>";
+                echo "<label for='description'>Review:</label>";
+                echo "<textarea name='description' id='description' rows='3' required></textarea>";
+                echo "<input type='submit' name='review' value='Submit Review'>";
+                echo "</form>";
 
-          $pdo = null;
-        } else {
-          echo "<p>No product ID provided.</p>";
-        }
-        ?>
+                echo '</div>';
+                echo '</section>';
+                // Previous Reviews from user
+                $offset = 0;
+                $reviewsPerPage = 4;
+                $reviewSql = "SELECT reviewDate, rating, description FROM productreviews WHERE productId = ? ORDER BY reviewDate DESC LIMIT $offset, $reviewsPerPage";
+
+                $reviewStmt = $db->prepare($reviewSql);
+                $reviewStmt->execute([$product_id]);
+
+                echo "<div class='user-reviews-container'>";
+                echo "<h2 style='color: #3e2723;'>This product's Reviews</h2>";
+
+                if ($reviewStmt->rowCount() > 0) {
+                  while ($reviewRow = $reviewStmt->fetch(PDO::FETCH_ASSOC)) {
+                    echo "<div class='user-review-item'>";
+                    echo "<div class='review-details'>";
+                    echo "<p><strong>Review Date:</strong> " . $reviewRow["reviewDate"] . "</p>";
+                    echo "<p><strong>Rating:</strong> " . $reviewRow["rating"] . "</p>";
+                    echo "<p><strong>Description:</strong> " . $reviewRow["description"] . "</p>";
+                    echo "</div>";
+                    echo "</div>";
+                  }
+                } else {
+                  echo "<p>No reviews available.</p>";
+                }
+
+                //limites the amount of reviews
+                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                  if (isset ($_POST['review'])) {
+                    $rating = $_POST['rating'];
+                    $description = $_POST['description'];
+                    $insertReviewSql = "INSERT INTO productreviews (rating, description) VALUES (?, ?)";
+                    $insertReviewStmt = $db->prepare($insertReviewSql);
+                    $insertReviewStmt->execute([$rating, $description]);
+                  }
+                }
+
+                $totalReviewsSql = "SELECT COUNT(productId) AS totalReviews
+                        FROM productreviews 
+                        WHERE productId = ?";
+                $totalReviewsStmt = $db->prepare($totalReviewsSql);
+                $totalReviewsStmt->execute([$product_id]);
+                $totalReviews = $totalReviewsStmt->fetchColumn();
+
+                $totalReviewsPages = ceil($totalReviews / $reviewsPerPage);
+                echo "</div>";
+
+
+
+
+                echo '<h3>Recommendations</h3>';
+                echo '<Section class="recs">';
+                echo '<Section class="containers1">';
+                $stmtRecommendations = $db->prepare("SELECT * FROM products WHERE productId != :product_id ORDER BY RAND() LIMIT 4");
+                $stmtRecommendations->bindParam(':product_id', $product_id, PDO::PARAM_INT);
+                $stmtRecommendations->execute();
+                while ($recommendation = $stmtRecommendations->fetch(PDO::FETCH_ASSOC)) {
+                  echo '<div class="cardd">';
+                  echo '<div class="card-body">';
+                  echo '<p><img src="../Pictures%20for%20website/' . htmlspecialchars($recommendation['imageName']) . '" alt="' . htmlspecialchars($row['imageName']) . '" style="width:300px;height:300px;></p>';
+                  echo '</div>';
+                  echo '<div class="card-text">';
+                  echo '<h4>' . $recommendation['productName'] . '</h4>';
+                  echo '<p><strong>Price:</strong> $' . $recommendation['price'] . '</p>';
+                  echo '</div>';
+                  echo '</div>';
+                }
+                echo '</section>';
+                echo '</section>';
+              } else {
+                echo "<p>Product not found.</p>";
+              }
+            } catch (PDOException $e) {
+              echo "Error: " . $e->getMessage();
+            }
+
+            $pdo = null;
+          } else {
+            echo "<p>No product ID provided.</p>";
+          }
+          ?>
+          <section>
+            <script>
+              // When the user scrolls down 80px from the top of the document, resize the navbar's padding and the logo's font size
+              window.onscroll = function () { scrollFunction() };
+
+              function scrollFunction() {
+                if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+                  document.getElementById("navbar").style.padding = "30px 10px";
+                  document.getElementById("logo").style.fontSize = "25px";
+                } else {
+                  document.getElementById("navbar").style.padding = "80px 10px";
+                  document.getElementById("logo").style.fontSize = "35px";
+                }
+              }
+            </script>
+      </body>
+      <footer class="footer">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
           integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
           crossorigin="anonymous"></script>
-        <script>
-          // When the user scrolls down 80px from the top of the document, resize the navbar's padding and the logo's font size
-          window.onscroll = function () { scrollFunction() };
-
-          function scrollFunction() {
-            if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
-              document.getElementById("navbar").style.padding = "30px 10px";
-              document.getElementById("logo").style.fontSize = "25px";
-            } else {
-              document.getElementById("navbar").style.padding = "80px 10px";
-              document.getElementById("logo").style.fontSize = "35px";
-            }
-          }
-        </script>
-      </body>
-      <footer class="footer">
         <div class="container">
           <div class="row">
             <div class="footer-col">
@@ -209,7 +284,7 @@
               <h5>Email us at: comms@furniche.com</h5>
               <h5>Call us at: 01563385967</h5>
               <ul>
-                <li><a href="../contactview.php">Contact Us via our Website</a> </li>
+                <li><a href="contactview.php">Contact Us via our Website</a> </li>
               </ul>
             </div>
             <div class="footer-col">
@@ -225,5 +300,15 @@
           </div>
         </div>
       </footer>
-
+<?php
+      if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  if (isset ($_POST['review'])) {
+    $rating = $_POST['rating'];
+    $description = $_POST['description'];
+    $insertReviewSql = "INSERT INTO productreviews (productId, userId,rating, description) VALUES (?, ?, ?, ?)";
+    $insertReviewStmt = $db->prepare($insertReviewSql);
+    $insertReviewStmt->execute([$product_id, $userID, $rating, $description]);
+  }
+}
+?>
 </html>

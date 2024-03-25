@@ -183,8 +183,9 @@ font-weight: 600;
   }
   
   .cardd .image-details {
-    flex: 1 1 400px;
+    flex: 1 1 250px;
     padding: 20px;
+    border-radius: 25px;
   }
   
   .cardd .image-details img {

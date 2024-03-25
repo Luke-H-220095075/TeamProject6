@@ -61,7 +61,6 @@ border-radius: 5px;
   height: 100vh;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
   background-color: #f5d5bb;
 }
 
@@ -70,8 +69,8 @@ border-radius: 5px;
   max-width: 500px;
   margin: 0 auto;
   padding: 20px;
-  background-color: #f8f8f8;
-  border-radius: 5px;
+  background-color: #ab9481;
+  border-radius: 25px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -93,7 +92,7 @@ border-radius: 5px;
 }
 
 .contact-formm button {
-  background-color: #4CAF50;
+  background-color: #4e366c;
   color: white;
   padding: 10px 20px;
   border: none;
@@ -102,12 +101,13 @@ border-radius: 5px;
 }
 
 .contact-formm button:hover {
-  background-color: #45a049;
+  background-color: #4e366c;
 }
 
 #submit-btn:hover {
 background-color: #5c5c5c;
 } 
+
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@900&display=swap');
 
 header {
@@ -116,7 +116,6 @@ header {
 
 .containerr {
   background-image: url("../Pictures for website/show.png");
-  background-repeat: no-repeat;
   /* hide fixed overflow contents */
   clip: rect(0, auto, auto, 0);
 
@@ -137,7 +136,7 @@ header {
 }
 
 .containerr_solid {
-  background: #F5D5BB;
+  background: #f5d5bb;
   
   /* position this container at the top of its parent element */
   top: 0;
@@ -166,7 +165,7 @@ header {
 
 .containerr_solid .title_wrapperr h1 {
   /* the text background */
-  background-image: url("../Pictures for website/contactimage.jpg");
+  background: url("../Pictures for website/contactimage.jpg");
   background-size: 100vw auto;
   background-position: center;
   
@@ -191,17 +190,16 @@ header {
   top: 100vh;
 }
 
-.containerr_image .title_wrapperr h1 {
-  color: #F5D5BB;
+.containerr_image .title_wrapper h1 {
+  color: white;
 }
 
 .sectionn {
-  text-align: center;
-  align-items: center;
   min-height: 100vh;
-  margin: auto;
-  max-width: 100%;
-  background-color: #F5D5BB;
+  padding: 5em;
+  text-align: center;
+  max-width: 800px;
+  align-items: center;
 }
 
 .sectionn h2 {

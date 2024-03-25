@@ -3,7 +3,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     session_start();
     $productId = isset($_POST['product_id']) ? intval($_POST['product_id']) : 0;
     $change = isset($_POST['change']) ? intval($_POST['change']) : 0;
-
+    
     include '../connect.php';
     $userId = $_SESSION['userID'];
 //    $sql = "SELECT basketId FROM baskets WHERE userId = ". $userId ." AND currentUserBasket = 1" ;

@@ -514,3 +514,21 @@ align-items: center;
 .active>.page-link{
   background-color: #f5d5bb;
 }
+.recs{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 0px;
+}
+
+.containers1{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.pddd{
+  background-color: #BDA18A;
+}

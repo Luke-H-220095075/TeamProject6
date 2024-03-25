@@ -15,7 +15,8 @@ $basketId = $mainbasketId;
 if (isset ($_SESSION["basketID"])) {
     $basketId = $_SESSION["basketID"];
 }
-$_SESSION["basketID"] = $mainbasketId;
+
+
 if ($basketId != $mainbasketId) {
     $prevOrder = " in that order add to your basket?";
 } else {
@@ -100,11 +101,10 @@ if ($basketId != $mainbasketId) {
 
     <div class="basketss">
 
-
+        
         <h2>Your Basket</h2>
 
         <?php
-        $_SESSION["basketID"] = $basketId;
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         try {
@@ -178,7 +178,7 @@ if ($basketId != $mainbasketId) {
                 }
                 
             } else {
-                echo "0 results" . $basketId;
+                echo "0 results";
             }
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
