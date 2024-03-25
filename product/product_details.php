@@ -213,9 +213,8 @@
 
 
 
-
-                echo '<h3>Recommendations</h3>';
                 echo '<Section class="recs">';
+                echo '<h3>Recommendations</h3>';
                 echo '<Section class="containers1">';
                 $stmtRecommendations = $db->prepare("SELECT * FROM products WHERE productId != :product_id ORDER BY RAND() LIMIT 4");
                 $stmtRecommendations->bindParam(':product_id', $product_id, PDO::PARAM_INT);
