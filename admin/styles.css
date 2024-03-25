@@ -164,7 +164,7 @@ h1{
 .info-table {
     margin: 20px auto;
     margin-left: 370px;
-    max-width: 1070px;
+    width: 65%;
     border-radius: 10px;
     overflow: hidden;
     background-color: white;
@@ -252,7 +252,7 @@ h1{
     padding: 20px;
     border-radius: 4px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 65%;
+    width: 68%;
     margin-left: 100px;
 }
 
