@@ -136,7 +136,7 @@
                 echo '<p><strong>Amount in Stock:</strong> ' . $row['countStock'] . '</p>';
                 echo '<p><strong>Amount Sold:</strong> ' . $row['countSold'] . '</p>';
 
-
+                echo "<p>the average user rated ordering with us " . $avgOrdrRating . " out of 5</p>";
                 $reviewSql = "SELECT reviewDate, rating, description FROM productreviews WHERE productId =" . $product_id;
                 $reviewStmt = $db->prepare($reviewSql);
                 $reviewStmt->execute();
@@ -148,7 +148,6 @@
                     $count++;
                   }
                   $avgUsrRating = $avgUsrRating / $count;
-                  echo "<p>the average user rated ordering with us " . $avgOrdrRating . " out of 5</p>";
                   echo "<p>this product is rated " . $avgUsrRating . " out of 5 by our users</p>";
                 }
                 echo "<form method='post'>";
