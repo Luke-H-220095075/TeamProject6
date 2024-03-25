@@ -17,32 +17,12 @@
 include '../connect.php';
 session_start();
 
- //KPIs for the AdminDashboard
- function getTotalCount($db, $table, $condition = "") {
-    $sql = "SELECT COUNT(*) as count FROM $table $condition";
-    $stmt = $db->query($sql);
-    
-    if ($stmt) {
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $row['count'];
-    } else {
-        return 0;
-    }
-}
-// KPI - Total Users
-$totalUsers = getTotalCount($db, "users");
-// KPI - Total orders
-$totalOrders = getTotalCount($db, "orders");
-// KPI - Pending Approvals
-$totalPending = getTotalCount($db, "orders", "WHERE `deliveryStatus` = 'Pending Approval'");
-
-
 ?>
 
       
         </div>
         </header>
-<body>
+
     <section id="sidebar">
         <ul class="side-menu top">
             <div class="logo">
@@ -107,7 +87,6 @@ if (isset($_SESSION['user'])) {
                     <i class="fa-solid fa-box"></i>
                     <span class="nav-item">Returns</span>
                 </a>
-               <!-- <span class="tooltip">Orders</span> -->
             </li>
             <li>
             <a href="transactions.php">
@@ -116,13 +95,7 @@ if (isset($_SESSION['user'])) {
                 </a>
 
             </li>
-            <li>
-                <a href="returnsadmin.php">
-                    <i class="fa-solid fa-user"></i>
-                    <span class="nav-item">Return Requests</span>
-                </a>
-              
-            </li>
+            
             <li>
                 <a href="messages.php">
                     <i class="fa-solid fa-message"></i>
@@ -148,6 +121,7 @@ if (isset($_SESSION['user'])) {
 
    
     </section> 
+    <body>
     <br>
     <br>
     <div class="info-table">
@@ -185,16 +159,17 @@ if(count($messages->messages) == 0){
 echo 'No messages';
 }
 foreach ($messages->messages as $msg) {
-    echo '<tr><td>';
-    echo '<h3>'.$msg->username.'</h3></td>';
+    echo '<td><h3>'.$msg->username.'</h3></td>';
     echo '<td><h3>'.$msg->subject.'</h3></td>';
     echo '<td><h3>'.$msg->messagetext.'</h3></td>';
     echo '<td><h3>'.$msg->email.'</h3></td>';
+    
     echo '<form method="post">';
     echo '<input type="hidden" name="id" value="'.$msg->id.'"/input>';
-    echo '<button type="submit" name="reply" style="cursor: pointer; width: 50%; display: inline">Mark as replied</button>';
+    echo '<td><button type="submit" name="reply" style="cursor: pointer; width: 100%; display: inline">Mark as replied</button></td>';
     echo '</form>';
-    echo '</tr>'; 
+    echo '</tr>';
+    
  }
     
     if(isset($_POST['reply'])){
@@ -210,3 +185,4 @@ foreach ($messages->messages as $msg) {
 </tbody>
 </table>
  
+</body>

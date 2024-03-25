@@ -25,7 +25,7 @@ session_start();
         ?>
         </div>
         </header>
-<body>
+
 <section id="sidebar">
         <ul class="side-menu top">
             <div class="logo">
@@ -84,19 +84,20 @@ if (isset($_SESSION['user'])) {
                
             </li>
             <li>
+                <a href="returnsadmin.php">
+                    <i class="fa-solid fa-user"></i>
+                    <span class="nav-item">Returns</span>
+                </a>
+              
+            </li>
+            <li>
             <a href="transactions.php">
             <i class="fa-solid fa-money-bill"></i>
                     <span class="nav-item">Transactions</span>
                 </a>
 
             </li>
-            <li>
-                <a href="returnsadmin.php">
-                    <i class="fa-solid fa-user"></i>
-                    <span class="nav-item">Return Requests</span>
-                </a>
-              
-            </li>
+          
             <li>
                 <a href="messages.php">
                     <i class="fa-solid fa-message"></i>
@@ -124,7 +125,7 @@ if (isset($_SESSION['user'])) {
 
    
     </section>
-
+    <body>
  <main>
     <br><br>
     <h1>Pending Returns</h1>

@@ -42,7 +42,7 @@ $totalPending = getTotalCount($db, "orders", "WHERE `deliveryStatus` = 'Pending 
       
         </div>
         </header>
-<body>
+
     <section id="sidebar">
         <ul class="side-menu top">
             <div class="logo">
@@ -106,7 +106,6 @@ if (isset($_SESSION['user'])) {
                     <i class="fa-solid fa-box"></i>
                     <span class="nav-item">Returns</span>
                 </a>
-               <!-- <span class="tooltip">Orders</span> -->
             </li>
             <li>
             <a href="transactions.php">
@@ -114,13 +113,6 @@ if (isset($_SESSION['user'])) {
                     <span class="nav-item">Transactions</span>
                 </a>
 
-            </li>
-            <li>
-                <a href="returnsadmin.php">
-                    <i class="fa-solid fa-user"></i>
-                    <span class="nav-item">Return Requests</span>
-                </a>
-              
             </li>
             <li>
                 <a href="messages.php">
@@ -147,10 +139,13 @@ if (isset($_SESSION['user'])) {
 
    
     </section> 
+    <body>
+
     <br>
     <br>
     <div class="info-table">
 
+    
 <!-- Header with filter and search-->
 <div class="table-header"style="background-color: #e2b489; padding-top: 10px;">
 <div class="container custom-background">

@@ -12,7 +12,7 @@
 <header>
 <span>Furniche <i class="fa-solid fa-bars" id="togglebtn"></i></span>
         </header>
-<body>
+
     <section id="sidebar">
         <ul class="side-menu top">
             <div class="logo">
@@ -74,7 +74,6 @@ if (isset($_SESSION['user'])) {
                     <i class="fa-solid fa-box"></i>
                     <span class="nav-item">Returns</span>
                 </a>
-               <!-- <span class="tooltip">Orders</span> -->
             </li>
             <li>
             <a href="transactions.php">
@@ -83,13 +82,7 @@ if (isset($_SESSION['user'])) {
                 </a>
 
             </li>
-            <li>
-                <a href="returnsadmin.php">
-                    <i class="fa-solid fa-user"></i>
-                    <span class="nav-item">Return Requests</span>
-                </a>
-              
-            </li>
+          
             <li>
                 <a href="messages.php">
                     <i class="fa-solid fa-message"></i>
@@ -146,7 +139,8 @@ if (isset($_GET['userId'])) {  $userId = $_GET['userId'];
             $totalPendingOrders = getTotalCount($db, "orders", "WHERE userId = $userId AND `deliveryStatus` = 'Pending Approval'");
     
 ?>
-
+<body>
+    
 <div class="header-details">
                 <h2>User Details</h2>
                 <a href="useradmin.php" class="back-button">Back to User Admin</a>

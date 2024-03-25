@@ -19,7 +19,7 @@ session_start();
         ?>
         </div>
         </header>
-<body>
+
 <section id="sidebar">
         <ul class="side-menu top">
             <div class="logo">
@@ -82,7 +82,6 @@ if (isset($_SESSION['user'])) {
                     <i class="fa-solid fa-box"></i>
                     <span class="nav-item">Returns</span>
                 </a>
-               <!-- <span class="tooltip">Orders</span> -->
             </li>
             <li>
             <a href="transactions.php">
@@ -90,13 +89,6 @@ if (isset($_SESSION['user'])) {
                     <span class="nav-item">Transactions</span>
                 </a>
 
-            </li>
-            <li>
-                <a href="returnsadmin.php">
-                    <i class="fa-solid fa-user"></i>
-                    <span class="nav-item">Return Requests</span>
-                </a>
-              
             </li>
             <li>
                 <a href="messages.php">
@@ -294,7 +286,7 @@ if (isset($_GET['search']) && !empty($_GET['search'])) {
         ?>
 
 
-    
+<body>
 <br><br> <h1> Users Admin Dashboard</h1> 
     <div class="create-container">
             <div class="create-form">
