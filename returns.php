@@ -132,8 +132,10 @@
             while ($row = $stmtproduct->fetch(PDO::FETCH_ASSOC)) {
               if (isset($prodname)){
                 array_push($prodname, $row["productName"]);
+                array_push($prodprice, $row["price"]);
                 }else{
                 $prodname = array($row["productName"]);
+                $prodprice = array($row["price"]);
                 }
               $prodnum++;
               
@@ -142,8 +144,8 @@
           }
       echo "<label for='productid'>productid:</label>";
       echo "<select name='productid' id='productid'>";
-      for ($i = 1; $i <= $prodnum; $i++) {
-        echo "<option value='$i'>$prodname[$i]</option>";
+      for ($i = 0; $i < $prodnum; $i++) {
+        echo "<option value='$prodprice[$i]'>$prodprice[$i]</option>";
       }
       echo "</select>";
       echo '<label for="reason">reason:</label><br>';
@@ -153,7 +155,6 @@
       } else {
         echo '<a href="loginview.php" id="submit-btn" style="text-decoration: none">Please log in to return orders.</a>';
       }
-      require ("view/contact.php");
       echo '</form>';
 
       
@@ -163,7 +164,7 @@
           $sth->bindparam(':productid', $_POST['productid'], PDO::PARAM_STR, 64);
           $sth->bindparam(':orderid', $_POST['orderid'], PDO::PARAM_STR, 64);
           $sth->bindparam(':explanation', $_POST['reason'], PDO::PARAM_STR, 64);
-          $sth->bindparam(':price', $price, PDO::PARAM_STR, 64);
+          $sth->bindparam(':price', $_POST['productid'], PDO::PARAM_STR, 64);
           $sth->execute();
         } catch (PDOException $ex) {
           ?>

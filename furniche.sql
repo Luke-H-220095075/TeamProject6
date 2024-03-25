@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 24, 2024 at 10:37 PM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.2.0
+-- Generation Time: Mar 25, 2024 at 05:54 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -38,7 +38,8 @@ CREATE TABLE `basketproducts` (
 --
 
 INSERT INTO `basketproducts` (`basketId`, `productId`, `quantity`) VALUES
-(1, 12, 1);
+(1, 12, 1),
+(2, 12, 3);
 
 -- --------------------------------------------------------
 
@@ -60,7 +61,9 @@ CREATE TABLE `baskets` (
 
 INSERT INTO `baskets` (`basketId`, `userId`, `dateAdded`, `discountId`, `currentUserBasket`) VALUES
 (1, 1, '2024-03-24 18:38:05', NULL, 0),
-(2, 1, '2024-03-24 18:38:36', NULL, 1);
+(2, 1, '2024-03-24 18:38:36', NULL, 1),
+(3, 1, '2024-03-24 22:32:46', NULL, 1),
+(4, 1, '2024-03-25 02:30:03', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -80,7 +83,7 @@ CREATE TABLE `discounts` (
 --
 
 INSERT INTO `discounts` (`discountId`, `discountTitle`, `discountDescription`, `value`) VALUES
-(1, 'test', 'test', '15.00');
+(1, 'test', 'test', 15.00);
 
 -- --------------------------------------------------------
 
@@ -96,6 +99,38 @@ CREATE TABLE `inquiries` (
   `message` varchar(1000) DEFAULT NULL,
   `reply` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `inquiries`
+--
+
+INSERT INTO `inquiries` (`inquiryId`, `userId`, `inquiryDate`, `subject`, `message`, `reply`) VALUES
+(1, 1, '2024-03-24', 'yoyo', NULL, 1),
+(2, 1, '2024-03-25', 'a', NULL, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `itemreturns`
+--
+
+CREATE TABLE `itemreturns` (
+  `returnId` int(11) NOT NULL,
+  `productId` int(11) NOT NULL,
+  `orderID` int(11) NOT NULL,
+  `status` enum('pending','returning','returned','denied') NOT NULL,
+  `explanation` varchar(150) NOT NULL,
+  `price` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `itemreturns`
+--
+
+INSERT INTO `itemreturns` (`returnId`, `productId`, `orderID`, `status`, `explanation`, `price`) VALUES
+(0, 220, 1, 'pending', '', 220),
+(0, 220, 1, 'pending', '', 220),
+(0, 220, 1, 'pending', 'ru6t', 220);
 
 -- --------------------------------------------------------
 
@@ -141,7 +176,9 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`orderId`, `basketId`, `userId`, `dateAdded`, `deliveryOption`, `deliveryDate`, `deliveryStatus`, `notes`) VALUES
-(1, 1, 1, '2024-03-24 18:38:36', 'standard', NULL, NULL, '');
+(1, 1, 1, '2024-03-24 18:38:36', 'standard', NULL, NULL, ''),
+(2, 1, 1, '2024-03-24 22:32:46', 'standard', NULL, NULL, ''),
+(3, 1, 1, '2024-03-25 02:30:03', 'standard', NULL, NULL, '');
 
 -- --------------------------------------------------------
 
@@ -168,7 +205,15 @@ INSERT INTO `productreviews` (`userId`, `productId`, `reviewDate`, `rating`, `de
 (1, 2, '2024-03-24 21:33:34', 4, 'nice'),
 (1, 2, '2024-03-24 21:34:10', 4, 'nice'),
 (1, 2, '2024-03-24 21:34:12', 4, 'nice'),
-(1, 2, '2024-03-24 21:35:01', 4, 'nice');
+(1, 2, '2024-03-24 21:35:01', 4, 'nice'),
+(1, 9, '2024-03-24 22:40:15', 5, 'comfy'),
+(0, 0, '2024-03-24 23:19:50', 5, 'ummm'),
+(1, 2, '2024-03-24 23:19:50', 5, 'ummm'),
+(0, 0, '2024-03-25 00:17:24', 5, 'nice'),
+(0, 0, '2024-03-25 00:25:22', 1, 'yes'),
+(1, 3, '2024-03-25 00:25:22', 1, 'yes'),
+(0, 0, '2024-03-25 02:37:47', 1, 'Stuff'),
+(1, 4, '2024-03-25 02:37:47', 1, 'Stuff');
 
 -- --------------------------------------------------------
 
@@ -194,31 +239,31 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`productId`, `productName`, `productDescription`, `price`, `dateAdded`, `countSold`, `countStock`, `productCategory`, `productType`, `imageName`) VALUES
-(1, 'Modern Sofa', 'Living room\r\n', '499.99', '2023-12-01 13:25:36', 13, 47, 'modern', 'sofa', 'modern_sofa.jpg'),
-(2, 'Minimal Desk', 'Dressing table', '199.99', '2023-12-01 13:25:36', 8, 17, 'minimal', 'desk', 'minimal_desk.jpg'),
-(3, 'Rustic Chair', 'Kitchen', '129.99', '2023-12-01 13:25:36', 11, 27, 'rustic', 'chair', 'rustic_chair.jpg'),
-(4, 'Bohemian Bed', 'Double bedroom', '699.99', '2023-12-01 13:25:36', 17, 35, 'bohemian', 'bed', 'bohemian_bed.jpg'),
-(5, 'Tropical Wardrobe', 'Bedroom', '299.99', '2023-12-01 13:25:36', 9, 22, 'tropical', 'wardrobe', 'tropical_wardrobe.jpg'),
-(6, 'Modern Chair', 'Gaming', '149.99', '2023-12-01 13:25:36', 9, 35, 'modern', 'chair', 'modern_chair.jpg'),
-(7, 'Minimal Bed', 'Double bedroom', '599.99', '2023-12-01 13:25:36', 15, 45, 'minimal', 'bed', 'minimal_bed.jpg'),
-(8, 'Rustic Desk', 'Kitchen', '179.99', '2023-12-01 13:25:36', 7, 28, 'rustic', 'desk', 'rustic_desk.jpg'),
-(9, 'Bohemian Sofa', 'Living room', '549.99', '2023-12-01 13:25:36', 11, 38, 'bohemian', 'sofa', 'bohemian_sofa.jpg'),
-(10, 'Tropical Chair', 'Kitchen', '169.99', '2023-12-01 13:25:36', 10, 32, 'tropical', 'chair', 'tropical_chair.jpg'),
-(11, 'Modern Sofa 2', 'Living room', '479.99', '2023-12-01 13:25:36', 8, 45, 'modern', 'sofa', 'modern_sofa_2.jpg'),
-(12, 'Minimal Desk 2', 'Office', '219.99', '2023-12-01 13:25:36', 7, 17, 'minimal', 'desk', 'minimal_desk_2.jpg'),
-(13, 'Rustic Chair 2', 'Bedroom', '149.99', '2023-12-01 13:25:36', 7, 32, 'rustic', 'chair', 'rustic_chair_2.jpg'),
-(14, 'Bohemian Bed 2', 'Double bedroom', '679.99', '2023-12-01 13:25:36', 10, 35, 'bohemian', 'bed', 'bohemian_bed_2.jpg'),
-(15, 'Tropical Wardrobe 2', 'Single bedroom', '279.99', '2023-12-01 13:25:36', 5, 28, 'tropical', 'wardrobe', 'tropical_wardrobe_2.jpg'),
-(16, 'Modern Chair 2', 'Office', '129.99', '2023-12-01 13:25:36', 12, 30, 'modern', 'chair', 'modern_chair_2.jpg'),
-(17, 'Minimal Bed 2', 'Office', '569.99', '2023-12-01 13:25:36', 14, 40, 'minimal', 'bed', 'minimal_bed_2.jpg'),
-(18, 'Rustic Desk 2', 'Kitchen', '199.99', '2023-12-01 13:25:36', 10, 26, 'rustic', 'desk', 'rustic_desk_2.jpg'),
-(19, 'Bohemian Sofa 2', 'Living room', '529.99', '2023-12-01 13:25:36', 13, 38, 'bohemian', 'sofa', 'bohemian_sofa_2.jpg'),
-(20, 'Tropical Chair 2', 'Bedroom', '149.99', '2023-12-01 13:25:36', 11, 30, 'tropical', 'chair', 'tropical_chair_2.jpg'),
-(21, 'Modern Sofa 3', 'Living room', '459.99', '2023-12-01 13:25:36', 9, 42, 'modern', 'sofa', 'modern_sofa_3.jpg'),
-(22, 'Minimal Desk 3', 'Bedroom', '239.99', '2023-12-01 13:25:36', 8, 22, 'minimal', 'desk', 'minimal_desk_3.jpg'),
-(23, 'Rustic Chair 3', 'Kitchen', '139.99', '2023-12-01 13:25:36', 11, 28, 'rustic', 'chair', 'rustic_chair_3.jpg'),
-(24, 'Bohemian Bed 3', 'Single bedroom', '649.99', '2023-12-01 13:25:36', 13, 30, 'bohemian', 'bed', 'bohemian_bed_3.jpg'),
-(25, 'Tropical Wardrobe 3', 'Double bedroom', '259.99', '2023-12-01 13:25:36', 9, 25, 'tropical', 'wardrobe', 'tropical_wardrobe_3.jpg');
+(1, 'Modern Sofa', 'Living room\r\n', 499.99, '2023-12-01 13:25:36', 13, 47, 'modern', 'sofa', 'modern_sofa.jpg'),
+(2, 'Minimal Desk', 'Dressing table', 199.99, '2023-12-01 13:25:36', 8, 17, 'minimal', 'desk', 'minimal_desk.jpg'),
+(3, 'Rustic Chair', 'Kitchen', 129.99, '2023-12-01 13:25:36', 11, 27, 'rustic', 'chair', 'rustic_chair.jpg'),
+(4, 'Bohemian Bed', 'Double bedroom', 699.99, '2023-12-01 13:25:36', 17, 35, 'bohemian', 'bed', 'bohemian_bed.jpg'),
+(5, 'Tropical Wardrobe', 'Bedroom', 299.99, '2023-12-01 13:25:36', 9, 22, 'tropical', 'wardrobe', 'tropical_wardrobe.jpg'),
+(6, 'Modern Chair', 'Gaming', 149.99, '2023-12-01 13:25:36', 9, 35, 'modern', 'chair', 'modern_chair.jpg'),
+(7, 'Minimal Bed', 'Double bedroom', 599.99, '2023-12-01 13:25:36', 15, 45, 'minimal', 'bed', 'minimal_bed.jpg'),
+(8, 'Rustic Desk', 'Kitchen', 179.99, '2023-12-01 13:25:36', 7, 28, 'rustic', 'desk', 'rustic_desk.jpg'),
+(9, 'Bohemian Sofa', 'Living room', 549.99, '2023-12-01 13:25:36', 11, 38, 'bohemian', 'sofa', 'bohemian_sofa.jpg'),
+(10, 'Tropical Chair', 'Kitchen', 169.99, '2023-12-01 13:25:36', 10, 32, 'tropical', 'chair', 'tropical_chair.jpg'),
+(11, 'Modern Sofa 2', 'Living room', 479.99, '2023-12-01 13:25:36', 8, 45, 'modern', 'sofa', 'modern_sofa_2.jpg'),
+(12, 'Minimal Desk 2', 'Office', 219.99, '2023-12-01 13:25:36', 9, 15, 'minimal', 'desk', 'minimal_desk_2.jpg'),
+(13, 'Rustic Chair 2', 'Bedroom', 149.99, '2023-12-01 13:25:36', 7, 32, 'rustic', 'chair', 'rustic_chair_2.jpg'),
+(14, 'Bohemian Bed 2', 'Double bedroom', 679.99, '2023-12-01 13:25:36', 10, 35, 'bohemian', 'bed', 'bohemian_bed_2.jpg'),
+(15, 'Tropical Wardrobe 2', 'Single bedroom', 279.99, '2023-12-01 13:25:36', 5, 28, 'tropical', 'wardrobe', 'tropical_wardrobe_2.jpg'),
+(16, 'Modern Chair 2', 'Office', 129.99, '2023-12-01 13:25:36', 12, 30, 'modern', 'chair', 'modern_chair_2.jpg'),
+(17, 'Minimal Bed 2', 'Office', 569.99, '2023-12-01 13:25:36', 14, 40, 'minimal', 'bed', 'minimal_bed_2.jpg'),
+(18, 'Rustic Desk 2', 'Kitchen', 199.99, '2023-12-01 13:25:36', 10, 26, 'rustic', 'desk', 'rustic_desk_2.jpg'),
+(19, 'Bohemian Sofa 2', 'Living room', 529.99, '2023-12-01 13:25:36', 13, 38, 'bohemian', 'sofa', 'bohemian_sofa_2.jpg'),
+(20, 'Tropical Chair 2', 'Bedroom', 149.99, '2023-12-01 13:25:36', 11, 30, 'tropical', 'chair', 'tropical_chair_2.jpg'),
+(21, 'Modern Sofa 3', 'Living room', 459.99, '2023-12-01 13:25:36', 9, 42, 'modern', 'sofa', 'modern_sofa_3.jpg'),
+(22, 'Minimal Desk 3', 'Bedroom', 239.99, '2023-12-01 13:25:36', 8, 22, 'minimal', 'desk', 'minimal_desk_3.jpg'),
+(23, 'Rustic Chair 3', 'Kitchen', 139.99, '2023-12-01 13:25:36', 11, 28, 'rustic', 'chair', 'rustic_chair_3.jpg'),
+(24, 'Bohemian Bed 3', 'Single bedroom', 649.99, '2023-12-01 13:25:36', 13, 30, 'bohemian', 'bed', 'bohemian_bed_3.jpg'),
+(25, 'Tropical Wardrobe 3', 'Double bedroom', 259.99, '2023-12-01 13:25:36', 9, 25, 'tropical', 'wardrobe', 'tropical_wardrobe_3.jpg');
 
 -- --------------------------------------------------------
 
@@ -240,7 +285,9 @@ CREATE TABLE `transactions` (
 --
 
 INSERT INTO `transactions` (`transactionId`, `orderId`, `amount`, `status`, `cardDetails`, `transactionDate`) VALUES
-(1, 1, '219.99', 'pending', '||', '2024-03-24 18:38:36');
+(1, 1, 219.99, 'pending', '||', '2024-03-24 18:38:36'),
+(2, 2, 219.99, 'pending', '||', '2024-03-24 22:32:46'),
+(3, 3, 219.99, 'pending', '||', '2024-03-25 02:30:03');
 
 -- --------------------------------------------------------
 
@@ -305,6 +352,12 @@ ALTER TABLE `inquiries`
   ADD KEY `inquiry_user` (`userId`);
 
 --
+-- Indexes for table `itemreturns`
+--
+ALTER TABLE `itemreturns`
+  ADD KEY `returnId` (`returnId`);
+
+--
 -- Indexes for table `orderreviews`
 --
 ALTER TABLE `orderreviews`
@@ -346,7 +399,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `baskets`
 --
 ALTER TABLE `baskets`
-  MODIFY `basketId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `basketId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `discounts`
@@ -358,7 +411,7 @@ ALTER TABLE `discounts`
 -- AUTO_INCREMENT for table `inquiries`
 --
 ALTER TABLE `inquiries`
-  MODIFY `inquiryId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `inquiryId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `orderreviews`
@@ -370,7 +423,7 @@ ALTER TABLE `orderreviews`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `products`
@@ -382,7 +435,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
-  MODIFY `transactionId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `transactionId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users`
