@@ -6,11 +6,13 @@ class Message {
     public $username;
     public $email;
 
-    public function __construct($id, $subject, $messagetext)
+    public function __construct($id, $subject, $messagetext, $username, $email)
     {
         $this->id = $id;
         $this->messagetext = $messagetext;
         $this->subject = $subject;
+        $this->username = $username;
+        $this->email = $email;
     }
     public function sendMessage(){
         include 'connect.php';
