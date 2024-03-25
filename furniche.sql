@@ -829,6 +829,8 @@ INSERT INTO `discounts` (`discountId`, `discountTitle`, `discountDescription`, `
 
 -- --------------------------------------------------------
 
+
+
 --
 -- Table structure for table `inquiries`
 --
@@ -850,6 +852,24 @@ INSERT INTO `inquiries` (`inquiryId`, `userId`, `inquiryDate`, `subject`, `messa
 (1, 1, '2023-12-12', 'test', 'test', 0);
 
 -- --------------------------------------------------------
+
+CREATE TABLE `itemreturns` (
+  `returnId` int(11) NOT NULL,
+  `productId` int(11) NOT NULL,
+  `orderID` int(11) NOT NULL,
+  `status` enum('pending','returning','returned','denied') NOT NULL,
+  `explanation` varchar(150) NOT NULL,
+  `price` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `itemreturns`
+--
+
+INSERT INTO `itemreturns` (`returnId`, `productId`, `orderID`, `status`, `explanation`, `price`) VALUES
+(0, 220, 1, 'pending', '', 220),
+(0, 220, 1, 'pending', '', 220),
+(0, 220, 1, 'pending', 'ru6t', 220);
 
 --
 -- Table structure for table `orderreviews`
