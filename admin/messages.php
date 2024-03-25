@@ -168,6 +168,7 @@ foreach ($messages->messages as $msg) {
     echo '<input type="hidden" name="id" value="'.$msg->id.'"/input>';
     echo '<td><button type="submit" name="reply" style="cursor: pointer; width: 100%; display: inline">Mark as replied</button></td>';
     echo '</form>';
+    echo '</tr>';
     
  }
     

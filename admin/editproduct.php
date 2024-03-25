@@ -340,7 +340,7 @@ if (isset($_GET['delete']) && is_numeric($_GET['delete'])) {
                     $stmt->bindParam(3, $_POST['productCategory']);
                     $stmt->bindParam(4, $_POST['productType']);
                     $stmt->bindParam(5, $fileName);
-    
+
                     if ($stmt->execute()) {
                         echo "Product created successfully.";
                     } else {
@@ -356,7 +356,7 @@ if (isset($_GET['delete']) && is_numeric($_GET['delete'])) {
             echo "Error: No file uploaded.";
         }
     }
-    
+
 
 ?>
     <script src="script.js"></script>
