@@ -34,15 +34,3 @@ document.getElementById("user-icon").addEventListener("mouseover", function() {
     dropdown.classList.remove("show");
   });
   
-
-  //Charts Used on the Admin Dashboard
-function fetchData() {
-    fetch('fetch_data.php')
-        .then(response => response.json())
-        .then(data => {
-            // Process the data and create the chart
-            createChart(data);
-        })
-        .catch(error => console.error('Error fetching data:', error));
-  }
-  

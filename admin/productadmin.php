@@ -116,6 +116,7 @@ if (isset($_SESSION['user'])) {
    
     </section>
 
+    <body>
     
     <br><br><h1> Products Admin Dashboard</h1> 
     <div class="create-container">
