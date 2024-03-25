@@ -62,7 +62,8 @@ if (isset($_SESSION['user'])) {
 
 } else {
           
-            //Lucky add the code to instrust users to login and redirect users back to login page
+    header('Location: ../loginview.php');
+    exit;
      
         }
 
@@ -72,28 +73,28 @@ if (isset($_SESSION['user'])) {
                     <i class="fa-solid fa-table-columns"></i>
                     <span class="nav-item">Dashboard</span>
                 </a>
-               <!-- <span class="tooltip">Dashboard</span> -->
+               
             </li>
             <li>
                 <a href="useradmin.php">
                 <i class="fa-solid fa-users"></i>
                     <span class="nav-item">Users</span>
                 </a>
-               <!-- <span class="tooltip">Users</span>-->
+               
             </li>
             <li>
                 <a href="productadmin.php">
                     <i class="fa-solid fa-couch"></i>
                     <span class="nav-item">Products</span>
                 </a>
-               <!-- <span class="tooltip">Products</span>-->
+               
             </li>
             <li>
                 <a href="orderadmin.php">
                     <i class="fa-solid fa-cart-shopping"></i>
                     <span class="nav-item">Orders</span>
                 </a>
-               <!-- <span class="tooltip">Orders</span> -->
+               
             </li>
             <li>
             <a href="transactions.php">
@@ -103,11 +104,17 @@ if (isset($_SESSION['user'])) {
 
             </li>
             <li>
+                <a href="returnsadmin.php">
+                    <i class="fa-solid fa-user"></i>
+                    <span class="nav-item">Return Requests</span>
+                </a>
+              
+            </li>
+            <li>
                 <a href="messages.php">
                     <i class="fa-solid fa-message"></i>
                     <span class="nav-item">Messages</span>
                 </a>
-                               <!-- <span class="tooltip">Messages</span> -->
             </li>
             <li>
           
@@ -116,18 +123,15 @@ if (isset($_SESSION['user'])) {
                     <i class="fa-solid fa-user"></i>
                     <span class="nav-item">Admin Requests</span>
                 </a>
-               <!-- <span class="tooltip">Users</span>-->
             </li>
             <li>
                 <a href="../index.php">
                     <i class="fa-solid fa-star"></i>
                     <span class="nav-item">View As User</span>
                 </a>
-                               <!-- <span class="tooltip">mainpage</span> -->
 
             </li>
         </ul>
-
 
    
     </section>
