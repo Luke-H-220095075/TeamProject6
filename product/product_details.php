@@ -135,6 +135,8 @@
               echo '<p><strong>Release Date/Time:</strong> ' . $row['dateAdded'] . '</p>';
               echo '<p><strong>Amount in Stock:</strong> ' . $row['countStock'] . '</p>';
               echo '<p><strong>Amount Sold:</strong> ' . $row['countSold'] . '</p>';
+
+
               $reviewSql = "SELECT reviewDate, rating, description FROM productreviews WHERE productId =" . $product_id;
               $reviewStmt = $db->prepare($reviewSql);
               $reviewStmt->execute();
@@ -149,18 +151,78 @@
                 echo "<p>the average user rated ordering with us " . $avgOrdrRating . " out of 5</p>";
                 echo "<p>this product is rated " . $avgUsrRating . " out of 5 by our users</p>";
               }
-                echo "<form method='post'>";
-                echo "<label for='rating'>Rating:</label>";
-                echo "<select name='rating' id='rating' required>";
-                for ($i = 1; $i <= 5; $i++) {
-                  echo "<option value='$i'>$i</option>";
-                }
-                echo "</select>";
-                echo "<label for='description'>Review:</label>";
-                echo "<textarea name='description' id='description' rows='3' required></textarea>";
-                echo "<input type='submit' name='review' value='Submit Review'>";
-                echo "</form>";
+              echo "<form method='post'>";
+              echo "<label for='rating'>Rating:</label>";
+              echo "<select name='rating' id='rating' required>";
+              for ($i = 1; $i <= 5; $i++) {
+                echo "<option value='$i'>$i</option>";
+              }
+              echo "</select>";
+              echo "<label for='description'>Review:</label>";
+              echo "<textarea name='description' id='description' rows='3' required></textarea>";
+              echo "<input type='submit' name='review' value='Submit Review'>";
+              echo "</form>";
 
+              echo '</div>';
+              echo '</section>';
+              // Previous Reviews from user
+              $offset =0;
+              $reviewsPerPage =4;
+              $reviewSql = "SELECT reviewDate, rating, description FROM productreviews WHERE productId = ? ORDER BY reviewDate DESC LIMIT $offset, $reviewsPerPage";
+
+              $reviewStmt = $db->prepare($reviewSql);
+              $reviewStmt->execute([$product_id]);
+
+              echo "<div class='user-reviews-container'>";
+              echo "<h2 style='color: #3e2723;'>This product's Reviews</h2>";
+
+              if ($reviewStmt->rowCount() > 0) {
+                while ($reviewRow = $reviewStmt->fetch(PDO::FETCH_ASSOC)) {
+                  echo "<div class='user-review-item'>";
+                  echo "<div class='review-details'>";
+                  echo "<p><strong>Review Date:</strong> " . $reviewRow["reviewDate"] . "</p>";
+                  echo "<p><strong>Rating:</strong> " . $reviewRow["rating"] . "</p>";
+                  echo "<p><strong>Description:</strong> " . $reviewRow["description"] . "</p>";
+                  echo "</div>";
+                  echo "</div>";
+                }
+              } else {
+                echo "<p>No reviews available.</p>";
+              }
+
+              //limites the amount of reviews
+              if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                if (isset ($_POST['review'])) {
+                  $rating = $_POST['rating'];
+                  $description = $_POST['description'];
+                  $insertReviewSql = "INSERT INTO productreviews (rating, description) VALUES (?, ?)";
+                  $insertReviewStmt = $db->prepare($insertReviewSql);
+                  $insertReviewStmt->execute([$rating, $description]);
+                }
+              }
+
+              $totalReviewsSql = "SELECT COUNT(productId) AS totalReviews
+                        FROM productreviews 
+                        WHERE productId = ?";
+              $totalReviewsStmt = $db->prepare($totalReviewsSql);
+              $totalReviewsStmt->execute([$product_id]);
+              $totalReviews = $totalReviewsStmt->fetchColumn();
+
+              $totalReviewsPages = ceil($totalReviews / $reviewsPerPage);
+              echo "</div>";
+
+
+
+
+              echo '<Section class="recommendations">';
+              echo '<h3>Recommendations</h3>';
+              $stmtRecommendations = $db->prepare("SELECT * FROM products WHERE productId != :product_id ORDER BY RAND() LIMIT 3");
+              $stmtRecommendations->bindParam(':product_id', $product_id, PDO::PARAM_INT);
+              $stmtRecommendations->execute();
+              while ($recommendation = $stmtRecommendations->fetch(PDO::FETCH_ASSOC)) {
+                echo '<div class="recommendation-card">';
+                echo '<div class="card">';
+                echo '<p><img src="../Pictures%20for%20website/' . htmlspecialchars($recommendation['imageName']) . '" alt="' . htmlspecialchars($row['imageName']) . '" style="width:500px;height:600px;"></p>';
                 echo '</div>';
                 echo '</section>';
                 echo '<Section class="recs">';

@@ -6,16 +6,14 @@ class Message {
     public $username;
     public $email;
 
-    public function __construct($id, $subject, $messagetext, $username, $email)
+    public function __construct($id, $subject, $messagetext)
     {
         $this->id = $id;
         $this->messagetext = $messagetext;
         $this->subject = $subject;
-        $this->username = $username;
-        $this->email = $email;
     }
     public function sendMessage(){
-        include '../connect.php';
+        include 'connect.php';
         try{
           $sth=$db->prepare("INSERT INTO inquiries(userId, inquiryDate, subject, message) VALUES (:userid, curdate(), :subject, :message)");
           $sth->bindparam(':userid', $_SESSION['userID'], PDO::PARAM_STR, 64);
