@@ -84,19 +84,20 @@ if (isset($_SESSION['user'])) {
                
             </li>
             <li>
+                <a href="returnsadmin.php">
+                    <i class="fa-solid fa-user"></i>
+                    <span class="nav-item">Returns</span>
+                </a>
+              
+            </li>
+            <li>
             <a href="transactions.php">
             <i class="fa-solid fa-money-bill"></i>
                     <span class="nav-item">Transactions</span>
                 </a>
 
             </li>
-            <li>
-                <a href="returnsadmin.php">
-                    <i class="fa-solid fa-user"></i>
-                    <span class="nav-item">Return Requests</span>
-                </a>
-              
-            </li>
+          
             <li>
                 <a href="messages.php">
                     <i class="fa-solid fa-message"></i>

@@ -107,7 +107,6 @@ if (isset($_SESSION['user'])) {
                     <i class="fa-solid fa-box"></i>
                     <span class="nav-item">Returns</span>
                 </a>
-               <!-- <span class="tooltip">Orders</span> -->
             </li>
             <li>
             <a href="transactions.php">
@@ -116,13 +115,7 @@ if (isset($_SESSION['user'])) {
                 </a>
 
             </li>
-            <li>
-                <a href="returnsadmin.php">
-                    <i class="fa-solid fa-user"></i>
-                    <span class="nav-item">Return Requests</span>
-                </a>
-              
-            </li>
+            
             <li>
                 <a href="messages.php">
                     <i class="fa-solid fa-message"></i>

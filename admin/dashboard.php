@@ -121,13 +121,7 @@ if (isset($_SESSION['user'])) {
                 </a>
 
             </li>
-            <li>
-                <a href="returnsadmin.php">
-                    <i class="fa-solid fa-user"></i>
-                    <span class="nav-item">Return Requests</span>
-                </a>
-              
-            </li>
+            
             <li>
                 <a href="messages.php">
                     <i class="fa-solid fa-message"></i>
