@@ -132,9 +132,10 @@ if (isset($_SESSION['user'])) {
                   
                     <div class="input-container">
                     <input type="text" name="imageName" placeholder="Image Name" required>
-                      <label for="imageUpload">Upload Image:</label>
-                     <input type="file" id="imageUpload" name="imageUpload" accept="image/*" required>Image for website</input>
-                     <input type="file" id="imageUploaddrag" name="imageUploaddrag" accept="image/*" required>Image for drag and drop</input>
+                      <label for="imageUpload"><em>Images:</em> Product page</label>
+                     <input type="file" id="imageUpload" name="imageUpload" accept="image/*" required>
+                     <label for="imageUploaddrag">Room view page</label>
+                     <input type="file" id="imageUploaddrag" name="imageUploaddrag" accept="image/*" required>
                 </div>
 
                 <div class="input-container">
