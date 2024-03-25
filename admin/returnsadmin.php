@@ -226,10 +226,10 @@ if (isset($_SESSION['user'])) {
                             <input type="hidden" name="returnId" value="<?php echo $return['returnId']; ?>">
                             <button type="submit" name="approve" class="btn btn-primary">Approve</button>
                         </form>
-
+                        <span style='margin-top: 5px;'></span>
                         <form action="returnsadmin.php" method="POST">
                             <input type="hidden" name="returnId" value="<?php echo $return['returnId']; ?>">
-                            <button type="submit" name="deny" class="btn btn-primary">Denied</button>
+                            <button type="submit" style= "background-color: #8b0000;" name="deny" class="btn btn-primary">Denied</button>
                         </form>
                     </td>
                 </tr>
