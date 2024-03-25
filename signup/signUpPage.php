@@ -39,7 +39,7 @@
                 </div>
 
                 <div class="input_box">
-                    <input type="password" id="password" name="password" required>
+                    <input type="password" id="password" name="password" minlength="8" pattern="(?=.*?[#?!@$%^&*-\]\[]) oninvalid='setCustomValidity('Please use at least 8 characters and a special character')' required>
                     <label for="password">Password</label>
                 </div>
 
