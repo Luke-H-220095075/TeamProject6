@@ -82,6 +82,9 @@ class User {
       {
         echo 'That username has already been taken. Please enter another username.';
       }
+      elseif(!filter_var($this -> email, FILTER_VALIDATE_EMAIL)){
+        echo "Invalid email address";
+      }
       else{
     try{
       $sth=$db->prepare("INSERT INTO users(username, firstname, surname, password, email, admin, secretAnswer) VALUES (:username, :firstname, :surname, :password, :email, :admin, :token)");
