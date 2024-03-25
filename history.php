@@ -179,6 +179,7 @@
                     }
                     echo "<button class='order-again-button  method='post' name='purchase".$row["orderId"]."' type='submit'>Order Again</button>";
                     echo "<button class='  '  method='post' name='Details".$row["orderId"]."' type='submit'>View Details</button>";
+                    echo "<button class='  '  method='post' name='Details".$row["orderId"]."' type='submit'>Return order?</button>";
                 } else {
                     echo "<p>currently unavailable available</p>";
                 }
