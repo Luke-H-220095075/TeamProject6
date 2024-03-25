@@ -165,8 +165,10 @@
                 echo '</div>';
                 echo '</section>';
                 // Previous Reviews from user
-                $offset = 0;
+                
                 $reviewsPerPage = 4;
+                $page = isset ($_GET['page']) ? max(1, intval($_GET['page'])) : 1;
+                $offset = ($page - 1) * $ordersPerPage;
                 $reviewSql = "SELECT reviewDate, rating, description FROM productreviews WHERE productId = ? ORDER BY reviewDate DESC LIMIT $offset, $reviewsPerPage";
 
                 $reviewStmt = $db->prepare($reviewSql);
