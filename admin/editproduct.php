@@ -246,7 +246,7 @@ if (isset($_GET['productId']) && is_numeric($_GET['productId'])) {
                 <div class="input-container">
                 <input type="text" name="imageName" placeholder="Image Name" value="<?php echo $product['imageName']; ?>" required>                  
                     <label for="imageUpload">Upload Image:</label>
-                     <input type="file" id="imageUpload" name="imageUpload" accept="image/*" required>
+                     <input type="file" id="imageUpload" name="imageUpload" accept="image/*">
                 </div>
 
                
@@ -326,13 +326,13 @@ if (isset($_GET['delete']) && is_numeric($_GET['delete'])) {
 
     //Image Upload
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        if (isset($_FILES["imageUpload"]) && $_FILES["imageUpload"]["error"] == UPLOAD_ERR_OK) {
+//        if (isset($_FILES["imageUpload"]) && $_FILES["imageUpload"]["error"] == UPLOAD_ERR_OK) {
             $fileName = basename($_FILES["imageUpload"]["name"]);
             $fileTmpName = $_FILES["imageUpload"]["tmp_name"];
     
             $uploadDirectory = "../Pictures for website/";
     
-            if (move_uploaded_file($fileTmpName, $uploadDirectory . $fileName)) {
+//            if (move_uploaded_file($fileTmpName, $uploadDirectory . $fileName)) {
                 try {
                     $stmt = $db->prepare("INSERT INTO products (productName, price, productCategory, productType, imageName) VALUES (?, ?, ?, ?, ?)");
                     $stmt->bindParam(1, $_POST['productName']);
@@ -340,23 +340,22 @@ if (isset($_GET['delete']) && is_numeric($_GET['delete'])) {
                     $stmt->bindParam(3, $_POST['productCategory']);
                     $stmt->bindParam(4, $_POST['productType']);
                     $stmt->bindParam(5, $fileName);
-    
+
                     if ($stmt->execute()) {
-                        echo "Product created successfully.";
+                        echo '<script>window.location.href = "editproduct.php?productId='.$_POST['productId'].'"</script>';
                     } else {
                         echo "Error creating product.";
                     }
                 } catch (PDOException $ex) {
                     echo "Database error: " . $ex->getMessage();
                 }
-            } else {
-                echo "Error uploading file.";
-            }
-        } else {
-            echo "Error: No file uploaded.";
-        }
+//            } else {
+//                echo "Error uploading file.";
+//            }
+//        } else {
+//            echo "Error: No file uploaded.";
+//        }
     }
-    
 
 ?>
     <script src="script.js"></script>
