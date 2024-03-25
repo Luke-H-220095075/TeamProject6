@@ -15,11 +15,18 @@
 
 <header>
 <a href="../index.php" style="color: inherit; text-decoration: none">Furniche </a><i class="fa-solid fa-bars" id="togglebtn"></i>
-      
+   
+<?php
+include '../connect.php';
+
+
+session_start();
+
+        ?>
         </div>
         </header>
 <body>
-    <section id="sidebar">
+<section id="sidebar">
         <ul class="side-menu top">
             <div class="logo">
             </div>
@@ -30,10 +37,13 @@
 if (isset($_SESSION['user'])) {
     echo '
     <div class="user-info">
-    <strong><p1>User Name :  </p1><br></strong> &emsp;
+    <strong><p1>User Name :  </p1><br></strong> 
         <i class="fa-solid fa-user" id="user-icon"></i>
         <span>' . $_SESSION['user'] . '</span>
-        
+        <div class="dropdown-content" id="user-dropdown">
+            <a href="#">Profile</a>
+            <a href="#">Logout</a>
+        </div>
     </div>
  ';
 
@@ -44,6 +54,7 @@ if (isset($_SESSION['user'])) {
         }
 
 ?>
+
               <li>
                  <a href="dashboard.php">
                     <i class="fa-solid fa-table-columns"></i>
@@ -108,6 +119,7 @@ if (isset($_SESSION['user'])) {
 
             </li>
         </ul>
+
 
 
    
