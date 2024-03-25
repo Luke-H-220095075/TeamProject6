@@ -145,8 +145,7 @@
       echo "<label for='productid'>productid:</label>";
       echo "<select name='productid' id='productid'>";
       for ($i = 0; $i < $prodnum; $i++) {
-        echo "<option value='$prodprice[$i]'>$prodprice[$i]</option>";
-      }
+        echo "<option value='$prodprice[$i]'>$prodname[$i]</option>";
       echo "</select>";
       echo '<label for="reason">reason:</label><br>';
       echo '<textarea id="reason" name="reason" rows="5" cols="50"></textarea><br><br>';
