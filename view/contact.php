@@ -7,7 +7,7 @@
       if(!empty(trim($_POST['subject'])))
       {
         require("model/Message.php");
-        $message = new Message($_POST['subject'], $_POST['message'], null);
+        $message = new Message(null, $_POST['subject'], $_POST['message'], null, null, null);
         require("controller/SendMessageController.php");
         $controller = new SendMessageController($message);
         $controller->invoke();  
