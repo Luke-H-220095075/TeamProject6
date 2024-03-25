@@ -48,6 +48,46 @@ if (isset($_SESSION['user'])) {
     exit;
      
         }
+?><li>
+<a href="dashboard.php">
+   <i class="fa-solid fa-table-columns"></i>
+   <span class="nav-item">Dashboard</span>
+</a>
+<!-- <span class="tooltip">Dashboard</span> -->
+</li>
+<li>
+<a href="useradmin.php">
+<i class="fa-solid fa-users"></i>
+   <span class="nav-item">Users</span>
+</a>
+<!-- <span class="tooltip">Users</span>-->
+</li>
+<li>
+<a href="productadmin.php">
+   <i class="fa-solid fa-couch"></i>
+   <span class="nav-item">Products</span>
+</a>
+<!-- <span class="tooltip">Products</span>-->
+</li>
+<li>
+<a href="orderadmin.php">
+   <i class="fa-solid fa-cart-shopping"></i>
+   <span class="nav-item">Orders</span>
+</a>
+<!-- <span class="tooltip">Orders</span> -->
+</li>
+<li>
+                <a href="returnsadmin.php">
+                    <i class="fa-solid fa-box"></i>
+                    <span class="nav-item">Returns</span>
+                </a>
+               <!-- <span class="tooltip">Orders</span> -->
+            </li>
+<li>
+<a href="transactions.php">
+<i class="fa-solid fa-money-bill"></i>
+   <span class="nav-item">Transactions</span>
+</a>
 
 ?>
               <li>

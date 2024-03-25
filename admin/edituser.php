@@ -70,6 +70,13 @@ if (isset($_SESSION['user'])) {
                
             </li>
             <li>
+                <a href="returnsadmin.php">
+                    <i class="fa-solid fa-box"></i>
+                    <span class="nav-item">Returns</span>
+                </a>
+               <!-- <span class="tooltip">Orders</span> -->
+            </li>
+            <li>
             <a href="transactions.php">
             <i class="fa-solid fa-money-bill"></i>
                     <span class="nav-item">Transactions</span>

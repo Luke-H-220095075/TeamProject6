@@ -9,8 +9,14 @@
 </head>
 <body>
     
+<br>
+<br>
     <div class="container">
 <br>
+<br>
+<br>
+<br>
+
         <div class="image_box">
             <img src="signuppic.jpg" alt="Sign Up Image">
         </div>

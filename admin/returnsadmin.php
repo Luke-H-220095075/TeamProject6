@@ -15,37 +15,46 @@
 
 <header>
 <a href="../index.php" style="color: inherit; text-decoration: none">Furniche </a><i class="fa-solid fa-bars" id="togglebtn"></i>
-      
+   
+<?php
+include '../connect.php';
+
+
+session_start();
+
+        ?>
         </div>
         </header>
 <body>
-    <section id="sidebar">
+<section id="sidebar">
         <ul class="side-menu top">
             <div class="logo">
             </div>
            
             <li class="active">
             <?php
-            session_start();
 
 if (isset($_SESSION['user'])) {
     echo '
     <div class="user-info">
-    <strong><p1>User Name :  </p1><br></strong> &emsp;
+    <strong><p1>User Name :  </p1><br></strong> 
         <i class="fa-solid fa-user" id="user-icon"></i>
         <span>' . $_SESSION['user'] . '</span>
-        
+        <div class="dropdown-content" id="user-dropdown">
+            <a href="#">Profile</a>
+            <a href="#">Logout</a>
+        </div>
     </div>
  ';
 
 } else {
           
-    header('Location: ../loginview.php');
-    exit;
+   
      
         }
 
 ?>
+
               <li>
                  <a href="dashboard.php">
                     <i class="fa-solid fa-table-columns"></i>
@@ -110,6 +119,7 @@ if (isset($_SESSION['user'])) {
 
             </li>
         </ul>
+
 
 
    
@@ -229,7 +239,7 @@ if (isset($_SESSION['user'])) {
                         <span style='margin-top: 5px;'></span>
                         <form action="returnsadmin.php" method="POST">
                             <input type="hidden" name="returnId" value="<?php echo $return['returnId']; ?>">
-                            <button type="submit" style= "background-color: #8b0000;" name="deny" class="btn btn-primary">Denied</button>
+                            <button type="submit" name="deny" style= "background-color:#8b0000" class="btn btn-primary">Denied</button>
                         </form>
                     </td>
                 </tr>
