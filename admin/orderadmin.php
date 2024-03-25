@@ -226,12 +226,7 @@ if (isset($_GET['search']) && !empty($_GET['search'])) {
         <div class="row justify-content-end align-items-right">
             <div class="col-md-6">
                 <form method="GET" action="">
-                    <div class="input-group mb-3 custom-search-bar">
-                        <input type="text" class="form-control" placeholder="Search..." aria-label="Search..." aria-describedby="search-button" name="search">
-                        <div class="input-group-append">
-                            <button class="btn btn-outline-secondary" type="submit" id="search-button"><i class="fa-solid fa-magnifying-glass"></i></button>
-                        </div>
-                    </div>
+                    
                 </form>
             </div>
             <div class="col-md-3">
