@@ -117,7 +117,7 @@ if (isset($_SESSION['user'])) {
 
    
     </section>
-    <br><br><h1> Orders Admin Dashboard</h1> 
+    <br><br><h1> Returns Admin Dashboard</h1> 
 
     
 
@@ -143,12 +143,12 @@ function fetchRecentOrders($db) {
 
 //Change colour of Delivery Status
 
-function getStatusClass($deliveryStatus) {
-    switch ($deliveryStatus) {
-        case 'Delivered':
-            return 'status-delivered';
-        case 'Currently Delivering':
-            return 'status-delivering';
+function getStatusClass($returnStatus) {
+    switch ($returnStatus) {
+        case 'Returned':
+            return 'status-returned';
+        case 'Currently returning':
+            return 'status-returning';
         case 'Dispatching':
             return 'status-dispatching';
         case 'Pending Approval':
@@ -159,12 +159,12 @@ function getStatusClass($deliveryStatus) {
 }
 
 
-$statusFilter = isset($_GET['deliveryStatus']) ? $_GET['deliveryStatus'] : null;
+$statusFilter = isset($_GET['returnStatus']) ? $_GET['deliveryStatus'] : null;
 
 $sql = "SELECT * FROM orders";
 
 if ($statusFilter !== null) {
-$sql .= " WHERE deliveryStatus = :deliveryStatus";
+$sql .= " WHERE returnStatus = :returnStatus";
 }
 
 $limit = 8;
@@ -176,7 +176,7 @@ $stmt = $db->prepare($sql);
 $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
 $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
 if ($statusFilter !== null) {
-$stmt->bindParam(':deliveryStatus', $statusFilter, PDO::PARAM_STR);
+$stmt->bindParam(':returnStatus', $statusFilter, PDO::PARAM_STR);
 }
 $stmt->execute();
 $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -220,13 +220,13 @@ if (isset($_GET['search']) && !empty($_GET['search'])) {
 
 
 
-<!-- Order View Table -->
+<!--Return View Table -->
 
 <!--Header of Table, BOOTSTRAP WAS USED -->
 <div class="info-table">
 <div class="table-header" style="background-color: #e2b489; padding-top: 10px;">
     <div class="container custom-background">
-    <br><br> <strong><h3>Orders</h3></strong> </strong> &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp;
+    <br><br> <strong><h3>Returns</h3></strong> </strong> &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp; &emsp;&ensp;
         
         <div class="row justify-content-end align-items-right">
             <div class="col-md-6">
@@ -244,8 +244,8 @@ if (isset($_GET['search']) && !empty($_GET['search'])) {
             <div class="input-group-prepend">
              <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="deliveryDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Delivery Status</button>
              <div class="dropdown-menu">
-            <a class="dropdown-item" href="orderadmin.php?deliveryStatus=Delivered">Delivered</a>
-            <a class="dropdown-item" href="orderadmin.php?deliveryStatus=Currently%20Delivering">Currently Delivering</a>
+            <a class="dropdown-item" href="orderadmin.php?deliveryStatus=Delivered">Returned</a>
+            <a class="dropdown-item" href="orderadmin.php?deliveryStatus=Currently%20Delivering">Currently Returning</a>
             <a class="dropdown-item" href="orderadmin.php?deliveryStatus=Dispatching">Dispatching</a>
             <a class="dropdown-item" href="orderadmin.php?deliveryStatus=Pending%20Approval">Pending Approval</a>
         </div>

@@ -45,8 +45,12 @@ h1{
     position: fixed;
     left: 0;
     transition: left 0.3s ease-in-out;
+    overflow-y: scroll;
 }
 
+#sidebar.hide {
+    display: none;
+  }
 .side-menu {
     list-style: none;
     padding: 0;
