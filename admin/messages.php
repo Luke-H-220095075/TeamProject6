@@ -158,8 +158,7 @@ if(count($messages->messages) == 0){
 echo 'No messages';
 }
 foreach ($messages->messages as $msg) {
-    echo '<tr><td>';
-    echo '<h3>'.$msg->username.'</h3></td>';
+    echo '<td><h3>'.$msg->username.'</h3></td>';
     echo '<td><h3>'.$msg->subject.'</h3></td>';
     echo '<td><h3>'.$msg->messagetext.'</h3></td>';
     echo '<td><h3>'.$msg->email.'</h3></td>';
@@ -168,7 +167,7 @@ foreach ($messages->messages as $msg) {
     echo '<input type="hidden" name="id" value="'.$msg->id.'"/input>';
     echo '<td><button type="submit" name="reply" style="cursor: pointer; width: 100%; display: inline">Mark as replied</button><td>';
     echo '</form>';
-    echo '</tr>'; 
+    
  }
     
     if(isset($_POST['reply'])){
