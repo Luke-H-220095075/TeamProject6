@@ -37,61 +37,63 @@ if ($basketId != $mainbasketId) {
 </head>
 
 <header>
-  <section>
-    <div class="fixed-top">
-      <nav class="navbar">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="../index.php">Furniche</a>
+    <section>
+        <div class="fixed-top">
+            <nav class="navbar">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="../index.php">Furniche</a>
 
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link" href="../product/products.php">Products</a>
-              </li>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link" href="../product/products.php">Products</a>
+                            </li>
 
 
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                  aria-expanded="false">
-                  The team
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="../About%20Us.php">About Us</a></li>
-                  <li><a class="dropdown-item" href="../contactview.php">Contact us</a></li>
-                </ul>
-              </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    The team
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="../About%20Us.php">About Us</a></li>
+                                    <li><a class="dropdown-item" href="../contactview.php">Contact us</a></li>
+                                </ul>
+                            </li>
 
-              <?php
-              if (isset ($_SESSION['user'])) {
-                echo '<li class="nav-item"><a class="nav-link" href="../customerprofile.php">' . $_SESSION['user'] . '</a></li>';
-                  echo '<li class="nav-item"><a class="nav-link" href="../logout.php" >Logout</a></li>';
-                  echo '<li class="nav-item dropdown">
+                            <?php
+                            if (isset ($_SESSION['user'])) {
+                                echo '<li class="nav-item"><a class="nav-link" href="../customerprofile.php">' . $_SESSION['user'] . '</a></li>';
+                                echo '<li class="nav-item"><a class="nav-link" href="../logout.php" >Logout</a></li>';
+                                echo '<li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                   aria-expanded="false">
                   <i class="fa-solid fa-basket-shopping"></i>
                 </a>';
-                echo '<ul class="dropdown-menu"><li class="nav-item"><a class="nav-link" href="../history.php">order history</a></li>';
-                echo '<li class="nav-item">
+                                echo '<ul class="dropdown-menu"><li class="nav-item"><a class="nav-link" href="../history.php">order history</a></li>';
+                                echo '<li class="nav-item">
                       <a class="nav-link" href="../basket/basket.php">basket</a>
                       </li></ul>';
-                if ($_SESSION["access"] = "admin") {
-                  echo '<li class="nav-item"><a class="nav-link" href="../admin\dashboard.php">admin page</a></li></li>';
-                }
+                                if ($_SESSION["access"] = "admin") {
+                                    echo '<li class="nav-item"><a class="nav-link" href="../admin\dashboard.php">admin page</a></li></li>';
+                                }
 
-              } else {
-                echo '<li class="nav-item">
+                            } else {
+                                echo '<li class="nav-item">
                 <a class="nav-link" href="../loginview.php">Login</a>
               </li>';
-              }
-              ?>
-            </ul>
-          </div>
+                            }
+                            ?>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
         </div>
-      </nav>
-    </div>
     </section>
 </header>
 
@@ -101,7 +103,7 @@ if ($basketId != $mainbasketId) {
 
     <div class="basketss">
 
-        
+
         <h2>Your Basket</h2>
 
         <?php
@@ -134,6 +136,7 @@ if ($basketId != $mainbasketId) {
                     } else {
                         echo '<span> </span><span class="quantity">' . $row['quantity'] . '</span>' . $prevOrder . '<span> </span>';
                         echo '<button onclick="addQuantity(' . $row['productId'] . ')">+</button>';
+                        echo '<button onclick="returnItem()">return item</button>';
                     }
                     echo '</div>';
                     echo '</div>';
@@ -151,20 +154,20 @@ if ($basketId != $mainbasketId) {
 
             echo "<br>";
 
-            $sql = "SELECT price, quantity FROM products JOIN basketproducts ON products.productId = basketproducts.productId WHERE basketId = '".$basketId."'";
+            $sql = "SELECT price, quantity FROM products JOIN basketproducts ON products.productId = basketproducts.productId WHERE basketId = '" . $basketId . "'";
             $result = $db->query($sql);
             $basketcost = 0;
             if ($result->rowCount() > 0) {
                 while ($row = $result->fetch()) {
                     $basketcost = $basketcost + $row["quantity"] * $row["price"];
-                   }
-                   echo "<p>£" . $basketcost . " before discount</p>";
-                    $discount_name = "test"; #$discount_name = $_POST['discount'];
-                    $sql = "SELECT value FROM discounts WHERE discountTitle = '" . $discount_name . "'";
-                    $value = $db->query($sql);
-                    $basketcost = $basketcost * (1 - $value->fetch()["value"] / 100);
-                    $basketcost = number_format($basketcost, 2);
-                    echo "<p>£" . $basketcost . " total</p>";
+                }
+                echo "<p>£" . $basketcost . " before discount</p>";
+                $discount_name = "test"; #$discount_name = $_POST['discount'];
+                $sql = "SELECT value FROM discounts WHERE discountTitle = '" . $discount_name . "'";
+                $value = $db->query($sql);
+                $basketcost = $basketcost * (1 - $value->fetch()["value"] / 100);
+                $basketcost = number_format($basketcost, 2);
+                echo "<p>£" . $basketcost . " total</p>";
                 #stock availability check
                 include ("../availability.php");
                 if (availability($db, $basketId)) {
@@ -176,7 +179,7 @@ if ($basketId != $mainbasketId) {
                     echo '<div class="mmm"><a href="../product/products.php"><button>Add Products?</button></a></div>';
 
                 }
-                
+
             } else {
                 echo "0 results";
             }
@@ -235,6 +238,11 @@ if ($basketId != $mainbasketId) {
             setTimeout(function () {
                 window.location.reload();
             }, 20);
+
+        }
+        function returnItem() {
+            // Open the returns page in a new window or tab
+            window.open('../returns.php', '_blank');
         }
     </script>
 </body>
