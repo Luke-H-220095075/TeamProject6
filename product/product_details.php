@@ -301,6 +301,15 @@
           </div>
         </div>
       </footer>
-
-
+<?php
+      if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  if (isset ($_POST['review'])) {
+    $rating = $_POST['rating'];
+    $description = $_POST['description'];
+    $insertReviewSql = "INSERT INTO productreviews (productId, userId,rating, description) VALUES (?, ?, ?, ?)";
+    $insertReviewStmt = $db->prepare($insertReviewSql);
+    $insertReviewStmt->execute([$product_id, $userID, $rating, $description]);
+  }
+}
+?>
 </html>
