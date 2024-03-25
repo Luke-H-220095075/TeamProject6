@@ -29,7 +29,7 @@
                 </div>
 
                 <div class="input_box">
-                    <input type="text" id="email" name="email" required>
+                    <input type="text" id="email" name="email" pattern="/^\S+@\S+\.\S+$/" required>
                     <label for="email">Email</label>
                 </div>
 
@@ -39,7 +39,7 @@
                 </div>
 
                 <div class="input_box">
-                    <input type="password" id="password" name="password" required>
+                    <input type="password" id="password" name="password" minlength="8" pattern="(?=.*?[#?!@$%^&*-\]\[]) oninvalid='setCustomValidity('Please use at least 8 characters and a special character')' required>
                     <label for="password">Password</label>
                 </div>
 
