@@ -46,7 +46,7 @@ function fetchData() {
         .catch(error => console.error('Error fetching data:', error));
   }
   
-  
+  /*
 //Apex AreaChart
 // Fetch total orders data from the server
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']; // Manually insert the months here
@@ -149,3 +149,9 @@ const areaChart = new ApexCharts(
     areaChartOptions
 );
 areaChart.render();
+
+*/
+
+
+
+//Area Chat

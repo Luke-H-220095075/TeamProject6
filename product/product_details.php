@@ -59,7 +59,7 @@
                     <?php
                     session_start();
                     if (isset ($_SESSION['user'])) {
-                      echo '<li class="nav-item"><a class="nav-link" href="customerprofile.php">' . $_SESSION['user'] . '</a></li>';
+                      echo '<li class="nav-item"><a class="nav-link" href="../customerprofile.php">' . $_SESSION['user'] . '</a></li>';
                       echo '<li class="nav-item"><a class="nav-link" href="../logout.php" >Logout</a></li>';
                       echo '<li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -136,7 +136,7 @@
                 echo '<p><strong>Amount in Stock:</strong> ' . $row['countStock'] . '</p>';
                 echo '<p><strong>Amount Sold:</strong> ' . $row['countSold'] . '</p>';
 
-
+                echo "<p>the average user rated ordering with us " . $avgOrdrRating . " out of 5</p>";
                 $reviewSql = "SELECT reviewDate, rating, description FROM productreviews WHERE productId =" . $product_id;
                 $reviewStmt = $db->prepare($reviewSql);
                 $reviewStmt->execute();
@@ -148,7 +148,6 @@
                     $count++;
                   }
                   $avgUsrRating = $avgUsrRating / $count;
-                  echo "<p>the average user rated ordering with us " . $avgOrdrRating . " out of 5</p>";
                   echo "<p>this product is rated " . $avgUsrRating . " out of 5 by our users</p>";
                 }
                 echo "<form method='post'>";
@@ -300,6 +299,15 @@
           </div>
         </div>
       </footer>
-
-
+<?php
+      if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  if (isset ($_POST['review'])) {
+    $rating = $_POST['rating'];
+    $description = $_POST['description'];
+    $insertReviewSql = "INSERT INTO productreviews (productId, userId,rating, description) VALUES (?, ?, ?, ?)";
+    $insertReviewStmt = $db->prepare($insertReviewSql);
+    $insertReviewStmt->execute([$product_id, $userID, $rating, $description]);
+  }
+}
+?>
 </html>

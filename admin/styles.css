@@ -369,35 +369,8 @@ button:hover {
     font-weight: 600;
     color: #374151;
 }
-.charts-section {
-    margin-left: 300px;
-    margin-top: 50px;
-    margin-right: 10px;
-}
 
-.charts {
-    display: flex;
-    justify-content: space-between;
-    width: 800px;
-    }
 
-.charts-box {
-margin-left: 300px;
-    width: 1200px; 
-    max-height: 3750px;
-    background-color:white;
-    margin-bottom: 20px;
-    padding: 25px;
-    box-sizing: border-box;
-    border-radius: 5px;
-    box-shadow: 0 6px 7px -4px rgba(0, 0, 0, 0.2);
-}
-
-.chart-title {
-    font-size: 18px;
-    font-weight: bold;
-    text-align: center;
-}
 
 
 /*CSS to Change colour of delivery Status*/
