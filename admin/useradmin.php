@@ -19,7 +19,7 @@ session_start();
         ?>
         </div>
         </header>
-<body>
+
 <section id="sidebar">
         <ul class="side-menu top">
             <div class="logo">
@@ -286,7 +286,7 @@ if (isset($_GET['search']) && !empty($_GET['search'])) {
         ?>
 
 
-    
+<body>
 <br><br> <h1> Users Admin Dashboard</h1> 
     <div class="create-container">
             <div class="create-form">

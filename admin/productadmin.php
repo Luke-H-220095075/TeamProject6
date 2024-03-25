@@ -20,7 +20,7 @@ session_start();
         ?>
         </div>
         </header>
-<body>
+
 <section id="sidebar">
         <ul class="side-menu top">
             <div class="logo">

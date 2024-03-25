@@ -17,7 +17,7 @@ session_start();
         ?>
         </div>
         </header>
-<body>
+
 <section id="sidebar">
         <ul class="side-menu top">
             <div class="logo">
@@ -213,7 +213,7 @@ if (isset($_GET['search']) && !empty($_GET['search'])) {
 
 
 
-
+<body>
 
 <!-- Order View Table -->
 

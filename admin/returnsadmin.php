@@ -25,7 +25,7 @@ session_start();
         ?>
         </div>
         </header>
-<body>
+
 <section id="sidebar">
         <ul class="side-menu top">
             <div class="logo">
@@ -125,7 +125,7 @@ if (isset($_SESSION['user'])) {
 
    
     </section>
-
+    <body>
  <main>
     <br><br>
     <h1>Pending Returns</h1>

@@ -22,7 +22,7 @@ session_start();
       
         </div>
         </header>
-<body>
+
     <section id="sidebar">
         <ul class="side-menu top">
             <div class="logo">
@@ -121,6 +121,7 @@ if (isset($_SESSION['user'])) {
 
    
     </section> 
+    <body>
     <br>
     <br>
     <div class="info-table">
@@ -183,3 +184,4 @@ foreach ($messages->messages as $msg) {
 </tbody>
 </table>
  
+</body>

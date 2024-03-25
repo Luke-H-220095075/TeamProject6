@@ -12,7 +12,7 @@
 <header>
 <span>Furniche <i class="fa-solid fa-bars" id="togglebtn"></i></span>
         </header>
-<body>
+
     <section id="sidebar">
         <ul class="side-menu top">
             <div class="logo">
@@ -139,7 +139,8 @@ if (isset($_GET['userId'])) {  $userId = $_GET['userId'];
             $totalPendingOrders = getTotalCount($db, "orders", "WHERE userId = $userId AND `deliveryStatus` = 'Pending Approval'");
     
 ?>
-
+<body>
+    
 <div class="header-details">
                 <h2>User Details</h2>
                 <a href="useradmin.php" class="back-button">Back to User Admin</a>
