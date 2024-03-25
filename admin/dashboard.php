@@ -73,38 +73,39 @@ if (isset($_SESSION['user'])) {
 
 } else {
           
-            //Lucky add the code to instrust users to login and redirect users back to login page
+    header('Location: ../loginview.php');
+    exit;
      
         }
 
-
-?>                  <li>
+?>
+              <li>
                  <a href="dashboard.php">
                     <i class="fa-solid fa-table-columns"></i>
                     <span class="nav-item">Dashboard</span>
                 </a>
-               <!-- <span class="tooltip">Dashboard</span> -->
+               
             </li>
             <li>
                 <a href="useradmin.php">
                 <i class="fa-solid fa-users"></i>
                     <span class="nav-item">Users</span>
                 </a>
-               <!-- <span class="tooltip">Users</span>-->
+               
             </li>
             <li>
                 <a href="productadmin.php">
                     <i class="fa-solid fa-couch"></i>
                     <span class="nav-item">Products</span>
                 </a>
-               <!-- <span class="tooltip">Products</span>-->
+               
             </li>
             <li>
                 <a href="orderadmin.php">
                     <i class="fa-solid fa-cart-shopping"></i>
                     <span class="nav-item">Orders</span>
                 </a>
-               <!-- <span class="tooltip">Orders</span> -->
+               
             </li>
             <li>
                 <a href="returnsadmin.php">
@@ -121,11 +122,17 @@ if (isset($_SESSION['user'])) {
 
             </li>
             <li>
+                <a href="returnsadmin.php">
+                    <i class="fa-solid fa-user"></i>
+                    <span class="nav-item">Return Requests</span>
+                </a>
+              
+            </li>
+            <li>
                 <a href="messages.php">
                     <i class="fa-solid fa-message"></i>
                     <span class="nav-item">Messages</span>
                 </a>
-                               <!-- <span class="tooltip">Messages</span> -->
             </li>
             <li>
           
@@ -134,14 +141,12 @@ if (isset($_SESSION['user'])) {
                     <i class="fa-solid fa-user"></i>
                     <span class="nav-item">Admin Requests</span>
                 </a>
-               <!-- <span class="tooltip">Users</span>-->
             </li>
             <li>
                 <a href="../index.php">
                     <i class="fa-solid fa-star"></i>
                     <span class="nav-item">View As User</span>
                 </a>
-                               <!-- <span class="tooltip">mainpage</span> -->
 
             </li>
         </ul>
@@ -182,23 +187,17 @@ if (isset($_SESSION['user'])) {
     </div>
 </div>
 
-<div class="charts-section">
- <!--   <div class="charts-box">
-    <h2 class="chart-title"> Product Breakdown</h2>
-    <div id="bar-chart"></div>
--->
-</div>
 
-<h2 style= "margin-left: 400px; ">Monthly Sales of Products</h2>
-<div class="chart-container"  style="margin-left: 350px; width:1125px; height:800px"> 
 
-   <br /><br />
-   <div id="chart" style="  background: #f3f4f6; border-radius: 20px;"></div>
+
+<h2 style="margin-left: 340px; margin-top: 20px">Number of Products Sold 2023</h2>
+<div class="chart-container" style="margin-left: 310px; width:1195px; height:1000px"> 
+   <br />
+   <div id="chart" style="background: #f3f4f6; border-radius: 20px;"></div>
 </div>
 
 <?php
 require_once('../connect.php');
-
 
 $chart_data = '';
 
@@ -225,28 +224,24 @@ try {
 
 ?>
 
-
 <script>
-Morris.Bar({
+Morris.Area({
     element: 'chart',
     data: [<?php echo $chart_data; ?>],
     xkey: 'month', 
     ykeys: ['total_items_sold'], 
     labels: ['Total Items Sold'], 
+    parseTime: false,
     hideHover: 'auto',
-    border: ['black'],
-    barColors: ['rgba(125, 0, 0, 100)']
-
+    resize: true,
+    behaveLikeLine: true,
+    lineColors: ['#FF5733'] 
 });
 </script>
-
-
-
-
-
 </div>
 
-<!-- ApexCharts and our own Javascript file -->
+
+<!-- Charts and our own Javascript file -->
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 

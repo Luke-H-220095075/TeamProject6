@@ -29,7 +29,7 @@
                 </div>
 
                 <div class="input_box">
-                    <input type="text" id="email" name="email" required>
+                    <input type="text" id="email" name="email" pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"  required>
                     <label for="email">Email</label>
                 </div>
 
@@ -39,7 +39,7 @@
                 </div>
 
                 <div class="input_box">
-                    <input type="password" id="password" name="password" required>
+                    <input type="password" id="password" name="password" minlength="8" required>
                     <label for="password">Password</label>
                 </div>
 
@@ -74,3 +74,8 @@
 
 </body>
 </html>
+<?php 
+if (isset($_SESSION['message'])){
+    echo "<script>alert(".$_SESSION['message'].")</script>";
+}
+?>
