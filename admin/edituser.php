@@ -18,6 +18,8 @@
             <div class="logo">
             </div>
             <?php
+            
+session_start();
 
 if (isset($_SESSION['user'])) {
     echo '
@@ -143,7 +145,7 @@ if (isset($_GET['userId'])) {  $userId = $_GET['userId'];
                 <a href="useradmin.php" class="back-button">Back to User Admin</a>
                
             </div>
-       <div class="display-details">
+       <div class="display-details" style="margin-left: 415px;">
             
             <div class="user-details">
             <p><strong>User ID:</strong> &nbsp;<?php echo $userDetails['userId']; ?></p>
