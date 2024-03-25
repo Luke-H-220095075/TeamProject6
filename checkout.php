@@ -14,7 +14,7 @@ if (isset ($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] >
 }
 $_SESSION['LAST_ACTIVITY'] = time(); // update last activity time stamp
 $basketId = $_SESSION["basketID"];
-$sql = "SELECT price, quantity FROM products JOIN basketproducts ON products.productId = basketproducts.productId WHERE basketId = $basketId";
+$sql = "SELECT price, quantity FROM products JOIN basketproducts ON products.productId = basketproducts.productId WHERE basketId = '.$basketId.'";
 $result = $db->query($sql);
 $subtotal = 0;
 if ($result->rowCount() > 0) {
@@ -27,7 +27,7 @@ $basketcost = $subtotal;
 # discounts
 if (isset ($_SESSION['discount_name'])) {
   $discount_name = $_SESSION["discount_name"]; #$discount_name = $_POST['discount'];
-  $sql = "SELECT value FROM discounts WHERE discountTitle = '" . $discount_name . "'";
+  $sql = "SELECT value FROM discounts WHERE discountTitle = ' . $discount_name . '";
   $value = $db->query($sql);
   if ($value->rowCount() > 0) {
     $basketcost = round($subtotal * (1 - $value->fetch()["value"] / 100), 2);
@@ -36,8 +36,13 @@ if (isset ($_SESSION['discount_name'])) {
 
 #stock availability check
 include ("availability.php");
+
 function purchase($db, $basketId, $basketcost)
 {
+    $sql = "SELECT basketId FROM baskets WHERE userId = " . $_SESSION['userID'] . " AND currentUserBasket = 1";
+    $result = $db->query($sql);
+    $row = $result->fetch(PDO::FETCH_ASSOC);
+    $mainBasketId = $row['basketId'];
   if (isset ($_POST['purchase'])) {
     if (availability($db, $basketId)) {
       $sql = "SELECT countStock, countSold, quantity, basketproducts.productId FROM products join basketproducts ON products.productId = basketproducts.productId  WHERE basketId = $basketId";
@@ -50,16 +55,14 @@ function purchase($db, $basketId, $basketcost)
       }
       $sql = "INSERT INTO orders (basketId, userId, deliveryOption) VALUES (" . $basketId . ", " . $_SESSION['userID'] . ", 'standard')";
       $db->query($sql);
-
       $orderId = $db->lastInsertId();
-      
-      $sql = "UPDATE baskets SET currentUserBasket = 0 WHERE basketId = $basketId";
-      $db->query($sql);
-      $sql = "INSERT INTO baskets (userId, currentUserBasket) VALUES (" . $_SESSION['userID'] . ", 1)";
-      $db->query($sql);
-      $_SESSION["basketID"] = null;
-      $_SESSION["basketID"] = null;
-      
+      if ( $mainBasketId ==$basketId) {
+
+          $sql = "UPDATE baskets SET currentUserBasket = 0 WHERE basketId = $basketId";
+          $db->query($sql);
+          $sql = "INSERT INTO baskets (userId, currentUserBasket) VALUES (" . $_SESSION['userID'] . ", 1)";
+          $db->query($sql);
+      }
 
       //Store payment details into the transactions table
       $cardNumber = isset($_POST['CardNumber']) ? $_POST['CardNumber'] : '';

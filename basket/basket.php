@@ -16,9 +16,10 @@ if (isset ($_SESSION["basketID"])) {
     $basketId = $_SESSION["basketID"];
 }
 
-
+$_SESSION["basketID"] = $basketId;
 if ($basketId != $mainbasketId) {
     $prevOrder = " in that order add to your basket?";
+
 } else {
     $prevOrder = "";
 }
@@ -148,7 +149,7 @@ if ($basketId != $mainbasketId) {
             } else {
                 echo "<p>Your basket is empty.</p>";
                 echo '<a href="../product/products.php"><button class="nnn">Add Products?</button></a>';
-                echo '<a href="../checkout.php"><button class="nnn">Checkout now</button></a>';
+                //echo '<a href="../checkout.php"><button class="nnn">Checkout now</button></a>';
 
             }
 
@@ -228,7 +229,7 @@ if ($basketId != $mainbasketId) {
 
                         var goToBasket = confirm('Proceed to Basket?');
                         if (goToBasket) {
-                            $_SESSION["basketID"] = $mainbasketId;
+                            //$_SESSION["basketID"] = $mainbasketId;
                             window.location.href = '../basket/basket.php';
                         }
                     }
