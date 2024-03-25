@@ -114,8 +114,8 @@
   </button>
 </div>
 <section class="index">
+<h2 class = "categoriestext">Categories</h2>
 <div class="categories">
-  <h2>Categories</h2>
   <div>
     <a href="product/products.php?typeFilter=all&categoryFilter=bohemian&sortFilter=all"><img
         src="Pictures%20for%20website/Bohemian.jpg" alt="Bohemian" class="image-filter"></a>
