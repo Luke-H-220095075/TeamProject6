@@ -4,7 +4,7 @@ Furniche is our online furniture store
 
 Features
 
-Explore Genres: Navigate through the navbar to discover various music genres.
+Explore the site: Navigate through the navbar to discover various pages of our website.
 Product Categories and types: filter through our products wether you're looking for a specific theme or type of furniture. 
 About us: Find out more about Furniche and it's goals.
 User Authentication: Securely log in to access personalized features.
