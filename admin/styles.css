@@ -163,8 +163,8 @@ h1{
 /* CSS for display tables (User, Products, Admin and Orders)*/
 .info-table {
     margin: 20px auto;
-    margin-left: 370px;
-    width: 65%;
+    margin-left: 385px;
+    width: 1000px;
     border-radius: 10px;
     overflow: hidden;
     background-color: white;
@@ -252,8 +252,8 @@ h1{
     padding: 20px;
     border-radius: 4px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 68%;
-    margin-left: 100px;
+    width: 1000px;
+    margin-left: 60px;
 }
 
 .create-form h2 {
